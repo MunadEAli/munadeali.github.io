@@ -1,128 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact · Muhammad Sheraz</title>
-  <!-- Font Awesome for icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
-  <!-- move up one level to grab your stylesheet -->
-  <link rel="stylesheet" href="../styles.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact · Munad E Ali</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+<link rel="stylesheet" href="../styles.css"/>
+
+<style>
+/* Success message styling */
+.success-message {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: rgba(255,140,0,0.1);
+  color: #ff8c00;
+  display: none;
+  text-align: center;
+}
+</style>
 </head>
+
 <body>
-  <div class="bg"></div>
+<div class="bg"></div>
 
-  <nav class="nav glass container">
-    <span class="logo">
-      Muhammad Sheraz
-      <a
-        href="https://www.linkedin.com/in/msherazz/"
-        target="_blank"
-        class="nav-social"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-      <a
-        href="https://github.com/dsshaizy"
-        target="_blank"
-        class="nav-social"
-        ><i class="fab fa-github"></i
-      ></a>
-      <a href="mailto:dsshaizy@gmail.com" class="nav-social"
-        ><i class="fas fa-envelope"></i
-      ></a>
-    </span>
-    <ul class="nav__links">
-      <li><a href="../index.html" >Home</a></li>
-      <!-- Navbar items switch the tabs on this page -->
-      <li><a href="../index.html?tab=ai#projects">AI Projects</a></li>
-      <li><a href="../index.html?tab=embedded#projects">Embedded & Control</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-  </nav>
+<nav class="nav glass container">
+<span class="logo">
+  Munad E Ali
+  <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/MunadEAli" target="_blank" class="nav-social"><i class="fab fa-github"></i></a>
+  <a href="mailto:munadali17@gmail.com" class="nav-social"><i class="fas fa-envelope"></i></a>
+</span>
 
-  <section class="contact-wrap container">
-    <!-- PROFILE CARD -->
-    <div class="profile-card glass">
-      <!-- back out of templates/ to reach assets/ -->
-      <img src="../assets/cholesterol/shaizy-profile.jpg" alt="Muhammad Sheraz" class="profile-img"/>
-      <div class="social-links">
-        <!-- LinkedIn -->
-        <a
-          href="https://www.linkedin.com/in/msherazz/"
-          target="_blank"
-          aria-label="LinkedIn"
-        >
-          <!-- (SVG icon here) -->
-        </a>
-        <!-- GitHub -->
-        <a
-          href="https://github.com/dsshaizy"
-          target="_blank"
-          aria-label="GitHub"
-        >
-          <!-- (SVG icon here) -->
-        </a>
-      </div>
+<ul class="nav__links">
+  <li><a href="../index.html">Home</a></li>
+  <li><a href="../index.html#projects">Projects</a></li>
+  <li><a href="../index.html#ai-projects">AI</a></li>
+  <li><a href="../index.html#rmc-projects">Robotics</a></li>
+  <li><a href="experience.html">Experience</a></li>
+  <li><a href="education.html">Education</a></li>
+  <li><a href="skills.html">Skills</a></li>
+  <li><a href="contact.html" class="active">Contact</a></li>
+</ul>
+</nav>
+
+<section class="contact-wrap container">
+
+<!-- PROFILE -->
+<div class="profile-card glass">
+  <img src="../assets/munad-profile.jpeg" alt="Munad E Ali" class="profile-img"/>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+    <a href="https://github.com/MunadEAli" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="contact-form glass">
+  <h2>Let’s Chat</h2>
+  <p>Open for research collaborations, internships, consulting, and technical discussions.</p>
+
+  <form id="contact-form" action="https://formspree.io/f/mnjbzwav" method="POST">
+
+    <label>Your Email
+      <input type="email" name="email" required placeholder="you@example.com">
+    </label>
+
+    <label>Organization
+      <input type="text" name="organization" placeholder="Company / University">
+    </label>
+
+    <label>Message
+      <textarea name="message" rows="4" required placeholder="Hi Munad…"></textarea>
+    </label>
+
+    <input type="hidden" name="_subject" value="New Portfolio Message">
+
+    <button type="submit" class="btn">Send Message</button>
+
+    <!-- SUCCESS MESSAGE -->
+    <div id="successMessage" class="success-message">
+      ✅ Your message has been sent successfully!
     </div>
 
-    <!-- CHAT FORM -->
-    <div class="contact-form glass">
-      <h2>Let’s Chat</h2>
-      <p>Always open for freelance, consulting, or a quick tech-chat ☕.</p>
+  </form>
 
-      <form id="contact-form">
-        <label>
-          Your Email
-          <input type="email" id="email" placeholder="you@example.com" required/>
-        </label>
-        <label>
-          Organization
-          <input type="text" id="org" placeholder="Company / School"/>
-        </label>
-        <label>
-          Message
-          <textarea id="msg" rows="4" placeholder="Hi there, …" required></textarea>
-        </label>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
+  <p class="direct">
+    Or email me directly at
+    <a href="mailto:munadali17@gmail.com" style="color:#ff8c00; font-weight:600;">
+  munadali17@gmail.com
+</a>
 
-      <p class="direct">
-        Or email me directly at
-        <a href="mailto:dsshaizy@gmail.com">dsshaizy@gmail.com</a>
-      </p>
-    </div>
-  </section>
+  </p>
+</div>
 
-  <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
-  </footer>
+</section>
 
-  <!-- back out one level for your script.js -->
-  <script src="../script.js"></script>
-  <script>
-    const recipientEmail = "dsshaizy@gmail.com";
-    document.getElementById("contact-form").addEventListener("submit", e => {
-      e.preventDefault();
-      const s = document.getElementById("email").value;
-      const o = document.getElementById("org").value;
-      const m = document.getElementById("msg").value;
-      const sb = "Portfolio Message";
-      const bd = `From: ${s}\nOrganization: ${o}\n\n${m}`;
-      window.location.href =
-        `mailto:${recipientEmail}` +
-        `?subject=${encodeURIComponent(sb)}` +
-        `&body=${encodeURIComponent(bd)}`;
-    });
-  </script>
+<footer class="footer container">
+© <span id="year"></span> Munad E Ali
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const form = document.getElementById("contact-form");
+const successMessage = document.getElementById("successMessage");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    form.reset();
+    successMessage.style.display = "block";
+
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 5000);
+  }
+});
+</script>
+
 </body>
 </html>
-
-
-
-

@@ -3,77 +3,117 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhammad Sheraz · Portfolio</title>
+  <title>MunadEAli_Portfolio</title>
+
+  <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet"/>
+  
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  
   <link rel="stylesheet" href="styles.css"/>
 
-  <!-- Tabs + layout tweaks -->
   <style>
-    /* Sticky footer layout */
-    html, body { height: 100%; }
-    body { min-height: 100vh; display: flex; flex-direction: column; }
-    .footer { margin-top: auto; }
+    /* ================= BUTTON SECTION ================= */
 
-    /* Plain text “Explore my work” */
-    .cta-plain{
-      margin: .5rem auto 0;      /* tighter above the tabs */
-      font-weight: 700;
-      color: #A3BFFA;
+    .project-filters{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:30px;
+      margin: 50px 0 60px 0;
+      flex-wrap:wrap;
     }
 
-    /* Tabs row (moved closer to the text above) */
-    #projects { display:flex; flex-direction:column; align-items:center; }
-    .tabs{
-      display:flex; justify-content:center; align-items:center;
-      gap:1rem;
-      margin: .6rem auto 1.6rem; /* ↓ reduced top gap; nice bottom breathing room */
-      padding:.5rem;
+    .domain-btn{
+      width: 360px;
+      height: 90px;
+      border-radius: 22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:-0.02em;
+      font-size:17px;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(14px);
     }
 
-    /* Dark glassy pill tabs that turn orange + glow on hover */
-    .tab-btn{
-      padding: clamp(.9rem, 1rem + .3vw, 1.2rem) clamp(1.25rem, 2vw, 2rem);
-      border:none; border-radius:9999px; cursor:pointer;
-      font-weight:800; font-size:clamp(1.05rem, .9rem + .6vw, 1.4rem);
-      letter-spacing:.2px;
-      background: rgba(244,162,97,0.9);
-      color:#D9E6F2;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 0 2px rgba(255,255,255,.14) inset, 0 6px 18px rgba(0,0,0,.15);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    .domain-btn i{
+      font-size:28px;
     }
-    .tab-btn:hover{
-      background: var(--clr-accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow), 0 0 15px rgba(244,162,97,0.9);
-      color:#fff;
+
+    /* AI Button */
+    .ai-btn{
+      background: linear-gradient(135deg,#4facfe,#00f2fe);
+      color:white;
+      box-shadow: 0 12px 35px rgba(0,242,254,0.35);
     }
-    .tab-btn:focus-visible{ outline:2px solid rgba(255,255,255,.55); outline-offset:2px; }
 
-    /* Panels hidden by default */
-    .tab-panel{ display:none; width:100%; }
-    .tab-panel.active{ display:block; }
+    /* Robotics Button */
+    .robo-btn{
+      background: linear-gradient(135deg,#ff7a18,#ffb347);
+      color:white;
+      box-shadow: 0 12px 35px rgba(255,122,24,0.35);
+    }
 
-    /* Gentle space before grids */
-    .projects{ padding-top:.75rem; }
+    .domain-btn:hover{
+      transform: translateY(-7px) scale(1.04);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    }
+
+    /* Section titles */
+    .domain-title{
+      margin-top: 50px;
+      margin-bottom: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-align:center;
+    }
+
+    /* Placeholder card */
+    .placeholder-card{
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      text-align:center;
+    }
+
+    /* Mobile */
+    @media(max-width:768px){
+      .domain-btn{
+        width:100%;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="bg"></div>
 
+  <!-- ================= NAVBAR ================= -->
   <nav class="nav glass container">
     <span class="logo">
-      Muhammad Sheraz
-      <a href="https://www.linkedin.com/in/msherazz/" target="_blank" class="nav-social"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/dsshaizy" target="_blank" class="nav-social"><i class="fab fa-github"></i></a>
-      <a href="mailto:dsshaizy@gmail.com" class="nav-social"><i class="fas fa-envelope"></i></a>
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
     </span>
+
     <ul class="nav__links">
       <li><a href="index.html" class="active">Home</a></li>
-      <!-- Navbar items switch the tabs on this page -->
-      <li><a href="#projects" data-tab="ai">AI Projects</a></li>
-      <li><a href="#projects" data-tab="embedded">Embedded & Control</a></li>
+      <li><a href="#ai-projects">AI</a></li>
+      <li><a href="#rmc-projects">Robotics</a></li>
       <li><a href="templates/experience.html">Experience</a></li>
       <li><a href="templates/education.html">Education</a></li>
       <li><a href="templates/skills.html">Skills</a></li>
@@ -81,170 +121,88 @@
     </ul>
   </nav>
 
+  <!-- ================= HERO ================= -->
   <header class="hero container">
-    <h1 class="headline">Electrical Engineer <span>→</span> AI Engineer</h1>
-    <p class="sub">Transforming data ✧ code ✧ creativity into real-world products.</p>
-    <!-- Plain text instead of a button -->
-    <p class="cta-plain">Explore my work</p>
+    <h1 class="headline">
+      Electrical Engineer <span>→</span> Artificial Intelligence Engineer
+      <span>→</span> Intelligent Robotics, Automation and Systems Engineer
+    </h1>
+
+    <p class="sub">
+      Building intelligent systems that combine AI, robotics, and embedded engineering to solve real-world problems.
+    </p>
   </header>
 
-  <main id="projects" class="container" aria-label="Project categories">
-    <!-- Tabs remain visible at all times -->
-    <div class="tabs" role="tablist">
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ai-panel" id="tab-ai" data-tab="ai">
-        Artificial Intelligence
-      </button>
-      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="embedded-panel" id="tab-embedded" data-tab="embedded">
-        Embedded &amp; Control
-      </button>
+  <!-- ================= PROJECT BUTTONS ================= -->
+  <main id="projects" class="projects container">
+
+    <div class="project-filters">
+
+      <a class="domain-btn ai-btn" href="#ai-projects">
+        <i class="fas fa-brain"></i>
+        <span>Artificial Intelligence</span>
+      </a>
+
+      <a class="domain-btn robo-btn" href="#rmc-projects">
+        <i class="fas fa-robot"></i>
+        <span>Robotics, Mechatronics & Control</span>
+      </a>
+
     </div>
 
-    <!-- AI projects -->
-    <section id="ai-panel" class="projects tab-panel" role="tabpanel" aria-labelledby="tab-ai" data-panel="ai">
-      <h2 class="section-title">Artificial Intelligence</h2>
-      <div class="grid-8">
-        <a class="card tilt" href="templates/projects/project-1.html">
-          <img src="assets/cholesterol.png" alt="Treatment Efficacy Model" class="card-image">
-          <div class="card__info"><h3>Treatment Efficacy Model</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-7.html">
-          <img src="assets/grid-logo.png" alt="OCR-Oncology documents" class="card-image">
-          <div class="card__info"><h3>OCR-Oncology documents</h3></div>
-        </a>
-        
-        <a class="card tilt" href="templates/projects/project-3.html">
-          <img src="assets/hpi.png" alt="History of Previous Illness" class="card-image">
-          <div class="card__info"><h3>History of Previous Illness</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-13.html">
-          <img src="assets/doctor-agent.png" alt="Generating SOAP note" class="card-image">
-          <div class="card__info"><h3>Generating SOAP note</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-5.html">
-          <img src="assets/interview-bot.png" alt="HR-Screening Interviews" class="card-image">
-          <div class="card__info"><h3>HR-Screening Interviews</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-2.html">
-          <img src="assets/smartdialer.png" alt="SmartDialer for IVR" class="card-image">
-          <div class="card__info"><h3>SmartDialer for IVR</h3></div>
-        </a>
-      </div>
-    </section>
+    <!-- ================= AI SECTION ================= -->
+    <h3 id="ai-projects" class="domain-title">Artificial Intelligence</h3>
 
-    <!-- Embedded & Control projects -->
-    <section id="embedded-panel" class="projects tab-panel" role="tabpanel" aria-labelledby="tab-embedded" data-panel="embedded">
-      <h2 class="section-title">Embedded &amp; Control</h2>
-      <div class="grid-8">
-        <a class="card tilt" href="templates/projects/project-4.html">
-          <img src="assets/fyp-6dof.png" alt="6 DOF Robot" class="card-image">
-          <div class="card__info"><h3>6 DOF Robot</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-6.html">
-          <img src="assets/cholesterol/crab/logo.png" alt="4-Legged Crab Robot" class="card-image">
-          <div class="card__info"><h3>4-Legged Crab Robot</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-8.html">
-          <img src="assets/cholesterol/RFID/rfid-logo.png" alt="RFID-Based Security System" class="card-image">
-          <div class="card__info"><h3>RFID-Based Security System</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-9.html">
-          <img src="assets/cholesterol/smartwatch.png" alt="Smartwatch ESP32" class="card-image">
-          <div class="card__info"><h3>Smartwatch ESP32</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-10.html">
-          <img src="assets/cholesterol/stepper-logo.png" alt="Stepper Motor Control Library RPI-Pico" class="card-image">
-          <div class="card__info"><h3>Stepper Motor Control Library RPI-Pico</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-11.html">
-          <img src="assets/cholesterol/waves/logo.png" alt="Signal Wave Generation" class="card-image">
-          <div class="card__info"><h3>Signal Wave Generation</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-15.html">
-          <img src="assets/cholesterol/amplifier/logo-up.jpg" alt="Class AB Audio Amplifier" class="card-image">
-          <div class="card__info"><h3>Class AB Audio Amplifier</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-14.html">
-          <img src="assets/cholesterol/CA-lights/logo.png" alt="Circuit Analysis - Holiday lights" class="card-image">
-          <div class="card__info"><h3>Circuit Analysis - Holiday lights</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-16.html">
-          <img src="assets/cholesterol/fpga/logo.png" alt="FPGA Ultrasonic Range Finder" class="card-image">
-          <div class="card__info"><h3>FPGA Ultrasonic Range Finder</h3></div>
-        </a>
-        <a class="card tilt" href="templates/projects/project-12.html">
-          <img src="assets/cholesterol/port-icon.jpg" alt="Portfolio Website (This website)" class="card-image">
-          <div class="card__info"><h3>Portfolio Website (This website)</h3></div>
-        </a>
+    <div class="grid-8">
+      <div class="placeholder-card">
+        <h3>AI Projects Coming Soon</h3>
+        <p>Add your AI project cards here later.</p>
       </div>
-    </section>
+    </div>
+
+    <!-- ================= ROBOTICS SECTION ================= -->
+    <h3 id="rmc-projects" class="domain-title">
+      Robotics, Mechatronics & Control
+    </h3>
+
+    <div class="grid-8">
+
+      <!-- Keeping existing cards for now -->
+      <a class="card tilt" href="templates/projects/project-1.html">
+        <img src="assets/dc1941d.png" class="card-image">
+        <div class="card__info">
+          <h3>Battery Management System</h3>
+          <span>STM32 · isoSPI · LTC6804</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-2.html">
+        <img src="assets/ev-connector-tn.png" class="card-image">
+        <div class="card__info">
+          <h3>L2 EV Charger</h3>
+          <span>STM32 · CANbus</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-3.html">
+        <img src="assets/whitebeet-2.png" class="card-image">
+        <div class="card__info">
+          <h3>freeV2G</h3>
+          <span>RPi · Python</span>
+        </div>
+      </a>
+
+    </div>
+
   </main>
 
+  <!-- ================= FOOTER ================= -->
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
 
-  <!-- Tilt for cards -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
-
-  <!-- Tab switching logic -->
-  <script>
-    function activateTab(name) {
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        const on = btn.dataset.tab === name;
-        btn.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.toggle('active', panel.dataset.panel === name);
-      });
-      const projects = document.getElementById('projects');
-      if (projects) projects.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (window.VanillaTilt) {
-        VanillaTilt.init(document.querySelectorAll(".tilt"), { max: 6, speed: 400, glare: true, "max-glare": .2 });
-      }
-    }
-
-    function setActiveNav(name){
-      // remove 'active' from all navbar links (including Home)
-      document.querySelectorAll('.nav__links a').forEach(a => a.classList.remove('active'));
-      // add it to the nav item that controls this tab
-      const target = document.querySelector(`.nav__links a[data-tab="${name}"]`);
-      if (target) target.classList.add('active');
-    }
-
-
-    // Buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activateTab(btn.dataset.tab);
-        setActiveNav(btn.dataset.tab);
-      });
-    });
-
-    // Navbar links (same page)
-    document.querySelectorAll('.nav__links a[data-tab]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        activateTab(a.dataset.tab);
-        setActiveNav(a.dataset.tab);
-      });
-    });
-
-
-    // Year
-    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
-    // Open the right tab when arriving with ?tab=ai or ?tab=embedded
-    (() => {
-      const params = new URLSearchParams(location.search);
-      const startTab = params.get('tab');
-      if (startTab === 'ai' || startTab === 'embedded') {
-        activateTab(startTab);
-        setActiveNav(startTab);
-      }
-    })();
-
-
-    // Start closed (only tabs visible). To auto-open AI on load, uncomment:
-    // activateTab('ai');
-  </script>
+  <script src="../script.js"></script>
 </body>
 </html>

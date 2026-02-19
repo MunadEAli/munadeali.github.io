@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Education · Muhammad Sheraz</title>
+  <title>Education · Munad E Ali</title>
+
   <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet"/>
   <!-- Font Awesome for icons -->
@@ -11,56 +12,71 @@
   <!-- up one level to grab your stylesheet -->
   <link rel="stylesheet" href="../styles.css"/>
 </head>
+
 <body>
   <div class="bg"></div>
 
-<nav class="nav glass container">
-  <span class="logo">
-    Muhammad Sheraz
-    <a href="https://www.linkedin.com/in/msherazz/" target="_blank" class="nav-social"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/dsshaizy/" target="_blank" class="nav-social"><i class="fab fa-github"></i></a>
-    <a href="mailto:dsshaizy@gmail.com" class="nav-social"><i class="fas fa-envelope"></i></a>
-  </span>
-  <ul class="nav__links">
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+
+    <ul class="nav__links">
       <li><a href="../index.html">Home</a></li>
-      <!-- Navbar items switch the tabs on this page -->
-      <li><a href="../index.html?tab=ai#projects">AI Projects</a></li>
-      <li><a href="../index.html?tab=embedded#projects">Embedded & Control</a></li>
+      <li><a href="../index.html#ai-projects">AI</a></li>
+      <li><a href="../index.html#rmc-projects">Robotics</a></li>
+
       <li><a href="experience.html">Experience</a></li>
       <li><a href="education.html" class="active">Education</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-</nav>
+  </nav>
 
   <main class="container">
-    <h2 class="section-title">My Education</h2>
+    <h2 class="section-title">Education</h2>
+
     <div class="grid-8">
+      <a class="card tilt" href="education/education-masters.html">
+        <!-- Save your university logo as: /assets/universite-mlp.png -->
+        <img src="../assets/universite-mlp.png" alt="Universite Marie et Louis Pasteur" class="card-image">
+        <div class="card__info">
+          <h3>Master’s Degree</h3>
+          <span>Advanced Robotics, Mechatronics & Automatic Control</span>
+        </div>
+      </a>
+
       <a class="card tilt" href="education/education-university.html">
-        <img src="../assets/PIEAS-wrt.png" alt="PIEAS" class="card-image">
+        <img src="../assets/PIEAS-wrt.png" alt="University" class="card-image">
         <div class="card__info">
           <h3>Bachelor’s Degree</h3>
           <span>Electrical Engineering</span>
         </div>
       </a>
-      <a class="card tilt" href="education/education-intermediate.html">
-        <img src="../assets/fdcr.png" alt="College" class="card-image">
+
+      <a class="card tilt" href="education/education-alevels.html">
+        <!-- Save your Cambridge/A Levels logo here: /assets/cambridge-alevels.png -->
+        <img src="../assets/cambridge-alevels.png" alt="A Levels / Cambridge" class="card-image">
         <div class="card__info">
-          <h3>Intermediate (FSc)</h3>
+          <h3> Cambridge A Levels</h3>
           <span>Pre-Engineering</span>
-        </div>
-      </a>
-      <a class="card tilt" href="education/education-matric.html">
-        <img src="../assets/fdcr.png" alt="School" class="card-image">
-        <div class="card__info">
-          <h3>Matric (High School)</h3>
-          <span>Science Major</span>
         </div>
       </a>
     </div>
 
     <h2 class="section-title">Featured Courses</h2>
+
     <div class="grid-8">
+      <!-- Existing courses kept as-is -->
       <a class="card tilt" href="education/course-DL.html">
         <img src="../assets/course-1.png" alt="Deep Learning Specialization" class="card-image">
         <div class="card__info">
@@ -68,6 +84,7 @@
           <span>DeepLearning.AI</span>
         </div>
       </a>
+
       <a class="card tilt" href="education/course-DSA.html">
         <img src="../assets/course-2.png" alt="Data Structures and Algorithms Specialization" class="card-image">
         <div class="card__info">
@@ -75,6 +92,7 @@
           <span>University of California, San Diego</span>
         </div>
       </a>
+
       <a class="card tilt" href="education/course-mathML.html">
         <img src="../assets/course-3.png" alt="Mathematics for ML" class="card-image">
         <div class="card__info">
@@ -82,6 +100,7 @@
           <span>Coursera</span>
         </div>
       </a>
+
       <a class="card tilt" href="education/course-introML.html">
         <img src="../assets/course-4.png" alt="IBM Introduction to ML" class="card-image">
         <div class="card__info">
@@ -89,6 +108,7 @@
           <span>IBM</span>
         </div>
       </a>
+
       <a class="card tilt" href="education/course-AIMED.html">
         <img src="../assets/course-5.png" alt="AI for Medicine" class="card-image">
         <div class="card__info">
@@ -96,13 +116,15 @@
           <span>DeepLearning.AI</span>
         </div>
       </a>
+
       <a class="card tilt" href="education/course-python.html">
         <img src="../assets/python-course.png" alt="Python Mega Apps & OOP" class="card-image">
         <div class="card__info">
-          <h3>Python Mega Apps & OOP</h3>
+          <h3>Python Mega Apps &amp; OOP</h3>
           <span>UDEMY</span>
         </div>
       </a>
+
       <a class="card tilt" href="education/course-mlops.html">
         <img src="../assets/mlops.png" alt="Machine Learning in Production" class="card-image">
         <div class="card__info">
@@ -110,11 +132,31 @@
           <span>Coursera</span>
         </div>
       </a>
+
+      <!-- NEW: Embedded Systems & IoT Specialization (UCI) -->
+      <a class="card tilt" href="education/course-embedded-iot.html">
+        <!-- Save a UCI logo here if you want: /assets/uci.png -->
+        <img src="../assets/uci.png" alt="Embedded Systems & IoT Specialization" class="card-image">
+        <div class="card__info">
+          <h3>Embedded Systems &amp; IoT</h3>
+          <span>University of California, Irvine · Arduino · Raspberry Pi</span>
+        </div>
+      </a>
+
+      <!-- NEW: AI for Everyone -->
+      <a class="card tilt" href="education/course-ai-for-everyone.html">
+        <!-- Save a DeepLearning.AI logo here if you want: /assets/deeplearningai.png -->
+        <img src="../assets/deeplearningai.png" alt="AI for Everyone" class="card-image">
+        <div class="card__info">
+          <h3>AI for Everyone</h3>
+          <span>DeepLearning.AI</span>
+        </div>
+      </a>
     </div>
   </main>
 
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
