@@ -3,37 +3,94 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MediExtract (OCR) · Oncology Document Understanding · Muhammad Sheraz</title>
+  <title>MediExtract (OCR) · Oncology Document Understanding · Munad E Ali</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="../../styles.css"/>
+
   <style>
     .project-page p strong { color: var(--clr-accent); }
     .title-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1rem; }
     .title-row h1 { margin:0; line-height:1; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; }
+
     figure { margin:1rem 0; }
     figure img { width:100%; border-radius:.6rem; display:block; margin-inline:auto; }
     figure figcaption { font-size:.9rem; opacity:.85; margin-top:.35rem; }
+
     .two-col { display:grid; grid-template-columns:1fr; gap:1.1rem; }
     @media (min-width: 900px) { .two-col { grid-template-columns:1fr 1fr; } }
+
     .list-tight li { margin-bottom:.35rem; }
     .callout { padding:.9rem 1rem; border-radius:.6rem; background:rgba(255,213,79,.08); border:1px solid rgba(255,213,79,.3); }
-    .metric { display:inline-block; padding:.3rem .55rem; border-radius:.35rem; background:rgba(125,255,200,.08); border:1px solid rgba(125,255,200,.3); margin:.15rem .25rem .15rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); padding:.05rem .4rem; border-radius:.35rem; }
 
-    /* NEW: center smaller images (when their intrinsic width is less than container) */
+    .metric {
+      display:inline-block; padding:.3rem .55rem; border-radius:.35rem;
+      background:rgba(125,255,200,.08); border:1px solid rgba(125,255,200,.3);
+      margin:.15rem .25rem .15rem 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.15);
+      padding:.05rem .4rem;
+      border-radius:.35rem;
+    }
+
+    /* Center smaller images when intrinsic width < container */
     figure.center { display:flex; flex-direction:column; align-items:center; }
     figure.center img { width:auto; max-width:100%; height:auto; }
+
+    /* Simple table styling for examples */
+    .tbl-wrap { overflow:auto; border-radius:.6rem; border:1px solid rgba(255,255,255,.12); }
+    table.simple {
+      width:100%;
+      border-collapse:collapse;
+      min-width: 720px;
+      background: rgba(255,255,255,.03);
+    }
+    table.simple th, table.simple td {
+      padding:.6rem .7rem;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+      font-size:.95rem;
+    }
+    table.simple th {
+      text-align:left;
+      font-weight:700;
+      background: rgba(255,255,255,.04);
+    }
+
+    .flag-bad { color:#ff4d4d; font-weight:700; }
+
+
   </style>
 </head>
+
 <body>
   <div class="bg"></div>
 
-  <!-- NAV -->
+  <!-- NAV (match your first project style) -->
   <nav class="nav glass container">
-    <span class="logo">Muhammad Sheraz</span>
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+
     <ul class="nav__links">
       <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../index.html?tab=ai#projects" class="active">AI Projects</a></li>
-      <li><a href="../../index.html?tab=embedded#projects">Embedded & Control</a></li>
+      <li><a href="../../index.html#ai-projects" class="active">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
       <li><a href="../experience.html">Experience</a></li>
       <li><a href="../education.html">Education</a></li>
       <li><a href="../skills.html">Skills</a></li>
@@ -45,91 +102,293 @@
   <article class="project-page container glass">
     <div class="title-row">
       <h1>MediExtract (OCR) — Oncology Document Understanding</h1>
-      <!-- Optional: <a class="btn" href="YOUR_DEMO_LINK" target="_blank">View Demo ↗</a> -->
+      <!-- Optional demo link -->
+      <!-- <a class="btn" href="YOUR_DEMO_LINK" target="_blank" rel="noopener">View Demo ↗</a> -->
     </div>
 
-    <p class="tags">Healthcare OCR · Document Classification · PaddleOCR · Vision LLM · Table Detection · MXBAI/ClinicalBERT · Python</p>
+    <p class="tags">Healthcare OCR · Oncology · Document Classification · PaddleOCR · Vision LLM · Table Detection · Table Localization · Qwen · MXBAI/ClinicalBERT · Python</p>
 
-    <p>
-      <strong>MediExtract</strong> is an end-to-end OCR and information extraction system for oncology workflows. It ingests raw clinical files
-      (PDFs/scans), classifies each into <em>Lab</em>, <em>Radiology</em>, <em>Pathology</em>, or <em>Other</em>, extracts high-accuracy text and tables,
-      enriches them with <strong>metadata</strong> (e.g., procedure type, dates), and exports <strong>structured outputs</strong> for search and analytics.
-      The pipeline combines <strong>PaddleOCR</strong> for robust text recognition, <strong>vision LLMs</strong> for layout/structure reasoning, and <strong>table detectors</strong>
-      (e.g., TATR/YOLO) tuned for clinical reports.
+    <p class="project-context">
+      <span class="metric">Industry Project</span>
+      <span class="metric">CureMD</span>
+      <span class="metric">AI Engineer</span>
     </p>
 
-    <!-- 1) OVERVIEW -->
+    <p>
+      <strong>MediExtract</strong> is an end-to-end OCR and information extraction system designed for <strong>oncology workflows</strong>.
+      It ingests raw clinical files (PDFs/scans), classifies each document into <em>Lab</em>, <em>Radiology</em>, <em>Pathology</em>, or <em>Other</em>,
+      performs high-fidelity text extraction, detects and reconstructs complex clinical tables, enriches outputs with metadata (e.g., procedure type, dates, confidence),
+      and exports <strong>structured JSON</strong> for downstream search, analytics, and clinical review.
+      The pipeline combines <strong>PaddleOCR</strong> (text accuracy), <strong>vision LLMs</strong> (layout + structure reasoning), and
+      a <strong>table-localization + fusion</strong> strategy that prioritizes <strong>precision</strong> for medical data such as lab results.
+    </p>
+
+    <!-- OVERVIEW -->
     <figure>
       <img src="../../assets/cholesterol/OCR/overview.jpg" alt="MediExtract overview pipeline"/>
-      <figcaption>Overview: Input → Classification → Text Extraction → Table Extraction → Metadata → Structured JSON/DB.</figcaption>
+      <figcaption>Overview: Input → Classification → Text Extraction → Table Detection & Extraction → Metadata → Structured JSON/DB.</figcaption>
     </figure>
 
-    <!-- 2) PROBLEM & GOALS -->
+    <!-- 1) PROBLEM & GOALS -->
     <h2>1) Problem & Goals</h2>
     <div class="callout">
-      <p><strong>Goal:</strong> Convert heterogeneous oncology documents (multiple templates, noisy scans, borderless tables) into <em>searchable, analyzable</em> structured data — with low latency and high accuracy.</p>
+      <p>
+        <strong>Goal:</strong> Convert heterogeneous oncology documents (multiple templates, noisy scans, inconsistent layouts, and complex tables) into
+        <em>searchable, analyzable structured data</em> — with <strong>high accuracy</strong> and <strong>low latency</strong>.
+      </p>
     </div>
+
     <ul class="list-tight">
-      <li>Detect document type early to apply <strong>type-specific rules</strong> (Lab vs Radiology vs Pathology).</li>
-      <li>Achieve high OCR fidelity on noisy scans using <strong>PaddleOCR</strong> with tuned thresholds and preprocessing.</li>
-      <li>Extract <strong>tables</strong> reliably (bordered/borderless) while preserving row/column structure.</li>
-      <li>Emit <strong>structured JSON</strong> with metadata (procedure, date, confidence, extraction time).</li>
+      <li>Detect document type early to apply <strong>type-specific routing</strong> (Lab vs Radiology vs Pathology).</li>
+      <li>Achieve reliable OCR on noisy scans using <strong>PaddleOCR</strong> with tuned preprocessing and thresholds.</li>
+      <li>Extract clinical <strong>tables</strong> (bordered, borderless, irregular) while preserving row/column structure and values.</li>
+      <li>Emit <strong>structured JSON</strong> with metadata (procedure, date, confidence, extraction time) for indexing and retrieval.</li>
     </ul>
 
-    <!-- 3) CLASSIFICATION -->
-    <h2>2) Document Classification</h2>
+    <!-- 2) CLASSIFICATION -->
+    <h2>2) Document Classification (Routing Stage)</h2>
     <p>
-      We used a <strong>three-stage labeling workflow</strong> (filename regex → folder mapper → submodule mapper) to bootstrap labels and cover edge cases.
-      For modeling, we evaluated <span class="metric">mxbai-embed-large-v1</span> (encoder + softmax), <span class="metric">ClinicalBERT</span> (HF Trainer), and an LLM baseline (Llama 3.1-8B).
-      After rebalancing classes and expanding training data, the retrained MXBAI model improved accuracy and delivered far <strong>lower latency</strong>
-      (≈<span class="metric">43×</span> faster than Llama; ≈<span class="metric">381×</span> faster than Qwen) — ideal for routing large batches.
+      Classification is critical because each category benefits from different extraction rules (e.g., Lab tables vs Radiology narrative).
+      We implemented a <strong>3-stage labeling workflow</strong> to bootstrap labels and cover edge cases:
+      <span class="metric">FileName pass</span>
+      <span class="metric">FolderName pass</span>
+      <span class="metric">SubModuleName pass</span>.
+      This approach pushed labeling coverage close to 100% while staying easily extendable (JSON mappers).
     </p>
 
-   
-      <!-- ADD class="center" to center this smaller image -->
-      <figure class="center">
-        <img src="../../assets/cholesterol/OCR/classification.jpg" alt="Classification pipeline and models"/>
-        <figcaption>Classification pipeline: embeddings → classifier; label bootstrapping via filename/folder/submodule passes; improved accuracy and speed after retraining.</figcaption>
-      </figure>
-    
+    <div class="two-col">
+      <div>
+        <h3>Models Evaluated</h3>
+        <ul class="list-tight">
+          <li><span class="metric">mxbai-embed-large-v1</span> (embedding encoder + softmax head)</li>
+          <li><span class="metric">ClinicalBERT</span> fine-tuned with HuggingFace Trainer</li>
+          <li>LLM baseline: <span class="metric">Llama 3.1-8B</span> (and re-checks with Qwen)</li>
+        </ul>
+        <p>
+          After addressing <strong>class imbalance</strong>, expanding training samples, and re-evaluating candidate models in the workflow,
+          the retrained <strong>MXBAI</strong> model improved accuracy while delivering significantly lower inference latency — ideal for routing large batches.
+        </p>
+      </div>
 
-    <!-- 4) OCR + STRUCTURE -->
-    <h2>3) Text Extraction (OCR + Structure)</h2>
+      <div>
+        <h3>Latency Insight</h3>
+        <ul class="list-tight">
+          <li><strong>MXBAI</strong> was approximately <span class="metric">43×</span> faster than Llama in the routing stage.</li>
+          <li><strong>MXBAI</strong> was approximately <span class="metric">381×</span> faster than Qwen in the same stage.</li>
+          <li>Documents averaged <span class="metric">2.91</span> pages, so fast routing matters at scale.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="center">
+      <img src="../../assets/cholesterol/OCR/classification.jpg" alt="Classification pipeline and models"/>
+      <figcaption>Classification pipeline: label bootstrapping + embedding classifier; improved accuracy and speed after rebalancing and retraining.</figcaption>
+    </figure>
+
+    <!-- 3) TEXT EXTRACTION -->
+    <h2>3) Text Extraction (OCR + Layout/Structure)</h2>
     <p>
-      The <strong>text extraction workflow</strong> converts PDF → images → <strong>PaddleOCR</strong> text → <em>vision model</em> structure → final structured text.
-      For ambiguous layouts, we re-feed text+image+structure through a vision LLM to resolve columns/headers. This approach outperformed a prior LLM-only pipeline
-      (>90% accuracy on an internal 20-document eval). For heavy-token workloads, <span class="metric">vLLM</span> achieved ~75 tok/s; <span class="metric">Ollama</span> ~65 tok/s with stable JSON.
+      Oncology PDFs often mix dense narrative, headers/footers, stamps, skewed scans, and multi-column sections.
+      A pure LLM approach can hallucinate or skip content, while pure OCR can lose layout and section boundaries.
+      We adopted a <strong>hybrid text extraction workflow</strong> that keeps each component in its strongest domain:
+      <strong>PaddleOCR</strong> for text fidelity and a <strong>vision model/vision LLM</strong> for layout and structure reasoning.
     </p>
+
+    <ul class="list-tight">
+      <li><strong>PDF → Images</strong> to standardize input for OCR and vision models.</li>
+      <li><strong>PaddleOCR</strong> extracts text with high accuracy.</li>
+      <li>A <strong>vision model</strong> extracts structural cues (regions, reading order, columns/headers).</li>
+      <li>Final pass: combine <em>image + extracted text + structure</em> through a <strong>vision LLM</strong> to produce consistent structured text.</li>
+    </ul>
 
     <figure>
       <img src="../../assets/cholesterol/OCR/text-extraction.jpg" alt="Text extraction workflow with PaddleOCR and vision model"/>
-      <figcaption>OCR + structure reasoning: PaddleOCR for recognition; vision LLM aligns layout to produce structured text.</figcaption>
+      <figcaption>Workflow: OCR for text accuracy + vision reasoning for structure. This reduced skipped/duplicated sections vs LLM-only baselines.</figcaption>
     </figure>
 
-    <!-- 5) TABLES -->
-    <h2>4) Table Detection & Extraction</h2>
-    <p>
-      Clinical tables vary widely (bordered, borderless, merged rows/cols). We evaluated both <em>table-first</em> and <em>text-first</em> strategies, and adopted a
-      <strong>Llama–Paddle fusion</strong>: PaddleOCR maximizes recognition accuracy; the vision model preserves structure. For detection, we tested
-      <span class="metric">Microsoft Table Transformer (TATR)</span> (DETR-R18, PubTables-1M), <span class="metric">YOLOv8s</span> variants, and integrated libraries
-      such as <span class="metric">img2table</span>, <span class="metric">Tabula</span>, <span class="metric">Camelot</span>, and <span class="metric">pdfplumber</span>. Fine-tuning on a 2,000-image set
-      (irregular structure, merged rows/columns, borderless scans) yielded table accuracy up to <strong>97–98%</strong> on sampled sets.
+    <p class="callout">
+      <strong>Performance note:</strong> For high-token documents, faster runtimes were enabled via inference engines:
+      <span class="metric">vLLM ~ 75 tok/s</span>
+      <span class="metric">Ollama ~ 65 tok/s</span>
+      with stable JSON-friendly outputs under concurrent requests.
     </p>
 
-    
-      <!-- ADD class="center" to center this smaller image -->
-      <figure class="center">
-        <img src="../../assets/cholesterol/OCR/table-extr.jpg" alt="Table detection models and results"/>
-        <figcaption>Table stack: TATR/YOLOv8s with post-processing; robust on borderless and slightly blurry scans (97–98% sampled accuracy).</figcaption>
-      </figure>
-    
+    <!-- 4) TABLES -->
+    <h2>4) Table Detection, Localization & Extraction (Clinical Tables Are Hard)</h2>
+    <p>
+      Table extraction is a <strong>consistent pain point</strong> in document AI — and <strong>medical tables</strong> are among the hardest compared to domains
+      like finance. Oncology/lab tables frequently contain <strong>empty cells</strong>, <strong>merged rows/columns</strong>, irregular alignment, and a mix of
+      <strong>bordered</strong>, <strong>borderless</strong>, and sometimes <strong>nearly structure-less</strong> layouts. Because these tables carry critical values
+      (e.g., labs, reference ranges, flags), extraction must be <strong>precise</strong>, not “close enough”.
+    </p>
 
-    <!-- 6) METADATA -->
+    <p>
+      We evaluated a broad stack including table-first and text-first approaches:
+      <span class="metric">Tabula</span>
+      <span class="metric">Camelot</span>
+      <span class="metric">pdfplumber</span>
+      <span class="metric">img2table</span>
+      plus OCR-based segmentation strategies.
+      We also tested <strong>Microsoft Table Transformer (TATR)</strong> — released to address table detection/structure challenges — but found that
+      general-purpose table models (often trained on non-medical datasets) were not consistently reliable on noisy clinical scans.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <h3>Why Localization First</h3>
+        <ul class="list-tight">
+          <li>Reducing context to the <strong>table region</strong> improves OCR quality and structure reconstruction.</li>
+          <li>Clinical pages often contain multiple blocks (headers, footers, stamps, paragraphs) that confuse table parsers.</li>
+          <li>Localization helps isolate tables before extraction and enables tighter QA.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Localization Model (Fine-tuned)</h3>
+        <p>
+          We moved toward a localization-based approach using <strong>Foduucom/table-detection-and-extraction</strong>
+          (originally trained to localize financial tables) and <strong>fine-tuned it on our medical table dataset</strong>.
+          This improved robustness on borderless/irregular clinical tables and served as the front-end for table extraction.
+        </p>
+        <ul class="list-tight">
+          <li>Dataset: <strong>~2,000 labeled images</strong> (bordered/borderless/irregular/merged).</li>
+          <li>Augmentation + labeling improvements targeted the hardest edge cases.</li>
+          <li>Final fine-tuned model performed best vs out-of-the-box table detectors on oncology tables.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="center">
+      <img src="../../assets/cholesterol/OCR/table-extr.jpg" alt="Table detection models and results"/>
+      <figcaption>
+        Table stack evaluation: TATR/YOLO variants + localization; fine-tuned localization improved robustness on clinical tables.
+      </figcaption>
+    </figure>
+
+    <h3>Best Table LLM: Qwen 32B (4-bit Quantized)</h3>
+    <p>
+      For <strong>table understanding/extraction</strong>, the most reliable results came from
+      <strong>Qwen 32B</strong> using <strong>4-bit quantization</strong> to keep inference efficient.
+      In our experiments, Qwen provided the best balance of <strong>structure reasoning</strong>, <strong>value fidelity</strong>, and
+      <strong>consistent formatting</strong> on complex medical tables.
+    </p>
+
+    <h3>Llama–Paddle Fusion (Precision-First Extraction)</h3>
+    <p>
+      A single-model approach struggled in opposite ways: <strong>LLMs</strong> were strong at structure but could hallucinate or skip values;
+      <strong>OCR</strong> was strong at text recognition but often lost the true row/column structure.
+      We adopted a <strong>fusion</strong> strategy to use each model where it performs best:
+      <span class="metric">PaddleOCR → text accuracy</span>
+      <span class="metric">Vision LLM (Qwen/Llama) → structure</span>.
+      The result was more reliable <strong>structured tables</strong> with fewer dropped/misaligned clinical entries.
+    </p>
+
+    <!-- FLOW CHART PLACEHOLDER
+    <figure class="center small">
+      <img src="../../assets/cholesterol/OCR/fusion_flowchart.png"
+          alt="Fusion flow chart: localization + OCR + structure + reconstruction"/>
+      <figcaption>
+        Fusion Flow: table localization → crop → PaddleOCR text → Qwen/Llama vision structure → merge into structured table output.
+      </figcaption>
+    </figure>
+
+    <p class="callout">
+      <strong>Flow summary:</strong>
+      <span class="metric">Localize</span> → <span class="metric">Crop</span> → <span class="metric">OCR (Paddle)</span> →
+      <span class="metric">Structure (Qwen 32B / Vision LLM)</span> → <span class="metric">Reconstruct</span> → <span class="metric">Validate</span>
+    </p> -->
+
+    <h3>Edge Cases We Designed For</h3>
+    <ul class="list-tight">
+      <li><strong>Blurry / irregular scans</strong>, skew, low contrast.</li>
+      <li><strong>Merged rows/columns</strong>, multi-line cell values, irregular spacing.</li>
+      <li><strong>Borderless tables</strong> that look like aligned text blocks.</li>
+      <li>Inconsistent headers and units (common in oncology lab panels).</li>
+    </ul>
+
+    <h3>Results Insights (What Improved)</h3>
+    <p>
+      With the fine-tuned localization + fusion approach, sampled table evaluations commonly landed in the
+      <strong>~97–98% entry-level accuracy</strong> range on representative medical tables, where remaining errors were usually isolated
+      (e.g., 1–2 cell mistakes across dozens of entries). This precision focus was essential for oncology workflows where lab values and
+      reference ranges must be correct.
+    </p>
+
+    <!-- EXAMPLE TABLE: USE CBC (HARDEST) -->
+    <h3>Example</h3>
+    <p>
+      The CBC/Auto Diff table below is a good example of why medical tables are difficult: low-quality scans, dense content, and weak
+      column boundaries. This is the type of table where localization + OCR + vision-structure fusion made the biggest difference.
+    </p>
+
+    <!-- IMAGE 1: INPUT (CBC scan) -->
+    <figure class="center">
+      <img src="../../assets/cholesterol/OCR/example_table_input_cbc.png" alt="Example input CBC/Auto Diff table scan"/>
+      <figcaption>
+        Example input (CBC/Auto Diff)
+      </figcaption>
+    </figure>
+
+    <!-- FULL EXTRACTION AS HTML TABLE (ENTIRE TABLE) -->
+<figure>
+  <div class="tbl-wrap" aria-label="Full extracted CBC table">
+    <table class="simple">
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Result</th>
+          <th>Flag</th>
+          <th>Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4"><strong>CBC W/AUTO DIFF</strong></td></tr>
+
+        <tr><td>WBC</td><td>6.2</td><td></td><td>4.3-11.0 K/uL</td></tr>
+        <tr><td>RBC</td><td>4.59</td><td></td><td>4.5-6.0 MIL/L</td></tr>
+        <tr><td>HGB</td><td>13.6</td><td></td><td>13.5-17.5 g/dL</td></tr>
+        <tr><td>HCT</td><td>41</td><td></td><td>39-51</td></tr>
+        <tr><td>MCV</td><td>89</td><td></td><td>80-96 fL</td></tr>
+        <tr><td>MCH</td><td>30</td><td></td><td>26.0-33.0 PG</td></tr>
+        <tr><td>MCHC</td><td>33</td><td></td><td>31.0-36.0 g/dL</td></tr>
+        <tr><td>RDW</td><td>14</td><td></td><td>11.5-15.0</td></tr>
+        <tr><td>PLT</td><td>231</td><td></td><td>150-450 K/uL</td></tr>
+
+        <tr><td>NEUTROPHILS %</td><td>63.2</td><td></td><td>43.0-81.0</td></tr>
+        <tr><td>LYMPH% (AUTO)</td><td>25.3</td><td></td><td>20.0-44.0</td></tr>
+
+        <tr><td>MONO% (AUTO)</td><td class="flag-bad">9.41</td><td></td><td>2.0-12.0</td></tr>
+
+        <tr><td>EOS% (AUTO)</td><td>1.7</td><td></td><td>0.0-12.0</td></tr>
+        <tr><td>BASO% (AUTO)</td><td>0.4</td><td></td><td>0.0-2.0</td></tr>
+        <tr><td>DF TOT%</td><td>100</td><td></td><td></td></tr>
+
+        <tr><td>NEUT# (AUTO)</td><td>3.9</td><td></td><td>1.8-8.9 K/uL</td></tr>
+        <tr><td>LYMPH# (AUTO)</td><td>1.6</td><td></td><td>0.8-4.8 K/uL</td></tr>
+        <tr><td>MONO# (AUTO)</td><td>0.6</td><td></td><td>0.1-1.30 K/uL</td></tr>
+        <tr><td>EOS# (AUTO)</td><td>0.1</td><td></td><td>0.0-0.7 K/uL</td></tr>
+        <tr><td>BASO# (AUTO)</td><td>0</td><td></td><td>0.0-0.2 K/uL</td></tr>
+
+        <tr><td>ADD MANUAL DIFF</td><td>NO</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figcaption>
+    <strong>Output (Structured Table):</strong>
+    Extracted CBC/Auto Diff table produced by the MediExtract pipeline after localization,
+    OCR recognition, and vision-LLM structure reconstruction.
+  </figcaption>
+</figure>
+
+    <!-- 5) METADATA -->
     <h2>5) Metadata Extraction</h2>
     <p>
-      We compared three strategies for metadata: <em>text → LLM</em> (accurate but adds latency for another model load),
-      <em>text → vision LLM</em> (fast & accurate, reusing extracted text), and <em>image → vision LLM</em> (simpler but less accurate).
-      Final outputs include document type, procedure classification, procedure date, and extraction timing, emitted as a concise JSON record.
+      For metadata (procedure type, procedure date, confidence, extraction time), we compared:
+      <span class="metric">Text → LLM</span>,
+      <span class="metric">Text → Vision LLM</span>,
+      <span class="metric">Image → Vision LLM</span>.
+      The best trade-off was <strong>Text → Vision LLM</strong> because it reuses already-extracted text (fast) and maintains accuracy without loading an extra model.
     </p>
 
     <figure>
@@ -145,38 +404,63 @@
   },
   "extractionTime": 8.66
 }</pre>
-    <p class="list-tight">This JSON is persisted to a document store/DB and indexed for retrieval and analytics.</p>
 
-    <!-- 7) PERFORMANCE -->
+    <!-- 6) PERFORMANCE -->
     <h2>6) Performance & Optimizations</h2>
     <ul class="list-tight">
-      <li><strong>PaddleOCR tuning</strong> (e.g., SVTR_LCNet recognizer, threshold tweaks) improved recognition from ~<span class="metric">80.0%</span> to ~<span class="metric">84.2%</span>.</li>
-      <li><strong>Latency:</strong> a 627-page batch dropped from <span class="metric">4h 10m</span> → <span class="metric">3h 22m</span> (~<span class="metric">19%</span> faster) with batching/caching.</li>
-      <li><strong>Classifier speed:</strong> MXBAI ≈<span class="metric">43×</span> faster than Llama; ≈<span class="metric">381×</span> faster than Qwen (routing stage).</li>
-      <li><strong>Throughput:</strong> vLLM ~<span class="metric">75</span> tok/s; Ollama ~<span class="metric">65</span> tok/s (parallel requests, stable JSON).</li>
+      <li>
+        <strong>PaddleOCR tuning</strong> (e.g., SVTR_LCNet recognizer + threshold research + preprocessing) improved OCR accuracy from
+        ~<span class="metric">80.03%</span> to ~<span class="metric">84.22%</span>.
+      </li>
+      <li>
+        <strong>Batch processing:</strong> a 627-page batch improved from <span class="metric">4h 10m</span> → <span class="metric">3h 22m</span>
+        (~<span class="metric">19%</span> faster) via batching, caching, and streamlined OCR.
+      </li>
+      <li>
+        <strong>Table extraction best LLM:</strong> <span class="metric">Qwen 32B (4-bit)</span> produced the most consistent structured table results under noisy clinical layouts.
+      </li>
+      <li>
+        <strong>Table quality:</strong> localization + fusion reduced structural drift and value-level mistakes on complex medical tables.
+      </li>
     </ul>
 
-    <!-- 8) QA & EDGE CASES -->
-    <h2>7) Edge Cases & QA</h2>
+    <!-- 7) QA / ITERATION -->
+    <h2>7) QA & Iteration Loop</h2>
     <p>
-      Blurry scans, skew, inconsistent headers, and borderless tables were addressed via <strong>few-shot prompts</strong>, model selection trials,
-      and data augmentation. A QA loop (50+ docs/iteration) tuned thresholds and improved labeling quality to reduce drift.
+      We ran iterative QA cycles focusing on the hardest oncology edge cases (blurry scans, merged cells, borderless layouts).
+      Few-shot examples and prompt refinements helped reduce hallucinations and structural ambiguity, while dataset expansion and
+      augmentation improved table localization reliability.
     </p>
 
-    <!-- 9) INTEGRATION -->
-    <h2>8) Where This Fits</h2>
-    <p>
-      MediExtract powers oncology data pipelines and can plug into claims review (e.g., SmartEOB), registries, or RAG systems that require
-      clean, structured evidence from PDFs. The output JSON and table schemas are <strong>tool-agnostic</strong> for downstream ML and analytics.
-    </p>
+    <!-- TEAM -->
+    <h2>Teammates</h2>
+    <ul class="list-tight">
+      <li>
+        <a href="https://www.linkedin.com/in/msherazz/" target="_blank" rel="noopener"
+           style="color:#ff8c00; font-weight:600;">
+          Muhammad Sheraz
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/arbaz-khan-shehzad/" target="_blank" rel="noopener"
+           style="color:#ff8c00; font-weight:600;">
+          Arbaz Khan Shehzad
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/eeman-fatima-3973391ab/" target="_blank" rel="noopener"
+           style="color:#ff8c00; font-weight:600;">
+          Eeman Fatima
+        </a>
+      </li>
+    </ul>
+
   </article>
 
-  <!-- FOOTER -->
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+
+  <script src="../../script.js"></script>
 </body>
 </html>
