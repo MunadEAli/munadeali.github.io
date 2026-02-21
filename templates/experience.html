@@ -3,43 +3,58 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Experience · Muhammad Sheraz</title>
+  <title>Experience · Munad E Ali</title>
+
+  <!-- Inter font (match index) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet"/>
+
   <!-- Font Awesome for icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   />
-  <!-- now one level up -->
+
+  <!-- One level up -->
   <link rel="stylesheet" href="../styles.css"/>
+
+  <style>
+    /* Simple section spacing to match the clean index feel */
+    .section-title{
+      margin-top: 40px;
+      margin-bottom: 12px;
+    }
+    .section-sub{
+      opacity: 0.85;
+      margin-bottom: 26px;
+    }
+    .exp-block{
+      margin-bottom: 46px;
+    }
+  </style>
 </head>
+
 <body>
   <div class="bg"></div>
 
+  <!-- ================= NAVBAR (match index) ================= -->
   <nav class="nav glass container">
     <span class="logo">
-      Muhammad Sheraz
-      <a
-        href="https://www.linkedin.com/in/msherazz/"
-        target="_blank"
-        class="nav-social"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-      <a
-        href="https://github.com/dsshaizy"
-        target="_blank"
-        class="nav-social"
-        ><i class="fab fa-github"></i
-      ></a>
-      <a href="mailto:dsshaizy@gmail.com" class="nav-social"
-        ><i class="fas fa-envelope"></i
-      ></a>
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
     </span>
+
     <ul class="nav__links">
       <li><a href="../index.html">Home</a></li>
-      <!-- Navbar items switch the tabs on this page -->
-      <!-- was: href="../index.html#projects" -->
-      <li><a href="../index.html?tab=ai#projects">AI Projects</a></li>
-      <li><a href="../index.html?tab=embedded#projects">Embedded & Control</a></li>
+      <li><a href="../index.html#ai-projects">AI</a></li>
+      <li><a href="../index.html#rmc-projects">Robotics</a></li>
       <li><a href="experience.html" class="active">Experience</a></li>
       <li><a href="education.html">Education</a></li>
       <li><a href="skills.html">Skills</a></li>
@@ -48,65 +63,73 @@
   </nav>
 
   <main class="container">
-    <h2 class="section-title">My Experience</h2>
-    <p>Total Experience: 1.3 years as an Embedded Engineer</p>
-    <div class="grid-8">
-      <a
-        class="card tilt"
-        href="experience/experience-CureMD.html"
-      >
-        <img src="../assets/cmd-dark.jpg" alt="AI Engineer" class="card-image">
-        <div class="card__info">
-          <h3>AI Engineer</h3>
-          <span>CureMD (July 2024 – Present)</span>
-        </div>
-      </a>
-      
-      <a
-        class="card tilt"
-        href="experience/experience-pieas.html"
-      >
-        <img src="../assets/PIEAS-wrt.png" alt="PIEAS Lab Assistant" class="card-image">
-        <div class="card__info">
-          <h3>Lab Assistant (MPI)</h3>
-          <span>PIEAS Lab (6 months)</span>
-        </div>
-      </a>
-      <a
-        class="card tilt"
-        href="experience/experience-IEEE.html"
-      >
-        <img src="../assets/ieee-dark.jpg" alt="Co-Head Robotics & Automation" class="card-image">
-        <div class="card__info">
-          <h3>Co-Head Robotics & Automation</h3>
-          <span>IEEE-PIEAS (6 months)</span>
-        </div>
-      </a>
-      <a
-        class="card tilt"
-        href="experience/experience-nie.html"
-      >
-        <img src="../assets/NIE-dark.png" alt="Intern" class="card-image">
-        <div class="card__info">
-          <h3>Intern (Chip Designing)</h3>
-          <span>NIE (July 2023 – August 2023)</span>
-        </div>
-      </a>
-      <a
-        class="card tilt"
-        href="experience/experience-aed.html"
-      >
-        <img src="../assets/paf-dark.jpg" alt="109 AED AirForce" class="card-image">
-        <div class="card__info">
-          <h3>Internee Firmware Enginner</h3>
-          <span>109 AED (August 2022 – September 2022)</span>
-        </div>
-      </a>
-    </div>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">A snapshot of my technical roles and volunteering contributions.</p>
+
+    <!-- ================= TECHNICAL WORK EXPERIENCE ================= -->
+    <section class="exp-block">
+      <h3 class="domain-title" style="text-align:left;margin-top:0;">Technical Work Experience</h3>
+
+      <div class="grid-8">
+        <!-- AI Engineer - CureMD -->
+        <a class="card tilt" href="experience/experience-CureMD.html">
+          <img src="../assets/cmd-dark2.png" alt="CureMD" class="card-image">
+          <div class="card__info">
+            <h3>AI Engineer</h3>
+            <span>CureMD (July 2024 – Sept 2025)</span>
+          </div>
+        </a>
+
+        <!-- Lab Assistant - PIEAS Robotics -->
+        <a class="card tilt" href="experience/experience-pieas.html">
+          <img src="../assets/PIEAS-wrt.png" alt="PIEAS" class="card-image">
+          <div class="card__info">
+            <h3>Lab Assistant (Robotics)</h3>
+            <span>PIEAS Lab (Feb 2024 – June 2024)</span>
+          </div>
+        </a>
+
+        <!-- Trainee Embedded Developer - EpTeck Technologies -->
+        <!-- Add your logo image at: assets/epteck-dark.png -->
+        <a class="card tilt" href="experience/experience-epteck.html">
+          <img src="../assets/epteck-dark.png" alt="EpTeck Technologies" class="card-image">
+          <div class="card__info">
+            <h3>Trainee Embedded Dev</h3>
+            <span>EPTeck Tech (July 2023 – Aug 2023)</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= VOLUNTEERING & LEADERSHIP ================= -->
+    <section class="exp-block">
+      <h3 class="domain-title" style="text-align:left;margin-top:0;">Volunteering & Leadership</h3>
+
+      <div class="grid-8">
+        <!-- President - PIEAS Debating & Literary Society -->
+        <a class="card tilt" href="experience/experience-pdls.html">
+          <img src="../assets/PIEAS-wrt.png" alt="PIEAS Debating & Literary Society" class="card-image">
+          <div class="card__info">
+            <h3>President, Debating & Literary Society</h3>
+            <span>PIEAS (May 2023 – May 2024)</span>
+          </div>
+        </a>
+
+        <!-- Head Robotics & Automation - IEEE PIEAS Student Branch -->
+        <a class="card tilt" href="experience/experience-IEEE.html">
+          <img src="../assets/ieee-dark2.png" alt="IEEE PIEAS Student Branch" class="card-image">
+          <div class="card__info">
+            <h3>Head Robotics & Automation</h3>
+            <span>IEEE PIEAS Student Branch (Aug 2022 – July 2023)</span>
+          </div>
+        </a>
+      </div>
+    </section>
   </main>
 
+  <!-- ================= FOOTER (match index behavior) ================= -->
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
 
   <!-- VanillaTilt (CDN) -->
@@ -115,5 +138,7 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <!-- If your site uses shared JS like index does, keep this -->
+  <script src="../script.js"></script>
 </body>
 </html>

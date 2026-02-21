@@ -577,3 +577,19 @@ main.container {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(255, 140, 0, 0.4);
 }
+
+/* Project context badges (reusable across all project pages) */
+.project-context{
+  opacity: .85;
+  margin: 6px 0 12px 0;
+}
+
+.metric{
+  display:inline-block;
+  padding:.35rem .6rem;
+  border-radius:.4rem;
+  background:rgba(125, 255, 200, .08);
+  border:1px solid rgba(125,255,200,.3);
+  margin:.15rem .25rem .15rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}

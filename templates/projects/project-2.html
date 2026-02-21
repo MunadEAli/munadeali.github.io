@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartDialer 2.0 · Muhammad Sheraz</title>
+  <title>SmartDialer 2.0 · Munad E Ali</title>
+
+  <!-- Font Awesome for icons (match index/project-1 navbar socials) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
   <link rel="stylesheet" href="../../styles.css"/>
   <style>
     .project-page p strong { color: var(--clr-accent); }
@@ -23,11 +27,23 @@
   <div class="bg"></div>
 
   <nav class="nav glass container">
-    <span class="logo">Muhammad Sheraz</span>
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+
     <ul class="nav__links">
       <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../index.html?tab=ai#projects" class="active">AI Projects</a></li>
-      <li><a href="../../index.html?tab=embedded#projects">Embedded & Control</a></li>
+      <li><a href="../../index.html#ai-projects" class="active">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
       <li><a href="../experience.html">Experience</a></li>
       <li><a href="../education.html">Education</a></li>
       <li><a href="../skills.html">Skills</a></li>
@@ -41,10 +57,16 @@
       <!-- Optional: add a repo/demo link -->
       <!-- <a class="btn" href="LINK_TO_REPO" target="_blank">View Demo ↗</a> -->
     </div>
+
     <p class="tags">Multi-Agent System · LLM Automation · IVR Processing · Python · NLP</p>
 
+    <p class="project-context">
+      <span class="metric">Industry Project</span>
+      <span class="metric">CureMD</span>
+      <span class="metric">AI Engineer</span>
+    </p>
     <p>
-      <strong>SmartDialer 2.0</strong> is an intelligent <strong>multi-agent system (MAS)</strong> designed to automate interactions with insurance IVR systems.  
+      <strong>SmartDialer 2.0</strong> is an intelligent <strong>multi-agent system (MAS)</strong> designed to automate interactions with insurance IVR systems.
       It uses <strong>LLM-based agents</strong> to interpret IVR queries, trigger appropriate responses, and dynamically adjust to new workflows — replacing manual intervention in legacy SmartDialer processes.
     </p>
 
@@ -62,7 +84,7 @@
 
     <h2>3) Methodology</h2>
     <p>
-      The project progressed from manual data extraction toward a fully autonomous LLM pipeline.  
+      The project progressed from manual data extraction toward a fully autonomous LLM pipeline.
       We introduced <strong>task-specific agents</strong> to divide responsibilities:
     </p>
     <ul class="list-tight">
@@ -94,11 +116,20 @@
       <li>Improved <strong>response latency</strong> through task specialization and prompt optimization.</li>
     </ul>
 
+    <h2>Teammate</h2>
+    <ul class="list-tight">
+      <li>
+        <a href="https://www.linkedin.com/in/msherazz/" target="_blank" rel="noopener"
+           style="color:#ff8c00; font-weight:600;">
+          Muhammad Sheraz
+        </a>
+      </li>
+    </ul>
 
   </article>
 
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
   <script src="../../script.js"></script>
 </body>

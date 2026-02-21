@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Treatment Efficacy Model · Predicting Cholesterol Response · Muhammad Sheraz</title>
+  <title>Treatment Efficacy Model · Predicting Cholesterol Response · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="../../styles.css"/>
   <style>
-    /* Keep styling minimal and compatible with your site */
     .project-page p strong { color: var(--clr-accent); }
     .title-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1rem; }
     .title-row h1 { margin:0; line-height:1; }
@@ -17,7 +17,6 @@
     .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; }
     @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
     .callout { padding: .9rem 1rem; border-radius: .6rem; background: rgba(255, 213, 79, .08); border: 1px solid rgba(255, 213, 79, .3); }
-    .metric { display:inline-block; padding:.35rem .6rem; border-radius:.4rem; background:rgba(125, 255, 200, .08); border:1px solid rgba(125,255,200,.3); margin:.15rem .25rem .15rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
     .list-tight li { margin-bottom:.35rem; }
   </style>
 </head>
@@ -25,11 +24,22 @@
   <div class="bg"></div>
 
   <nav class="nav glass container">
-    <span class="logo">Muhammad Sheraz</span>
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
     <ul class="nav__links">
       <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../index.html?tab=ai#projects" class="active">AI Projects</a></li>
-      <li><a href="../../index.html?tab=embedded#projects">Embedded & Control</a></li>
+      <li><a href="../../index.html#ai-projects" class="active">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
       <li><a href="../experience.html">Experience</a></li>
       <li><a href="../education.html">Education</a></li>
       <li><a href="../skills.html">Skills</a></li>
@@ -45,6 +55,12 @@
     </div>
     <p class="tags">Healthcare ML · EHR · Labs · Medications · Python · scikit-learn · XGBoost · CatBoost</p>
 
+    <p class="project-context">
+      <span class="metric">Industry Project</span>
+      <span class="metric">CureMD</span>
+      <span class="metric">AI Engineer</span>
+    </p>
+
     <p>
       We built a machine learning system that predicts a patient’s next <strong>cholesterol level</strong> (LDL, HDL, VLDL) and the expected <strong>change</strong> from baseline using <strong>prior lab results</strong>, <strong>medication exposure</strong> during the interval, and additional <strong>vitals, demographics, and diagnoses</strong>. The pipeline spans cohort creation, feature engineering (e.g., total medication dose over an active window), robust data cleaning, encoding/scaling strategies, and model evaluation with cross-validation.
     </p>
@@ -53,6 +69,20 @@
     <p class="callout">
       <strong>Goal:</strong> Predict a patient’s cholesterol at the second test (LDL/HDL/VLDL) and/or the <em>delta</em> between two tests, conditioning on the initial state and prescribed treatment during the interval.
     </p>
+
+    <h2>Objectives</h2>
+    <ul class="list-tight">
+      <li>Predict <strong>LDL / HDL / VLDL</strong> levels at the second test and the <strong>Δ change</strong> between two tests.</li>
+      <li>Incorporate <strong>medication exposure</strong> during the interval along with baseline labs, vitals, and demographics.</li>
+      <li>Build a robust, reproducible pipeline for <strong>cohort construction</strong>, <strong>feature engineering</strong>, and <strong>model evaluation</strong>.</li>
+      <li>Compare linear baselines vs. ensemble methods and report performance using <strong>cross-validation RMSE</strong>.</li>
+    </ul>
+
+    <h2>Project Timeline</h2>
+    <figure>
+      <img src="../../assets/cholesterol/project_timeline.png" alt="Project timeline"/>
+      <figcaption>High-level timeline of the project phases from data extraction to modeling and evaluation.</figcaption>
+    </figure>
 
     <h2>2) Clinical Intro (Why Cholesterol?)</h2>
     <p>
@@ -96,9 +126,18 @@
       <li><strong>Medication frequency anomalies</strong> (e.g., extreme frequencies) causing outliers in <code>total_dose</code> → corrected during cleaning.</li>
       <li>Calculated <strong>nulls per column</strong>; imputed categorical (race, marital status) with “unknown”; dropped identifiers and columns with excessive missingness.</li>
       <li><strong>Unit inconsistency</strong> in height → standardized and used <strong>BMI</strong> from height &amp; weight.</li>
+      <li>
+        Plotted the <strong>BMI distribution</strong> and observed a clear <strong>two-normal (bimodal) pattern</strong>, indicating that some weight values were recorded in
+        <strong>pounds</strong> and others in <strong>kilograms</strong>. This was addressed by applying a <strong>threshold</strong> and converting values above the threshold into kilograms.
+      </li>
       <li>Outliers treated via <strong>IQR</strong> capping or removal; applied mean/median imputation where appropriate.</li>
       <li>After merging, dropped highly collinear features (<strong>corr &gt; 0.9</strong>).</li>
     </ul>
+
+    <figure>
+      <img src="../../assets/cholesterol/bmi_two_distributions.png" alt="BMI distribution showing two normal distributions"/>
+      <figcaption>BMI distribution revealed two normal distributions due to mixed weight units (pounds vs kilograms), fixed via threshold-based conversion.</figcaption>
+    </figure>
 
     <figure>
       <img src="../../assets/cholesterol/boxplot_bef.jpg" alt="Box plots illustrating outliers before cleaning"/>
@@ -106,14 +145,25 @@
     </figure>
     <figure>
       <img src="../../assets/cholesterol/boxplot_after.jpg" alt="Box plots illustrating outliers after cleaning"/>
-      <figcaption>Post-cleaning: outliers capped/removed, units changing, distributions more reasonable.</figcaption> 
+      <figcaption>Post-cleaning: outliers capped/removed, units changing, distributions more reasonable.</figcaption>
     </figure>
 
     <!-- ------------------ FEATURES ------------------ -->
     <h2>5) Feature Engineering & Encoding</h2>
     <ul class="list-tight">
       <li><strong>Medications:</strong> Grouped by GPI; computed total dose over active window; removed very sparse meds.</li>
-      <li><strong>Diagnoses:</strong> ICD-10 aggregated to CVD-relevant categories (diagnosed before second test).</li>
+      <li>
+        Due to a very large feature space (<strong>1000+ medication features</strong>) with many empty values, medications were handled using a hybrid strategy:
+        cholesterol-related drugs (e.g., <strong>statins</strong>) and medications related to common comorbidities (e.g., <strong>diabetes</strong>, <strong>hypertension</strong>)
+        were kept as-is, while remaining medications were grouped by frequency — the <strong>top 10</strong> most frequent were kept, and the rest were grouped using
+        <strong>GPI medication codes</strong> (widely used in the US for drug classification). We first grouped at the <strong>top-10 GPI</strong> level, then progressively
+        aggregated remaining medications into broader buckets (e.g., <strong>top-8</strong>, and so on), where moving “up” the GPI hierarchy transitions into more
+        <strong>general medication categories</strong>. This reduced sparsity while preserving clinically meaningful signal.
+      </li>
+      <li>
+        <strong>Diagnoses:</strong> ICD codes (typically <strong>1–4 digit</strong> groupings when truncated from ICD-10) were aggregated into clinically relevant categories
+        (diagnosed before the second test) to capture comorbidity effects without exploding dimensionality.
+      </li>
       <li><strong>Binning:</strong> Age, BMI classes, MAP to capture non-linear effects.</li>
       <li><strong>Encoding:</strong> One-hot for gender/race/marital (drop-first for linear models); tree models used full one-hot or ordinal as needed.</li>
       <li><strong>Scaling:</strong> Standard/Min-Max/Robust scaling for non-tree models.</li>
@@ -188,11 +238,20 @@
       <figcaption>High-level class diagram illustrating responsibilities and data flow.</figcaption>
     </figure>
 
-    
+    <h2>Teammate</h2>
+    <ul class="list-tight">
+      <li>
+        <a href="https://www.linkedin.com/in/msherazz/" target="_blank" rel="noopener"
+           style="color:#ff8c00; font-weight:600;">
+          Muhammad Sheraz
+        </a>
+      </li>
+    </ul>
+
   </article>
 
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
   <script src="../../script.js"></script>
 </body>

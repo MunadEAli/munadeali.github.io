@@ -3,32 +3,115 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HPI Agent · History of Present Illness · Muhammad Sheraz</title>
+  <title>HPI Agent · History of Present Illness · Munad E Ali</title>
+
+  <!-- icons + your global stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="../../styles.css"/>
+
   <style>
     .project-page p strong { color: var(--clr-accent); }
     .title-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:1rem; }
     .title-row h1 { margin:0; line-height:1; }
     .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; }
+
     .callout { padding:.9rem 1rem; border-radius:.6rem; background:rgba(255,213,79,.08); border:1px solid rgba(255,213,79,.3); }
     .metric { display:inline-block; padding:.3rem .55rem; border-radius:.35rem; background:rgba(125,255,200,.08); border:1px solid rgba(125,255,200,.3); margin:.15rem .25rem .15rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
     .list-tight li { margin-bottom:.35rem; }
+
     figure { margin:1.1rem 0; }
     figure img { width:100%; border-radius:.6rem; }
     figure figcaption { font-size:.9rem; opacity:.85; margin-top:.35rem; }
+
     .two-col { display:grid; grid-template-columns:1fr; gap:1rem; }
     @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+
+    /* SOAP tags: smaller + stays compact */
+    .soap-row { display:flex; flex-wrap:wrap; gap:.45rem .55rem; align-items:center; }
+    .soap-tag {
+      display:inline-flex; align-items:center; gap:.35rem;
+      font-size:.9rem; padding:.22rem .5rem; border-radius:.35rem;
+      background:rgba(125,255,200,.08); border:1px solid rgba(125,255,200,.3);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      white-space:nowrap;
+    }
+
+    /* evaluation tables */
+    .score-table {
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:.6rem;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      margin:.75rem 0 1rem;
+    }
+    .score-table th, .score-table td {
+      padding:.65rem .75rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    .score-table th {
+      text-align:left;
+      font-weight:700;
+      background: rgba(255,255,255,.04);
+    }
+    .score-table tr:last-child td { border-bottom:none; }
+    .score { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+    /* guideline snippet */
+    .guideline-box {
+      padding:.95rem 1rem;
+      border-radius:.6rem;
+      background: rgba(125,255,200,.06);
+      border: 1px solid rgba(125,255,200,.22);
+    }
+    .guideline-box .meta {
+      display:flex; flex-wrap:wrap; gap:.4rem .55rem; align-items:center; margin-bottom:.55rem;
+      opacity:.95;
+    }
+    .guideline-box pre {
+      margin:0;
+      padding:.75rem .85rem;
+      border-radius:.55rem;
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.08);
+      overflow:auto;
+      font-size:.92rem;
+      line-height:1.45;
+      white-space:pre-wrap;
+      word-wrap:break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
 </head>
+
 <body>
   <div class="bg"></div>
 
+  <!-- Your portfolio nav (matches your other project pages) -->
   <nav class="nav glass container">
-    <span class="logo">Muhammad Sheraz</span>
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+
     <ul class="nav__links">
       <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../index.html?tab=ai#projects" class="active">AI Projects</a></li>
-      <li><a href="../../index.html?tab=embedded#projects">Embedded & Control</a></li>
+      <li><a href="../../index.html#ai-projects" class="active">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
       <li><a href="../experience.html">Experience</a></li>
       <li><a href="../education.html">Education</a></li>
       <li><a href="../skills.html">Skills</a></li>
@@ -40,115 +123,275 @@
     <div class="title-row">
       <h1>HPI Agent — History of Present Illness</h1>
       <!-- Optional: add a repo/demo link -->
-      <!-- <a class="btn" href="YOUR_DEMO_OR_REPO_LINK" target="_blank">View Demo ↗</a> -->
+      <!-- <a class="btn" href="YOUR_DEMO_OR_REPO_LINK" target="_blank" rel="noopener">View Repo ↗</a> -->
     </div>
-    <p class="tags">Clinical NLP · LLM Multi-Agent · SOAP Notes · OLDCARTS · Python · MongoDB</p>
+
+    <p class="tags">Clinical NLP · LLM Multi-Agent · SOAP Notes · OLDCARTS · RAG · Prompt Engineering · MongoDB</p>
+
+    <!-- Per your instruction -->
+    <p class="project-context">
+      <span class="metric">Industry Project</span>
+      <span class="metric">CureMD</span>
+      <span class="metric">AI Engineer</span>
+    </p>
 
     <p>
-      <strong>HPI Agent</strong> automates the <em>Subjective</em> portion of clinical notes by turning a patient’s
-      <strong>Chief Complaint</strong> into a complete, accurate, and concise <strong>History of Present Illness (HPI)</strong>.  
-      The agent conducts a guided conversation (OLDCARTS), captures other histories (medical, family, social, drug, surgical) and a brief
-      review of systems (ROS), and returns a well-structured HPI paragraph set that drops directly into a SOAP note.
+      <strong>HPI Agent</strong> automates the <em>Subjective</em> documentation workflow by converting a patient’s
+      <strong>Chief Complaint</strong> into a complete, complaint-relevant <strong>History of Present Illness (HPI)</strong>.
+      It uses a <strong>multi-agent LLM architecture</strong> to stay on-topic, reduce redundancy using prior notes,
+      and produce a paste-ready output for SOAP note documentation.
     </p>
 
-    <h2>1) Problem & Goals</h2>
+    <h2>1) Clinical Background (SOAP)</h2>
+    <div class="callout">
+      <div class="soap-row" style="margin-bottom:.5rem;">
+        <span class="soap-tag">S · Subjective</span>
+        <span class="soap-tag">O · Objective</span>
+        <span class="soap-tag">A · Assessment</span>
+        <span class="soap-tag">P · Plan</span>
+      </div>
+      <p style="margin:0;">
+        This project focuses on automating <strong>Subjective</strong>, especially HPI creation via guided follow-up questions after the chief complaint.
+      </p>
+    </div>
+
+    <h2>2) Problem & Goal</h2>
     <p class="callout">
-      <strong>Goal:</strong> Reduce provider documentation time while improving completeness.  
-      Given a Chief Complaint (e.g., “ear pain”), ask the right follow-ups, gather context from prior notes, and generate a structured HPI with pertinent positives/negatives and a brief ROS.
+      <strong>Goal:</strong> Given a patient’s chief complaint, ask relevant follow-up questions and generate a complete, accurate,
+      and context-aware HPI suitable for the Subjective section of a SOAP note.
     </p>
 
-    <h2>2) Functional Requirements</h2>
-    <ul class="list-tight">
-      <li>Accept a chief complaint and optional prior-note summary.</li>
-      <li>Drive an adaptive question flow based on <strong>OLDCARTS</strong> and complaint-specific guidelines.</li>
-      <li>Capture and normalize other histories (PMH, PSH, FHx, SHx, meds/allergies) when relevant.</li>
-      <li>Produce HPI + mini-ROS in a constrained schema (headings, short paragraphs, bullet negatives).</li>
-      <li>Persist conversation state and outputs for reuse and auditing.</li>
-    </ul>
+    <h2>3) OLDCARTS (Explained)</h2>
+    <p>
+      The questioning follows <strong>OLDCARTS</strong>, a standard HPI framework:
+      <strong>O</strong>nset, <strong>L</strong>ocation, <strong>D</strong>uration, <strong>C</strong>haracteristics,
+      <strong>A</strong>ggravating factors, <strong>R</strong>elieving factors, <strong>T</strong>iming/Trajectory, <strong>S</strong>everity.
+      The system adapts OLDCARTS by complaint/system (ENT, CV, Resp, GI, Neuro, etc.) so it asks the right rule-outs and red flags.
+    </p>
 
-    <h2>3) Architecture</h2>
+    <h2>4) Architecture (Guidelines + LLM Multi-Agent)</h2>
+    <p>
+      We moved from rule-based and single-agent LLM approaches to a <strong>guidelines + LLM multi-agent</strong> system for better
+      relevance, completeness, and handling of edge cases.
+    </p>
+
     <figure>
-      <img src="../../assets/cholesterol/HPI-archi.jpg" alt="HPI Agent architecture: multi-agent flow, data stores, and outputs"/>
+      <img src="../../assets/hpi/hpi_architecture.png" alt="HPI Agent architecture: multi-agent flow, RAG knowledge base, MongoDB state, and final note generation"/>
       <figcaption>
-        <strong>Architecture:</strong> Questioning Agent → Compliance Agent → Note Generator, backed by a guideline/prompt store and MongoDB for state & prior-note summaries. Output is a structured HPI + ROS ready for EHR/SOAP.
+        Multi-agent flow: prior-note summarization → complaint categorization + guideline retrieval (RAG) → adaptive questioning →
+        guardrails/compliance → structured HPI output.
       </figcaption>
     </figure>
 
-    <h2>4) Approach & Components</h2>
+    <h2>5) Key Agents (What Each Does)</h2>
+
     <div class="two-col">
       <div>
-        <h3>4.1 Questioning Agent</h3>
+        <h3>5.1 Summarizing Agent (Previous Note)</h3>
         <ul class="list-tight">
-          <li>Guided by OLDCARTS and complaint-specific prompts (ENT, CV, Resp, GI, Neuro, etc.).</li>
-          <li>Asks focused follow-ups, avoids redundancy, keeps patient-friendly phrasing.</li>
-          <li>Extracts normalized fields (onset, duration, severity scale, aggravating/relieving factors).</li>
+          <li>Summarizes the previous visit’s Subjective content and extracts reusable “known facts”.</li>
+          <li>Prevents re-asking information already documented (e.g., allergies, family history, baseline context).</li>
+          <li>Feeds a compact context summary into downstream agents to keep the interview efficient.</li>
         </ul>
+      </div>
 
-        <h3>4.2 Compliance Agent</h3>
+      <div>
+        <h3>5.2 Categorizing Agent (Complaint → System)</h3>
         <ul class="list-tight">
-          <li>Checks relevance & sufficiency; flags missing OLDCARTS details and key rule-outs.</li>
-          <li>Prevents drift (off-topic chatter) and reinspects length/clarity before generation.</li>
+          <li>Classifies the chief complaint into one or more clinical systems (ENT, Resp, CV, GI, Neuro, etc.).</li>
+          <li>Routes the conversation to the correct guideline bundle and question strategy.</li>
+          <li>Improves relevance and reduces “random” questions unrelated to the complaint.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3>5.3 RAG Guideline Retrieval (Clinical Books / Macleod’s)</h3>
+        <ul class="list-tight">
+          <li><strong>Macleod’s</strong> is one of the clinical medical books used to extract system-specific guideline content.</li>
+          <li>Those guidelines are <strong>shortened and retrieved via RAG</strong> (system-based chunks) and then injected into prompts.</li>
+          <li>The overall strategy is a <strong>hybrid prompting</strong> approach: guidelines + structured prompting + few-shot anchors.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>5.4 Context Checking Agent (Guardrail)</h3>
+        <ul class="list-tight">
+          <li>Checks each step for topical consistency and prevents drift.</li>
+          <li>Ensures the next question aligns with the complaint category + already collected info.</li>
+          <li>Acts as a safeguard against redundant or irrelevant follow-ups.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3>5.5 Questioning Agent (Adaptive OLDCARTS)</h3>
+        <ul class="list-tight">
+          <li>Asks focused follow-ups based on OLDCARTS + retrieved guidelines.</li>
+          <li>Extracts normalized slots (onset, duration, severity, triggers, associated symptoms).</li>
+          <li>Maintains patient-friendly phrasing while staying concise.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>5.6 Compliance Agent + Note Generator</h3>
+        <ul class="list-tight">
+          <li><strong>Compliance:</strong> checks sufficiency (OLDCARTS coverage, key negatives) and requests missing details.</li>
+          <li><strong>Generator:</strong> produces structured HPI paragraphs suitable for the SOAP note Subjective section.</li>
+          <li>Designed to be paste-ready and consistent across complaint types.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>6) Data & Record Keeping</h2>
+    <div class="two-col">
+      <div>
+        <h3>Prompting</h3>
+        <ul class="list-tight">
+          <li>Instruction + few-shot examples per system to anchor tone and format.</li>
+          <li>Schema-like slot extraction during interaction; natural prose only at final render.</li>
+          <li>Complaint-aware constraints to reduce irrelevant questioning.</li>
         </ul>
       </div>
       <div>
-        <h3>4.3 Note Generator</h3>
+        <h3>MongoDB</h3>
         <ul class="list-tight">
-          <li>Deterministic schema: short HPI paragraphs + mini-ROS with positives/negatives.</li>
-          <li>De-identification pass, number normalization (e.g., pain 0-10), tense/style consistency.</li>
-        </ul>
-
-        <h3>4.4 Record-Keeping</h3>
-        <ul class="list-tight">
-          <li>MongoDB stores conversation turns, structured fields, and prior-note summaries.</li>
-          <li>Enables quick follow-up visits and provider review with change tracking.</li>
+          <li>Stores conversation turns, extracted slots, and final generated note.</li>
+          <li>Stores prior-visit subjective summary to enable continuity across encounters.</li>
         </ul>
       </div>
     </div>
 
-    <h2>5) Data & Prompting</h2>
-    <ul class="list-tight">
-      <li><strong>Guidelines:</strong> complaint/system-specific prompt snippets (e.g., red flags for chest pain, ENT differentials for otalgia).</li>
-      <li><strong>Few-shot library:</strong> curated mini-examples per complaint to anchor tone/format.</li>
-      <li><strong>Constraints:</strong> JSON slot schema during interaction; natural prose only at final render.</li>
-      <li><strong>Safety:</strong> block PHI echo, limit medical advice beyond documentation intent.</li>
-    </ul>
+    <h2>7) Sample Retrieved Guidelines (RAG → Prompt Injection)</h2>
+    <div class="guideline-box">
+      <div class="meta">
+        <span class="metric">System: ENT</span>
+        <span class="metric">Complaint: Ear pain / Otalgia</span>
+        <span class="metric">Purpose: Question coverage + red flags</span>
+      </div>
+      <pre><strong>Guideline Snippet (condensed for RAG):</strong>
 
-    <h2>6) Output Schema (HPI + ROS)</h2>
-    <ul class="list-tight">
-      <li><span class="metric">Chief Complaint</span> concise statement (patient words when available).</li>
-      <li><span class="metric">HPI</span> 2–4 paragraphs covering OLDCARTS & context (baseline, prior episodes).</li>
-      <li><span class="metric">Pertinent Positives/Negatives</span> inline; objective vitals deferred to “O”.</li>
-      <li><span class="metric">Mini-ROS</span> bullet positives/negatives in the most relevant systems.</li>
-    </ul>
+Ask OLDCARTS for otalgia:
+- Onset (sudden/gradual), duration, laterality (unilateral/bilateral), character (sharp/dull/throbbing), severity (0–10),
+  timing/trajectory, aggravating (chewing, swallowing, pressure changes), relieving (analgesics, drops).
 
-    <h2>7) Evaluation</h2>
-    <ul class="list-tight">
-      <li><strong>Expert review loop:</strong> rubric on completeness, accuracy, coherence, brevity.</li>
-      <li><strong>Automated checks:</strong> OLDCARTS coverage %, red-flag capture %, style conformance.</li>
-      <li><strong>User feedback:</strong> in-app thumbs/notes to improve examples and prompts.</li>
-    </ul>
+Associated ENT symptoms:
+- Otorrhea (clear/purulent/blood-stained), hearing loss, tinnitus (ringing/pulsatile), vertigo, fullness, pruritus.
+- Recent URTI, sinus symptoms, sore throat, dental/jaw pain (referred otalgia), trauma, foreign body, swimming.
 
-    <h2>8) Example (Ear Pain)</h2>
-    <div class="callout">
-      <p><strong>Chief Complaint:</strong> “Left ear pain for three days.”</p>
-      <p><strong>HPI (excerpt):</strong> Patient reports constant, dull left otalgia for 3 days, onset gradual, worsened by chewing; relief minimal with OTC acetaminophen. Denies fever, otorrhea, hearing loss, recent swimming, or recent air travel. Prior similar episode 1 year ago, resolved with eardrops.</p>
-      <p><strong>Mini-ROS:</strong> ENT: +otalgia; −fever, −otorrhea, −hearing loss. Resp: −cough, −SOB. Neuro: −headache, −vertigo.</p>
+Rule-outs / red flags:
+- Fever, severe headache, facial weakness, mastoid tenderness/swelling, immunocompromised status,
+  severe or worsening pain despite treatment.
+
+Relevant context:
+- Previous episodes, ototoxic medications exposure, prior ear surgery, noise exposure history when relevant.
+
+ROS cross-check (targeted):
+- Neuro: headache, dizziness/vertigo
+- Resp: cough, SOB (if systemic symptoms)
+- GI: nausea/vomiting (if vertigo/systemic symptoms)
+
+Output expectation:
+- Convert collected slots into concise HPI narrative + key positives/negatives.</pre>
     </div>
 
-    <h2>9) Engineering Notes</h2>
-    <ul class="list-tight">
-      <li>Functional boundaries and message-passing keep agents modular and replaceable.</li>
-      <li>Config-driven prompts enable quick expansion to new complaints/specialties.</li>
-      <li>Strict output schema reduces post-edit time and improves EHR paste-ins.</li>
-      <li>Telemetry (latency, token usage, coverage %) supports cost/quality tuning.</li>
-    </ul>
+    <h2>8) Evaluation </h2>
+    <p>
+      Evaluation included <strong>clinical review</strong> and two flow-based tests:
+      <strong>Automatic Flow</strong> (patient agent simulation) and <strong>Manual Flow</strong> (human-provided chat flow).
+      Each was graded on <strong>Completeness</strong>, <strong>Similarity to ground truth</strong>, and <strong>Coherence</strong>.
+    </p>
 
-    
+    <h3>8.1 Clinical Evaluation (Most Recent)</h3>
+    <table class="score-table" aria-label="Clinical evaluation scores">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th style="width:170px;">Score (out of 10)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Relevance of Questions</td><td class="score">8</td></tr>
+        <tr><td>Comprehensiveness</td><td class="score">8</td></tr>
+        <tr><td>Quality of Questions</td><td class="score">9</td></tr>
+        <tr><td>Adaptability &amp; Context Awareness</td><td class="score">9</td></tr>
+        <tr><td>Efficiency</td><td class="score">9</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Key feedback:</strong> Occasionally asked about occupation or other social history not directly related to the complaint.
+      This was addressed by strengthening the categorization + context-checking guardrails.
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3>8.2 Automatic Flow (50 Patients Tested)</h3>
+        <table class="score-table" aria-label="Automatic flow evaluation scores">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th style="width:170px;">Score (out of 10)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Completeness</td><td class="score">9</td></tr>
+            <tr><td>Similarity to ground truth</td><td class="score">9</td></tr>
+            <tr><td>Coherence</td><td class="score">8</td></tr>
+            <tr><td><strong>Overall</strong></td><td class="score"><strong>9</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3>8.3 Manual Flow (50 Patients Tested)</h3>
+        <table class="score-table" aria-label="Manual flow evaluation scores">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th style="width:170px;">Score (out of 10)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Completeness</td><td class="score">9</td></tr>
+            <tr><td>Similarity to ground truth</td><td class="score">9</td></tr>
+            <tr><td>Coherence</td><td class="score">8</td></tr>
+            <tr><td><strong>Overall</strong></td><td class="score"><strong>8</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>9) Example (Ear Pain)</h2>
+    <div class="callout">
+      <p><strong>Chief Complaint:</strong> Left ear pain for three days.</p>
+      <p>
+        <strong>HPI (excerpt):</strong> Patient reports constant, dull left otalgia for 3 days with gradual onset and mild–moderate severity.
+        Pain worsens with chewing and has minimal relief with OTC acetaminophen. Denies fever, otorrhea, hearing loss, recent swimming,
+        or recent air travel. No significant trauma. Prior similar episode about 1 year ago that resolved with eardrops.
+      </p>
+      <p style="margin-bottom:0;">
+        <strong>Targeted ROS cross-check:</strong> Neuro: −headache, −vertigo. Resp: −cough, −SOB. (Asked briefly because symptoms can overlap across systems.)
+      </p>
+    </div>
+
+    <h2>Teammate</h2>
+    <ul class="list-tight">
+      <li>
+        <a href="https://www.linkedin.com/in/msherazz/" target="_blank" rel="noopener"
+           style="color:#ff8c00; font-weight:600;">
+          Muhammad Sheraz
+        </a>
+      </li>
+    </ul>
   </article>
 
   <footer class="footer container">
-    © <span id="year"></span> Muhammad Sheraz
+    © <span id="year"></span> Munad E Ali
   </footer>
+
   <script src="../../script.js"></script>
 </body>
 </html>
