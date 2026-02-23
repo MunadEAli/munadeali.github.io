@@ -90,6 +90,38 @@
       text-align:center;
     }
 
+    /* Coming-soon message (shown for Robotics/Others) */
+    .coming-soon{
+      width: 100%;
+      border-radius: 18px;
+      padding: 28px 22px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .coming-soon .icon{
+      font-size: 34px;
+      margin-bottom: 10px;
+      opacity: 0.95;
+    }
+
+    .coming-soon h4{
+      margin: 0 0 6px 0;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .coming-soon p{
+      margin: 0;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    .coming-soon a{
+      text-decoration: none;
+      font-weight: 800;
+    }
+
     /* Mobile */
     @media(max-width:768px){
       .domain-btn{
@@ -164,10 +196,15 @@
 
     </div>
 
-    <!-- ================= SINGLE PROJECTS SECTION (All Projects) ================= -->
+    <!-- ================= SINGLE PROJECTS SECTION (Dynamic content target) ================= -->
     <h3 id="ai-projects" class="domain-title">Featured Projects</h3>
 
-    <div class="grid-8">
+    <!-- This container's content is switched between:
+         - AI cards (default)
+         - "Coming soon" message for Robotics / Others -->
+    <div id="projectGrid" class="grid-8">
+      <!-- ================= AI PROJECTS ONLY ================= -->
+
       <a class="card tilt" href="templates/projects/project-1.html">
         <img src="assets/cholesterol.png" class="card-image">
         <div class="card__info">
@@ -192,27 +229,11 @@
         </div>
       </a>
 
-      <a class="card tilt" href="templates/projects/project-4.html">
-        <img src="assets/fyp-6dof.png" class="card-image">
-        <div class="card__info">
-          <h3>6 DOF Robot</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
       <a class="card tilt" href="templates/projects/project-5.html">
         <img src="assets/interview-bot.png" class="card-image">
         <div class="card__info">
           <h3>HR-Screening Interviews</h3>
           <span>CureMD | STT | TTS | Vision LLM | Multi-Modal</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-6.html">
-        <img src="assets/cholesterol/crab/logo.png" class="card-image">
-        <div class="card__info">
-          <h3>4-Legged Crab Robot</h3>
-          <span>Project</span>
         </div>
       </a>
 
@@ -224,46 +245,6 @@
         </div>
       </a>
 
-      <a class="card tilt" href="templates/projects/project-8.html">
-        <img src="assets/cholesterol/RFID/rfid-logo.png" class="card-image">
-        <div class="card__info">
-          <h3>RFID-Based Security System</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-9.html">
-        <img src="assets/cholesterol/smartwatch.png" class="card-image">
-        <div class="card__info">
-          <h3>Smartwatch ESP32</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-10.html">
-        <img src="assets/cholesterol/stepper-logo.png" class="card-image">
-        <div class="card__info">
-          <h3>Stepper Motor Control Library RPI-Pico</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-11.html">
-        <img src="assets/cholesterol/waves/logo.png" class="card-image">
-        <div class="card__info">
-          <h3>Signal Wave Generation</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-12.html">
-        <img src="assets/cholesterol/port-icon.jpg" class="card-image">
-        <div class="card__info">
-          <h3>Portfolio Website (This website)</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
       <a class="card tilt" href="templates/projects/project-13.html">
         <img src="assets/doctor-agent.png" class="card-image">
         <div class="card__info">
@@ -271,34 +252,9 @@
           <span>CureMD | Multi-Agent | Clinical AI | LLM | RAG</span>
         </div>
       </a>
-
-      <a class="card tilt" href="templates/projects/project-14.html">
-        <img src="assets/cholesterol/CA-lights/logo.png" class="card-image">
-        <div class="card__info">
-          <h3>Circuit Analysis - Holiday lights</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-15.html">
-        <img src="assets/cholesterol/amplifier/logo-up.jpg" class="card-image">
-        <div class="card__info">
-          <h3>Class AB Audio Amplifier</h3>
-          <span>Project</span>
-        </div>
-      </a>
-
-      <a class="card tilt" href="templates/projects/project-16.html">
-        <img src="assets/cholesterol/fpga/logo.png" class="card-image">
-        <div class="card__info">
-          <h3>FPGA Ultrasonic Range Finder</h3>
-          <span>Project</span>
-        </div>
-      </a>
     </div>
 
-    <!-- Anchor-only sections for buttons (so they scroll nicely).
-         You'll filter/replace content later. -->
+    <!-- Anchor-only sections for buttons (so they scroll nicely). -->
     <h3 id="rmc-projects" class="domain-title" style="display:none;">All Projects</h3>
     <h3 id="other-projects" class="domain-title" style="display:none;">All Projects</h3>
 
@@ -312,5 +268,102 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
   <script src="script.js"></script>
+
+  <!-- Projects section switching logic (keeps everything else intact) -->
+  <script>
+    (function () {
+      const grid = document.getElementById('projectGrid');
+      if (!grid) return;
+
+      // Save the initial AI projects markup so we can restore it.
+      const aiMarkup = grid.innerHTML;
+
+      const title = document.getElementById('ai-projects');
+
+      function scrollToProjects() {
+        const main = document.getElementById('projects');
+        if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function showAI() {
+        if (title) title.textContent = 'AI Projects';
+        grid.innerHTML = aiMarkup;
+
+        // Re-initialize tilt for re-inserted cards (script.js may also do this; safe to call again).
+        if (window.VanillaTilt) {
+          const cards = grid.querySelectorAll('.tilt');
+          if (cards && cards.length) {
+            VanillaTilt.init(cards, { max: 8, speed: 400, glare: true, "max-glare": 0.15 });
+          }
+        }
+      }
+
+      function comingSoon(domain) {
+        if (title) title.textContent = domain + ' Projects';
+
+        const icon = (domain === 'Robotics') ? 'fa-robot' : 'fa-layer-group';
+        grid.innerHTML = `
+          <div class="coming-soon glass">
+            <div class="icon"><i class="fas ${icon}"></i></div>
+            <h4>In progress</h4>
+            <p>
+              This section is currently being polished and will be published soon.
+              In the meantime, you can explore my <a href="#ai-projects" id="backToAI" style="color:#ff8c00; font-weight:600;">AI projects</a>.
+            </p>
+          </div>
+        `;
+
+        // Keep the "Back to AI" link working without relying on other files.
+        const back = document.getElementById('backToAI');
+        if (back) {
+          back.addEventListener('click', function (e) {
+            e.preventDefault();
+            showAI();
+            scrollToProjects();
+            history.replaceState(null, '', '#ai-projects');
+          });
+        }
+      }
+
+      // Wire up BOTH top-nav and big buttons using their hashes.
+      const aiLinks = document.querySelectorAll('a[href="#ai-projects"]');
+      const roboLinks = document.querySelectorAll('a[href="#rmc-projects"]');
+      const otherLinks = document.querySelectorAll('a[href="#other-projects"]');
+
+      aiLinks.forEach(a => a.addEventListener('click', function (e) {
+        // Allow normal hash behavior but ensure AI content is visible.
+        showAI();
+      }));
+
+      roboLinks.forEach(a => a.addEventListener('click', function (e) {
+        e.preventDefault();
+        comingSoon('Robotics');
+        scrollToProjects();
+        history.replaceState(null, '', '#rmc-projects');
+      }));
+
+      otherLinks.forEach(a => a.addEventListener('click', function (e) {
+        e.preventDefault();
+        comingSoon('Others');
+        scrollToProjects();
+        history.replaceState(null, '', '#other-projects');
+      }));
+
+      // If someone lands directly on a hash, show the right view.
+      const hash = (location.hash || '').toLowerCase();
+      if (hash === '#rmc-projects') {
+        comingSoon('Robotics');
+        scrollToProjects();
+      } else if (hash === '#other-projects') {
+        comingSoon('Others');
+        scrollToProjects();
+      } else {
+        if (title) {
+          title.textContent = 'Featured Projects';
+        }
+        grid.innerHTML = aiMarkup;
+      }
+    })();
+  </script>
 </body>
 </html>
