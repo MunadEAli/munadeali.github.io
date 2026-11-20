@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreeRTOS Smartwatch on ESP32 · Arduino Cloud · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img, figure video { width: 100%; border-radius: .6rem; display:block; background:#000; }
+    figure.white img { background:#fff; padding:.4rem; box-sizing:border-box; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } .two-col.wide-left { grid-template-columns: 3fr 2fr; } }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+    .video-wrap { max-width: 720px; margin-inline: auto; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects" class="active">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>FreeRTOS Smartwatch on ESP32 with Arduino Cloud</h1>
+      <a class="btn" href="https://github.com/MunadEAli/SmartWatch" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code &amp; Report
+      </a>
+    </div>
+    <p class="tags">ESP32 · FreeRTOS · Dual-Core Task Pinning · Queues &amp; Mutex · Software Timers · MPU6050 · SSD1306 OLED · I²C · NTP · Arduino IoT Cloud</p>
+
+    <p class="project-context">
+      <span class="metric">Open-Ended Lab</span>
+      <span class="metric">Hardware Prototype</span>
+      <span class="metric">Dec 2023</span>
+    </p>
+
+    <div class="two-col wide-left">
+      <div>
+        <p>
+          A working smartwatch prototype built on real hardware. An <strong>ESP32</strong> running <strong>FreeRTOS</strong> shows the
+          time, heart rate and step count on an <strong>OLED</strong>, measures heart rate with a pulse sensor and counts steps with an
+          <strong>MPU6050</strong> accelerometer. It also streams everything to an <strong>Arduino IoT Cloud</strong> dashboard
+          for remote monitoring.
+        </p>
+        <h3>Features</h3>
+        <ul class="list-tight">
+          <li>Real-time clock synchronised over WiFi with <strong>NTP</strong>.</li>
+          <li>Heart rate (BPM) from a pulse sensor, updated every 15&nbsp;s.</li>
+          <li>Step counting from the accelerometer.</li>
+          <li><strong>Power saving:</strong> the display wakes on a button press and turns off automatically after <strong>30&nbsp;s</strong> of inactivity.</li>
+          <li>Cloud dashboard showing BPM, steps, time and LED state, plus a cloud switch that wakes the display remotely.</li>
+        </ul>
+      </div>
+      <figure>
+        <img src="../../assets/smartwatch/hardware.jpg" alt="Breadboard prototype: ESP32, MPU6050, pulse sensor and OLED showing BPM, steps and time"/>
+        <figcaption>The hardware prototype: ESP32, MPU6050, pulse sensor and a 128×32 OLED showing BPM, steps and time.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ HARDWARE ------------------ -->
+    <h2>1) Hardware</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Component</th><th>Interface</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>ESP32 (DOIT DevKit V1)</td><td>Dual-core, WiFi</td><td>Runs FreeRTOS, the sensor tasks and the cloud connection</td></tr>
+          <tr><td>SSD1306 OLED, 128×32</td><td>I²C (0x3C)</td><td>Shows BPM, steps and time</td></tr>
+          <tr><td>MPU6050 accelerometer / gyro</td><td>I²C (shared bus)</td><td>Step detection</td></tr>
+          <tr><td>Pulse (heart-rate) sensor</td><td>Digital input, GPIO32</td><td>Counts heartbeats</td></tr>
+          <tr><td>Push button</td><td>GPIO34, falling-edge interrupt</td><td>Wakes the display</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ------------------ FREERTOS ------------------ -->
+    <h2>2) FreeRTOS Architecture</h2>
+    <p>
+      Each function runs as its own task, <strong>pinned to one of the ESP32's two cores</strong>. Sensor and time tasks run on
+      core&nbsp;0. The display and cloud task runs on core&nbsp;1 at a lower priority, so the sensors are never starved.
+    </p>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Task</th><th>Core</th><th>Priority</th><th>Period</th><th>Job</th></tr></thead>
+        <tbody>
+          <tr><td>BPM</td><td>0</td><td>2</td><td>200&nbsp;ms</td><td>Samples the pulse sensor and publishes BPM every 15&nbsp;s</td></tr>
+          <tr><td>Time (NTP)</td><td>0</td><td>2</td><td>200&nbsp;ms</td><td>Reads the synchronised local time and publishes h:m:s</td></tr>
+          <tr><td>Blink</td><td>0</td><td>2</td><td>700&nbsp;ms</td><td>Heartbeat LED (mirrored to the cloud)</td></tr>
+          <tr><td>Step</td><td>1</td><td>2</td><td>200&nbsp;ms</td><td>Reads the MPU6050 and counts steps</td></tr>
+          <tr><td>Display</td><td>1</td><td>1</td><td>20&nbsp;ms</td><td>Updates the OLED and syncs the cloud variables (16&nbsp;KB stack)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3>Inter-task communication</h3>
+        <ul class="list-tight">
+          <li><strong>Four single-item queues</strong> (time, BPM, steps, screen state) are grouped in a <strong>queue set</strong>. The display task uses <code>xQueueSelectFromSet</code> to pick up whichever value changed, so it never polls each producer.</li>
+          <li>An <strong>I²C mutex</strong> protects the shared bus, so the OLED and the MPU6050 are never accessed at the same time by different tasks.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Display power management</h3>
+        <ul class="list-tight">
+          <li>The button <strong>ISR</strong> (or the cloud switch) starts or resets a <strong>30&nbsp;s one-shot software timer</strong> and sends "screen on" to the display task.</li>
+          <li>When the timer expires, its callback sends "screen off" and the display task blanks the OLED.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ------------------ ALGORITHMS ------------------ -->
+    <h2>3) Measurement Logic</h2>
+    <div class="eq">BPM:   count pulse transitions over a 15 s window  →  BPM = count × 4
+Steps: |a|² = ax² + ay² + az²  >  144  (|a| > 12 m/s²)  →  steps++   (sampled at 5 Hz)
+Time:  configTime(UTC+5, NTP: pool.ntp.org / time.nist.gov)  →  getLocalTime()</div>
+
+    <!-- ------------------ CLOUD ------------------ -->
+    <h2>4) Arduino IoT Cloud Integration</h2>
+    <div class="two-col">
+      <div>
+        <p>
+          The ESP32 connects to Arduino IoT Cloud with the <code>ArduinoIoTCloud</code> library. The display task updates the
+          cloud variables and calls <code>ArduinoCloud.update()</code> on every cycle:
+        </p>
+        <ul class="list-tight">
+          <li><strong>bPM</strong> (CloudHeartRate), <strong>steps</strong> (int) and <strong>lED</strong> (CloudLight): read-only, sent on change.</li>
+          <li><strong>rTC</strong> (CloudTime): pushed every second.</li>
+          <li><strong>_switch_</strong> (bool, read/write): toggling it on the dashboard runs <code>onSwitchChange()</code>, which wakes the display remotely.</li>
+        </ul>
+      </div>
+      <figure class="white">
+        <img src="../../assets/smartwatch/cloud-dashboard.jpg" alt="Arduino Cloud dashboard with push button, BPM gauge, steps, LED and time widgets"/>
+        <figcaption>The Arduino Cloud dashboard: push button, BPM gauge, step count, LED and time.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ OUTCOME ------------------ -->
+    <h2>5) Outcome</h2>
+    <p>
+      The prototype met all its objectives: concurrent real-time tasks on FreeRTOS, reliable sharing of the I²C bus, a
+      power-saving display, and live remote monitoring through the cloud. A natural next step for a wearable that handles health
+      data is stronger security for the data sent to the cloud.
+    </p>
+
+    <!-- ------------------ DEMO ------------------ -->
+    <h2>Demo Video</h2>
+    <figure class="video-wrap">
+      <video controls muted playsinline preload="metadata" poster="../../assets/smartwatch/hardware.jpg">
+        <source src="../../assets/smartwatch/demo.mp4" type="video/mp4">
+      </video>
+      <figcaption>Demonstration of the smartwatch prototype.</figcaption>
+    </figure>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

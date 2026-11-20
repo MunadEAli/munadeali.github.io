@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Passenger Elevator Concept Design · 20-Storey MRL Traction Lift · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img { width: 100%; border-radius: .6rem; display:block; }
+    figure.white img { background:#fff; padding:.4rem; box-sizing:border-box; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    .three-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
+      .two-col.wide-left { grid-template-columns: 3fr 2fr; }
+      .three-col { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .callout { padding: .9rem 1rem; border-radius: .6rem; background: rgba(255, 213, 79, .08); border: 1px solid rgba(255, 213, 79, .3); }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects" class="active">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>Passenger Elevator Concept Design for a 20-Storey Building</h1>
+    </div>
+    <p class="tags">MRL Traction Lift · Gearless PMSM · Yaskawa L1000A VFD · Siemens S7-1500F · ET200SP · TIA Portal · Factory I/O · EN 81 · Functional Safety</p>
+
+    <p class="project-context">
+      <span class="metric">M1 ARMAC Project</span>
+      <span class="metric">Université Marie et Louis Pasteur</span>
+      <span class="metric">Team of 5 · Dec 2025</span>
+    </p>
+
+    <div class="two-col wide-left">
+      <div>
+        <p>
+          A concept-level engineering design of a <strong>machine-room-less (MRL) traction passenger elevator</strong> for a
+          20-storey building. The design covers the full system: cabin, door and hoistway geometry, sizing of the
+          <strong>traction machine and drive</strong>, a <strong>Siemens safety-PLC control architecture</strong> with distributed I/O,
+          the sensor set, a <strong>layered safety concept aligned with EN 81</strong>, a cost model, and a
+          <strong>PLC simulation</strong> of the elevator sequence in Factory I/O.
+        </p>
+        <h3>Design basis</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><td>Stops / travel height</td><td>20 floors · 3.0&nbsp;m floor-to-floor · 57&nbsp;m travel</td></tr>
+              <tr><td>Rated load</td><td>480&nbsp;kg (6 passengers)</td></tr>
+              <tr><td>Nominal speed</td><td>1.0&nbsp;m/s ("about 1&nbsp;s per metre")</td></tr>
+              <tr><td>Ride comfort</td><td>acceleration 0.6&nbsp;m/s² · jerk 1.0&nbsp;m/s³ (S-curve) · levelling ±5&nbsp;mm</td></tr>
+              <tr><td>Technology</td><td>MRL traction · gearless PMSM · regenerative VVVF drive</td></tr>
+              <tr><td>Standards</td><td>EN 81-20 / -50 / -70 / -28 / -73 · EN 60204-1 · EN ISO 13849 / IEC 62061</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figure>
+        <img src="../../assets/elevator/factory-io.jpg" alt="Factory I/O elevator scene used to test the PLC program"/>
+        <figcaption>The Factory I/O elevator scene used to test the PLC sequencing and sensor logic.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ MECHANICAL ------------------ -->
+    <h2>1) Mechanical Layout</h2>
+    <p>
+      The dimensions were worked out top-down: first the cabin size and door opening needed for wheelchair access (EN 81-70),
+      then space for the car frame, doors and running clearances, then the hoistway plan with the cabin and counterweight paths,
+      and finally the pit depth and overhead height for the buffers, the traction machine and the safety spaces.
+    </p>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Element</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Cabin internal (W × D × H)</td><td>1.00 × 1.40 × 2.20&nbsp;m</td></tr>
+          <tr><td>Door clear opening (W × H)</td><td>0.80 × 2.10&nbsp;m, two-panel telescopic sliding doors</td></tr>
+          <tr><td>Hoistway internal (W × D)</td><td>1.60 × 1.65&nbsp;m</td></tr>
+          <tr><td>Pit depth / overhead</td><td>1.00&nbsp;m / 3.60&nbsp;m (machine, sheaves and clearances in the overhead)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="three-col">
+      <figure class="white">
+        <img src="../../assets/elevator/cabin-plan.png" alt="Cabin internal plan view with door clear opening"/>
+        <figcaption>Cabin plan view and door clear opening.</figcaption>
+      </figure>
+      <figure class="white">
+        <img src="../../assets/elevator/hoistway-plan.png" alt="Hoistway plan showing cabin and counterweight paths with guide rails"/>
+        <figcaption>Hoistway plan: car rails on one side, counterweight rails on the other.</figcaption>
+      </figure>
+      <figure class="white">
+        <img src="../../assets/elevator/hoistway-layout.png" alt="Hoistway reference layout with cabin, counterweight and dimensions"/>
+        <figcaption>Reference hoistway layout used to illustrate the concept.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ TRACTION ------------------ -->
+    <h2>2) Traction Sizing</h2>
+    <p>
+      The traction machine is sized from the worst-case <strong>unbalanced mass</strong> plus the force needed to accelerate,
+      with a margin for losses and uncertainty. The counterweight balances the empty car plus half the rated load.
+    </p>
+    <div class="eq">m_car = 700 kg,  m_load = 480 kg,  m_cw = m_car + 0.5·m_load = 940 kg
+Δm   = |1180 − 940| = 240 kg              (full car up / empty car down)
+
+F_ss = Δm·g ≈ 2354 N        P_ss = F_ss·v ≈ 2.35 kW
+F_acc ≈ 1180 × 0.6 ≈ 708 N  F_peak ≈ 3062 N   P_peak ≈ 3.06 kW
+
+Sheave R = 0.24 m:  T_ss ≈ 565 N·m,  T_peak ≈ 735 N·m,  n ≈ 39.8 rpm
+P_motor ≈ 2.5 × P_ss ≈ 5.9 kW   →   7.5 kW gearless PMSM class</div>
+    <p>
+      High torque at low speed is exactly where a <strong>gearless PMSM</strong> performs best. The selected machine has a
+      spring-applied, electrically released brake and an <strong>absolute encoder</strong>, with 1:1 roping.
+    </p>
+
+    <!-- ------------------ DRIVE ------------------ -->
+    <h2>3) Drive Integration &amp; Ride Quality</h2>
+    <div class="two-col">
+      <div>
+        <ul class="list-tight">
+          <li><strong>Yaskawa L1000A</strong> in closed-loop vector control for PM motors (A1-02 = 7) with absolute encoder feedback, giving full torque at 0&nbsp;Hz for smooth levelling.</li>
+          <li><strong>Stationary auto-tuning</strong> (T2-01 mode 4) identifies the motor parameters and stores the encoder-to-rotor offset (E5-11).</li>
+          <li>Speed reference and run command come over <strong>PROFINET</strong> (b1-01 = b1-02 = 3). Torque removal is hard-wired through <strong>Safe Torque Off</strong>.</li>
+          <li><strong>Torque-proving brake handshake:</strong> the drive builds holding torque at 0&nbsp;Hz and signals "torque ready" (H2-01 = 37). Only then does the PLC release the brake, which prevents rollback and jerk at start.</li>
+          <li><strong>Encoder signal integrity:</strong> 360° shield clamp at the drive end only, with at least 0.2&nbsp;m separation from motor power cables.</li>
+        </ul>
+      </div>
+      <figure class="white">
+        <img src="../../assets/elevator/s-curve.png" alt="Jerk-limited S-curve velocity and acceleration profile"/>
+        <figcaption>Jerk-limited S-curve profile, set with the drive's C2-01…C2-04 parameters for passenger comfort.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ CONTROL ------------------ -->
+    <h2>4) Control Architecture &amp; Sensors</h2>
+    <p>The control system is split into three coordinated layers:</p>
+    <ul class="list-tight">
+      <li><strong>Functional control:</strong> a Siemens <strong>S7-1500F</strong> runs call handling, dispatching, door logic and operating modes, with <strong>ET200SP</strong> distributed I/O for the large number of field signals.</li>
+      <li><strong>Motion control:</strong> the traction drive runs the inner current, torque and speed loops, the S-curve ramps and regeneration.</li>
+      <li><strong>Safety:</strong> the S7-1500F safety program with <strong>ET200SP F</strong> modules handles the emergency stops, door interlocks, final limits and the STO outputs, independently of the standard logic.</li>
+    </ul>
+    <div class="two-col">
+      <div>
+        <h3>Sensor set</h3>
+        <ul class="list-tight">
+          <li>Motor-shaft absolute encoder, plus an <strong>absolute code-rail</strong> position system in the hoistway that is immune to rope slip and levels to better than 1&nbsp;mm.</li>
+          <li>Door-zone / vane sensors at every landing as a redundant position reference.</li>
+          <li>A multi-beam <strong>light curtain</strong> on the car door to detect obstructions and reopen the doors.</li>
+          <li>Electromechanical door locks in the safety chain, plus <strong>RFID-coded safety sensors</strong> (Pilz PSENcode) for contactless closed-and-locked confirmation.</li>
+          <li><strong>Load cells in the car frame's load path</strong>: departure is blocked under overload. This is more stable than sensing load in the cabin floor.</li>
+          <li>Brake applied/released feedback, and drive ready/fault status.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>I/O sizing (20 floors)</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><td>Digital inputs</td><td>76 (incl. 40 door-zone sensors, 21 door-lock confirmations)</td></tr>
+              <tr><td>Digital outputs</td><td>11 (doors, brake, dual-channel STO, indicators)</td></tr>
+              <tr><td>Analog input</td><td>1 × 4–20&nbsp;mA (car load)</td></tr>
+              <tr><td>PROFINET devices</td><td>ET200SP F CPU, L1000A drive, 2 × 9" HMI Comfort Panels</td></tr>
+              <tr><td>Modules</td><td>3 × 16 DI, 1 × 16 DO, 1 × 4 AI, 2 × 16 F-DI, 1 × 4 F-DO</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------ SAFETY ------------------ -->
+    <h2>5) Safety Architecture</h2>
+    <p>The design follows the EU Lifts Directive and EN 81: several independent layers, so that no single failure can lead to a hazard.</p>
+    <div class="two-col">
+      <ul class="list-tight">
+        <li><strong>Mechanical:</strong> overspeed governor, progressive safety gear and buffers, all working without electronics or software.</li>
+        <li><strong>Electrical safety chain:</strong> a series circuit of E-stops, door locks, pit and inspection switches, final limits and the governor contact. Opening any of them triggers STO, applies the brake and puts the system in a safe fault state.</li>
+        <li><strong>Drive safety:</strong> dual-channel <strong>STO</strong> on the L1000A.</li>
+        <li><strong>Supervision:</strong> the PLC monitors, logs and informs passengers, but never replaces a primary safety function.</li>
+        <li><strong>Power:</strong> separate traction, brake, control and safety supplies. A UPS powers only the safety and control electronics and the EN 81-28 alarm and intercom.</li>
+      </ul>
+      <div class="table-wrap">
+        <table class="spec">
+          <thead><tr><th>Safety function</th><th>Target</th></tr></thead>
+          <tbody>
+            <tr><td>No motion with doors unlocked</td><td>PL e / SIL 3</td></tr>
+            <tr><td>Emergency stop (car + pit)</td><td>PL d–e</td></tr>
+            <tr><td>Safe removal of motor torque (STO)</td><td>SIL 2–3</td></tr>
+            <tr><td>Uncontrolled movement prevention</td><td>PL d–e</td></tr>
+            <tr><td>Overspeed protection</td><td>Mechanical (EN 81)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ------------------ SIMULATION ------------------ -->
+    <h2>6) PLC Simulation</h2>
+    <p>
+      The elevator sequence was first drawn as a GRAFCET-style diagram, then implemented in <strong>TIA Portal</strong> and run
+      on <strong>PLCSIM</strong> against a 3-floor <strong>Factory I/O</strong> scene, with a simple HMI for commands and status.
+      All Factory I/O signals are mapped in one function into structured data blocks, so the logic uses symbolic,
+      array-based access that can scale to 20 floors without repeating code for every floor.
+    </p>
+    <div class="two-col">
+      <div>
+        <h3>State machine (SCL)</h3>
+        <p>
+          <span class="metric">0 Idle</span> → <span class="metric">20 Move</span> → <span class="metric">30 Open door</span> →
+          <span class="metric">40 Door hold</span> → <span class="metric">50 Close door</span> → <span class="metric">0 Idle</span>
+          &nbsp;·&nbsp; any stop or safety loss → <span class="metric">99 Fault</span>
+        </p>
+        <ul class="list-tight">
+          <li>The car departs only when the door-closed sensor and the safety signal are true.</li>
+          <li>Latches set the slow speed both when leaving a floor and when approaching the target.</li>
+          <li>If the light curtain is interrupted, the door-hold timer resets or a closing door reopens.</li>
+          <li>Every scan starts with all outputs reset to a safe default.</li>
+        </ul>
+        <p style="font-size:.9rem; opacity:.8;">
+          The simulation checks the program structure and sequencing only. It runs on TIA Portal V15 with a standard PLC, so safety
+          is represented by interlocks, and traction dynamics are not modelled.
+        </p>
+      </div>
+      <figure>
+        <img src="../../assets/elevator/hmi.jpg" alt="Siemens HMI screen used to command and monitor the simulated elevator"/>
+        <figcaption>HMI used in the simulation: floor calls, current and target floor, start/stop/reset and E-stop.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ COST ------------------ -->
+    <h2>7) Cost Estimate</h2>
+    <div class="two-col">
+      <div class="table-wrap">
+        <table class="spec">
+          <thead><tr><th>Subsystem</th><th>Estimate (EUR)</th></tr></thead>
+          <tbody>
+            <tr><td>Mechanical</td><td>30,500 – 40,500</td></tr>
+            <tr><td>Traction drive &amp; electrical</td><td>16,500 – 22,500</td></tr>
+            <tr><td>Control &amp; safety</td><td>10,000 – 15,000</td></tr>
+            <tr><td>Cabling &amp; wiring</td><td>5,300 – 8,200</td></tr>
+            <tr><td><strong>Total (excl. installation)</strong></td><td><strong>62,000 – 86,000</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The mechanical subsystem and the traction machine are the largest costs. A gearless PMSM with a regenerative drive costs
+        more up front, but uses less energy and wears less over its life. The MRL layout removes the cost of building a
+        dedicated machine room.
+      </p>
+    </div>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

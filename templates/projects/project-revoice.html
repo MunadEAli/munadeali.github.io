@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReVoice · Qwen-Powered Adaptive Memory Agent · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img, figure video { width: 100%; border-radius: .6rem; display:block; background:#000; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .callout { padding: .9rem 1rem; border-radius: .6rem; background: rgba(255, 213, 79, .08); border: 1px solid rgba(255, 213, 79, .3); }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects" class="active">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>ReVoice: Qwen-Powered Adaptive Memory Agent</h1>
+      <a class="btn" href="https://github.com/MunadEAli/ReVoice_Agent" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code
+      </a>
+    </div>
+    <p class="tags">Qwen Cloud (qwen-max · qwen-vl-max · qwen-turbo) · Tool Calling · MCP Server · FastAPI · React + TypeScript · SQLite · Alibaba Cloud Function Compute</p>
+
+    <p class="project-context">
+      <span class="metric">Global AI Hackathon with Qwen Cloud</span>
+      <span class="metric">Track 1: MemoryAgent</span>
+      <span class="metric">Team of 2 · with Laiba</span>
+      <span class="metric">Jul 2026</span>
+    </p>
+
+    <p>
+      <strong>ReVoice</strong> helps people with word-finding difficulty, as in aphasia or dementia, who know what they mean
+      but can't retrieve the exact word. Instead of only storing facts, it stores the <strong>recovery path</strong>: which
+      cues helped this person recover this word before, which failed, and how much help they needed. Over many sessions it
+      hides the answer to protect practice, generates safe personalised hints with Qwen, learns which cue styles work, and
+      gradually <strong>offers less help as recall improves</strong>.
+    </p>
+    <p class="callout"><strong>ReVoice doesn't just remember what someone said. It remembers what helped them say it.</strong></p>
+
+    <figure>
+      <img src="../../assets/revoice/session.jpg" alt="ReVoice session: Margaret types granddaughter, sees a hidden possible person match, and the Memory Inspector shows the Qwen trace and candidate scoring"/>
+      <figcaption>A live session (deployed, live Qwen mode): "granddaughter" gives a hidden <em>Possible person match</em> with hint and reveal options, while the Memory Inspector shows the memories sent to qwen-max, its candidates and the score breakdown.</figcaption>
+    </figure>
+
+    <!-- ------------------ FLOW ------------------ -->
+    <h2>1) Core Flow</h2>
+    <ol class="list-tight">
+      <li>Margaret types a stand-in word: <em>"granddaughter"</em>.</li>
+      <li>ReVoice ranks her memories and packs only the most relevant ones into Qwen's context.</li>
+      <li>Qwen proposes candidate meanings. The UI hides the exact answers (e.g. "Possible person match") so hints don't spoil recall.</li>
+      <li>Qwen builds an adaptive cue plan from relationship context, session context and her learned cue preferences.</li>
+      <li>Deterministic safety code removes the target word from every hint before the final reveal.</li>
+      <li>The outcome of each cue updates memory: the <strong>assistance level for that concept</strong> and her <strong>cue-style preferences</strong> for that category, so even newly added people inherit what worked before.</li>
+    </ol>
+
+    <!-- ------------------ QWEN ------------------ -->
+    <h2>2) Qwen Cloud, Tools &amp; MCP</h2>
+    <div class="two-col">
+      <div>
+        <ul class="list-tight">
+          <li><strong>qwen-max</strong> handles candidate reasoning and non-clinical progress summaries. <strong>qwen-vl-max</strong> handles reasoning grounded in an uploaded photo. <strong>qwen-turbo</strong> generates the cue banks quickly and cheaply.</li>
+          <li><strong>Agentic tool calling:</strong> when unsure, qwen-max calls a custom <code>inspect_concept</code> skill to fetch relationship context (e.g. <em>grandchild_of Michael</em>) before committing to a candidate. It can do this for up to three rounds before returning its JSON answer.</li>
+        </ul>
+      </div>
+      <div>
+        <p>A native <strong>MCP server</strong> (streamable HTTP, JSON-RPC 2.0) exposes the memory to any MCP client:</p>
+        <ul class="list-tight">
+          <li><code>search_memories</code>: search a user's active concepts</li>
+          <li><code>get_concept_details</code>: a concept's detail, relationships and ability state</li>
+          <li><code>get_cue_preferences</code>: learned cue-strategy scores</li>
+          <li><code>get_user_progress</code>: ability levels for every concept</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ------------------ SCORING ------------------ -->
+    <h2>3) Memory Retrieval: Recovery-Path Similarity Score</h2>
+    <div class="eq">score = 0.30·relevance + 0.20·salience + 0.20·recovery_similarity
+      + 0.10·uncertainty + 0.10·recency_transfer − 0.02·cost_per_100_tokens</div>
+    <ul class="list-tight">
+      <li><strong>Relevance gate:</strong> concepts with zero semantic relevance to the input get no boost from their history, so a well-practised document can never outrank the relevant person.</li>
+      <li><strong>Personal cues:</strong> stored relationships expand into the stand-in words people actually use ("granddaughter", "grand daughter", "grandchild") without hard-coding.</li>
+      <li><strong>Adaptive weighting:</strong> independent recall counts for more than a full reveal, and recent episodes count for more than older ones.</li>
+      <li><strong>Category vocabulary from real datasets:</strong> derived from Princeton WordNet hyponym chains, filtered by word frequency (wordfreq).</li>
+    </ul>
+
+    <!-- ------------------ MEMORY BEHAVIOURS ------------------ -->
+    <h2>4) Memory-Agent Behaviours</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <tbody>
+          <tr><td>Persistent memory</td><td>Users, concepts, sessions, attempts, cue events, ability states, preferences, corrections and audits stored across sessions</td></tr>
+          <tr><td>Learns from experience</td><td>Successful and failed cues update the help level for each concept and the cue preferences for each user and category</td></tr>
+          <tr><td>Forgetting &amp; correction</td><td>Corrected concepts are superseded without deleting history. Uncertainty grows after gaps of more than 7 days</td></tr>
+          <tr><td>Consent gating</td><td>Caregiver-only memories (e.g. medication) never surface in a regular user session, enforced deterministically before ranking</td></tr>
+          <tr><td>Human checkpoint</td><td>Every candidate needs explicit confirmation before the ability state changes</td></tr>
+          <tr><td>Transparency</td><td>A live Memory Inspector shows the Qwen trace, score breakdown, cue ladder, preferences and latency</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two-col">
+      <figure>
+        <img src="../../assets/revoice/reveal.jpg" alt="Confirmed recall of Lily, recorded to update the memory path"/>
+        <figcaption>Once the user confirms the word ("Lily"), the retrieval is recorded and the memory path updates.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/revoice/progress.jpg" alt="Progress review with Qwen summary, learned cue styles and per-concept assistance levels"/>
+        <figcaption>Progress Review: a non-clinical summary from Qwen, learned cue-style scores, and the help level and uncertainty for each concept.</figcaption>
+      </figure>
+    </div>
+    <p style="font-size:.92rem; opacity:.85;">
+      The cue ladder draws on word-retrieval strategies from aphasia and dementia care: semantic feature cues, sentence
+      completion, phonological and orthographic cues, visual and autobiographical cues, and waiting before revealing. ReVoice
+      is an assistive tool, not a diagnostic or treatment tool.
+    </p>
+
+    <!-- ------------------ EVALUATION ------------------ -->
+    <h2>5) Evaluation</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Suite</th><th>ReVoice</th><th>Memoryless baseline</th><th>Transcript-RAG baseline</th></tr></thead>
+        <tbody>
+          <tr><td>Core memory-agent properties (20 cases: persistence, personal cues, consent, correction, context budget, transfer)</td><td><strong>20/20</strong></td><td>3/20</td><td>1/20</td></tr>
+          <tr><td>Philadelphia Naming Test semantic error types (12 cases: circumlocutions, coordinate and kinship substitutions…)</td><td><strong>12/12</strong></td><td>4/12</td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The memoryless baseline's PNT passes are alphabetical accidents, not semantic matches. In addition, 24 backend unit tests pass and the frontend production build passes.</p>
+
+    <!-- ------------------ STACK ------------------ -->
+    <h2>6) Tech Stack &amp; Deployment</h2>
+    <p>
+      React + Vite + TypeScript frontend · FastAPI backend · SQLite / SQLAlchemy memory store · Qwen Cloud through DashScope's
+      OpenAI-compatible API · MCP server · deployed on <strong>Alibaba Cloud Function Compute</strong> as a custom container,
+      with Container Registry and optional OSS for media.
+    </p>
+
+    <!-- ------------------ DEMO ------------------ -->
+    <h2>Demo Video</h2>
+    <figure>
+      <video controls playsinline preload="metadata" poster="../../assets/revoice/session.jpg">
+        <source src="../../assets/revoice/demo.mp4" type="video/mp4">
+      </video>
+      <figcaption>Three-minute demo on the Alibaba Cloud deployment: choosing a person, hidden candidates, Qwen cue plans, the Memory Inspector, and progress review.</figcaption>
+    </figure>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

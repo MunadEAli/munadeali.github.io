@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nalmai · Real-Time Teaching Copilot · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .callout { padding: .9rem 1rem; border-radius: .6rem; background: rgba(255, 213, 79, .08); border: 1px solid rgba(255, 213, 79, .3); }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+    .project-page a.inline { color: var(--clr-accent); font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects" class="active">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>Nalmai: Real-Time Teaching Copilot</h1>
+      <a class="btn" href="https://github.com/laiba12345/Nalmai" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code
+      </a>
+    </div>
+    <p class="tags">FastAPI · WebRTC · Speech-to-Text with Diarization · GPT-5.6 Structured Outputs · Bayesian Knowledge Tracing · SQLite · Server-Sent Events · OpenAI Codex</p>
+
+    <p class="project-context">
+      <span class="metric">Hackathon</span>
+      <span class="metric">Team of 2 · with Laiba</span>
+      <span class="metric">Jul 2026</span>
+    </p>
+
+    <p>
+      Teachers usually discover that students are confused only after the lesson has moved on. <strong>Nalmai</strong> is a
+      real-time copilot for online lessons that closes that gap. It listens to the teacher and student separately,
+      <strong>detects confusion and risky explanations</strong> as they happen, suggests a better teaching move, <strong>checks
+      whether the teacher actually used it</strong>, runs a quick learning check, and tracks each student's mastery of
+      each concept over time.
+    </p>
+    <p class="callout">
+      <strong>Not a chatbot, but a closed loop:</strong> detect confusion → recommend a teaching move → verify it was used →
+      measure what happened next.
+    </p>
+
+    <!-- ------------------ PIPELINE ------------------ -->
+    <h2>1) How It Works</h2>
+    <div class="eq">Teacher + student WebRTC audio (separate tracks, 10-second windows)
+        → speech-to-text with diarization  →  speaker-specific transcript
+        → student learning signals           teacher explanation risk
+        → Confusion Confidence Score (CCS, deterministic)
+        → GPT-5.6 teaching suggestion  →  automatic 3-option baseline poll
+        → later teacher speech  →  implementation verification
+        → follow-up poll  →  Bayesian Knowledge Tracing mastery + SQLite memory</div>
+    <p>
+      The language model handles what needs language understanding: classifying student language, analysing explanation
+      risk, drafting suggestions and polls, verifying implementation, and generating memory insights. Every call uses
+      <strong>strict structured outputs</strong>, so no free-form model text is parsed. CCS, mastery tracking, thresholds,
+      grading and outcome calculations are <strong>deterministic Python</strong>.
+    </p>
+
+    <!-- ------------------ FEATURES ------------------ -->
+    <h2>2) Key Features</h2>
+    <div class="two-col">
+      <ul class="list-tight">
+        <li><strong>Live two-person lesson:</strong> a browser video call with WebRTC signalling over a FastAPI WebSocket. Media stays peer-to-peer.</li>
+        <li><strong>Per-speaker transcription:</strong> teacher and student audio tracks are captured and transcribed separately, which avoids mixing up who said what.</li>
+        <li><strong>Confusion Confidence Score:</strong> a live, explainable score with time-decayed evidence and student breadth normalised against the class roster.</li>
+        <li><strong>Teacher explanation risk:</strong> flags factual and clarity risks, such as a rule stated without conceptual support, before students push back.</li>
+      </ul>
+      <ul class="list-tight">
+        <li><strong>Suggestions and automatic polls:</strong> one strategy-specific re-explanation per confusion spike, plus generated baseline and transfer checks. The correct answer is never sent to the student's screen.</li>
+        <li><strong>Implementation verification:</strong> later teacher speech is checked for evidence that the suggestion was used, with a quote and a confidence. The teacher can override it.</li>
+        <li><strong>Per-student, per-concept mastery</strong> with Bayesian Knowledge Tracing. Language evidence only affects the student who produced it.</li>
+        <li><strong>Teacher Memory Agent:</strong> uses only the current concept's history, stored under pseudonymous IDs, to inform suggestions. The model never gets open access to the database.</li>
+      </ul>
+    </div>
+
+    <!-- ------------------ EVALUATION ------------------ -->
+    <h2>3) Evaluation</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Check</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Automated test suite (unit, integration, API, persistence, UI contract, real-server smoke test)</td><td><strong>113 tests</strong></td></tr>
+          <tr><td>Real classroom language: TalkMoves public test splits (K-12 mathematics)</td><td>30,401 utterance pairs ingested, 0 schema errors</td></tr>
+          <tr><td>Sentiment proxy agreement vs. TalkMoves labels (15-utterance balanced check)</td><td>GPT-5.6 <strong>0.667</strong> vs. deterministic fallback 0.400</td></tr>
+          <tr><td>Early-warning confusion detection on annotated fixtures (no leakage from the poll)</td><td>precision <strong>0.750</strong>, recall <strong>0.577</strong></td></tr>
+          <tr><td>Confirmed CCS on the same fixtures</td><td>precision 0.875, recall 0.269</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.92rem; opacity:.85;">
+      These results come from a small set of authored scenarios and are reported with clear limits. TalkMoves validates
+      ingestion of real classroom language, not CCS accuracy, and the matched "nudge vs. control" outcome replay shows the
+      linkage works but is not evidence of a causal learning effect. A classroom pilot with educator-labelled data would be
+      the next step.
+    </p>
+
+    <!-- ------------------ STACK ------------------ -->
+    <h2>4) Tech Stack</h2>
+    <p>
+      Python · FastAPI · Uvicorn · WebRTC · WebSocket signalling · Server-Sent Events · OpenAI speech-to-text with diarization
+      and GPT-5.6 Structured Outputs · SQLite · vanilla JS dashboard · pytest · Docker and Render deployment config. The team
+      used OpenAI Codex as an engineering partner throughout the build.
+    </p>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research Intern at FEMTO-ST · Munad E Ali</title>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page strong.hl { color: var(--clr-accent); }
+    .project-page h2 { margin-top: 1.6rem; }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
+      <li><a href="../experience.html" class="active">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section class="project-page">
+      <h1>Research Intern (Robotics)</h1>
+      <div class="tags">FEMTO-ST Institute · AS2M Department · Besançon, France</div>
+      <p><strong>Duration:</strong> Apr 2026 – Aug 2026</p>
+      <p style="display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:.75rem 0 .5rem;">
+        <strong>Credential:</strong>
+        <a href="https://drive.google.com/file/d/1yQIEWhJKMseMJf-7Fj8nLnuxSRig2Zgw/preview"
+          target="_blank"
+          class="btn"
+          style="padding:.3rem .9rem; border-radius:1.2rem; font-size:.9rem; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; gap:.35rem;">
+          View Credential <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+      </p>
+      <p style="font-size:.9rem; opacity:.8; margin:0 0 1.25rem;">
+        <em><strong>Note on dates:</strong> The dates on the attestation do not match the period I actually worked.
+        At the start of the internship I was still funded by my scholarship and could not hold two contracts at once,
+        so the internship contract only began after the scholarship period ended. I worked on the project from April 2026.</em>
+      </p>
+      <p><strong>Project:</strong> Real-Time Magnetic Localization of a Capsule for Minimally Invasive Surgery (ColoscoBot) ·
+        <a href="../projects/project-capsule-localization.html" style="color: var(--clr-accent); font-weight:600;">See the project →</a></p>
+
+      <p>
+        <strong>Summary:</strong> ColoscoBot is a magnetically actuated capsule robot for minimally invasive colonoscopy,
+        developed by FEMTO-ST with the Carnot Institute of Burgundy. The capsule is steered by an external actuator made of
+        four permanent magnets. Closed-loop control needs the capsule's position and orientation in real time, but every
+        sensor sees the capsule's small field on top of the much stronger actuator field. My work was to build a localization
+        system that still works inside that actuation field.
+      </p>
+
+      <h2>What I Did</h2>
+      <ul>
+        <li>
+          Developed a modular <strong class="hl">Python simulator</strong> for
+          <strong class="hl">6-DoF magnetic localization</strong>. It includes forward and inverse models, the 8&nbsp;mm capsule
+          magnet modelled as a <strong class="hl">magnetic dipole</strong>, the four actuator magnets modelled as
+          <strong class="hl">finite analytical cuboids</strong>, and configurable triaxial sensor arrays.
+        </li>
+        <li>
+          Built a realistic <strong class="hl">sensor model</strong> covering noise, bias, gain error, cross-axis coupling,
+          axis misalignment, per-axis saturation and quantization. It also gives per-sensor SNR, saturation and
+          actuator-to-capsule field-ratio diagnostics, with an interactive <strong class="hl">Streamlit</strong> interface
+          and CSV export.
+        </li>
+        <li>
+          Implemented <strong class="hl">actuator-field subtraction</strong> and a
+          <strong class="hl">multi-start Levenberg–Marquardt</strong> inverse solver to estimate capsule position and
+          magnetic-axis direction, with Jacobian-based uncertainty and observability checks.
+        </li>
+        <li>
+          Compared a wide-range <strong class="hl">Hall sensor (MLX90393)</strong> with a low-noise
+          <strong class="hl">TMR sensor (BMM350)</strong> to quantify the trade-off between dynamic range and sensitivity
+          in sensor selection.
+        </li>
+        <li>
+          Studied <strong class="hl">passive field compensation</strong> using Magpylib: an optimized permanent magnet that
+          cancels the actuator field at a sensor before it saturates. I also analysed why this does not extend directly to
+          a full array.
+        </li>
+        <li>
+          Specified the experimental platform (<strong class="hl">STM32H753</strong>, MLX90393 and BMM350 breakouts,
+          I²C multiplexer), then <strong class="hl">validated the simulator against the hardware implementation</strong>
+          and assessed whether it is suitable for real-time operation.
+        </li>
+        <li>
+          Prepared a <strong class="hl">review article</strong> on real-time magnetic localization in medical robotics for
+          submission. It draws on a structured database of around 80 papers, eight research questions, and a latency
+          framework that covers the full pipeline (acquisition + communication + computation).
+        </li>
+      </ul>
+
+      <h2>Highlights</h2>
+      <ul>
+        <li>
+          At a capsule-to-array distance of 36&nbsp;mm, the simulator gave a position error of
+          <strong class="hl">≈&nbsp;0.21&nbsp;mm</strong> with the MLX90393 model. This closely matches the
+          <strong class="hl">≈&nbsp;0.22&nbsp;mm</strong> reported experimentally by Zhang et al. for a comparable setup.
+        </li>
+        <li>
+          Showed that once its ±2&nbsp;mT range is respected, the low-noise TMR sensor gives
+          <strong class="hl">sub-0.3&nbsp;mm</strong> simulated position errors from 50 to 80&nbsp;mm. Closer to the
+          actuator, the Hall sensor remains the only option that does not saturate.
+        </li>
+      </ul>
+
+      <p>
+        <strong>Tools &amp; Tech:</strong> Python, NumPy/SciPy, Streamlit, Magpylib, STM32, I²C,
+        Hall / TMR magnetometers, nonlinear least squares, magnetic field modelling.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="../../script.js"></script>
+</body>
+</html>

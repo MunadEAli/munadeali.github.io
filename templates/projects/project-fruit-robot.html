@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Autonomous Fruit-Plucking Robot · Line Following &amp; Colour Sensing · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img, figure video { width: 100%; border-radius: .6rem; display:block; background:#000; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } .two-col.wide-left { grid-template-columns: 3fr 2fr; } }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+    .portrait { max-width: 360px; margin-inline: auto; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects" class="active">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>Autonomous Fruit-Plucking Robot</h1>
+      <a class="btn" href="https://github.com/MunadEAli/FruitPluckingRobot" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code
+      </a>
+    </div>
+    <p class="tags">Arduino Mega · Line Following · Junction Counting · TCS3200 Colour Sensors · Limit Switches · Servo Mechanism · H-Bridge Motor Control</p>
+
+    <p class="project-context">
+      <span class="metric">Autonomous Robot</span>
+      <span class="metric">Embedded C++ (Arduino)</span>
+    </p>
+
+    <div class="two-col wide-left">
+      <div>
+        <p>
+          An autonomous mobile robot that navigates an arena of black lines to reach "fruit trees" (poles holding orange balls
+          as fruit). At each tree it lines itself up, checks the colour of the fruit on either side, collects it with
+          <strong>servo-driven plucking arms</strong>, and returns to the main line to continue to the next tree.
+        </p>
+        <p>
+          It needs no external input during a run. Everything is driven by onboard sensing: a <strong>five-sensor IR array</strong>
+          for line following, <strong>side IR sensors</strong> to centre on junctions, <strong>front limit switches</strong> to
+          square up against the tree, and two <strong>TCS3200 colour sensors</strong> to check fruit ripeness.
+        </p>
+        <h3>Run sequence</h3>
+        <p>
+          <span class="metric">Follow line</span> → <span class="metric">Count junctions</span> →
+          <span class="metric">Centre &amp; turn into tree branch</span> → <span class="metric">Drive to tree, square up</span> →
+          <span class="metric">Check colour &amp; pluck</span> → <span class="metric">Reverse to junction</span> →
+          <span class="metric">Rejoin main line</span>
+        </p>
+      </div>
+      <figure class="portrait">
+        <img src="../../assets/fruit-robot/at-tree.jpg" alt="The robot at a fruit tree with its plucking arm extended"/>
+        <figcaption>At a tree: the robot has squared up against it and its plucking arm is extended.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ HARDWARE ------------------ -->
+    <h2>1) Hardware</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Component</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>Arduino Mega 2560</td><td>Main controller: all sensing, decision logic and actuation</td></tr>
+          <tr><td>Differential drive + H-bridge</td><td>Four PWM channels (forward/reverse per side) with a hardware enable line</td></tr>
+          <tr><td>5 × front IR line sensors</td><td>Line position (far-left, left, middle, right, far-right) and junction detection</td></tr>
+          <tr><td>2 × side IR sensors</td><td>Detect when the robot's axle is centred over a junction</td></tr>
+          <tr><td>2 × front limit switches</td><td>Contact with the tree, used to square the robot up against it</td></tr>
+          <tr><td>2 × TCS3200 colour sensors</td><td>One per side, to check the colour of the fruit</td></tr>
+          <tr><td>2 × servos</td><td>Open and close the plucking mechanism</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ------------------ NAVIGATION ------------------ -->
+    <h2>2) Navigation</h2>
+    <div class="two-col">
+      <div>
+        <h3>Line following</h3>
+        <ul class="list-tight">
+          <li>If the middle sensor loses the line, the robot steers back towards whichever side still sees it by driving the two wheels in opposite directions.</li>
+          <li>When the middle, a left and a right sensor all see black at once, it registers a <strong>junction</strong>.</li>
+          <li>Otherwise it drives straight, with separately tuned left and right motor speeds to compensate for the mismatch between the motors.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Precise junction handling</h3>
+        <ul class="list-tight">
+          <li><strong>Centring:</strong> after detecting a junction, the robot creeps forward, still correcting its line position, until <em>both</em> side sensors see the cross-line. This puts the axle exactly on the junction.</li>
+          <li><strong>Sensor-terminated turns:</strong> instead of timed turns, the robot spins in place until the middle sensor picks up the new line. This makes turns repeatable regardless of battery level.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ------------------ MISSION ------------------ -->
+    <h2>3) Mission Logic</h2>
+    <p>
+      The arena layout is encoded as a <strong>junction counter</strong>. At the junctions that lead to trees (the 2nd, 4th and
+      final junctions), the robot runs a plucking routine:
+    </p>
+    <ol class="list-tight">
+      <li>Centre on the junction and turn into the branch leading to the tree.</li>
+      <li><strong>Approach the tree</strong>, line-following slowly until a front limit switch closes. If only one switch is pressed, it drives only the opposite wheel until the second switch closes, so the robot ends up square to the tree.</li>
+      <li><strong>Check the fruit colour</strong> on the left and right sides, then operate the servo plucking mechanism.</li>
+      <li><strong>Reverse</strong> with line correction until the side sensors find the junction again, then turn back onto the main line.</li>
+    </ol>
+    <p>After the final tree, the robot reverses out of the branch and stops, ending the run.</p>
+
+    <!-- ------------------ COLOUR ------------------ -->
+    <h2>4) Fruit Detection</h2>
+    <div class="two-col">
+      <div>
+        <p>
+          Each <strong>TCS3200</strong> colour sensor has red, green and blue photodiode filters that are selected with its S2/S3
+          pins. Its output is a square wave whose pulse width gets shorter as that colour gets stronger. The robot sets the output
+          to 20% frequency scaling, measures the pulse width under each filter, and compares red with green:
+        </p>
+        <div class="eq">for filter in (R, G, B):  set S2/S3  →  t[filter] = pulseIn(OUT, LOW)
+ripe  ⇔  t[R] &lt; t[G]      (red reflects more strongly than green)</div>
+        <p>Both sides are read at every tree, so the robot can judge the fruit on its left and right independently.</p>
+      </div>
+      <figure class="portrait">
+        <img src="../../assets/fruit-robot/collected.jpg" alt="The robot carrying collected orange fruit in its bin"/>
+        <figcaption>Later in the run, with collected fruit in the robot's bin.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ DEMO ------------------ -->
+    <h2>Demo Video</h2>
+    <figure class="portrait">
+      <video controls muted playsinline preload="metadata" poster="../../assets/fruit-robot/at-tree.jpg">
+        <source src="../../assets/fruit-robot/demo.mp4" type="video/mp4">
+      </video>
+      <figcaption>A full autonomous run: line following, turning into each tree branch, plucking, and returning to the main line.</figcaption>
+    </figure>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

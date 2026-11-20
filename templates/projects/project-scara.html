@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCARA Robot · Embedded Control &amp; Teleoperation · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn-row { display:flex; gap:.6rem; flex-wrap:wrap; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img, figure video { width: 100%; border-radius: .6rem; display:block; background:#000; }
+    figure.white img { background:#fff; padding:.4rem; box-sizing:border-box; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .callout { padding: .9rem 1rem; border-radius: .6rem; background: rgba(255, 213, 79, .08); border: 1px solid rgba(255, 213, 79, .3); }
+    .list-tight li { margin-bottom:.35rem; }
+    .narrow { max-width: 560px; margin-inline: auto; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects" class="active">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>Embedded Control System for a SCARA Robot with Teleoperation &amp; Vision</h1>
+      <div class="btn-row">
+        <a class="btn" href="https://github.com/MunadEAli/ScaraRobot" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> Code &amp; Thesis
+        </a>
+      </div>
+    </div>
+    <p class="tags">STM32 · Modbus RS-485 · PID · Encoders · Kinematics · MATLAB · CoppeliaSim · Python · OpenCV · SolidWorks</p>
+
+    <p class="project-context">
+      <span class="metric">Final-Year Project (BSc EE)</span>
+      <span class="metric">PIEAS</span>
+      <span class="metric">Sep 2023 – Jun 2024</span>
+    </p>
+
+    <p>
+      We designed and built the complete <strong>embedded control system</strong> for a custom, modified
+      <strong>SCARA robot</strong> and connected it to an <strong>intelligence-augmented virtual environment</strong>
+      for teleoperation. A <strong>master STM32</strong> receives joint targets from a PC teleoperation station. It sends
+      them over <strong>Modbus RS-485</strong> to one <strong>slave STM32 per joint</strong>, and each slave closes a
+      <strong>PID position loop</strong> using optical-encoder feedback. In parallel, a <strong>CoppeliaSim</strong> digital twin
+      uses <strong>OpenCV</strong> to detect objects, plans the pick-and-place trajectory with our kinematic model, and streams
+      the resulting joint angles to the real robot. The physical arm then repeats the motion planned in simulation.
+    </p>
+
+    <figure>
+      <img src="../../assets/scara/prototype-teleop-station.jpg" alt="Complete SCARA prototype next to the CoppeliaSim teleoperation station"/>
+      <figcaption>The complete prototype: robot, master/slave electronics and the CoppeliaSim teleoperation station.</figcaption>
+    </figure>
+
+    <!-- ------------------ OBJECTIVES ------------------ -->
+    <h2>1) Objectives</h2>
+    <ul class="list-tight">
+      <li>Build an <strong>embedded control system</strong> that lets the SCARA robot pick and place ICs accurately on a planar surface.</li>
+      <li>Create a <strong>virtual environment</strong> where the robot's trajectory can be programmed and simulated.</li>
+      <li>Connect the virtual environment to the embedded controllers to enable <strong>teleoperated control</strong>.</li>
+    </ul>
+    <p class="callout">
+      <strong>Context:</strong> Phase I of the project designed and fabricated the mechanical structure.
+      Phase II, this thesis, added everything that makes it move: motors, encoders, limit switches, the suction tool and its roll mechanism,
+      all the electronics and firmware, the kinematic model, the simulation, the vision pipeline and teleoperation.
+    </p>
+
+    <!-- ------------------ ARCHITECTURE ------------------ -->
+    <h2>2) System Architecture</h2>
+    <p>
+      The PC teleoperation station sends a <strong>control word</strong> to the master controller over a serial (COM) port. The master
+      converts Cartesian targets into joint angles and then into encoder counts. It builds one buffer per joint and sends each buffer
+      to its slave over the Modbus network. Each slave drives its motor until it reaches the target counts, then raises a
+      completion flag that goes back to the master as a <strong>status word</strong>.
+    </p>
+    <figure>
+      <img src="../../assets/scara/hardware-architecture.jpg" alt="Hardware architecture: teleoperation station, master controller, Modbus bus and N slaves"/>
+      <figcaption>Hardware architecture: teleoperation station → master STM32 → Modbus RS-485 bus → one slave STM32 per joint (each with a motor driver, motor and encoder).</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Component</th><th>Choice</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>Controllers</td><td>STM32F103C8T6 (Blue Pill), Cortex-M3 @ 72&nbsp;MHz</td><td>1 master + 4 slaves (3 joints + tool tip)</td></tr>
+          <tr><td>Fieldbus</td><td>Modbus RTU over RS-485 (MAX485), 115200 baud</td><td>Addressed master–slave messaging with CRC</td></tr>
+          <tr><td>Actuators</td><td>Maxon 12&nbsp;V brushed DC, 86:1 gearhead</td><td>Joint drive through timing belts and pulleys</td></tr>
+          <tr><td>Drivers</td><td>IBT-2 (BTS7960) H-bridge</td><td>Bidirectional PWM drive</td></tr>
+          <tr><td>Feedback</td><td>OMRON E6H-CWZ6C, 1000&nbsp;PPR incremental encoders</td><td>Read in STM32 timer encoder mode</td></tr>
+          <tr><td>Safety</td><td>Linear Hall-effect sensors (revolute joints), roller limit switches (prismatic joint)</td><td>End-of-travel detection</td></tr>
+          <tr><td>End effector</td><td>12&nbsp;V vacuum suction pump (relay) + orientation motor</td><td>Grip, rotate and release ICs</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ------------------ KINEMATICS ------------------ -->
+    <h2>3) Kinematic Modeling</h2>
+    <div class="two-col">
+      <div>
+        <p>
+          The robot uses a <strong>PRR</strong> configuration, plus a tool-roll joint. Unlike a standard SCARA, the first revolute joint
+          is <strong>offset</strong> from the prismatic axis. We assigned frames with a link-coordinate diagram and derived the
+          <strong>Denavit–Hartenberg parameters</strong>, the individual link transforms and the full arm matrix
+          T<sub>0</sub><sup>4</sup>.
+        </p>
+        <p>
+          From the tool-configuration vector we derived a <strong>closed-form inverse kinematics</strong> solution: q<sub>1</sub> from the
+          Z height, q<sub>3</sub> from the law of cosines, q<sub>2</sub> by solving the coupled equations symbolically in MATLAB, and
+          q<sub>4</sub> from the tool roll. Pick-and-place motions follow five via-points: <em>lift-off → pick-up → lift-off →
+          drop-off → set-down</em>.
+        </p>
+        <div class="table-wrap">
+          <table class="spec">
+            <thead><tr><th>Axis</th><th>θ</th><th>d (mm)</th><th>a (mm)</th><th>α</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>0</td><td>q<sub>1</sub></td><td>145.4</td><td>π</td></tr>
+              <tr><td>2</td><td>q<sub>2</sub></td><td>0</td><td>250</td><td>0</td></tr>
+              <tr><td>3</td><td>q<sub>3</sub></td><td>86</td><td>152.7</td><td>0</td></tr>
+              <tr><td>4</td><td>q<sub>4</sub></td><td>114</td><td>0</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figure class="white">
+        <img src="../../assets/scara/link-coordinates.png" alt="Link coordinate diagram of the SCARA robot"/>
+        <figcaption>Link-coordinate diagram used to assign the D-H frames.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ SIMULATION ------------------ -->
+    <h2>4) CAD, Simulation &amp; Validation</h2>
+    <p>
+      We exported the SolidWorks assembly as <strong>URDF</strong>, imported it into <strong>CoppeliaSim</strong> with the correct joint
+      hierarchy, and controlled it with Lua scripts. We used MATLAB to compute the <strong>workspace envelope</strong> and to check the
+      kinematics against the simulator.
+    </p>
+    <div class="two-col">
+      <figure>
+        <img src="../../assets/scara/cad-isometric.jpg" alt="SolidWorks CAD model of the SCARA robot"/>
+        <figcaption>SolidWorks CAD model (isometric view).</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/scara/coppeliasim-env.jpg" alt="SCARA robot imported into CoppeliaSim"/>
+        <figcaption>The URDF model running in CoppeliaSim.</figcaption>
+      </figure>
+    </div>
+    <div class="two-col">
+      <figure>
+        <img src="../../assets/scara/workspace-envelope.jpg" alt="3D workspace envelope of the SCARA robot computed in MATLAB"/>
+        <figcaption>3D workspace envelope computed in MATLAB from forward kinematics.</figcaption>
+      </figure>
+      <div>
+        <h3>Cross-validation</h3>
+        <p>
+          With q<sub>1</sub>&nbsp;=&nbsp;0.18&nbsp;m, q<sub>2</sub>&nbsp;=&nbsp;30°, q<sub>3</sub>&nbsp;=&nbsp;45° and q<sub>4</sub>&nbsp;=&nbsp;60°,
+          the MATLAB forward kinematics gave a tool tip at
+          <span class="metric">(0.4016, −0.2725, 0.0390)&nbsp;m</span>. CoppeliaSim reported
+          <span class="metric">(0.4015, −0.2733, 0.0390)&nbsp;m</span>, matching to within about a millimetre.
+        </p>
+        <p>
+          The inverse kinematics was checked the same way: we gave MATLAB a target tool position, applied the joint angles it computed in
+          CoppeliaSim, and compared the resulting tool position with the target.
+        </p>
+      </div>
+    </div>
+
+    <!-- ------------------ VISION ------------------ -->
+    <h2>5) Intelligent Sorting with Computer Vision</h2>
+    <p>
+      To make the virtual environment actually make decisions, we connected CoppeliaSim to a <strong>Python</strong> script through the
+      <strong>remote API</strong>. A vision sensor in the scene captures the workspace. <strong>OpenCV</strong> (blur → Canny → contours →
+      polygon approximation) classifies each object as a triangle, square or circle, measures its size, finds its orientation
+      from the lowest edge, and maps pixel coordinates to workspace coordinates. These values are sent back to CoppeliaSim. The Lua
+      script then solves the inverse kinematics and places each shape into its matching slot, correcting its orientation where needed.
+    </p>
+    <div class="two-col">
+      <figure>
+        <img src="../../assets/scara/sorting-env.jpg" alt="CoppeliaSim scene with shapes and their matching slots"/>
+        <figcaption>Sorting task: shapes of different sizes and their matching "lock and key" slots.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/scara/shape-detection.jpg" alt="OpenCV detection of shapes, sizes and coordinates"/>
+        <figcaption>OpenCV output: detected shapes, sizes and normalized coordinates.</figcaption>
+      </figure>
+    </div>
+    <div class="two-col">
+      <figure class="white">
+        <img src="../../assets/scara/orientation-detection.png" alt="Orientation detection using the lowest edge of a triangle"/>
+        <figcaption>Orientation estimated from the angle of the lowest edge.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/scara/sorting-place-circle.jpg" alt="Robot placing the larger circle into its slot in simulation"/>
+        <figcaption>Placing the larger circle into its matching slot.</figcaption>
+      </figure>
+    </div>
+    <p>
+      The joint angles computed in simulation are also written to the serial port (COM7) for the master controller. We checked them on a
+      serial monitor to confirm that the values sent and received matched exactly.
+    </p>
+
+    <!-- ------------------ CONTROL ------------------ -->
+    <h2>6) Embedded Control &amp; Communication</h2>
+    <div class="two-col">
+      <div>
+        <h3>Modbus RS-485 network</h3>
+        <ul class="list-tight">
+          <li>Each slave has its own <strong>unit ID</strong>. The master broadcasts every query, and only the slave whose ID matches responds.</li>
+          <li>Message frame: <strong>address → function code → data bytes → CRC</strong>. The receiver recomputes the CRC to detect corrupted frames.</li>
+          <li>MAX485 transceivers on the STM32 <strong>USART</strong> pins, using interrupt-driven asynchronous mode at 115200 baud. Differential signalling gives good noise immunity.</li>
+          <li>The master holds one buffer per joint (home, lift-off, pick-up, set-down, place) plus a tool-tip buffer (suction on/off, orientation start/stop), and uses threading to send them to the slaves at the same time.</li>
+        </ul>
+      </div>
+      <figure class="white">
+        <img src="../../assets/scara/master-slave-flow.png" alt="Master-slave program architecture flowchart"/>
+        <figcaption>Master–slave program architecture.</figcaption>
+      </figure>
+    </div>
+
+    <h3>Joint control loop</h3>
+    <ul class="list-tight">
+      <li><strong>PWM:</strong> STM32 timers set up in CubeMX (prescaler, ARR, CCR) produce <strong>10&nbsp;kHz</strong> PWM, with two channels per joint for the two directions of rotation. We checked the output with a logic analyser at 20%, 50% and 70% duty cycle.</li>
+      <li><strong>Encoders:</strong> A timer in encoder mode (period 65535, initialised at mid-scale) counts up and down in real time.</li>
+      <li><strong>PID:</strong> The error between target and current counts drives the duty cycle. We tuned the gains by hand to remove jerk and to slow each joint smoothly as it approaches its target.</li>
+      <li><strong>State machine:</strong> Each slave steps through the via-points with switch cases (lift-off, pick-up, place, …). The tool-tip slave turns the suction pump on and off and rotates the IC before release.</li>
+    </ul>
+    <div class="two-col">
+      <figure class="white">
+        <img src="../../assets/scara/pid-loop.png" alt="Feedback control loop: desired counts, PID, IBT-2 driver, DC motor, encoder"/>
+        <figcaption>Feedback loop: desired counts → PID → IBT-2 → DC motor → encoder → back to the PID.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/scara/pwm-70.png" alt="Logic analyser capture of 10 kHz PWM at 70% duty cycle"/>
+        <figcaption>Logic analyser: 10&nbsp;kHz PWM at 70% duty cycle.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ DEPLOYMENT ------------------ -->
+    <h2>7) Prototype Deployment</h2>
+    <p>
+      After integrating the electronics with the mechanical structure, we ran the IC pick-and-place task repeatedly and reduced the
+      positioning error by tuning the PID gains and PWM duty cycles for each motor. We then connected the virtual environment to the
+      master controller over serial, so that a trajectory planned in CoppeliaSim was <strong>reproduced in real time</strong> by the
+      physical robot.
+    </p>
+    <div class="two-col">
+      <figure>
+        <img src="../../assets/scara/prototype-home.jpg" alt="SCARA at home position with the IC in the workspace"/>
+        <figcaption>Home position, with the IC placed in the workspace.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/scara/prototype-pick.jpg" alt="SCARA picking up the IC with the suction end effector"/>
+        <figcaption>Picking up the IC with the vacuum end effector.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ OUTCOME ------------------ -->
+    <h2>8) Outcome &amp; Future Work</h2>
+    <p>
+      The final system met its design objectives. It provided synchronized multi-joint control over Modbus, precise PID motor control,
+      and a vision-driven virtual environment that the real robot followed to manipulate ICs. Possible next steps include on-robot
+      camera modules, a richer teleoperation HMI with AR and voice/NLP control, and a modular, PLC-compatible design so several SCARA
+      units can run as slaves on one industrial network.
+    </p>
+
+    <!-- ------------------ DEMOS ------------------ -->
+    <h2>Demo Videos</h2>
+    <figure>
+      <video controls muted playsinline preload="metadata">
+        <source src="../../assets/scara/videos/ic-pick-and-place.mp4" type="video/mp4">
+      </video>
+      <figcaption>Real hardware: the robot picks an IC, moves it along the planned via-points and places it at the target location.</figcaption>
+    </figure>
+    <div class="two-col">
+      <figure>
+        <video controls muted playsinline preload="metadata">
+          <source src="../../assets/scara/videos/teleoperation.mp4" type="video/mp4">
+        </video>
+        <figcaption>Teleoperation: the real robot reproducing the trajectory streamed from the virtual environment.</figcaption>
+      </figure>
+      <figure>
+        <video controls muted playsinline preload="metadata">
+          <source src="../../assets/scara/videos/simulation-sorting.mp4" type="video/mp4">
+        </video>
+        <figcaption>Simulation: vision-based sorting of shapes into their matching slots in CoppeliaSim, including orientation correction.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

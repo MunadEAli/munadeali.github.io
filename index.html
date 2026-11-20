@@ -252,7 +252,109 @@
           <span>CureMD | Multi-Agent | Clinical AI | LLM | RAG</span>
         </div>
       </a>
+
+      <a class="card tilt" href="templates/projects/project-revoice.html">
+        <img src="assets/revoice.png" class="card-image" alt="ReVoice adaptive memory agent">
+        <div class="card__info">
+          <h3>ReVoice Memory Agent</h3>
+          <span>Hackathon | Qwen Cloud | Memory Agent | MCP</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-nalmai.html">
+        <img src="assets/nalmai.png" class="card-image" alt="Nalmai real-time teaching copilot">
+        <div class="card__info">
+          <h3>Nalmai Teaching Copilot</h3>
+          <span>Hackathon | Real-Time Speech | LLM | Knowledge Tracing</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-zerotrace.html">
+        <img src="assets/zerotrace.png" class="card-image" alt="ZeroTrace verified offboarding agent">
+        <div class="card__info">
+          <h3>ZeroTrace Offboarding Agent</h3>
+          <span>Hackathon | AI Agent | GitHub · Slack · Drive APIs</span>
+        </div>
+      </a>
     </div>
+
+    <!-- ================= ROBOTICS PROJECTS (rendered into #projectGrid) ================= -->
+    <template id="roboticsCards">
+      <a class="card tilt" href="templates/projects/project-capsule-localization.html">
+        <img src="assets/capsule-localization-thumb.jpg" class="card-image" alt="Magnetic capsule localization simulator">
+        <div class="card__info">
+          <h3>Magnetic Capsule Localization</h3>
+          <span>FEMTO-ST | Magnetic Sensing | Inverse Problems | Python</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-scara.html">
+        <img src="assets/scara-thumb.jpg" class="card-image" alt="SCARA robot">
+        <div class="card__info">
+          <h3>SCARA Robot Control &amp; Teleoperation</h3>
+          <span>FYP | STM32 | Modbus | PID | CoppeliaSim | OpenCV</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-bip-scara.html">
+        <img src="assets/bip-scara-thumb.jpg" class="card-image" alt="BIP SCARA manipulator">
+        <div class="card__info">
+          <h3>SCARA Manipulator on ESP32</h3>
+          <span>Erasmus+ BIP | MicroPython | Inverse Kinematics | Frames</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-bip-mobile-robot.html">
+        <img src="assets/bip-mobile-thumb.jpg" class="card-image" alt="BIP autonomous line-following robot">
+        <div class="card__info">
+          <h3>Autonomous Line-Following AGV</h3>
+          <span>Erasmus+ BIP | Dijkstra | PD Control | Odometry</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-elevator.html">
+        <img src="assets/elevator-thumb.jpg" class="card-image" alt="20-storey elevator concept design">
+        <div class="card__info">
+          <h3>20-Storey Elevator Concept Design</h3>
+          <span>M1 Project | Siemens S7-1500F | Safety | Traction Sizing</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-smartwatch.html">
+        <img src="assets/smartwatch-thumb.jpg" class="card-image" alt="FreeRTOS smartwatch prototype">
+        <div class="card__info">
+          <h3>FreeRTOS Smartwatch</h3>
+          <span>ESP32 | FreeRTOS | MPU6050 | Arduino IoT Cloud</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-fruit-robot.html">
+        <img src="assets/fruit-robot-thumb.jpg" class="card-image" alt="Autonomous fruit-plucking robot">
+        <div class="card__info">
+          <h3>Autonomous Fruit-Plucking Robot</h3>
+          <span>Arduino | Line Following | Colour Sensing | Servo Mechanism</span>
+        </div>
+      </a>
+    </template>
+
+    <!-- ================= OTHER PROJECTS (rendered into #projectGrid) ================= -->
+    <template id="otherCards">
+      <a class="card tilt" href="templates/projects/project-gesture-whiteboard.html">
+        <img src="assets/gesture-whiteboard-thumb.jpg" class="card-image" alt="Hand gesture virtual whiteboard">
+        <div class="card__info">
+          <h3>Hand Gesture Virtual Whiteboard</h3>
+          <span>Computer Vision | OpenCV | MediaPipe | Python</span>
+        </div>
+      </a>
+
+      <a class="card tilt" href="templates/projects/project-serial-multiplier.html">
+        <img src="assets/serial-multiplier-thumb.jpg" class="card-image" alt="Serial hardware multiplier simulation waveform">
+        <div class="card__info">
+          <h3>Scalable Serial Hardware Multiplier</h3>
+          <span>FPGA | Verilog | ASM | LCD Driver</span>
+        </div>
+      </a>
+    </template>
 
     <!-- Anchor-only sections for buttons (so they scroll nicely). -->
     <h3 id="rmc-projects" class="domain-title" style="display:none;">All Projects</h3>
@@ -298,6 +400,31 @@
         }
       }
 
+      function initTilt() {
+        if (window.VanillaTilt) {
+          const cards = grid.querySelectorAll('.tilt');
+          if (cards && cards.length) {
+            VanillaTilt.init(cards, { max: 8, speed: 400, glare: true, "max-glare": 0.15 });
+          }
+        }
+      }
+
+      function showRobotics() {
+        const tpl = document.getElementById('roboticsCards');
+        if (!tpl) { comingSoon('Robotics'); return; }
+        if (title) title.textContent = 'Robotics Projects';
+        grid.innerHTML = tpl.innerHTML;
+        initTilt();
+      }
+
+      function showOthers() {
+        const tpl = document.getElementById('otherCards');
+        if (!tpl) { comingSoon('Others'); return; }
+        if (title) title.textContent = 'Other Projects';
+        grid.innerHTML = tpl.innerHTML;
+        initTilt();
+      }
+
       function comingSoon(domain) {
         if (title) title.textContent = domain + ' Projects';
 
@@ -337,14 +464,14 @@
 
       roboLinks.forEach(a => a.addEventListener('click', function (e) {
         e.preventDefault();
-        comingSoon('Robotics');
+        showRobotics();
         scrollToProjects();
         history.replaceState(null, '', '#rmc-projects');
       }));
 
       otherLinks.forEach(a => a.addEventListener('click', function (e) {
         e.preventDefault();
-        comingSoon('Others');
+        showOthers();
         scrollToProjects();
         history.replaceState(null, '', '#other-projects');
       }));
@@ -352,10 +479,10 @@
       // If someone lands directly on a hash, show the right view.
       const hash = (location.hash || '').toLowerCase();
       if (hash === '#rmc-projects') {
-        comingSoon('Robotics');
+        showRobotics();
         scrollToProjects();
       } else if (hash === '#other-projects') {
-        comingSoon('Others');
+        showOthers();
         scrollToProjects();
       } else {
         if (title) {

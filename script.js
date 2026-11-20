@@ -55,7 +55,10 @@ document.querySelectorAll('.reveal, .card').forEach(el => observer.observe(el));
     "templates/projects/project-7.html",
     "templates/projects/project-5.html",
     "templates/projects/project-2.html",
-    "templates/projects/project-13.html"
+    "templates/projects/project-13.html",
+    "templates/projects/project-revoice.html",
+    "templates/projects/project-nalmai.html",
+    "templates/projects/project-zerotrace.html"
   ];
 
   const showAll = () => {
@@ -66,7 +69,7 @@ document.querySelectorAll('.reveal, .card').forEach(el => observer.observe(el));
     // Hide all first
     cards.forEach(c => (c.style.display = "none"));
 
-    // Show + reorder the 6 AI cards
+    // Show + reorder the AI cards
     aiOrder.forEach(path => {
       const card = cards.find(c => {
         // Match robustly (works even if you later change domain)

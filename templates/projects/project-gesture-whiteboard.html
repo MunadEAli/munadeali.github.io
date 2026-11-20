@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hand Gesture Virtual Whiteboard · OpenCV &amp; MediaPipe · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img, figure video { width: 100%; border-radius: .6rem; display:block; background:#000; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>Hand Gesture Virtual Whiteboard</h1>
+      <a class="btn" href="https://github.com/MunadEAli/hand-gesture-virtual-whiteboard" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code
+      </a>
+    </div>
+    <p class="tags">Python · OpenCV · MediaPipe Hands · NumPy · Real-Time Computer Vision · One-Euro Filter</p>
+
+    <p class="project-context">
+      <span class="metric">Personal Project</span>
+      <span class="metric">Real-time, CPU only</span>
+      <span class="metric">Mar 2026</span>
+    </p>
+
+    <p>
+      A real-time whiteboard you control with <strong>hand gestures in front of a webcam</strong>, without a mouse, stylus or
+      touchscreen. <strong>MediaPipe Hands</strong> tracks 21 keypoints per hand, the raised fingers are mapped to tools, and
+      your index fingertip becomes the pen. Strokes can go over the live camera image or onto a plain
+      <strong>whiteboard</strong>. The pipeline is tuned to run smoothly on a <strong>laptop CPU</strong>.
+    </p>
+
+    <div class="two-col">
+      <figure>
+        <img src="../../assets/gesture-whiteboard/camera-mode.jpg" alt="Drawing 'Hi python' in the air over the live camera feed"/>
+        <figcaption>Camera mode: writing in the air with the index finger. The status panel shows FPS, the raw and stabilised gesture, and the current action.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../assets/gesture-whiteboard/whiteboard-mode.jpg" alt="Whiteboard mode with green and blue strokes on a white canvas"/>
+        <figcaption>Whiteboard mode, switched on by holding both hands open.</figcaption>
+      </figure>
+    </div>
+
+    <!-- ------------------ GESTURES ------------------ -->
+    <h2>1) Gesture Controls</h2>
+    <div class="two-col">
+      <div class="table-wrap">
+        <table class="spec">
+          <thead><tr><th>Gesture</th><th>Finger state [T, I, M, R, P]</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>☝️ Index finger</td><td><code>[0,1,0,0,0]</code></td><td>Draw</td></tr>
+            <tr><td>✌️ Two fingers</td><td><code>[0,1,1,0,0]</code></td><td>Blue pen</td></tr>
+            <tr><td>🤟 Three fingers</td><td><code>[0,1,1,1,0]</code></td><td>Green pen</td></tr>
+            <tr><td>🖖 Four fingers</td><td><code>[0,1,1,1,1]</code></td><td>Highlighter</td></tr>
+            <tr><td>✋ Open hand</td><td><code>[1,1,1,1,1]</code></td><td>Whole-hand eraser</td></tr>
+            <tr><td>🙌 Both hands open</td><td>both <code>[1,1,1,1,1]</code>, held for 0.9&nbsp;s</td><td>Toggle whiteboard and clear</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p>
+          Each finger is "up" when its tip is above its middle joint. The thumb is the exception: it uses a sideways check that
+          depends on which hand it is, because the image is mirrored. The five on/off finger states form a vector that is
+          looked up in the gesture table.
+        </p>
+        <p>
+          The whiteboard toggle needs <strong>two open hands held apart</strong> for almost a second. That is a rare pose,
+          so it is almost never triggered by accident, and it is kept from being read as the eraser gesture.
+        </p>
+      </div>
+    </div>
+
+    <!-- ------------------ ENGINEERING ------------------ -->
+    <h2>2) Making It Feel Smooth</h2>
+    <div class="two-col">
+      <div>
+        <h3>Gesture stabilisation</h3>
+        <ul class="list-tight">
+          <li>A gesture only takes effect after it has been seen for <strong>3 frames in a row</strong>, which removes flicker between tools.</li>
+          <li>Drawing waits through a <strong>short warm-up</strong> after switching to the draw gesture, so a half-open hand doesn't leave a stray stroke.</li>
+          <li><strong>Anti-mess entry:</strong> drawing only starts once the fingertip has been nearly still (under 12&nbsp;px per frame) for a few frames, and it stops the moment the gesture changes.</li>
+          <li>A latch makes each mode toggle fire only once per hold.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Drawing engine</h3>
+        <ul class="list-tight">
+          <li>The fingertip is smoothed with a <strong>One-Euro filter</strong>, which smooths heavily when moving slowly and lightly when moving fast, so strokes are steady without lag.</li>
+          <li>Points between frames are <strong>interpolated</strong>, so fast strokes have no gaps.</li>
+          <li><strong>Separate layers</strong> for pen and highlighter, with the highlighter blended at 32% opacity.</li>
+          <li>The eraser uses the <strong>hand's bounding box</strong> and fills in between frames for fast clean-up.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="eq">One-Euro filter:  cutoff = f_min + β·|dx/dt|,   α = 1 / (1 + τ/Δt),   τ = 1 / (2π·cutoff)
+                  f_min = 1.8 Hz,  β = 0.08  →  steady when slow, responsive when fast</div>
+
+    <h3>Running on a CPU</h3>
+    <ul class="list-tight">
+      <li>The lightest MediaPipe hand model, run on frames scaled down to 75% before detection.</li>
+      <li>A 960×540 MJPG camera stream with a one-frame buffer to keep latency low.</li>
+      <li>The code is split into modules: <code>hand_tracker</code> (MediaPipe wrapper and hand drawing), <code>gesture_logic</code> (finger states, classification, stabiliser), <code>drawing_canvas</code> (filters, layers, eraser) and <code>app</code> (main loop and UI).</li>
+    </ul>
+
+    <!-- ------------------ DEMO ------------------ -->
+    <h2>Demo Video</h2>
+    <figure>
+      <video controls muted playsinline preload="metadata" poster="../../assets/gesture-whiteboard/camera-mode.jpg">
+        <source src="../../assets/gesture-whiteboard/demo.mp4" type="video/mp4">
+      </video>
+      <figcaption>Drawing with gestures, switching pens, highlighter and eraser, then toggling the whiteboard with both hands open.</figcaption>
+    </figure>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

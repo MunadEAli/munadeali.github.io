@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scalable Serial Hardware Multiplier · Verilog &amp; FPGA · Munad E Ali</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="../../styles.css"/>
+  <style>
+    .project-page p strong, .project-page li strong { color: var(--clr-accent); }
+    .title-row { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .title-row h1 { margin:0; line-height:1.15; }
+    .btn { padding:.5rem 1.2rem; font-size:1rem; line-height:1; display:inline-flex; align-items:center; gap:.4rem; white-space:nowrap; text-decoration:none; }
+    figure { margin: 1rem 0; }
+    figure img { width: 100%; border-radius: .6rem; display:block; }
+    figure.white img { background:#fff; padding:.4rem; box-sizing:border-box; }
+    figure figcaption { font-size:.9rem; opacity:.8; margin-top:.35rem; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:1.2rem; align-items:start; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .list-tight li { margin-bottom:.35rem; }
+    table.spec { width:100%; border-collapse: collapse; font-size:.95rem; margin: .6rem 0 1rem; }
+    table.spec th, table.spec td { text-align:left; padding:.45rem .6rem; border-bottom:1px solid rgba(255,255,255,.12); vertical-align:top; }
+    table.spec th { opacity:.85; font-weight:600; }
+    .table-wrap { overflow-x:auto; }
+    .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav glass container">
+    <span class="logo">
+      Munad E Ali
+      <a href="https://www.linkedin.com/in/munad-e-ali-0a8216231/" target="_blank" class="nav-social">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/MunadEAli" target="_blank" class="nav-social">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:munadali17@gmail.com" class="nav-social">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </span>
+    <ul class="nav__links">
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../index.html#ai-projects">AI</a></li>
+      <li><a href="../../index.html#rmc-projects">Robotics</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../education.html">Education</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <article class="project-page container glass">
+    <div class="title-row">
+      <h1>Scalable Serial Hardware Multiplier</h1>
+      <a class="btn" href="https://github.com/MunadEAli/SerialHardwareMultiplier" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i> Code &amp; Report
+      </a>
+    </div>
+    <p class="tags">Verilog HDL · FPGA · Algorithmic State Machine (ASM) · Shift-and-Add Multiplication · Character LCD Driver · Xilinx ISim</p>
+
+    <p class="project-context">
+      <span class="metric">FPGA-Based Design · Open-Ended Lab</span>
+      <span class="metric">PIEAS · BSEE</span>
+      <span class="metric">Spring 2023</span>
+    </p>
+
+    <p>
+      A <strong>serial multiplier with variable operand length</strong>, designed in <strong>Verilog</strong> using an
+      <strong>Algorithmic State Machine</strong>. A parallel array multiplier is fixed to one width, but this design receives
+      its operands one bit at a time and reads the multiplier length from the first byte of the input stream. One circuit
+      can therefore multiply operands of different sizes. Around it are an <strong>input/output handler</strong> that takes
+      bytes from switches or UART, and an <strong>LCD driver</strong> that shows the 33-bit product in hexadecimal on the
+      FPGA board's character LCD.
+    </p>
+
+    <div class="two-col">
+      <figure class="white">
+        <img src="../../assets/serial-multiplier/block-diagram.png" alt="Serial multiplier block diagram: multiplicand, multiplier, ALU, product and control"/>
+        <figcaption>Shift-and-add datapath: the multiplicand B shifts left, the multiplier Q shifts right, and the control unit adds partial products into A.</figcaption>
+      </figure>
+      <div>
+        <h3>Serial input frame</h3>
+        <div class="eq">[ multiplicand bits ][ multiplier bits ][ length (8 bits) ]
+                      ← LSB first ←
+length  → sets how many bits are read as the multiplier
+rest    → multiplicand, added into the product bit by bit
+result  → 33-bit product</div>
+        <p>
+          The product accumulates as <code>prod += bit · multiplier</code>, while the multiplier register shifts left by one
+          each clock cycle until the whole 32-bit frame has been read.
+        </p>
+      </div>
+    </div>
+
+    <!-- ------------------ ARCHITECTURE ------------------ -->
+    <h2>1) Design &amp; Modules</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <thead><tr><th>Module</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><code>mult_sm</code></td><td>Multiplier ASM with one-hot states <strong>IDLE → LENGTH → MULT1 → MULT2</strong>. A shift counter drives three control lines that say whether the incoming bit belongs to the length, the multiplier or the multiplicand.</td></tr>
+          <tr><td><code>mult</code></td><td>Serial datapath. It builds the 8-bit length and the multiplier, using a variable right-shift to align the multiplier to its actual width, then accumulates shifted partial products into a 33-bit product register.</td></tr>
+          <tr><td><code>io_module</code></td><td>Parallel-to-serial converter. Each press of the control signal latches a byte into a 32-bit shift register. After 4 bytes, a small state machine (IDLE → READY → SHIFT) streams the frame bit by bit into the multiplier.</td></tr>
+          <tr><td><code>IO_w_LCD</code></td><td>Top-level I/O handler (IDLE → STORE → LCD). It shows the low byte of the result on the board's LEDs, converts each 4-bit nibble to an ASCII hex character in a small distributed RAM, and passes it to the LCD.</td></tr>
+          <tr><td><code>lcd_driver</code></td><td>HD44780-style 4-bit LCD controller. It runs a slow initialisation sequence (function set, display on, clear, entry mode), then keeps refreshing both 16-character rows from memory.</td></tr>
+          <tr><td>Testbenches</td><td>Separate benches for the multiplier, the I/O handler and the full design with the LCD.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ------------------ RESULTS ------------------ -->
+    <h2>2) Simulation Results</h2>
+    <p>
+      The multiplier was first tested on its own with the serial input
+      <code>10101010_1000101011_00001010</code>. The low byte (<code>00001010</code> = 10) sets a 10-bit multiplier, and
+      <code>10101010 × 1000101011</code> correctly gives <strong>0x1708E</strong> on the product output.
+    </p>
+    <figure>
+      <img src="../../assets/serial-multiplier/wave-multiplier.png" alt="ISim waveform of the multiplier producing 0x1708e"/>
+      <figcaption>Multiplier on its own: serial input bits on <code>in</code>, with the product settling to <code>0001708e</code>.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../assets/serial-multiplier/wave-io-handler.png" alt="ISim waveform of the I/O handler loading bytes and producing the result"/>
+      <figcaption>I/O handler: four bytes are latched on each <code>ctrl</code> pulse, streamed into the multiplier, and the result appears on <code>data_out</code>.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../assets/serial-multiplier/wave-lcd.png" alt="ISim waveform of the LCD driver sending ASCII hex nibbles"/>
+      <figcaption>LCD driver: the RAM holds the ASCII hex digits (<code>30 30 30 31 37 30 38 45</code> = "0001708E"), which are sent to the display as 4-bit nibbles.</figcaption>
+    </figure>
+
+    <h2>What I Learned</h2>
+    <ul class="list-tight">
+      <li>Splitting a sequential algorithm into an <strong>ASM controller plus a datapath</strong>, with a shift counter as the single source of timing.</li>
+      <li>Handling widths that vary at run time with variable shifts in hardware.</li>
+      <li>Moving data between different clock rates: fast serial streaming versus a slow LCD timing chain.</li>
+      <li>Driving real peripherals (LEDs and a character LCD) and checking each block separately with its own testbench before connecting them.</li>
+    </ul>
+  </article>
+
+  <footer class="footer container">
+    © <span id="year"></span> Munad E Ali
+  </footer>
+  <script src="../../script.js"></script>
+</body>
+</html>
