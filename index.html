@@ -26,8 +26,10 @@
     }
 
     .domain-btn{
-      width: 360px;
-      height: 90px;
+      width: min(360px, 100%);
+      padding: 0.75rem;
+      text-align: center;
+      min-height: 90px;
       border-radius: 22px;
       display:flex;
       flex-direction:column;
@@ -199,9 +201,7 @@
     <!-- ================= SINGLE PROJECTS SECTION (Dynamic content target) ================= -->
     <h3 id="ai-projects" class="domain-title">Featured Projects</h3>
 
-    <!-- This container's content is switched between:
-         - AI cards (default)
-         - "Coming soon" message for Robotics / Others -->
+    <!-- Project categories are rendered here by script.js. -->
     <div id="projectGrid" class="grid-8">
       <!-- ================= AI PROJECTS ONLY ================= -->
 
@@ -371,126 +371,5 @@
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
   <script src="script.js"></script>
 
-  <!-- Projects section switching logic (keeps everything else intact) -->
-  <script>
-    (function () {
-      const grid = document.getElementById('projectGrid');
-      if (!grid) return;
-
-      // Save the initial AI projects markup so we can restore it.
-      const aiMarkup = grid.innerHTML;
-
-      const title = document.getElementById('ai-projects');
-
-      function scrollToProjects() {
-        const main = document.getElementById('projects');
-        if (main) main.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      function showAI() {
-        if (title) title.textContent = 'AI Projects';
-        grid.innerHTML = aiMarkup;
-
-        // Re-initialize tilt for re-inserted cards (script.js may also do this; safe to call again).
-        if (window.VanillaTilt) {
-          const cards = grid.querySelectorAll('.tilt');
-          if (cards && cards.length) {
-            VanillaTilt.init(cards, { max: 8, speed: 400, glare: true, "max-glare": 0.15 });
-          }
-        }
-      }
-
-      function initTilt() {
-        if (window.VanillaTilt) {
-          const cards = grid.querySelectorAll('.tilt');
-          if (cards && cards.length) {
-            VanillaTilt.init(cards, { max: 8, speed: 400, glare: true, "max-glare": 0.15 });
-          }
-        }
-      }
-
-      function showRobotics() {
-        const tpl = document.getElementById('roboticsCards');
-        if (!tpl) { comingSoon('Robotics'); return; }
-        if (title) title.textContent = 'Robotics Projects';
-        grid.innerHTML = tpl.innerHTML;
-        initTilt();
-      }
-
-      function showOthers() {
-        const tpl = document.getElementById('otherCards');
-        if (!tpl) { comingSoon('Others'); return; }
-        if (title) title.textContent = 'Other Projects';
-        grid.innerHTML = tpl.innerHTML;
-        initTilt();
-      }
-
-      function comingSoon(domain) {
-        if (title) title.textContent = domain + ' Projects';
-
-        const icon = (domain === 'Robotics') ? 'fa-robot' : 'fa-layer-group';
-        grid.innerHTML = `
-          <div class="coming-soon glass">
-            <div class="icon"><i class="fas ${icon}"></i></div>
-            <h4>In progress</h4>
-            <p>
-              This section is currently being polished and will be published soon.
-              In the meantime, you can explore my <a href="#ai-projects" id="backToAI" style="color:#ff8c00; font-weight:600;">AI projects</a>.
-            </p>
-          </div>
-        `;
-
-        // Keep the "Back to AI" link working without relying on other files.
-        const back = document.getElementById('backToAI');
-        if (back) {
-          back.addEventListener('click', function (e) {
-            e.preventDefault();
-            showAI();
-            scrollToProjects();
-            history.replaceState(null, '', '#ai-projects');
-          });
-        }
-      }
-
-      // Wire up BOTH top-nav and big buttons using their hashes.
-      const aiLinks = document.querySelectorAll('a[href="#ai-projects"]');
-      const roboLinks = document.querySelectorAll('a[href="#rmc-projects"]');
-      const otherLinks = document.querySelectorAll('a[href="#other-projects"]');
-
-      aiLinks.forEach(a => a.addEventListener('click', function (e) {
-        // Allow normal hash behavior but ensure AI content is visible.
-        showAI();
-      }));
-
-      roboLinks.forEach(a => a.addEventListener('click', function (e) {
-        e.preventDefault();
-        showRobotics();
-        scrollToProjects();
-        history.replaceState(null, '', '#rmc-projects');
-      }));
-
-      otherLinks.forEach(a => a.addEventListener('click', function (e) {
-        e.preventDefault();
-        showOthers();
-        scrollToProjects();
-        history.replaceState(null, '', '#other-projects');
-      }));
-
-      // If someone lands directly on a hash, show the right view.
-      const hash = (location.hash || '').toLowerCase();
-      if (hash === '#rmc-projects') {
-        showRobotics();
-        scrollToProjects();
-      } else if (hash === '#other-projects') {
-        showOthers();
-        scrollToProjects();
-      } else {
-        if (title) {
-          title.textContent = 'Featured Projects';
-        }
-        grid.innerHTML = aiMarkup;
-      }
-    })();
-  </script>
 </body>
 </html>

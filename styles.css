@@ -184,7 +184,7 @@ main.container {
 }
 .grid-8 {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
   gap: 1.5rem;
   position: relative;
 }
@@ -592,4 +592,57 @@ main.container {
   border:1px solid rgba(125,255,200,.3);
   margin:.15rem .25rem .15rem 0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Keep shared layouts within the viewport on tablets and phones. */
+@media (max-width: 1100px) {
+  .nav.glass.container {
+    height: auto !important;
+    max-height: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .nav__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.25rem;
+  }
+}
+
+.profile-card,
+.contact-form {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  min-width: 0;
+}
+.project-page {
+  overflow-wrap: anywhere;
+}
+.project-page .two-col > *,
+.project-page .three-col > * {
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .profile-card,
+  .contact-form {
+    flex: none;
+    width: 100%;
+  }
+  .project-page {
+    margin: 2rem auto;
+    padding: 1.5rem 1rem;
+  }
+  .project-page .btn {
+    white-space: normal;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+  .tabs {
+    flex-wrap: wrap;
+  }
 }

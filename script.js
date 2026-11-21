@@ -1,110 +1,95 @@
-/* 1) Year auto-update */
-(() => {
-  document.querySelectorAll('#year').forEach(el => {
-    el.textContent = new Date().getFullYear();
-  });
-})();
+/* Shared page enhancements. */
+document.querySelectorAll('#year').forEach(el => {
+  el.textContent = new Date().getFullYear();
+});
 
-/* 2) VanillaTilt for cards (if included) */
-if (window.VanillaTilt) {
-  VanillaTilt.init(document.querySelectorAll('.tilt'), {
-    max: 10,
-    speed: 500,
-    glare: true,
-    'max-glare': 0.25,
-  });
+function initTilt(root = document) {
+  if (window.VanillaTilt) {
+    const cards = Array.from(root.querySelectorAll('.tilt')).filter(card => !card.vanillaTilt);
+    VanillaTilt.init(cards, {
+      max: 10, speed: 500, glare: true, 'max-glare': 0.25,
+    });
+  }
 }
 
-/* 3) Smooth scroll for anchors */
-document.querySelectorAll('a[href^="#"]').forEach(a =>
-  a.addEventListener('click', e => {
-    const tgt = document.getElementById(a.getAttribute('href').slice(1));
-    if (tgt) {
-      e.preventDefault();
-      tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  })
-);
+/* One controller owns category rendering, navigation and URL state. */
+(() => {
+  const grid = document.getElementById('projectGrid');
+  if (!grid) return;
 
-/* 4) Reveal-on-scroll */
-const observer = new IntersectionObserver(
-  entries => {
+  const title = document.getElementById('ai-projects');
+  const aiMarkup = grid.innerHTML;
+  const categories = {
+    '#ai-projects': { title: 'AI Projects', markup: aiMarkup },
+    '#rmc-projects': {
+      title: 'Robotics Projects',
+      markup: document.getElementById('roboticsCards').innerHTML,
+    },
+    '#other-projects': {
+      title: 'Other Projects',
+      markup: document.getElementById('otherCards').innerHTML,
+    },
+  };
+  const links = Array.from(document.querySelectorAll('a[href^="#"]'))
+    .filter(link => Object.hasOwn(categories, link.getAttribute('href')));
+
+  function renderCategory() {
+    const hash = location.hash.toLowerCase();
+    const category = categories[hash] || { title: 'Featured Projects', markup: aiMarkup };
+    grid.querySelectorAll('.tilt').forEach(card => card.vanillaTilt?.destroy());
+    grid.innerHTML = category.markup;
+    title.textContent = category.title;
+    links.forEach(link => {
+      const selected = link.getAttribute('href') === hash;
+      link.classList.toggle('active', selected);
+      if (selected) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+    const home = document.querySelector('.nav__links a[href="index.html"]');
+    if (home) home.classList.toggle('active', !Object.hasOwn(categories, hash));
+    initTilt(grid);
+  }
+
+  links.forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    const hash = link.getAttribute('href');
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    renderCategory();
+    title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
+  window.addEventListener('hashchange', renderCategory);
+  renderCategory();
+  if (Object.hasOwn(categories, location.hash.toLowerCase())) {
+    title.scrollIntoView({ block: 'start' });
+  }
+})();
+
+initTilt();
+
+/* Smooth scrolling for ordinary in-page links. */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.defaultPrevented) return;
+    const target = document.getElementById(link.getAttribute('href').slice(1));
+    if (target) {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* Reveal content, including a fallback for older browsers. */
+const revealElements = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       }
     });
-  },
-  { threshold: 0.15 }
-);
-document.querySelectorAll('.reveal, .card').forEach(el => observer.observe(el));
-
-/* 5) Home page: filter Featured Projects when AI is clicked (index.html only) */
-(() => {
-  // Run only on index page (root) and only if the featured projects grid exists
-  const grid = document.querySelector(".grid-8");
-  if (!grid) return;
-
-  const cards = Array.from(grid.querySelectorAll("a.card"));
-
-  // AI project order requested
-  const aiOrder = [
-    "templates/projects/project-1.html",
-    "templates/projects/project-3.html",
-    "templates/projects/project-7.html",
-    "templates/projects/project-5.html",
-    "templates/projects/project-2.html",
-    "templates/projects/project-13.html",
-    "templates/projects/project-revoice.html",
-    "templates/projects/project-nalmai.html",
-    "templates/projects/project-zerotrace.html"
-  ];
-
-  const showAll = () => {
-    cards.forEach(c => (c.style.display = ""));
-  };
-
-  const showAI = () => {
-    // Hide all first
-    cards.forEach(c => (c.style.display = "none"));
-
-    // Show + reorder the AI cards
-    aiOrder.forEach(path => {
-      const card = cards.find(c => {
-        // Match robustly (works even if you later change domain)
-        const href = c.getAttribute("href") || "";
-        return href.endsWith(path) || href.includes(path) || href.endsWith(path.split("/").pop());
-      });
-
-      if (card) {
-        card.style.display = "";
-        grid.appendChild(card); // move to end in correct order
-      }
-    });
-  };
-
-  // Attach to BOTH: AI button and navbar AI link
-  const aiBtn = document.querySelector(".ai-btn");
-  const navAi = document.querySelector('.nav__links a[href="#ai-projects"]');
-
-  if (aiBtn) {
-    aiBtn.addEventListener("click", () => {
-      showAI();
-      // let your smooth-scroll handler still run (no preventDefault here)
-    });
-  }
-
-  if (navAi) {
-    navAi.addEventListener("click", () => {
-      showAI();
-      // let your smooth-scroll handler still run (no preventDefault here)
-    });
-  }
-
-  // Optional: if you ever want a URL like index.html#ai-projects to auto-filter on load:
-  if (location.hash === "#ai-projects") showAI();
-
-  // NOTE: We intentionally do NOT change Robotics/Others behavior yet.
-  //       Everything else on your site remains untouched.
-})();
+  }, { threshold: 0.15 });
+  revealElements.forEach(el => observer.observe(el));
+} else {
+  revealElements.forEach(el => el.classList.add('in-view'));
+}
