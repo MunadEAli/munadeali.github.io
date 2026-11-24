@@ -121,6 +121,10 @@ window.portfolioTranslations = {
       "fr": "CureMD | LLM | Multi-Agent",
       "de": "CureMD | LLM | Multi-Agent"
     },
+    "HPI Agent": {
+      "fr": "Agent HPI",
+      "de": "HPI-Agent"
+    },
     "History of Previous Illness": {
       "fr": "Antécédents de maladie antérieure",
       "de": "Vorgeschichte früherer Krankheiten"

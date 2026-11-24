@@ -18,13 +18,24 @@ function initTilt(root = document) {
   if (!grid) return;
 
   const title = document.getElementById('ai-projects');
+  const experienceSection = document.getElementById('domainExperience');
+  const courseSection = document.getElementById('domainCourses');
+  const experienceGrid = document.getElementById('experienceGrid');
+  const courseGrid = document.getElementById('courseGrid');
   const featuredMarkup = grid.innerHTML;
   const categories = {
     '#featured-projects': { title: 'Featured Projects', markup: featuredMarkup },
-    '#ai-projects': { title: 'AI Projects', markup: document.getElementById('aiCards').innerHTML },
+    '#ai-projects': {
+      title: 'AI Projects',
+      markup: document.getElementById('aiCards').innerHTML,
+      experience: document.getElementById('aiExperienceCards').innerHTML,
+      courses: document.getElementById('aiCourseCards').innerHTML,
+    },
     '#rmc-projects': {
       title: 'Robotics Projects',
       markup: document.getElementById('roboticsCards').innerHTML,
+      experience: document.getElementById('roboticsExperienceCards').innerHTML,
+      courses: document.getElementById('roboticsCourseCards').innerHTML,
     },
     '#other-projects': {
       title: 'Other Projects',
@@ -38,8 +49,14 @@ function initTilt(root = document) {
     const hash = location.hash.toLowerCase();
     const selectedHash = Object.hasOwn(categories, hash) ? hash : '#featured-projects';
     const category = categories[selectedHash];
-    grid.querySelectorAll('.tilt').forEach(card => card.vanillaTilt?.destroy());
+    [grid, experienceGrid, courseGrid].forEach(container => {
+      container.querySelectorAll('.tilt').forEach(card => card.vanillaTilt?.destroy());
+    });
     grid.innerHTML = category.markup;
+    experienceGrid.innerHTML = category.experience || '';
+    courseGrid.innerHTML = category.courses || '';
+    experienceSection.hidden = !category.experience;
+    courseSection.hidden = !category.courses;
     grid.dataset.category = selectedHash.slice(1);
     title.textContent = category.title;
     links.forEach(link => {
@@ -51,7 +68,7 @@ function initTilt(root = document) {
     const home = document.querySelector('.nav__links a[href="index.html"]');
     if (home) home.classList.toggle('active', selectedHash === '#featured-projects');
     window.portfolioI18n?.translate(document);
-    initTilt(grid);
+    [grid, experienceGrid, courseGrid].forEach(initTilt);
   }
 
   links.forEach(link => link.addEventListener('click', event => {

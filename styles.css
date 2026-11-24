@@ -630,12 +630,52 @@ main.container {
 .language-switcher option { background: #1E1A3C; color: #D9E6F2; }
 .language-chevron { position: absolute; right: .8rem; pointer-events: none; }
 .language-bar + .nav.glass.container { margin-top: .5rem; }
-#projectGrid[data-category="featured-projects"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 900px) {
-  #projectGrid[data-category="featured-projects"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portfolio-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: .65rem;
+}
+.portfolio-grid .card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  aspect-ratio: auto;
+}
+.portfolio-grid .card::before {
+  position: relative;
+  grid-area: 1 / 1;
+  aspect-ratio: 4 / 5;
+}
+.portfolio-grid .card-image {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  margin: 0;
+}
+.portfolio-grid .card__info {
+  position: relative;
+  grid-area: 1 / 1;
+  min-width: 0;
+  padding: .6rem;
+  overflow-wrap: anywhere;
+}
+.portfolio-grid .card__info h3 {
+  font-size: .9rem;
+  line-height: 1.3;
+}
+.portfolio-grid .card__info span {
+  margin-top: .35rem;
+  line-height: 1.35;
+}
+@media (max-width: 1024px) {
+  .portfolio-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .portfolio-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
-  #projectGrid[data-category="featured-projects"] { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 440px) {
+  .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .sr-only {
   position: absolute;
