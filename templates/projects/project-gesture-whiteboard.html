@@ -23,6 +23,8 @@
     .table-wrap { overflow-x:auto; }
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -53,20 +55,20 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Hand Gesture Virtual Whiteboard</h1>
+      <h1 data-i18n-block="bfb4ae2658b51c3">Hand Gesture Virtual Whiteboard</h1>
       <a class="btn" href="https://github.com/MunadEAli/hand-gesture-virtual-whiteboard" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code
       </a>
     </div>
-    <p class="tags">Python · OpenCV · MediaPipe Hands · NumPy · Real-Time Computer Vision · One-Euro Filter</p>
+    <p class="tags" data-i18n-block="bf876ff5db33b0e">Python · OpenCV · MediaPipe Hands · NumPy · Real-Time Computer Vision · One-Euro Filter</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b3c8a032c432f38">
       <span class="metric">Personal Project</span>
       <span class="metric">Real-time, CPU only</span>
       <span class="metric">Mar 2026</span>
     </p>
 
-    <p>
+    <p data-i18n-block="b7425cb017b7556">
       A real-time whiteboard you control with <strong>hand gestures in front of a webcam</strong>, without a mouse, stylus or
       touchscreen. <strong>MediaPipe Hands</strong> tracks 21 keypoints per hand, the raised fingers are mapped to tools, and
       your index fingertip becomes the pen. Strokes can go over the live camera image or onto a plain
@@ -76,37 +78,37 @@
     <div class="two-col">
       <figure>
         <img src="../../assets/gesture-whiteboard/camera-mode.jpg" alt="Drawing 'Hi python' in the air over the live camera feed"/>
-        <figcaption>Camera mode: writing in the air with the index finger. The status panel shows FPS, the raw and stabilised gesture, and the current action.</figcaption>
+        <figcaption data-i18n-block="ba91bb0aff22b2a">Camera mode: writing in the air with the index finger. The status panel shows FPS, the raw and stabilised gesture, and the current action.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/gesture-whiteboard/whiteboard-mode.jpg" alt="Whiteboard mode with green and blue strokes on a white canvas"/>
-        <figcaption>Whiteboard mode, switched on by holding both hands open.</figcaption>
+        <figcaption data-i18n-block="ba33e5e397a1334">Whiteboard mode, switched on by holding both hands open.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ GESTURES ------------------ -->
-    <h2>1) Gesture Controls</h2>
+    <h2 data-i18n-block="bcf5fa9133f6447">1) Gesture Controls</h2>
     <div class="two-col">
       <div class="table-wrap">
         <table class="spec">
-          <thead><tr><th>Gesture</th><th>Finger state [T, I, M, R, P]</th><th>Action</th></tr></thead>
+          <thead><tr><th data-i18n-block="b909cc1f6e91052">Gesture</th><th data-i18n-block="be51b31c074067a">Finger state [T, I, M, R, P]</th><th data-i18n-block="b97c89a4d6630ad">Action</th></tr></thead>
           <tbody>
-            <tr><td>☝️ Index finger</td><td><code>[0,1,0,0,0]</code></td><td>Draw</td></tr>
-            <tr><td>✌️ Two fingers</td><td><code>[0,1,1,0,0]</code></td><td>Blue pen</td></tr>
-            <tr><td>🤟 Three fingers</td><td><code>[0,1,1,1,0]</code></td><td>Green pen</td></tr>
-            <tr><td>🖖 Four fingers</td><td><code>[0,1,1,1,1]</code></td><td>Highlighter</td></tr>
-            <tr><td>✋ Open hand</td><td><code>[1,1,1,1,1]</code></td><td>Whole-hand eraser</td></tr>
-            <tr><td>🙌 Both hands open</td><td>both <code>[1,1,1,1,1]</code>, held for 0.9&nbsp;s</td><td>Toggle whiteboard and clear</td></tr>
+            <tr><td data-i18n-block="bcc8f20096049d9">☝️ Index finger</td><td><code>[0,1,0,0,0]</code></td><td data-i18n-block="bbfa50c7a3838fc">Draw</td></tr>
+            <tr><td data-i18n-block="bc4e8d2176e0659">✌️ Two fingers</td><td><code>[0,1,1,0,0]</code></td><td data-i18n-block="b3339bd9e31ddf0">Blue pen</td></tr>
+            <tr><td data-i18n-block="bd06651b3e5a31d">🤟 Three fingers</td><td><code>[0,1,1,1,0]</code></td><td data-i18n-block="bb5a0fc88396065">Green pen</td></tr>
+            <tr><td data-i18n-block="b985f48c9d78d20">🖖 Four fingers</td><td><code>[0,1,1,1,1]</code></td><td data-i18n-block="b8cb3f79b49a5b4">Highlighter</td></tr>
+            <tr><td data-i18n-block="baac69c58ae54ea">✋ Open hand</td><td><code>[1,1,1,1,1]</code></td><td data-i18n-block="b3e5bf1a6b669a7">Whole-hand eraser</td></tr>
+            <tr><td data-i18n-block="bd37acd43d7c2f1">🙌 Both hands open</td><td>both <code>[1,1,1,1,1]</code>, held for 0.9&nbsp;s</td><td data-i18n-block="b341b44862913e2">Toggle whiteboard and clear</td></tr>
           </tbody>
         </table>
       </div>
       <div>
-        <p>
+        <p data-i18n-block="bd00fef7c9f0836">
           Each finger is "up" when its tip is above its middle joint. The thumb is the exception: it uses a sideways check that
           depends on which hand it is, because the image is mirrored. The five on/off finger states form a vector that is
           looked up in the gesture table.
         </p>
-        <p>
+        <p data-i18n-block="b350b2312aa1a34">
           The whiteboard toggle needs <strong>two open hands held apart</strong> for almost a second. That is a rare pose,
           so it is almost never triggered by accident, and it is kept from being read as the eraser gesture.
         </p>
@@ -114,44 +116,44 @@
     </div>
 
     <!-- ------------------ ENGINEERING ------------------ -->
-    <h2>2) Making It Feel Smooth</h2>
+    <h2 data-i18n-block="bc9d24a5ca0fdf5">2) Making It Feel Smooth</h2>
     <div class="two-col">
       <div>
-        <h3>Gesture stabilisation</h3>
+        <h3 data-i18n-block="be3bc543811efa7">Gesture stabilisation</h3>
         <ul class="list-tight">
-          <li>A gesture only takes effect after it has been seen for <strong>3 frames in a row</strong>, which removes flicker between tools.</li>
-          <li>Drawing waits through a <strong>short warm-up</strong> after switching to the draw gesture, so a half-open hand doesn't leave a stray stroke.</li>
-          <li><strong>Anti-mess entry:</strong> drawing only starts once the fingertip has been nearly still (under 12&nbsp;px per frame) for a few frames, and it stops the moment the gesture changes.</li>
-          <li>A latch makes each mode toggle fire only once per hold.</li>
+          <li data-i18n-block="b1449a4c4b9bfa3">A gesture only takes effect after it has been seen for <strong>3 frames in a row</strong>, which removes flicker between tools.</li>
+          <li data-i18n-block="b2e1dd035777345">Drawing waits through a <strong>short warm-up</strong> after switching to the draw gesture, so a half-open hand doesn't leave a stray stroke.</li>
+          <li data-i18n-block="bad795c5f9d6eb8"><strong>Anti-mess entry:</strong> drawing only starts once the fingertip has been nearly still (under 12&nbsp;px per frame) for a few frames, and it stops the moment the gesture changes.</li>
+          <li data-i18n-block="b65692a62eea25b">A latch makes each mode toggle fire only once per hold.</li>
         </ul>
       </div>
       <div>
-        <h3>Drawing engine</h3>
+        <h3 data-i18n-block="b4fc6f367f1c6f5">Drawing engine</h3>
         <ul class="list-tight">
-          <li>The fingertip is smoothed with a <strong>One-Euro filter</strong>, which smooths heavily when moving slowly and lightly when moving fast, so strokes are steady without lag.</li>
-          <li>Points between frames are <strong>interpolated</strong>, so fast strokes have no gaps.</li>
-          <li><strong>Separate layers</strong> for pen and highlighter, with the highlighter blended at 32% opacity.</li>
-          <li>The eraser uses the <strong>hand's bounding box</strong> and fills in between frames for fast clean-up.</li>
+          <li data-i18n-block="be146871a4b6979">The fingertip is smoothed with a <strong>One-Euro filter</strong>, which smooths heavily when moving slowly and lightly when moving fast, so strokes are steady without lag.</li>
+          <li data-i18n-block="b70d9950474eef1">Points between frames are <strong>interpolated</strong>, so fast strokes have no gaps.</li>
+          <li data-i18n-block="bbbd6ea106ed22d"><strong>Separate layers</strong> for pen and highlighter, with the highlighter blended at 32% opacity.</li>
+          <li data-i18n-block="bfdfca37b958b86">The eraser uses the <strong>hand's bounding box</strong> and fills in between frames for fast clean-up.</li>
         </ul>
       </div>
     </div>
     <div class="eq">One-Euro filter:  cutoff = f_min + β·|dx/dt|,   α = 1 / (1 + τ/Δt),   τ = 1 / (2π·cutoff)
                   f_min = 1.8 Hz,  β = 0.08  →  steady when slow, responsive when fast</div>
 
-    <h3>Running on a CPU</h3>
+    <h3 data-i18n-block="b6414662fd0953d">Running on a CPU</h3>
     <ul class="list-tight">
-      <li>The lightest MediaPipe hand model, run on frames scaled down to 75% before detection.</li>
-      <li>A 960×540 MJPG camera stream with a one-frame buffer to keep latency low.</li>
+      <li data-i18n-block="b3386637aac5d89">The lightest MediaPipe hand model, run on frames scaled down to 75% before detection.</li>
+      <li data-i18n-block="b9dd2ad8aaade29">A 960×540 MJPG camera stream with a one-frame buffer to keep latency low.</li>
       <li>The code is split into modules: <code>hand_tracker</code> (MediaPipe wrapper and hand drawing), <code>gesture_logic</code> (finger states, classification, stabiliser), <code>drawing_canvas</code> (filters, layers, eraser) and <code>app</code> (main loop and UI).</li>
     </ul>
 
     <!-- ------------------ DEMO ------------------ -->
-    <h2>Demo Video</h2>
+    <h2 data-i18n-block="bfce62284b358c3">Demo Video</h2>
     <figure>
       <video controls muted playsinline preload="metadata" poster="../../assets/gesture-whiteboard/camera-mode.jpg">
         <source src="../../assets/gesture-whiteboard/demo.mp4" type="video/mp4">
       </video>
-      <figcaption>Drawing with gestures, switching pens, highlighter and eraser, then toggling the whiteboard with both hands open.</figcaption>
+      <figcaption data-i18n-block="b37c5e8a95a6be1">Drawing with gestures, switching pens, highlighter and eraser, then toggling the whiteboard with both hands open.</figcaption>
     </figure>
   </article>
 

@@ -22,6 +22,8 @@
     .list-tight li{margin-bottom:.35rem;}
     .callout{padding:.9rem 1rem;border-radius:.6rem;background:rgba(255,213,79,.08);border:1px solid rgba(255,213,79,.3);}
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -53,72 +55,72 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>SmartDialer 2.0</h1>
+      <h1 data-i18n-block="bba4aeb799dde0d">SmartDialer 2.0</h1>
       <!-- Optional: add a repo/demo link -->
       <!-- <a class="btn" href="LINK_TO_REPO" target="_blank">View Demo ↗</a> -->
     </div>
 
-    <p class="tags">Multi-Agent System · LLM Automation · IVR Processing · Python · NLP</p>
+    <p class="tags" data-i18n-block="be7ee513903f255">Multi-Agent System · LLM Automation · IVR Processing · Python · NLP</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b0b27c3838d6cfd">
       <span class="metric">Industry Project</span>
       <span class="metric">CureMD</span>
       <span class="metric">AI Engineer</span>
     </p>
-    <p>
+    <p data-i18n-block="b45bc391d2838c4">
       <strong>SmartDialer 2.0</strong> is an intelligent <strong>multi-agent system (MAS)</strong> designed to automate interactions with insurance IVR systems.
       It uses <strong>LLM-based agents</strong> to interpret IVR queries, trigger appropriate responses, and dynamically adjust to new workflows — replacing manual intervention in legacy SmartDialer processes.
     </p>
 
-    <h2>1) Problem Statement</h2>
-    <p class="callout">
+    <h2 data-i18n-block="b4725924581bb99">1) Problem Statement</h2>
+    <p class="callout" data-i18n-block="b5606a32b3bde5d">
       Develop a system that automatically understands queries from dynamic <strong>insurance IVRs</strong> and responds with the required data using specialized LLM agents, minimizing human input.
     </p>
 
-    <h2>2) Objectives</h2>
+    <h2 data-i18n-block="b5ade4106c5dbcd">2) Objectives</h2>
     <ul class="list-tight">
-      <li>Enable LLMs to comprehend IVR prompts and extract actionable information.</li>
-      <li>Reduce manual configuration while adapting to frequent IVR menu changes.</li>
-      <li>Scale to handle multiple insurance providers and workflows seamlessly.</li>
+      <li data-i18n-block="bcaec3f048982db">Enable LLMs to comprehend IVR prompts and extract actionable information.</li>
+      <li data-i18n-block="bba5dedf45d489c">Reduce manual configuration while adapting to frequent IVR menu changes.</li>
+      <li data-i18n-block="b2530de0e31baa4">Scale to handle multiple insurance providers and workflows seamlessly.</li>
     </ul>
 
-    <h2>3) Methodology</h2>
-    <p>
+    <h2 data-i18n-block="b2106d2db48211e">3) Methodology</h2>
+    <p data-i18n-block="bd0d4af7eda2980">
       The project progressed from manual data extraction toward a fully autonomous LLM pipeline.
       We introduced <strong>task-specific agents</strong> to divide responsibilities:
     </p>
     <ul class="list-tight">
-      <li><strong>Agent 1:</strong> Extracts keywords and required data.</li>
-      <li><strong>Agent 2:</strong> Determines callback or response actions.</li>
-      <li><strong>Classifier Agent:</strong> Filters irrelevant inputs before processing.</li>
+      <li data-i18n-block="ba7c19c3c911e6d"><strong>Agent 1:</strong> Extracts keywords and required data.</li>
+      <li data-i18n-block="bf6197afcf79125"><strong>Agent 2:</strong> Determines callback or response actions.</li>
+      <li data-i18n-block="b5584170d0a36bd"><strong>Classifier Agent:</strong> Filters irrelevant inputs before processing.</li>
     </ul>
-    <p>
+    <p data-i18n-block="bc1580c8075996d">
       Testing on 100 call transcripts achieved <strong>96% accuracy</strong> in interpreting and responding to IVR prompts efficiently.
     </p>
 
     <figure>
       <img src="../../assets/cholesterol/smartdialer-arc.jpg" alt="SmartDialer 2.0 system architecture"/>
-      <figcaption>Architecture: LLM agents interact through a control layer with IVR APIs for automated responses.</figcaption>
+      <figcaption data-i18n-block="b8c6f713c3b766b">Architecture: LLM agents interact through a control layer with IVR APIs for automated responses.</figcaption>
     </figure>
 
-    <h2>4) Key Features</h2>
+    <h2 data-i18n-block="b61b20dd1281e25">4) Key Features</h2>
     <ul class="list-tight">
-      <li><strong>Dynamic Prompt Adjustment:</strong> Adapts to varying IVR sentence structures.</li>
-      <li><strong>Context Reconstruction:</strong> Adds missing context from noisy transcriptions.</li>
-      <li><strong>Scalable MAS Design:</strong> Each agent operates independently via message passing.</li>
-      <li><strong>Integrated Testing:</strong> Evaluated with live IVR call samples under server deployment.</li>
+      <li data-i18n-block="b3a65f73ccbc138"><strong>Dynamic Prompt Adjustment:</strong> Adapts to varying IVR sentence structures.</li>
+      <li data-i18n-block="bc2e323646cdc94"><strong>Context Reconstruction:</strong> Adds missing context from noisy transcriptions.</li>
+      <li data-i18n-block="bc192266e1147c9"><strong>Scalable MAS Design:</strong> Each agent operates independently via message passing.</li>
+      <li data-i18n-block="bed2553be232ac8"><strong>Integrated Testing:</strong> Evaluated with live IVR call samples under server deployment.</li>
     </ul>
 
-    <h2>5) Results & Performance</h2>
+    <h2 data-i18n-block="bcff60248ba6aa0">5) Results & Performance</h2>
     <ul class="list-tight">
-      <li>Achieved <strong>96% task accuracy</strong> across 100 real-world IVR interactions.</li>
-      <li>Reduced <strong>manual post-processing</strong> by 85% compared to earlier SmartDialer.</li>
-      <li>Improved <strong>response latency</strong> through task specialization and prompt optimization.</li>
+      <li data-i18n-block="bee6c9dd44f3336">Achieved <strong>96% task accuracy</strong> across 100 real-world IVR interactions.</li>
+      <li data-i18n-block="bcd02d9526ba1e7">Reduced <strong>manual post-processing</strong> by 85% compared to earlier SmartDialer.</li>
+      <li data-i18n-block="b1ca6319a297948">Improved <strong>response latency</strong> through task specialization and prompt optimization.</li>
     </ul>
 
-    <h2>Teammate</h2>
+    <h2 data-i18n-block="b39811b9aa01311">Teammate</h2>
     <ul class="list-tight">
-      <li>
+      <li data-i18n-block="b95dcf411523ac2">
         <a href="https://www.linkedin.com/in/msherazz/" target="_blank" rel="noopener"
            style="color:#ff8c00; font-weight:600;">
           Muhammad Sheraz

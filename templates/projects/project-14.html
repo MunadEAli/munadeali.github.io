@@ -26,6 +26,8 @@
     table { width:100%; border-collapse:collapse; overflow:hidden; border-radius:.6rem; }
     th, td { border:1px solid rgba(255,255,255,.15); padding:.55rem .6rem; text-align:left; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -45,11 +47,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Automatic Holiday Light Display</h1>
+      <h1 data-i18n-block="be4ad0d957d61ae">Automatic Holiday Light Display</h1>
     </div>
-    <p class="tags">Op-Amp Astable Multivibrator · 220 Vrms → 8–9 V DC · LM7809 · Full-Wave Bridge · RC Filter · Multisim · MATLAB</p>
+    <p class="tags" data-i18n-block="bcd51471b078129">Op-Amp Astable Multivibrator · 220 Vrms → 8–9 V DC · LM7809 · Full-Wave Bridge · RC Filter · Multisim · MATLAB</p>
 
-    <p>
+    <p data-i18n-block="b321481dd7af524">
       I designed an analogue <strong>holiday light sequencer</strong> that turns <strong>blue → green → red</strong> LED banks on and off in timed patterns.
       The system steps down and regulates mains AC, then drives three <strong>op-amp astable multivibrators</strong> whose RC constants set each color’s on/off timing.
     </p>
@@ -63,77 +65,77 @@
       <span class="metric">Staggered LED timing</span>
     </div>
 
-    <h2>Project Overview</h2>
-    <p>
+    <h2 data-i18n-block="b22f9526cf80534">Project Overview</h2>
+    <p data-i18n-block="b4b1a2adc73fddf">
       The front-end converts and smooths 220 Vrms/50 Hz to a low DC rail using a <strong>step-down transformer</strong>, a
       <strong>full-wave bridge rectifier</strong>, an <strong>LM7809</strong> linear regulator, and an <strong>RC filter</strong>. The logic stage uses
       three op-amp astables to generate square waves with different delays for the LED strings.
     </p>
 
-    <h2>Circuit Schematic</h2>
+    <h2 data-i18n-block="b4ada9391cff577">Circuit Schematic</h2>
     <figure>
       <img src="../../assets/cholesterol/CA-lights/full-schematic.jpg" alt="Complete circuit schematic: regulator + three astables"/>
-      <figcaption>Complete Multisim schematic.</figcaption>
+      <figcaption data-i18n-block="b0ff4784088ff6a">Complete Multisim schematic.</figcaption>
     </figure>
 
-    <h2>Power Stage (Voltage Regulation)</h2>
+    <h2 data-i18n-block="b1aa40716381215">Power Stage (Voltage Regulation)</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/CA-lights/regulator.jpg" alt="Voltage regulator block"/>
-        <figcaption>Transformer → Bridge → LM7809 → RC filter.</figcaption>
+        <figcaption data-i18n-block="b1b5bbb4c180758">Transformer → Bridge → LM7809 → RC filter.</figcaption>
       </figure>
       <ul class="list-tight">
-        <li><strong>Transformer:</strong> 10:1 step-down, ~22 Vac at secondary (Fig. 10–11).</li>
-        <li><strong>Bridge Rectifier:</strong> 4× diodes; ~1.4 V drop (two diodes in conduction each half-cycle).</li>
-        <li><strong>LM7809:</strong> fixed +9 V regulator before the RC smoothing stage (Fig. 14–15).</li>
-        <li><strong>RC Filter:</strong> reduces ripple; measured ~8.16 V DC at the output (Fig. 16–17).</li>
+        <li data-i18n-block="bf7ffd4a76e9013"><strong>Transformer:</strong> 10:1 step-down, ~22 Vac at secondary (Fig. 10–11).</li>
+        <li data-i18n-block="bad295a75a74ab2"><strong>Bridge Rectifier:</strong> 4× diodes; ~1.4 V drop (two diodes in conduction each half-cycle).</li>
+        <li data-i18n-block="b27d15f651a24c4"><strong>LM7809:</strong> fixed +9 V regulator before the RC smoothing stage (Fig. 14–15).</li>
+        <li data-i18n-block="b5a909dc61eaa16"><strong>RC Filter:</strong> reduces ripple; measured ~8.16 V DC at the output (Fig. 16–17).</li>
       </ul>
     </div>
 
-    <h2>LED Timing (Three Astable Multivibrators)</h2>
-    <p>
+    <h2 data-i18n-block="b366024fe1c6ef3">LED Timing (Three Astable Multivibrators)</h2>
+    <p data-i18n-block="b3ebde07dee5056">
       Each astable uses an op-amp with an RC timing network on the inverting input and a resistive divider (β = R₂/(R₁+R₂))
       on the non-inverting input. Different R values set different on/off windows for the three LED colors (Fig. 6).
     </p>
     <ul class="list-tight">
       <li><strong>Timing equation:</strong> <code>t = 2 R C · ln((1+β)/(1−β))</code>. With R₁=R₂ (β=0.5), <code>t = 2 R C · ln 3</code>.</li>
-      <li><strong>Calculated on-times (MATLAB):</strong> Blue ≈ <strong>0.264 s</strong>, Green ≈ <strong>0.330 s</strong>, Red ≈ <strong>0.396 s</strong> (Figs. 7–9).</li>
-      <li><strong>Sequence:</strong> Blue → Green → Red repeating, producing a clean holiday pattern (Figs. 18–20).</li>
+      <li data-i18n-block="b6a051620c039e4"><strong>Calculated on-times (MATLAB):</strong> Blue ≈ <strong>0.264 s</strong>, Green ≈ <strong>0.330 s</strong>, Red ≈ <strong>0.396 s</strong> (Figs. 7–9).</li>
+      <li data-i18n-block="b47d06c8ffe8a33"><strong>Sequence:</strong> Blue → Green → Red repeating, producing a clean holiday pattern (Figs. 18–20).</li>
     </ul>
 
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/CA-lights/schematic-astable.jpg" alt="Astable section with three op-amps driving LED banks"/>
-        <figcaption>Astable section driving blue/green/red LED banks.</figcaption>
+        <figcaption data-i18n-block="b31fa973dd8a539">Astable section driving blue/green/red LED banks.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/CA-lights/waves.jpg" alt="Scope views of the three square waves"/>
-        <figcaption>Scope traces of the three square waves.</figcaption>
+        <figcaption data-i18n-block="b629cc76208c9e6">Scope traces of the three square waves.</figcaption>
       </figure>
     </div>
 
-    <h2>Results</h2>
+    <h2 data-i18n-block="b612e12d29278b5">Results</h2>
     <table>
-      <thead><tr><th>Block</th><th>Reading</th><th>Reference</th></tr></thead>
+      <thead><tr><th data-i18n-block="b82dd2cdf36f943">Block</th><th data-i18n-block="bcffa2af0a3a67c">Reading</th><th data-i18n-block="bdb1c784524e1b5">Reference</th></tr></thead>
       <tbody>
-        <tr><td>Transformer</td><td>~21.9 V (AC)</td><td>Fig. 10–11 (p. 7)</td></tr>
-        <tr><td>Bridge Rectifier</td><td>~21.5 V (pulsating DC)</td><td>Fig. 12–13 (p. 8)</td></tr>
-        <tr><td>LM7809 Output</td><td>~9.47 V</td><td>Fig. 14–15 (p. 8)</td></tr>
-        <tr><td>RC Filter Output</td><td>~8.16 V (DC)</td><td>Fig. 16–17 (p. 8)</td></tr>
-        <tr><td>Astable Outputs</td><td>Three square waves with staggered periods</td><td>Fig. 18–20 (p. 9)</td></tr>
+        <tr><td data-i18n-block="b68c170c0011cf4">Transformer</td><td data-i18n-block="b8acbb6e2691048">~21.9 V (AC)</td><td data-i18n-block="b17ef66271053e3">Fig. 10–11 (p. 7)</td></tr>
+        <tr><td data-i18n-block="bdf20ff5a7de992">Bridge Rectifier</td><td data-i18n-block="b181bcbc7b4aba6">~21.5 V (pulsating DC)</td><td data-i18n-block="bfe736f6ef8c39a">Fig. 12–13 (p. 8)</td></tr>
+        <tr><td data-i18n-block="b9b1aa7617629fc">LM7809 Output</td><td>~9.47 V</td><td data-i18n-block="bf436b0189773c3">Fig. 14–15 (p. 8)</td></tr>
+        <tr><td data-i18n-block="b1f5d3dc7f9ff36">RC Filter Output</td><td data-i18n-block="bcab454c8b9a6bf">~8.16 V (DC)</td><td data-i18n-block="b53c6378c4674c9">Fig. 16–17 (p. 8)</td></tr>
+        <tr><td data-i18n-block="b80515c8effe235">Astable Outputs</td><td data-i18n-block="bc00ae52aedf102">Three square waves with staggered periods</td><td data-i18n-block="bc81180cd0e4642">Fig. 18–20 (p. 9)</td></tr>
       </tbody>
     </table>
-    <p>Measurements and waveforms were captured in <strong>Multisim</strong>, with timing verified from <strong>MATLAB</strong> calculations.</p>
+    <p data-i18n-block="b17870f5fa52968">Measurements and waveforms were captured in <strong>Multisim</strong>, with timing verified from <strong>MATLAB</strong> calculations.</p>
 
-    <h2>Discussion</h2>
-    <p>
+    <h2 data-i18n-block="b8fb937b602b4f2">Discussion</h2>
+    <p data-i18n-block="b99e763218f6e2a">
       This analogue approach kept the design low-cost and lab-friendly while demonstrating AC-to-DC regulation,
       ripple filtering, and RC-controlled timing. The charging/discharging behavior of the capacitor directly sets LED delays,
       and the method generalizes to other sequencers or flashers.
     </p>
 
-    <h2>Conclusion</h2>
-    <p>
+    <h2 data-i18n-block="be39262defe80a8">Conclusion</h2>
+    <p data-i18n-block="b9a3460179596de">
       Using a transformer, bridge, LM7809, and RC filter to produce a stable DC rail—and three op-amp astables with different RC values—
       we achieved a reliable <strong>blue → green → red</strong> holiday-light pattern with clean square-wave control.
     </p>

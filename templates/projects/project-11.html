@@ -24,6 +24,8 @@
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
     .tags { opacity:.85; margin-top:.25rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -43,11 +45,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Signal Wave Generation</h1>
+      <h1 data-i18n-block="b4fad38737ef253">Signal Wave Generation</h1>
     </div>
-    <p class="tags">Op-Amp 741 · Comparator + Integrator · Function Generation · Square · Triangle · Sawtooth</p>
+    <p class="tags" data-i18n-block="be5d4a378f7ff7e">Op-Amp 741 · Comparator + Integrator · Function Generation · Square · Triangle · Sawtooth</p>
 
-    <p>
+    <p data-i18n-block="b9ecb301d381913">
       Designed and simulated op-amp based generators for <strong>square</strong>, <strong>triangular</strong>, and <strong>sawtooth</strong>
       waveforms around the classic <strong>µA741</strong>, covering working principles, design equations, and scope results.
       Circuits and results summarized from my CEP report (figures &amp; plots on pp. 3–11). :contentReference[oaicite:1]{index=1}
@@ -62,33 +64,33 @@
       <span class="metric">Adjustable duty (sawtooth)</span>
     </div>
 
-    <h2>Overview</h2>
-    <p>
+    <h2 data-i18n-block="b0efc2e6be4c23b">Overview</h2>
+    <p data-i18n-block="b5e54cd695ddd45">
       Signals are generated using op-amp topologies: a <strong>relaxation oscillator</strong> for square, a
       <strong>comparator + integrator loop</strong> for triangle, and a <strong>biased integrator</strong> for sawtooth (duty skew via DC offset).
       Applications include control, test &amp; measurement, audio synthesis, and comms. :contentReference[oaicite:2]{index=2}
     </p>
 
-    <h2>Square Wave Generator</h2>
-    <p><em>Relaxation oscillator with RC timing and positive feedback (page 3).</em> :contentReference[oaicite:3]{index=3}</p>
+    <h2 data-i18n-block="b5efa94a34be7f8">Square Wave Generator</h2>
+    <p data-i18n-block="b9c910022255c0e"><em>Relaxation oscillator with RC timing and positive feedback (page 3).</em> :contentReference[oaicite:3]{index=3}</p>
     <ul class="list-tight">
-      <li><strong>Key idea:</strong> capacitor charges/discharges between ±V<sub>f</sub>; op-amp toggles at thresholds.</li>
+      <li data-i18n-block="b31f0a3745d1782"><strong>Key idea:</strong> capacitor charges/discharges between ±V<sub>f</sub>; op-amp toggles at thresholds.</li>
       <li><strong>Period:</strong> <code>T = 2RC ln((1+β)/(1−β))</code>, with <code>β = R2/(R1+R2)</code>; for <code>R1=R2</code>, <code>T ≈ 2RC ln 3</code>. :contentReference[oaicite:4]{index=4}</li>
       <li><strong>Design pick:</strong> <code>f≈0.1 kHz</code>, <code>C=0.1 µF</code>, <code>R1=R2=20 kΩ</code> → <code>R≈45 kΩ</code>. :contentReference[oaicite:5]{index=5}</li>
     </ul>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/waves/square-schematic.jpg" alt="Square wave generator schematic"/>
-        <figcaption>Square-wave op-amp oscillator schematic (p.4). :contentReference[oaicite:6]{index=6}</figcaption>
+        <figcaption data-i18n-block="bbdd74ad53fa5e5">Square-wave op-amp oscillator schematic (p.4). :contentReference[oaicite:6]{index=6}</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/waves/square-wave.jpg" alt="Square wave output scope"/>
-        <figcaption>Simulated square-wave output (p.4). :contentReference[oaicite:7]{index=7}</figcaption>
+        <figcaption data-i18n-block="b26fb038f429e1c">Simulated square-wave output (p.4). :contentReference[oaicite:7]{index=7}</figcaption>
       </figure>
     </div>
 
-    <h2>Triangular Wave Generator</h2>
-    <p><em>Comparator drives an integrator; the ramp flips when the comparator switches (page 6).</em> :contentReference[oaicite:8]{index=8}</p>
+    <h2 data-i18n-block="b743c0f5ad088b5">Triangular Wave Generator</h2>
+    <p data-i18n-block="bab030bd86e6ef6"><em>Comparator drives an integrator; the ramp flips when the comparator switches (page 6).</em> :contentReference[oaicite:8]{index=8}</p>
     <ul class="list-tight">
       <li><strong>Peak-to-peak:</strong> <code>V<sub>o(pp)</sub> = 2·(R2/R1)·V<sub>sat</sub></code>. With ±15 V rails, assume <code>V<sub>sat</sub>≈12 V</code>. :contentReference[oaicite:9]{index=9}</li>
       <li><strong>Frequency:</strong> <code>f = R1 / (4 R C R2)</code>. :contentReference[oaicite:10]{index=10}</li>
@@ -97,15 +99,15 @@
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/waves/tri-schematic.jpg" alt="Triangular wave generator schematic"/>
-        <figcaption>Triangle generator (comparator + integrator) schematic. </figcaption>
+        <figcaption data-i18n-block="b2ca52406e26158">Triangle generator (comparator + integrator) schematic. </figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/waves/tri-wave.jpg" alt="Triangular wave output scope"/>
-        <figcaption>Simulated triangular output. </figcaption>
+        <figcaption data-i18n-block="b7519eceeca5956">Simulated triangular output. </figcaption>
       </figure>
     </div>
 
-    <h2>Sawtooth Wave Generator</h2>
+    <h2 data-i18n-block="b291649e4026ef3">Sawtooth Wave Generator</h2>
     <p>
       <em>Triangle generator with a DC offset injected to the integrator to skew rise vs. fall times (pages 9–10).</em>
       Duty cycles vary as the bias moves toward ±V via a potentiometer (select <code>R3≈200 kΩ</code> pot). :contentReference[oaicite:14]{index=14}
@@ -113,23 +115,23 @@
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/waves/sawtooth-schematic.jpg" alt="Sawtooth wave generator schematic"/>
-        <figcaption>Sawtooth via biased integrator. </figcaption>
+        <figcaption data-i18n-block="bb1988e4cfda272">Sawtooth via biased integrator. </figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/waves/sawtooth-wave.jpg" alt="Sawtooth wave output scope"/>
-        <figcaption>Simulated sawtooth output. </figcaption>
+        <figcaption data-i18n-block="ba6b888f6627bff">Simulated sawtooth output. </figcaption>
       </figure>
     </div>
 
-    <h2>Applications</h2>
+    <h2 data-i18n-block="b76c74bd071dd73">Applications</h2>
     <ul class="list-tight">
-      <li><strong>Control systems:</strong> motor speed/position driving &amp; PWM references. :contentReference[oaicite:17]{index=17}</li>
-      <li><strong>Test &amp; measurement:</strong> reference waveforms for frequency/phase response. :contentReference[oaicite:18]{index=18}</li>
-      <li><strong>Oscillators &amp; audio synthesis:</strong> function generators, synth voices, filter shaping. :contentReference[oaicite:19]{index=19}</li>
+      <li data-i18n-block="bcbe95a984517ab"><strong>Control systems:</strong> motor speed/position driving &amp; PWM references. :contentReference[oaicite:17]{index=17}</li>
+      <li data-i18n-block="bda4052c83d3870"><strong>Test &amp; measurement:</strong> reference waveforms for frequency/phase response. :contentReference[oaicite:18]{index=18}</li>
+      <li data-i18n-block="b5e7ecc65407f36"><strong>Oscillators &amp; audio synthesis:</strong> function generators, synth voices, filter shaping. :contentReference[oaicite:19]{index=19}</li>
     </ul>
 
-    <h2>Conclusion</h2>
-    <p>
+    <h2 data-i18n-block="be39262defe80a8">Conclusion</h2>
+    <p data-i18n-block="b04be8f288a0001">
       Simple 741-based topologies reliably produce square, triangle, and sawtooth waves near 0.1 kHz with
       predictable amplitude and duty characteristics—useful across labs, controls, and audio. :contentReference[oaicite:20]{index=20}
     </p>

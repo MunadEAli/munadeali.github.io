@@ -19,6 +19,8 @@
     .callout { padding: .9rem 1rem; border-radius: .6rem; background: rgba(255, 213, 79, .08); border: 1px solid rgba(255, 213, 79, .3); }
     .list-tight li { margin-bottom:.35rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -49,110 +51,110 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Treatment Efficacy Model — Predicting Cholesterol Levels</h1>
+      <h1 data-i18n-block="b3620bf24c5e29a">Treatment Efficacy Model — Predicting Cholesterol Levels</h1>
       <!-- (Optional) put your slide link here -->
       <!-- <a class="btn" href="LINK-TO-YOUR-SLIDES" target="_blank">View Slides ↗</a> -->
     </div>
-    <p class="tags">Healthcare ML · EHR · Labs · Medications · Python · scikit-learn · XGBoost · CatBoost</p>
+    <p class="tags" data-i18n-block="bbc50d503f8c767">Healthcare ML · EHR · Labs · Medications · Python · scikit-learn · XGBoost · CatBoost</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b0b27c3838d6cfd">
       <span class="metric">Industry Project</span>
       <span class="metric">CureMD</span>
       <span class="metric">AI Engineer</span>
     </p>
 
-    <p>
+    <p data-i18n-block="b99f14e00b87bc5">
       We built a machine learning system that predicts a patient’s next <strong>cholesterol level</strong> (LDL, HDL, VLDL) and the expected <strong>change</strong> from baseline using <strong>prior lab results</strong>, <strong>medication exposure</strong> during the interval, and additional <strong>vitals, demographics, and diagnoses</strong>. The pipeline spans cohort creation, feature engineering (e.g., total medication dose over an active window), robust data cleaning, encoding/scaling strategies, and model evaluation with cross-validation.
     </p>
 
-    <h2>1) Problem Statement</h2>
-    <p class="callout">
+    <h2 data-i18n-block="b4725924581bb99">1) Problem Statement</h2>
+    <p class="callout" data-i18n-block="b409d1f292cd9bd">
       <strong>Goal:</strong> Predict a patient’s cholesterol at the second test (LDL/HDL/VLDL) and/or the <em>delta</em> between two tests, conditioning on the initial state and prescribed treatment during the interval.
     </p>
 
-    <h2>Objectives</h2>
+    <h2 data-i18n-block="b24d50592b70a99">Objectives</h2>
     <ul class="list-tight">
-      <li>Predict <strong>LDL / HDL / VLDL</strong> levels at the second test and the <strong>Δ change</strong> between two tests.</li>
-      <li>Incorporate <strong>medication exposure</strong> during the interval along with baseline labs, vitals, and demographics.</li>
-      <li>Build a robust, reproducible pipeline for <strong>cohort construction</strong>, <strong>feature engineering</strong>, and <strong>model evaluation</strong>.</li>
-      <li>Compare linear baselines vs. ensemble methods and report performance using <strong>cross-validation RMSE</strong>.</li>
+      <li data-i18n-block="bef31b0f344c0d7">Predict <strong>LDL / HDL / VLDL</strong> levels at the second test and the <strong>Δ change</strong> between two tests.</li>
+      <li data-i18n-block="bff648c898b0c9f">Incorporate <strong>medication exposure</strong> during the interval along with baseline labs, vitals, and demographics.</li>
+      <li data-i18n-block="bff829400e0a32a">Build a robust, reproducible pipeline for <strong>cohort construction</strong>, <strong>feature engineering</strong>, and <strong>model evaluation</strong>.</li>
+      <li data-i18n-block="b4e576e43955ea4">Compare linear baselines vs. ensemble methods and report performance using <strong>cross-validation RMSE</strong>.</li>
     </ul>
 
-    <h2>Project Timeline</h2>
+    <h2 data-i18n-block="b8f42135ac16da2">Project Timeline</h2>
     <figure>
       <img src="../../assets/cholesterol/project_timeline.png" alt="Project timeline"/>
-      <figcaption>High-level timeline of the project phases from data extraction to modeling and evaluation.</figcaption>
+      <figcaption data-i18n-block="b1b0a5518bd9f8e">High-level timeline of the project phases from data extraction to modeling and evaluation.</figcaption>
     </figure>
 
-    <h2>2) Clinical Intro (Why Cholesterol?)</h2>
-    <p>
+    <h2 data-i18n-block="bf9117726da6c74">2) Clinical Intro (Why Cholesterol?)</h2>
+    <p data-i18n-block="b9fcd8808d456c4">
       High <strong>LDL</strong> and <strong>VLDL</strong> are associated with atherosclerosis and elevated cardiovascular risk, while <strong>HDL</strong> helps remove cholesterol. Modeling expected response under treatment helps personalize care plans and set realistic clinical targets.
     </p>
 
     <!-- ------------------ DATA & COHORT ------------------ -->
-    <h2>3) Data & Cohort Construction</h2>
+    <h2 data-i18n-block="be3ecbf015ce7c8">3) Data & Cohort Construction</h2>
     <div class="two-col">
       <div>
-        <h3>Source & Filtering</h3>
+        <h3 data-i18n-block="b284248a4769845">Source & Filtering</h3>
         <ul class="list-tight">
-          <li>~<strong>635k patients</strong> initially across multiple lab types.</li>
-          <li>Kept patients with an <strong>active medication range</strong> and at least <strong>two lab tests</strong> (LDL/HDL/VLDL).</li>
-          <li>Selected lab pairs <strong>2–4 months</strong> apart (most prevalent window).</li>
+          <li data-i18n-block="b4eb35785b5ce48">~<strong>635k patients</strong> initially across multiple lab types.</li>
+          <li data-i18n-block="b1ac61b5c3518b7">Kept patients with an <strong>active medication range</strong> and at least <strong>two lab tests</strong> (LDL/HDL/VLDL).</li>
+          <li data-i18n-block="bcf388afa76f9e4">Selected lab pairs <strong>2–4 months</strong> apart (most prevalent window).</li>
         </ul>
         <p><em>Medication exposure:</em> computed <code>total_dose = dose_g × active_days</code> for meds active in the 2–4 month window (grouped by GPI code). Vitals were taken closest before the <em>second</em> lab.</p>
       </div>
       <div>
-        <h3>Feature Tables</h3>
+        <h3 data-i18n-block="babdfb6f16c3c32">Feature Tables</h3>
         <ul class="list-tight">
-          <li><strong>patient_features_table:</strong> vitals, demographics, diagnoses, prior labs.</li>
-          <li><strong>medications_table:</strong> wide matrix by grouped GPI columns for the active window; rare meds (&lt;1%) removed.</li>
+          <li data-i18n-block="b9c03f8108b3919"><strong>patient_features_table:</strong> vitals, demographics, diagnoses, prior labs.</li>
+          <li data-i18n-block="b2b56c50af46e30"><strong>medications_table:</strong> wide matrix by grouped GPI columns for the active window; rare meds (&lt;1%) removed.</li>
         </ul>
       </div>
     </div>
 
     <figure>
       <img src="../../assets/cholesterol/architecture.jpg" alt="End-to-end pipeline architecture"/>
-      <figcaption>Architecture: data retrieval → preprocessing → feature engineering → modeling → evaluation.</figcaption>
+      <figcaption data-i18n-block="b725b3d8f42bd0c">Architecture: data retrieval → preprocessing → feature engineering → modeling → evaluation.</figcaption>
     </figure>
 
     <figure>
       <img src="../../assets/cholesterol/data_fil.jpg" alt="Cohort filtering and selection flow"/>
-      <figcaption>Key cohort filters and the 2–4 month lab-pair window.</figcaption>
+      <figcaption data-i18n-block="b501edadd7d2c26">Key cohort filters and the 2–4 month lab-pair window.</figcaption>
     </figure>
 
     <!-- ------------------ CLEANING ------------------ -->
-    <h2>4) Data Challenges & Cleaning</h2>
+    <h2 data-i18n-block="b1c9142be0c3d81">4) Data Challenges & Cleaning</h2>
     <ul class="list-tight">
       <li><strong>Medication frequency anomalies</strong> (e.g., extreme frequencies) causing outliers in <code>total_dose</code> → corrected during cleaning.</li>
-      <li>Calculated <strong>nulls per column</strong>; imputed categorical (race, marital status) with “unknown”; dropped identifiers and columns with excessive missingness.</li>
-      <li><strong>Unit inconsistency</strong> in height → standardized and used <strong>BMI</strong> from height &amp; weight.</li>
-      <li>
+      <li data-i18n-block="b69b2fa0ab3418e">Calculated <strong>nulls per column</strong>; imputed categorical (race, marital status) with “unknown”; dropped identifiers and columns with excessive missingness.</li>
+      <li data-i18n-block="bd4fe9656d2bc18"><strong>Unit inconsistency</strong> in height → standardized and used <strong>BMI</strong> from height &amp; weight.</li>
+      <li data-i18n-block="be3a68c8c7b5e45">
         Plotted the <strong>BMI distribution</strong> and observed a clear <strong>two-normal (bimodal) pattern</strong>, indicating that some weight values were recorded in
         <strong>pounds</strong> and others in <strong>kilograms</strong>. This was addressed by applying a <strong>threshold</strong> and converting values above the threshold into kilograms.
       </li>
-      <li>Outliers treated via <strong>IQR</strong> capping or removal; applied mean/median imputation where appropriate.</li>
-      <li>After merging, dropped highly collinear features (<strong>corr &gt; 0.9</strong>).</li>
+      <li data-i18n-block="be6765349c1a492">Outliers treated via <strong>IQR</strong> capping or removal; applied mean/median imputation where appropriate.</li>
+      <li data-i18n-block="b606cff2c05b6db">After merging, dropped highly collinear features (<strong>corr &gt; 0.9</strong>).</li>
     </ul>
 
     <figure>
       <img src="../../assets/cholesterol/bmi_two_distributions.png" alt="BMI distribution showing two normal distributions"/>
-      <figcaption>BMI distribution revealed two normal distributions due to mixed weight units (pounds vs kilograms), fixed via threshold-based conversion.</figcaption>
+      <figcaption data-i18n-block="bbc2cab8bc191be">BMI distribution revealed two normal distributions due to mixed weight units (pounds vs kilograms), fixed via threshold-based conversion.</figcaption>
     </figure>
 
     <figure>
       <img src="../../assets/cholesterol/boxplot_bef.jpg" alt="Box plots illustrating outliers before cleaning"/>
-      <figcaption>Outlier inspection using box plots on key lab features.</figcaption>
+      <figcaption data-i18n-block="b755de9ad12d32c">Outlier inspection using box plots on key lab features.</figcaption>
     </figure>
     <figure>
       <img src="../../assets/cholesterol/boxplot_after.jpg" alt="Box plots illustrating outliers after cleaning"/>
-      <figcaption>Post-cleaning: outliers capped/removed, units changing, distributions more reasonable.</figcaption>
+      <figcaption data-i18n-block="bc8954c84d95583">Post-cleaning: outliers capped/removed, units changing, distributions more reasonable.</figcaption>
     </figure>
 
     <!-- ------------------ FEATURES ------------------ -->
-    <h2>5) Feature Engineering & Encoding</h2>
+    <h2 data-i18n-block="b3ce714bf255073">5) Feature Engineering & Encoding</h2>
     <ul class="list-tight">
-      <li><strong>Medications:</strong> Grouped by GPI; computed total dose over active window; removed very sparse meds.</li>
-      <li>
+      <li data-i18n-block="ba69f78265c4d0c"><strong>Medications:</strong> Grouped by GPI; computed total dose over active window; removed very sparse meds.</li>
+      <li data-i18n-block="bb9a6357b20e0f0">
         Due to a very large feature space (<strong>1000+ medication features</strong>) with many empty values, medications were handled using a hybrid strategy:
         cholesterol-related drugs (e.g., <strong>statins</strong>) and medications related to common comorbidities (e.g., <strong>diabetes</strong>, <strong>hypertension</strong>)
         were kept as-is, while remaining medications were grouped by frequency — the <strong>top 10</strong> most frequent were kept, and the rest were grouped using
@@ -160,18 +162,18 @@
         aggregated remaining medications into broader buckets (e.g., <strong>top-8</strong>, and so on), where moving “up” the GPI hierarchy transitions into more
         <strong>general medication categories</strong>. This reduced sparsity while preserving clinically meaningful signal.
       </li>
-      <li>
+      <li data-i18n-block="b7600b0836a5b0d">
         <strong>Diagnoses:</strong> ICD codes (typically <strong>1–4 digit</strong> groupings when truncated from ICD-10) were aggregated into clinically relevant categories
         (diagnosed before the second test) to capture comorbidity effects without exploding dimensionality.
       </li>
-      <li><strong>Binning:</strong> Age, BMI classes, MAP to capture non-linear effects.</li>
-      <li><strong>Encoding:</strong> One-hot for gender/race/marital (drop-first for linear models); tree models used full one-hot or ordinal as needed.</li>
-      <li><strong>Scaling:</strong> Standard/Min-Max/Robust scaling for non-tree models.</li>
+      <li data-i18n-block="ba948bb4c2b502b"><strong>Binning:</strong> Age, BMI classes, MAP to capture non-linear effects.</li>
+      <li data-i18n-block="b2642ae1b1df03a"><strong>Encoding:</strong> One-hot for gender/race/marital (drop-first for linear models); tree models used full one-hot or ordinal as needed.</li>
+      <li data-i18n-block="b332ecc88cb7417"><strong>Scaling:</strong> Standard/Min-Max/Robust scaling for non-tree models.</li>
     </ul>
 
     <!-- ------------------ TARGETS & EVAL ------------------ -->
-    <h2>6) Targets & Evaluation</h2>
-    <p>
+    <h2 data-i18n-block="b634628a931da1a">6) Targets & Evaluation</h2>
+    <p data-i18n-block="b27a4ecf71170e7">
       Two target definitions were modeled for each lipid:
       <span class="metric">Second Test (absolute)</span>
       <span class="metric">Change (Δ) between tests</span>
@@ -179,40 +181,40 @@
     </p>
 
     <!-- ------------------ MODELS ------------------ -->
-    <h2>7) Models</h2>
+    <h2 data-i18n-block="b8b6e65900d49c0">7) Models</h2>
     <ul class="list-tight">
-      <li><strong>Linear:</strong> Linear Regression, Lasso (L1), Ridge (L2), Elastic Net.</li>
-      <li><strong>Tree/Ensemble:</strong> Decision Tree, Random Forest, Gradient Boosting (XGBoost, LightGBM, CatBoost).</li>
-      <li><strong>Tuning:</strong> Hyperparameter search with cross-validation; addressed medication sparsity via grouping, regularization, and tree-based methods.</li>
+      <li data-i18n-block="b3e5b10356d9ed9"><strong>Linear:</strong> Linear Regression, Lasso (L1), Ridge (L2), Elastic Net.</li>
+      <li data-i18n-block="b946f2749b12b7b"><strong>Tree/Ensemble:</strong> Decision Tree, Random Forest, Gradient Boosting (XGBoost, LightGBM, CatBoost).</li>
+      <li data-i18n-block="bd05b67017fe30d"><strong>Tuning:</strong> Hyperparameter search with cross-validation; addressed medication sparsity via grouping, regularization, and tree-based methods.</li>
     </ul>
 
     <!-- ------------------ RESULTS ------------------ -->
-    <h2>8) Results (Mean CV RMSE)</h2>
+    <h2 data-i18n-block="b549e2342bd2f6a">8) Results (Mean CV RMSE)</h2>
     <div class="two-col">
       <div>
-        <h3>Random Forest</h3>
+        <h3 data-i18n-block="b0905d28ecb82e9">Random Forest</h3>
         <ul class="list-tight">
-          <li><strong>LDL:</strong> 2nd test <span class="metric">23.09</span> · Δ <span class="metric">19.44</span></li>
-          <li><strong>VLDL:</strong> 2nd test <span class="metric">7.93</span> · Δ <span class="metric">7.19</span></li>
-          <li><strong>HDL:</strong> 2nd test <span class="metric">7.07</span> · Δ <span class="metric">6.01</span></li>
+          <li data-i18n-block="bb466b3bb7625e4"><strong>LDL:</strong> 2nd test <span class="metric">23.09</span> · Δ <span class="metric">19.44</span></li>
+          <li data-i18n-block="bd18599d19e60ae"><strong>VLDL:</strong> 2nd test <span class="metric">7.93</span> · Δ <span class="metric">7.19</span></li>
+          <li data-i18n-block="b2afe87a0889437"><strong>HDL:</strong> 2nd test <span class="metric">7.07</span> · Δ <span class="metric">6.01</span></li>
         </ul>
       </div>
       <div>
-        <h3>Gradient Boosting</h3>
+        <h3 data-i18n-block="bee971e383adfce">Gradient Boosting</h3>
         <ul class="list-tight">
-          <li><strong>XGBoost (LDL/HDL/VLDL 2nd test):</strong> <span class="metric">23.04</span> · <span class="metric">7.02</span> · <span class="metric">7.94</span></li>
-          <li><strong>LightGBM (LDL):</strong> 2nd test <span class="metric">23.28</span> · Δ <span class="metric">19.41</span></li>
-          <li><strong>CatBoost (LDL):</strong> 2nd test <span class="metric">23.04</span> · Δ <span class="metric">19.41</span></li>
+          <li data-i18n-block="b17026f7900f5e9"><strong>XGBoost (LDL/HDL/VLDL 2nd test):</strong> <span class="metric">23.04</span> · <span class="metric">7.02</span> · <span class="metric">7.94</span></li>
+          <li data-i18n-block="be0f86393ef5e72"><strong>LightGBM (LDL):</strong> 2nd test <span class="metric">23.28</span> · Δ <span class="metric">19.41</span></li>
+          <li data-i18n-block="be51df4a4f5809b"><strong>CatBoost (LDL):</strong> 2nd test <span class="metric">23.04</span> · Δ <span class="metric">19.41</span></li>
         </ul>
       </div>
     </div>
 
     <div>
-      <h3>Linear Baseline</h3>
+      <h3 data-i18n-block="bdfef6ae16cba29">Linear Baseline</h3>
       <ul class="list-tight">
-        <li><strong>Elastic Net (LDL):</strong> 2nd test <span class="metric">26.13</span> · Δ <span class="metric">20.40</span></li>
+        <li data-i18n-block="b3f21bc3ce96515"><strong>Elastic Net (LDL):</strong> 2nd test <span class="metric">26.13</span> · Δ <span class="metric">20.40</span></li>
       </ul>
-      <p class="callout">
+      <p class="callout" data-i18n-block="bbf5e51e0adcfd1">
         Ensembles (RF/GBMs) consistently outperformed linear models for both absolute and Δ targets, indicating non-linear relationships across labs, meds, and clinical covariates.
       </p>
     </div>
@@ -220,22 +222,22 @@
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/feature_imp.jpg" alt="Feature importance for LDL model"/>
-        <figcaption>Feature importance: medication dose groups, baseline LDL, BMI, and age dominated.</figcaption>
+        <figcaption data-i18n-block="b101e0f193321af">Feature importance: medication dose groups, baseline LDL, BMI, and age dominated.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/shaply_ldl.jpg" alt="SHAP values for LDL XGBoost model"/>
-        <figcaption>SHAP summary (LDL, XGBoost): directionality and strength of key features.</figcaption>
+        <figcaption data-i18n-block="b7abb04a95bc8ce">SHAP summary (LDL, XGBoost): directionality and strength of key features.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ SOFTWARE DESIGN ------------------ -->
-    <h2>9) Software Design</h2>
-    <p>
+    <h2 data-i18n-block="b745d4627146b33">9) Software Design</h2>
+    <p data-i18n-block="b52862dc6ced9fb">
       The codebase follows a modular layout with clear boundaries: <strong>DataExtractor</strong>, <strong>DataPreprocessor</strong>, <strong>FeatureEngineer</strong>, and <strong>ModelTrainer</strong>, enabling reproducible experiments, easier debugging, and faster iteration.
     </p>
     <figure>
       <img src="../../assets/cholesterol/class_diagram.jpg" alt="Class diagram of the pipeline modules"/>
-      <figcaption>High-level class diagram illustrating responsibilities and data flow.</figcaption>
+      <figcaption data-i18n-block="b18557cd9d7b7bb">High-level class diagram illustrating responsibilities and data flow.</figcaption>
     </figure>
 
     <!-- <h2>Teammate</h2>

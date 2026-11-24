@@ -24,6 +24,8 @@
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
     .portrait { max-width: 360px; margin-inline: auto; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -54,32 +56,32 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Autonomous Fruit-Plucking Robot</h1>
+      <h1 data-i18n-block="b779c0a8e6ac7ee">Autonomous Fruit-Plucking Robot</h1>
       <a class="btn" href="https://github.com/MunadEAli/FruitPluckingRobot" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code
       </a>
     </div>
-    <p class="tags">Arduino Mega · Line Following · Junction Counting · TCS3200 Colour Sensors · Limit Switches · Servo Mechanism · H-Bridge Motor Control</p>
+    <p class="tags" data-i18n-block="b720028b185f8e7">Arduino Mega · Line Following · Junction Counting · TCS3200 Colour Sensors · Limit Switches · Servo Mechanism · H-Bridge Motor Control</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="bf1117e0cbdd4c6">
       <span class="metric">Autonomous Robot</span>
       <span class="metric">Embedded C++ (Arduino)</span>
     </p>
 
     <div class="two-col wide-left">
       <div>
-        <p>
+        <p data-i18n-block="b91d2ea8e21882f">
           An autonomous mobile robot that navigates an arena of black lines to reach "fruit trees" (poles holding orange balls
           as fruit). At each tree it lines itself up, checks the colour of the fruit on either side, collects it with
           <strong>servo-driven plucking arms</strong>, and returns to the main line to continue to the next tree.
         </p>
-        <p>
+        <p data-i18n-block="b9c8d2aafb7c9d5">
           It needs no external input during a run. Everything is driven by onboard sensing: a <strong>five-sensor IR array</strong>
           for line following, <strong>side IR sensors</strong> to centre on junctions, <strong>front limit switches</strong> to
           square up against the tree, and two <strong>TCS3200 colour sensors</strong> to check fruit ripeness.
         </p>
-        <h3>Run sequence</h3>
-        <p>
+        <h3 data-i18n-block="b8f5d717b6781ce">Run sequence</h3>
+        <p data-i18n-block="b838d02231ee0d9">
           <span class="metric">Follow line</span> → <span class="metric">Count junctions</span> →
           <span class="metric">Centre &amp; turn into tree branch</span> → <span class="metric">Drive to tree, square up</span> →
           <span class="metric">Check colour &amp; pluck</span> → <span class="metric">Reverse to junction</span> →
@@ -88,87 +90,87 @@
       </div>
       <figure class="portrait">
         <img src="../../assets/fruit-robot/at-tree.jpg" alt="The robot at a fruit tree with its plucking arm extended"/>
-        <figcaption>At a tree: the robot has squared up against it and its plucking arm is extended.</figcaption>
+        <figcaption data-i18n-block="b78cbffeea69ac2">At a tree: the robot has squared up against it and its plucking arm is extended.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ HARDWARE ------------------ -->
-    <h2>1) Hardware</h2>
+    <h2 data-i18n-block="b599562c53f40e8">1) Hardware</h2>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Component</th><th>Role</th></tr></thead>
+        <thead><tr><th data-i18n-block="bc92c529e0731c5">Component</th><th data-i18n-block="bc3f104d1365744">Role</th></tr></thead>
         <tbody>
-          <tr><td>Arduino Mega 2560</td><td>Main controller: all sensing, decision logic and actuation</td></tr>
-          <tr><td>Differential drive + H-bridge</td><td>Four PWM channels (forward/reverse per side) with a hardware enable line</td></tr>
-          <tr><td>5 × front IR line sensors</td><td>Line position (far-left, left, middle, right, far-right) and junction detection</td></tr>
-          <tr><td>2 × side IR sensors</td><td>Detect when the robot's axle is centred over a junction</td></tr>
-          <tr><td>2 × front limit switches</td><td>Contact with the tree, used to square the robot up against it</td></tr>
-          <tr><td>2 × TCS3200 colour sensors</td><td>One per side, to check the colour of the fruit</td></tr>
-          <tr><td>2 × servos</td><td>Open and close the plucking mechanism</td></tr>
+          <tr><td data-i18n-block="bf70419dd7fe8ef">Arduino Mega 2560</td><td data-i18n-block="b21832c4c032c26">Main controller: all sensing, decision logic and actuation</td></tr>
+          <tr><td data-i18n-block="bef59933637910f">Differential drive + H-bridge</td><td data-i18n-block="b3ec4e4f7f24818">Four PWM channels (forward/reverse per side) with a hardware enable line</td></tr>
+          <tr><td data-i18n-block="b82891b269ccc7a">5 × front IR line sensors</td><td data-i18n-block="b580de41fb3a421">Line position (far-left, left, middle, right, far-right) and junction detection</td></tr>
+          <tr><td data-i18n-block="b097b0fe393377b">2 × side IR sensors</td><td data-i18n-block="b4ab7c3e956a2d5">Detect when the robot's axle is centred over a junction</td></tr>
+          <tr><td data-i18n-block="b62841214548040">2 × front limit switches</td><td data-i18n-block="bfd9fd6ac28e2eb">Contact with the tree, used to square the robot up against it</td></tr>
+          <tr><td data-i18n-block="befde93d8a10513">2 × TCS3200 colour sensors</td><td data-i18n-block="b0eb86defa1741b">One per side, to check the colour of the fruit</td></tr>
+          <tr><td data-i18n-block="b6477de26eb07d4">2 × servos</td><td data-i18n-block="b6e96b7fa5456d3">Open and close the plucking mechanism</td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- ------------------ NAVIGATION ------------------ -->
-    <h2>2) Navigation</h2>
+    <h2 data-i18n-block="b84322890916e44">2) Navigation</h2>
     <div class="two-col">
       <div>
-        <h3>Line following</h3>
+        <h3 data-i18n-block="bde6bf01f766a85">Line following</h3>
         <ul class="list-tight">
-          <li>If the middle sensor loses the line, the robot steers back towards whichever side still sees it by driving the two wheels in opposite directions.</li>
-          <li>When the middle, a left and a right sensor all see black at once, it registers a <strong>junction</strong>.</li>
-          <li>Otherwise it drives straight, with separately tuned left and right motor speeds to compensate for the mismatch between the motors.</li>
+          <li data-i18n-block="bfd447f738805fe">If the middle sensor loses the line, the robot steers back towards whichever side still sees it by driving the two wheels in opposite directions.</li>
+          <li data-i18n-block="b53b1b1e679aa58">When the middle, a left and a right sensor all see black at once, it registers a <strong>junction</strong>.</li>
+          <li data-i18n-block="b6c6bb572a15f0e">Otherwise it drives straight, with separately tuned left and right motor speeds to compensate for the mismatch between the motors.</li>
         </ul>
       </div>
       <div>
-        <h3>Precise junction handling</h3>
+        <h3 data-i18n-block="bf58b4281e44584">Precise junction handling</h3>
         <ul class="list-tight">
-          <li><strong>Centring:</strong> after detecting a junction, the robot creeps forward, still correcting its line position, until <em>both</em> side sensors see the cross-line. This puts the axle exactly on the junction.</li>
-          <li><strong>Sensor-terminated turns:</strong> instead of timed turns, the robot spins in place until the middle sensor picks up the new line. This makes turns repeatable regardless of battery level.</li>
+          <li data-i18n-block="b4108a062f98b3b"><strong>Centring:</strong> after detecting a junction, the robot creeps forward, still correcting its line position, until <em>both</em> side sensors see the cross-line. This puts the axle exactly on the junction.</li>
+          <li data-i18n-block="b6a5c3bb752f9a7"><strong>Sensor-terminated turns:</strong> instead of timed turns, the robot spins in place until the middle sensor picks up the new line. This makes turns repeatable regardless of battery level.</li>
         </ul>
       </div>
     </div>
 
     <!-- ------------------ MISSION ------------------ -->
-    <h2>3) Mission Logic</h2>
-    <p>
+    <h2 data-i18n-block="be48c52d766669b">3) Mission Logic</h2>
+    <p data-i18n-block="b901c8c50315eed">
       The arena layout is encoded as a <strong>junction counter</strong>. At the junctions that lead to trees (the 2nd, 4th and
       final junctions), the robot runs a plucking routine:
     </p>
     <ol class="list-tight">
-      <li>Centre on the junction and turn into the branch leading to the tree.</li>
-      <li><strong>Approach the tree</strong>, line-following slowly until a front limit switch closes. If only one switch is pressed, it drives only the opposite wheel until the second switch closes, so the robot ends up square to the tree.</li>
-      <li><strong>Check the fruit colour</strong> on the left and right sides, then operate the servo plucking mechanism.</li>
-      <li><strong>Reverse</strong> with line correction until the side sensors find the junction again, then turn back onto the main line.</li>
+      <li data-i18n-block="b926def86c8b499">Centre on the junction and turn into the branch leading to the tree.</li>
+      <li data-i18n-block="b0cdee2abf86f1c"><strong>Approach the tree</strong>, line-following slowly until a front limit switch closes. If only one switch is pressed, it drives only the opposite wheel until the second switch closes, so the robot ends up square to the tree.</li>
+      <li data-i18n-block="bb5e04df0b24ba8"><strong>Check the fruit colour</strong> on the left and right sides, then operate the servo plucking mechanism.</li>
+      <li data-i18n-block="b4ba52629c1e4c0"><strong>Reverse</strong> with line correction until the side sensors find the junction again, then turn back onto the main line.</li>
     </ol>
-    <p>After the final tree, the robot reverses out of the branch and stops, ending the run.</p>
+    <p data-i18n-block="bb95f51ae63a5ef">After the final tree, the robot reverses out of the branch and stops, ending the run.</p>
 
     <!-- ------------------ COLOUR ------------------ -->
-    <h2>4) Fruit Detection</h2>
+    <h2 data-i18n-block="b718aef1011eec9">4) Fruit Detection</h2>
     <div class="two-col">
       <div>
-        <p>
+        <p data-i18n-block="b5fc98096b36b23">
           Each <strong>TCS3200</strong> colour sensor has red, green and blue photodiode filters that are selected with its S2/S3
           pins. Its output is a square wave whose pulse width gets shorter as that colour gets stronger. The robot sets the output
           to 20% frequency scaling, measures the pulse width under each filter, and compares red with green:
         </p>
         <div class="eq">for filter in (R, G, B):  set S2/S3  →  t[filter] = pulseIn(OUT, LOW)
 ripe  ⇔  t[R] &lt; t[G]      (red reflects more strongly than green)</div>
-        <p>Both sides are read at every tree, so the robot can judge the fruit on its left and right independently.</p>
+        <p data-i18n-block="b0699c8b2e48644">Both sides are read at every tree, so the robot can judge the fruit on its left and right independently.</p>
       </div>
       <figure class="portrait">
         <img src="../../assets/fruit-robot/collected.jpg" alt="The robot carrying collected orange fruit in its bin"/>
-        <figcaption>Later in the run, with collected fruit in the robot's bin.</figcaption>
+        <figcaption data-i18n-block="b1ecbfe5eacf112">Later in the run, with collected fruit in the robot's bin.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ DEMO ------------------ -->
-    <h2>Demo Video</h2>
+    <h2 data-i18n-block="bfce62284b358c3">Demo Video</h2>
     <figure class="portrait">
       <video controls muted playsinline preload="metadata" poster="../../assets/fruit-robot/at-tree.jpg">
         <source src="../../assets/fruit-robot/demo.mp4" type="video/mp4">
       </video>
-      <figcaption>A full autonomous run: line following, turning into each tree branch, plucking, and returning to the main line.</figcaption>
+      <figcaption data-i18n-block="b89083ca835ae02">A full autonomous run: line following, turning into each tree branch, plucking, and returning to the main line.</figcaption>
     </figure>
   </article>
 

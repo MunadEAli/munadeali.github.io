@@ -24,6 +24,8 @@
     .table-wrap { overflow-x:auto; }
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -54,11 +56,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>SCARA Manipulator on ESP32: Kinematics, Frames &amp; Pick-and-Place</h1>
+      <h1 data-i18n-block="b047de01759b2a3">SCARA Manipulator on ESP32: Kinematics, Frames &amp; Pick-and-Place</h1>
     </div>
-    <p class="tags">ESP32 · MicroPython · PCA9685 · I²C · Inverse Kinematics · Frame Transforms · 3D Printing · MG996R Servos</p>
+    <p class="tags" data-i18n-block="b3cc0bf251a5314">ESP32 · MicroPython · PCA9685 · I²C · Inverse Kinematics · Frame Transforms · 3D Printing · MG996R Servos</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b7aef624771facf">
       <span class="metric">Erasmus+ BIP</span>
       <span class="metric">International team of 3</span>
       <span class="metric">Jan 2026 · Besançon</span>
@@ -66,70 +68,70 @@
 
     <div class="two-col wide-left">
       <div>
-        <p>
+        <p data-i18n-block="bbaa75757bdd6ad">
           During the on-site week of the <a href="../education/course-bip.html" style="color: var(--clr-accent); font-weight:600;">Erasmus+ BIP
           on Control, Perception and Embedded Programming for Robotics</a>, our team built and programmed a
           <strong>SCARA-type manipulator</strong> in two intensive days to compete in graded robot challenges.
           The arm is built from <strong>3D-printed parts</strong> and <strong>MG996R servos</strong>, and is controlled by an
           <strong>ESP32</strong> driving a <strong>PCA9685</strong> 16-channel PWM servo driver over I²C.
         </p>
-        <p>
+        <p data-i18n-block="bb25763e2c9f707">
           The software turns Cartesian targets into servo pulse widths using a <strong>planar inverse-kinematics solver</strong>
           that checks whether each target is reachable. It supports a <strong>palletizing mode</strong> in which object positions are given in
           a rotated pallet frame and mapped to the robot base frame. A structured motion sequence coordinates the base,
           shoulder, vertical (Z) axis and gripper.
         </p>
-        <p class="callout">
+        <p class="callout" data-i18n-block="bc6348e5b5e7e6c">
           <strong>My role:</strong> I wrote the embedded software and implemented the kinematics: the IK solver, the
           frame transformations, the servo control layer and the pick-and-place sequence.
         </p>
       </div>
       <figure>
         <img src="../../assets/bip/bip-scara-robot.jpg" alt="The assembled 3D-printed SCARA manipulator with MG996R servos and claw gripper"/>
-        <figcaption>The assembled SCARA manipulator: 3D-printed links, MG996R servos, rack-and-pinion Z axis and claw gripper.</figcaption>
+        <figcaption data-i18n-block="b4e10bf67cf9c85">The assembled SCARA manipulator: 3D-printed links, MG996R servos, rack-and-pinion Z axis and claw gripper.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ CHALLENGES ------------------ -->
-    <h2>1) The Challenges</h2>
+    <h2 data-i18n-block="ba5dcfdbb4165c7">1) The Challenges</h2>
     <ul class="list-tight">
-      <li><strong>Challenge 1: pick-and-place.</strong> Move an object between two known coordinates in the robot's base frame.</li>
-      <li><strong>Challenge 2: palletizing.</strong> Object positions are given in a <em>local pallet frame</em> (position and yaw), revealed shortly before the run, and must be transformed into the base frame.</li>
-      <li><strong>Challenge 3: exploration (optional).</strong> Scan the workspace with a VL53L0X time-of-flight sensor to find the object, then pick it. This routine is in the codebase as an extension.</li>
+      <li data-i18n-block="b70336ae3ebd03f"><strong>Challenge 1: pick-and-place.</strong> Move an object between two known coordinates in the robot's base frame.</li>
+      <li data-i18n-block="b19cd2d729b9f13"><strong>Challenge 2: palletizing.</strong> Object positions are given in a <em>local pallet frame</em> (position and yaw), revealed shortly before the run, and must be transformed into the base frame.</li>
+      <li data-i18n-block="b896a1036c83e5d"><strong>Challenge 3: exploration (optional).</strong> Scan the workspace with a VL53L0X time-of-flight sensor to find the object, then pick it. This routine is in the codebase as an extension.</li>
     </ul>
 
     <!-- ------------------ HARDWARE ------------------ -->
-    <h2>2) Hardware &amp; Wiring</h2>
+    <h2 data-i18n-block="b5f970fe3e575cc">2) Hardware &amp; Wiring</h2>
     <figure class="white">
       <img src="../../assets/bip/bip-block-diagram.jpg" alt="System block diagram: ESP32, I2C bus, PCA9685, servos, optional VL53L0X and power"/>
-      <figcaption>System block diagram: the ESP32 drives the PCA9685 (and the optional VL53L0X) over I²C. The servos run from a separate 5&nbsp;V rail that shares a common ground.</figcaption>
+      <figcaption data-i18n-block="b5729b9af59d4fd">System block diagram: the ESP32 drives the PCA9685 (and the optional VL53L0X) over I²C. The servos run from a separate 5&nbsp;V rail that shares a common ground.</figcaption>
     </figure>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Signal / Module</th><th>Configuration</th></tr></thead>
+        <thead><tr><th data-i18n-block="b1f774e8c1a78a9">Signal / Module</th><th data-i18n-block="b754164850f38c1">Configuration</th></tr></thead>
         <tbody>
-          <tr><td>ESP32-WROOM-32 I²C</td><td>SDA → GPIO21, SCL → GPIO22, 100&nbsp;kHz (stable for both the servo driver and the ToF sensor)</td></tr>
-          <tr><td>PCA9685</td><td>I²C address 0x40, 50&nbsp;Hz servo PWM</td></tr>
-          <tr><td>Servo channels</td><td>Base: CH0 · Shoulder: CH1 · Prismatic Z: CH2 · Gripper: CH3</td></tr>
-          <tr><td>VL53L0X (optional)</td><td>I²C address 0x29, used for the Challenge 3 scan</td></tr>
-          <tr><td>Power</td><td>External 5&nbsp;V / 2&nbsp;A servo rail with a common ground to the ESP32 and PCA9685, which prevents I²C instability</td></tr>
+          <tr><td data-i18n-block="b36cc83c7cbc29f">ESP32-WROOM-32 I²C</td><td data-i18n-block="be30a510bf0b824">SDA → GPIO21, SCL → GPIO22, 100&nbsp;kHz (stable for both the servo driver and the ToF sensor)</td></tr>
+          <tr><td data-i18n-block="b34c5c7cd9655e6">PCA9685</td><td data-i18n-block="bfb7d7a9d5af652">I²C address 0x40, 50&nbsp;Hz servo PWM</td></tr>
+          <tr><td data-i18n-block="b9ea08905c83183">Servo channels</td><td data-i18n-block="b79bda265d2d1f9">Base: CH0 · Shoulder: CH1 · Prismatic Z: CH2 · Gripper: CH3</td></tr>
+          <tr><td data-i18n-block="b4e3c5ecee1341a">VL53L0X (optional)</td><td data-i18n-block="b35452662d875e9">I²C address 0x29, used for the Challenge 3 scan</td></tr>
+          <tr><td data-i18n-block="b7548ab52c3d1d5">Power</td><td data-i18n-block="b5b1526a1310527">External 5&nbsp;V / 2&nbsp;A servo rail with a common ground to the ESP32 and PCA9685, which prevents I²C instability</td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- ------------------ SOFTWARE ------------------ -->
-    <h2>3) Software Architecture</h2>
-    <p>The MicroPython program is organised in four layers:</p>
+    <h2 data-i18n-block="bc0c92f65a3b578">3) Software Architecture</h2>
+    <p data-i18n-block="bae203a1f7097b6">The MicroPython program is organised in four layers:</p>
     <ol class="list-tight">
-      <li><strong>Hardware drivers:</strong> I²C bus, PCA9685 and VL53L0X.</li>
-      <li><strong>Servo abstraction:</strong> joint angles are mapped linearly to pulse widths (500&nbsp;µs → −90°, 1500&nbsp;µs → 0°, 2500&nbsp;µs → +90°) and clamped to safe limits. At startup the program reads the PCA9685 output registers back to estimate the current pose, so the first move is consistent.</li>
-      <li><strong>Kinematics &amp; frames:</strong> inverse kinematics with a reachability check, and a 2D rigid transform for the pallet frame.</li>
-      <li><strong>Task sequences:</strong> pick-and-place, palletizing and the optional scan-and-pick routine, each selected with a mode switch.</li>
+      <li data-i18n-block="b85d7ec57814962"><strong>Hardware drivers:</strong> I²C bus, PCA9685 and VL53L0X.</li>
+      <li data-i18n-block="ba30ce04d00f45e"><strong>Servo abstraction:</strong> joint angles are mapped linearly to pulse widths (500&nbsp;µs → −90°, 1500&nbsp;µs → 0°, 2500&nbsp;µs → +90°) and clamped to safe limits. At startup the program reads the PCA9685 output registers back to estimate the current pose, so the first move is consistent.</li>
+      <li data-i18n-block="b5f590ec5c747fc"><strong>Kinematics &amp; frames:</strong> inverse kinematics with a reachability check, and a 2D rigid transform for the pallet frame.</li>
+      <li data-i18n-block="b9db4c8716f0454"><strong>Task sequences:</strong> pick-and-place, palletizing and the optional scan-and-pick routine, each selected with a mode switch.</li>
     </ol>
 
     <!-- ------------------ KINEMATICS ------------------ -->
-    <h2>4) Inverse Kinematics</h2>
-    <p>
+    <h2 data-i18n-block="b258cdd7046d1a9">4) Inverse Kinematics</h2>
+    <p data-i18n-block="bd265f816378cfd">
       The arm is modelled as a planar two-link manipulator with link lengths <strong>L1&nbsp;=&nbsp;8.5&nbsp;cm</strong>,
       <strong>L2&nbsp;=&nbsp;12.5&nbsp;cm</strong> and a base offset <strong>a1&nbsp;=&nbsp;4.0&nbsp;cm</strong>. For a target (x,&nbsp;y):
     </p>
@@ -137,22 +139,22 @@
 cos(q2) = (r² − L1² − L2²) / (2·L1·L2)
 q1 = atan( … ) with quadrant correction and the a1 offset
 reachable if  |L1 − L2 − a1| ≤ r ≤ a1 + L1 + L2</div>
-    <p>
+    <p data-i18n-block="bc9a27f92728788">
       The elbow sign depends on which half-plane the target is in, and the base angle uses the same sign logic as our
       CoppeliaSim simulation. Joint direction signs and zero offsets match the physical servo orientation.
       Unreachable targets raise an error, and any angle outside the ±90° servo range is reported before it would be clamped.
     </p>
 
     <!-- ------------------ FRAMES ------------------ -->
-    <h2>5) Palletizing with Coordinate Frames</h2>
+    <h2 data-i18n-block="b510a9dae4f356b">5) Palletizing with Coordinate Frames</h2>
     <div class="two-col">
       <div>
-        <p>For Challenge 2, each pick or place location is a pallet pose (F<sub>x</sub>, F<sub>y</sub>, θ) plus a point in that pallet's local frame:</p>
+        <p data-i18n-block="bce2171a4a3bb91">For Challenge 2, each pick or place location is a pallet pose (F<sub>x</sub>, F<sub>y</sub>, θ) plus a point in that pallet's local frame:</p>
         <div class="eq">p_base = t + R(θ) · p_local,   t = [Fx, Fy]ᵀ</div>
-        <p>A sign parameter handles both clockwise-positive and counter-clockwise-positive angle conventions.</p>
+        <p data-i18n-block="b1c3d0ec2f8b276">A sign parameter handles both clockwise-positive and counter-clockwise-positive angle conventions.</p>
       </div>
       <div>
-        <p>
+        <p data-i18n-block="bcc5184d4533cd3">
           To handle the short notice before each run, the pallet is divided into <strong>four sections</strong> with fixed local
           centres: (2,&nbsp;−2), (6,&nbsp;−2), (2,&nbsp;−6) and (6,&nbsp;−6)&nbsp;cm. The operator only needs to enter a pallet pose and a
           section ID to update the pick and place targets.
@@ -161,9 +163,9 @@ reachable if  |L1 − L2 − a1| ≤ r ≤ a1 + L1 + L2</div>
     </div>
 
     <!-- ------------------ SEQUENCE ------------------ -->
-    <h2>6) Motion Sequence</h2>
-    <p>Every task runs the same deterministic sequence of poses, with settling delays chosen for robustness and repeatability:</p>
-    <p>
+    <h2 data-i18n-block="b3a94501fb567d0">6) Motion Sequence</h2>
+    <p data-i18n-block="bba8a7f45d83b36">Every task runs the same deterministic sequence of poses, with settling delays chosen for robustness and repeatability:</p>
+    <p data-i18n-block="bdf1aee4568ee50">
       <span class="metric">Home</span> → <span class="metric">Open gripper</span> → <span class="metric">Pick lift-off</span> →
       <span class="metric">Down</span> → <span class="metric">Close gripper</span> → <span class="metric">Lift</span> →
       <span class="metric">Place lift-off</span> → <span class="metric">Down</span> → <span class="metric">Open gripper</span> →
@@ -171,31 +173,31 @@ reachable if  |L1 − L2 − a1| ≤ r ≤ a1 + L1 + L2</div>
     </p>
 
     <!-- ------------------ VERIFICATION ------------------ -->
-    <h2>7) Verification &amp; Limitations</h2>
+    <h2 data-i18n-block="b7664db9a117873">7) Verification &amp; Limitations</h2>
     <div class="two-col">
       <div>
-        <h3>Verification</h3>
+        <h3 data-i18n-block="b03128bed906297">Verification</h3>
         <ul class="list-tight">
-          <li><strong>Electrical:</strong> the PCA9685 was detected at 0x40 on the I²C bus, the 50&nbsp;Hz PWM was stable, and the common ground and external supply were checked.</li>
-          <li><strong>Kinematics:</strong> the program printed the joint angles and pulse widths for every target, with warnings for out-of-range angles.</li>
-          <li><strong>Frames:</strong> a debug printout confirmed that each pallet section and frame pose mapped to the correct base-frame target.</li>
-          <li><strong>Behaviour:</strong> the full approach → grasp → lift → transfer → release → return sequence ran from the home pose.</li>
+          <li data-i18n-block="b4fe87bcf44bb91"><strong>Electrical:</strong> the PCA9685 was detected at 0x40 on the I²C bus, the 50&nbsp;Hz PWM was stable, and the common ground and external supply were checked.</li>
+          <li data-i18n-block="bb5599047d9585a"><strong>Kinematics:</strong> the program printed the joint angles and pulse widths for every target, with warnings for out-of-range angles.</li>
+          <li data-i18n-block="b5f16a1ece8f040"><strong>Frames:</strong> a debug printout confirmed that each pallet section and frame pose mapped to the correct base-frame target.</li>
+          <li data-i18n-block="b6d6aa37860f8b6"><strong>Behaviour:</strong> the full approach → grasp → lift → transfer → release → return sequence ran from the home pose.</li>
         </ul>
       </div>
       <div>
-        <h3>Limitations &amp; next steps</h3>
+        <h3 data-i18n-block="bae6a49344f1487">Limitations &amp; next steps</h3>
         <ul class="list-tight">
-          <li>Motion is open-loop with fixed delays, so accuracy depends on servo repeatability, backlash and calibration.</li>
-          <li>The linear angle-to-pulse mapping assumes the servos are linear across their full range. Per-servo calibration would improve absolute accuracy.</li>
-          <li>High-load moves can make the supply voltage dip. A stronger 5&nbsp;V source or extra capacitance on the servo rail would help.</li>
-          <li>Next: smoother trajectory generation and finishing the ToF-based workspace exploration.</li>
+          <li data-i18n-block="b07ff9486d9cbd8">Motion is open-loop with fixed delays, so accuracy depends on servo repeatability, backlash and calibration.</li>
+          <li data-i18n-block="ba97c297f19c44c">The linear angle-to-pulse mapping assumes the servos are linear across their full range. Per-servo calibration would improve absolute accuracy.</li>
+          <li data-i18n-block="b82738e933454c8">High-load moves can make the supply voltage dip. A stronger 5&nbsp;V source or extra capacitance on the servo rail would help.</li>
+          <li data-i18n-block="ba4536e297c910c">Next: smoother trajectory generation and finishing the ToF-based workspace exploration.</li>
         </ul>
       </div>
     </div>
 
     <figure style="max-width:420px; margin-inline:auto;">
       <img src="../../assets/bip/bip-assembly.jpg" alt="Assembling the SCARA manipulator during the BIP on-site week"/>
-      <figcaption>Assembly and integration during the on-site week.</figcaption>
+      <figcaption data-i18n-block="bcd6e70a2f9447a">Assembly and integration during the on-site week.</figcaption>
     </figure>
   </article>
 

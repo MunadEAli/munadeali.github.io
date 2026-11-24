@@ -88,6 +88,8 @@
 
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 
 <body>
@@ -121,28 +123,28 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>HPI Agent — History of Present Illness</h1>
+      <h1 data-i18n-block="bf0d81c1fded105">HPI Agent — History of Present Illness</h1>
       <!-- Optional: add a repo/demo link -->
       <!-- <a class="btn" href="YOUR_DEMO_OR_REPO_LINK" target="_blank" rel="noopener">View Repo ↗</a> -->
     </div>
 
-    <p class="tags">Clinical NLP · LLM Multi-Agent · SOAP Notes · OLDCARTS · RAG · Prompt Engineering · MongoDB</p>
+    <p class="tags" data-i18n-block="b6fdec25e07519c">Clinical NLP · LLM Multi-Agent · SOAP Notes · OLDCARTS · RAG · Prompt Engineering · MongoDB</p>
 
     <!-- Per your instruction -->
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b0b27c3838d6cfd">
       <span class="metric">Industry Project</span>
       <span class="metric">CureMD</span>
       <span class="metric">AI Engineer</span>
     </p>
 
-    <p>
+    <p data-i18n-block="bb6a4d048d614e5">
       <strong>HPI Agent</strong> automates the <em>Subjective</em> documentation workflow by converting a patient’s
       <strong>Chief Complaint</strong> into a complete, complaint-relevant <strong>History of Present Illness (HPI)</strong>.
       It uses a <strong>multi-agent LLM architecture</strong> to stay on-topic, reduce redundancy using prior notes,
       and produce a paste-ready output for SOAP note documentation.
     </p>
 
-    <h2>1) Clinical Background (SOAP)</h2>
+    <h2 data-i18n-block="b61559b745bdf72">1) Clinical Background (SOAP)</h2>
     <div class="callout">
       <div class="soap-row" style="margin-bottom:.5rem;">
         <span class="soap-tag">S · Subjective</span>
@@ -150,121 +152,121 @@
         <span class="soap-tag">A · Assessment</span>
         <span class="soap-tag">P · Plan</span>
       </div>
-      <p style="margin:0;">
+      <p style="margin:0;" data-i18n-block="b962f4feb1bda70">
         This project focuses on automating <strong>Subjective</strong>, especially HPI creation via guided follow-up questions after the chief complaint.
       </p>
     </div>
 
-    <h2>2) Problem & Goal</h2>
-    <p class="callout">
+    <h2 data-i18n-block="b50867a1ad38eeb">2) Problem & Goal</h2>
+    <p class="callout" data-i18n-block="b6701b9236f27bf">
       <strong>Goal:</strong> Given a patient’s chief complaint, ask relevant follow-up questions and generate a complete, accurate,
       and context-aware HPI suitable for the Subjective section of a SOAP note.
     </p>
 
-    <h2>3) OLDCARTS (Explained)</h2>
-    <p>
+    <h2 data-i18n-block="befb8df162444f3">3) OLDCARTS (Explained)</h2>
+    <p data-i18n-block="b3cb1cbf31b7fb3">
       The questioning follows <strong>OLDCARTS</strong>, a standard HPI framework:
       <strong>O</strong>nset, <strong>L</strong>ocation, <strong>D</strong>uration, <strong>C</strong>haracteristics,
       <strong>A</strong>ggravating factors, <strong>R</strong>elieving factors, <strong>T</strong>iming/Trajectory, <strong>S</strong>everity.
       The system adapts OLDCARTS by complaint/system (ENT, CV, Resp, GI, Neuro, etc.) so it asks the right rule-outs and red flags.
     </p>
 
-    <h2>4) Architecture (Guidelines + LLM Multi-Agent)</h2>
-    <p>
+    <h2 data-i18n-block="bfe2684f8e203b6">4) Architecture (Guidelines + LLM Multi-Agent)</h2>
+    <p data-i18n-block="b4449083c763a5a">
       We moved from rule-based and single-agent LLM approaches to a <strong>guidelines + LLM multi-agent</strong> system for better
       relevance, completeness, and handling of edge cases.
     </p>
 
     <figure>
       <img src="../../assets/hpi/hpi_architecture.png" alt="HPI Agent architecture: multi-agent flow, RAG knowledge base, MongoDB state, and final note generation"/>
-      <figcaption>
+      <figcaption data-i18n-block="bfd6c83c23d992f">
         Multi-agent flow: prior-note summarization → complaint categorization + guideline retrieval (RAG) → adaptive questioning →
         guardrails/compliance → structured HPI output.
       </figcaption>
     </figure>
 
-    <h2>5) Key Agents (What Each Does)</h2>
+    <h2 data-i18n-block="bd068cb0c1b1e43">5) Key Agents (What Each Does)</h2>
 
     <div class="two-col">
       <div>
-        <h3>5.1 Summarizing Agent (Previous Note)</h3>
+        <h3 data-i18n-block="b4a8d8b239e2e11">5.1 Summarizing Agent (Previous Note)</h3>
         <ul class="list-tight">
-          <li>Summarizes the previous visit’s Subjective content and extracts reusable “known facts”.</li>
-          <li>Prevents re-asking information already documented (e.g., allergies, family history, baseline context).</li>
-          <li>Feeds a compact context summary into downstream agents to keep the interview efficient.</li>
+          <li data-i18n-block="befbd570582e17d">Summarizes the previous visit’s Subjective content and extracts reusable “known facts”.</li>
+          <li data-i18n-block="b504e794a3f1978">Prevents re-asking information already documented (e.g., allergies, family history, baseline context).</li>
+          <li data-i18n-block="ba02ec2f4c2d19d">Feeds a compact context summary into downstream agents to keep the interview efficient.</li>
         </ul>
       </div>
 
       <div>
-        <h3>5.2 Categorizing Agent (Complaint → System)</h3>
+        <h3 data-i18n-block="b89aef355d0ef66">5.2 Categorizing Agent (Complaint → System)</h3>
         <ul class="list-tight">
-          <li>Classifies the chief complaint into one or more clinical systems (ENT, Resp, CV, GI, Neuro, etc.).</li>
-          <li>Routes the conversation to the correct guideline bundle and question strategy.</li>
-          <li>Improves relevance and reduces “random” questions unrelated to the complaint.</li>
+          <li data-i18n-block="b4a56447fe8cc70">Classifies the chief complaint into one or more clinical systems (ENT, Resp, CV, GI, Neuro, etc.).</li>
+          <li data-i18n-block="b0ba0cc2840138e">Routes the conversation to the correct guideline bundle and question strategy.</li>
+          <li data-i18n-block="bb7648b67acde26">Improves relevance and reduces “random” questions unrelated to the complaint.</li>
         </ul>
       </div>
     </div>
 
     <div class="two-col">
       <div>
-        <h3>5.3 RAG Guideline Retrieval (Clinical Books / Macleod’s)</h3>
+        <h3 data-i18n-block="bc4023ec0d228b3">5.3 RAG Guideline Retrieval (Clinical Books / Macleod’s)</h3>
         <ul class="list-tight">
-          <li><strong>Macleod’s</strong> is one of the clinical medical books used to extract system-specific guideline content.</li>
-          <li>Those guidelines are <strong>shortened and retrieved via RAG</strong> (system-based chunks) and then injected into prompts.</li>
-          <li>The overall strategy is a <strong>hybrid prompting</strong> approach: guidelines + structured prompting + few-shot anchors.</li>
+          <li data-i18n-block="b3e9497e0a7ce78"><strong>Macleod’s</strong> is one of the clinical medical books used to extract system-specific guideline content.</li>
+          <li data-i18n-block="b6c1afb208ea5a0">Those guidelines are <strong>shortened and retrieved via RAG</strong> (system-based chunks) and then injected into prompts.</li>
+          <li data-i18n-block="b4e3c18ed04aeb4">The overall strategy is a <strong>hybrid prompting</strong> approach: guidelines + structured prompting + few-shot anchors.</li>
         </ul>
       </div>
 
       <div>
-        <h3>5.4 Context Checking Agent (Guardrail)</h3>
+        <h3 data-i18n-block="bef603800eac047">5.4 Context Checking Agent (Guardrail)</h3>
         <ul class="list-tight">
-          <li>Checks each step for topical consistency and prevents drift.</li>
-          <li>Ensures the next question aligns with the complaint category + already collected info.</li>
-          <li>Acts as a safeguard against redundant or irrelevant follow-ups.</li>
+          <li data-i18n-block="b50341b0ecbd83b">Checks each step for topical consistency and prevents drift.</li>
+          <li data-i18n-block="b05f3d3785c3e7d">Ensures the next question aligns with the complaint category + already collected info.</li>
+          <li data-i18n-block="bea7f63ec5f49e7">Acts as a safeguard against redundant or irrelevant follow-ups.</li>
         </ul>
       </div>
     </div>
 
     <div class="two-col">
       <div>
-        <h3>5.5 Questioning Agent (Adaptive OLDCARTS)</h3>
+        <h3 data-i18n-block="b9e2d6622ae08d6">5.5 Questioning Agent (Adaptive OLDCARTS)</h3>
         <ul class="list-tight">
-          <li>Asks focused follow-ups based on OLDCARTS + retrieved guidelines.</li>
-          <li>Extracts normalized slots (onset, duration, severity, triggers, associated symptoms).</li>
-          <li>Maintains patient-friendly phrasing while staying concise.</li>
+          <li data-i18n-block="b1173c59b44f65a">Asks focused follow-ups based on OLDCARTS + retrieved guidelines.</li>
+          <li data-i18n-block="b4bcffd72b02cac">Extracts normalized slots (onset, duration, severity, triggers, associated symptoms).</li>
+          <li data-i18n-block="b67a8fca26678ef">Maintains patient-friendly phrasing while staying concise.</li>
         </ul>
       </div>
 
       <div>
-        <h3>5.6 Compliance Agent + Note Generator</h3>
+        <h3 data-i18n-block="bc0ba8ed5805f1c">5.6 Compliance Agent + Note Generator</h3>
         <ul class="list-tight">
-          <li><strong>Compliance:</strong> checks sufficiency (OLDCARTS coverage, key negatives) and requests missing details.</li>
-          <li><strong>Generator:</strong> produces structured HPI paragraphs suitable for the SOAP note Subjective section.</li>
-          <li>Designed to be paste-ready and consistent across complaint types.</li>
+          <li data-i18n-block="bc7095b4a2492dd"><strong>Compliance:</strong> checks sufficiency (OLDCARTS coverage, key negatives) and requests missing details.</li>
+          <li data-i18n-block="b5e0584c990c957"><strong>Generator:</strong> produces structured HPI paragraphs suitable for the SOAP note Subjective section.</li>
+          <li data-i18n-block="baf7200488d1d78">Designed to be paste-ready and consistent across complaint types.</li>
         </ul>
       </div>
     </div>
 
-    <h2>6) Data & Record Keeping</h2>
+    <h2 data-i18n-block="b878ed0d9ff9d9a">6) Data & Record Keeping</h2>
     <div class="two-col">
       <div>
-        <h3>Prompting</h3>
+        <h3 data-i18n-block="b4d970e24b22fc0">Prompting</h3>
         <ul class="list-tight">
-          <li>Instruction + few-shot examples per system to anchor tone and format.</li>
-          <li>Schema-like slot extraction during interaction; natural prose only at final render.</li>
-          <li>Complaint-aware constraints to reduce irrelevant questioning.</li>
+          <li data-i18n-block="b6af8cba3b59f5e">Instruction + few-shot examples per system to anchor tone and format.</li>
+          <li data-i18n-block="b6553e5fc725d49">Schema-like slot extraction during interaction; natural prose only at final render.</li>
+          <li data-i18n-block="b83b1c20af73443">Complaint-aware constraints to reduce irrelevant questioning.</li>
         </ul>
       </div>
       <div>
-        <h3>MongoDB</h3>
+        <h3 data-i18n-block="bf0c6acff24bc79">MongoDB</h3>
         <ul class="list-tight">
-          <li>Stores conversation turns, extracted slots, and final generated note.</li>
-          <li>Stores prior-visit subjective summary to enable continuity across encounters.</li>
+          <li data-i18n-block="b69d7742efa2483">Stores conversation turns, extracted slots, and final generated note.</li>
+          <li data-i18n-block="b3df6dfac8b8097">Stores prior-visit subjective summary to enable continuity across encounters.</li>
         </ul>
       </div>
     </div>
 
-    <h2>7) Sample Retrieved Guidelines (RAG → Prompt Injection)</h2>
+    <h2 data-i18n-block="b3d8dc3eeb56a8b">7) Sample Retrieved Guidelines (RAG → Prompt Injection)</h2>
     <div class="guideline-box">
       <div class="meta">
         <span class="metric">System: ENT</span>
@@ -297,27 +299,27 @@ Output expectation:
 - Convert collected slots into concise HPI narrative + key positives/negatives.</pre>
     </div>
 
-    <h2>8) Evaluation </h2>
-    <p>
+    <h2 data-i18n-block="bca42c0af18237f">8) Evaluation </h2>
+    <p data-i18n-block="beffb0136060357">
       Evaluation included <strong>clinical review</strong> and two flow-based tests:
       <strong>Automatic Flow</strong> (patient agent simulation) and <strong>Manual Flow</strong> (human-provided chat flow).
       Each was graded on <strong>Completeness</strong>, <strong>Similarity to ground truth</strong>, and <strong>Coherence</strong>.
     </p>
 
-    <h3>8.1 Clinical Evaluation (Most Recent)</h3>
+    <h3 data-i18n-block="bb1e75a0749f3b3">8.1 Clinical Evaluation (Most Recent)</h3>
     <table class="score-table" aria-label="Clinical evaluation scores">
       <thead>
         <tr>
-          <th>Parameter</th>
-          <th style="width:170px;">Score (out of 10)</th>
+          <th data-i18n-block="bf699f295e5ae4a">Parameter</th>
+          <th style="width:170px;" data-i18n-block="bc7312dbc5020b6">Score (out of 10)</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Relevance of Questions</td><td class="score">8</td></tr>
-        <tr><td>Comprehensiveness</td><td class="score">8</td></tr>
-        <tr><td>Quality of Questions</td><td class="score">9</td></tr>
-        <tr><td>Adaptability &amp; Context Awareness</td><td class="score">9</td></tr>
-        <tr><td>Efficiency</td><td class="score">9</td></tr>
+        <tr><td data-i18n-block="bdb8b1f83a7a29f">Relevance of Questions</td><td class="score">8</td></tr>
+        <tr><td data-i18n-block="b5074f839c09945">Comprehensiveness</td><td class="score">8</td></tr>
+        <tr><td data-i18n-block="bf487e23de4dcbd">Quality of Questions</td><td class="score">9</td></tr>
+        <tr><td data-i18n-block="baf76203b482a8f">Adaptability &amp; Context Awareness</td><td class="score">9</td></tr>
+        <tr><td data-i18n-block="b12c4ffe1d98716">Efficiency</td><td class="score">9</td></tr>
       </tbody>
     </table>
 
@@ -328,51 +330,51 @@ Output expectation:
 
     <div class="two-col">
       <div>
-        <h3>8.2 Automatic Flow (50 Patients Tested)</h3>
+        <h3 data-i18n-block="b5cb29986a5de5c">8.2 Automatic Flow (50 Patients Tested)</h3>
         <table class="score-table" aria-label="Automatic flow evaluation scores">
           <thead>
             <tr>
-              <th>Parameter</th>
-              <th style="width:170px;">Score (out of 10)</th>
+              <th data-i18n-block="bf699f295e5ae4a">Parameter</th>
+              <th style="width:170px;" data-i18n-block="bc7312dbc5020b6">Score (out of 10)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Completeness</td><td class="score">9</td></tr>
-            <tr><td>Similarity to ground truth</td><td class="score">9</td></tr>
-            <tr><td>Coherence</td><td class="score">8</td></tr>
-            <tr><td><strong>Overall</strong></td><td class="score"><strong>9</strong></td></tr>
+            <tr><td data-i18n-block="b778184da86dfa9">Completeness</td><td class="score">9</td></tr>
+            <tr><td data-i18n-block="b704059447b33a7">Similarity to ground truth</td><td class="score">9</td></tr>
+            <tr><td data-i18n-block="b9e7b26d329a001">Coherence</td><td class="score">8</td></tr>
+            <tr><td data-i18n-block="b8afec8ce6d0a75"><strong>Overall</strong></td><td class="score"><strong>9</strong></td></tr>
           </tbody>
         </table>
       </div>
 
       <div>
-        <h3>8.3 Manual Flow (50 Patients Tested)</h3>
+        <h3 data-i18n-block="b1d64e84f4c0948">8.3 Manual Flow (50 Patients Tested)</h3>
         <table class="score-table" aria-label="Manual flow evaluation scores">
           <thead>
             <tr>
-              <th>Parameter</th>
-              <th style="width:170px;">Score (out of 10)</th>
+              <th data-i18n-block="bf699f295e5ae4a">Parameter</th>
+              <th style="width:170px;" data-i18n-block="bc7312dbc5020b6">Score (out of 10)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Completeness</td><td class="score">9</td></tr>
-            <tr><td>Similarity to ground truth</td><td class="score">9</td></tr>
-            <tr><td>Coherence</td><td class="score">8</td></tr>
-            <tr><td><strong>Overall</strong></td><td class="score"><strong>8</strong></td></tr>
+            <tr><td data-i18n-block="b778184da86dfa9">Completeness</td><td class="score">9</td></tr>
+            <tr><td data-i18n-block="b704059447b33a7">Similarity to ground truth</td><td class="score">9</td></tr>
+            <tr><td data-i18n-block="b9e7b26d329a001">Coherence</td><td class="score">8</td></tr>
+            <tr><td data-i18n-block="b8afec8ce6d0a75"><strong>Overall</strong></td><td class="score"><strong>8</strong></td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <h2>9) Example (Ear Pain)</h2>
+    <h2 data-i18n-block="b018e24dee1034f">9) Example (Ear Pain)</h2>
     <div class="callout">
-      <p><strong>Chief Complaint:</strong> Left ear pain for three days.</p>
-      <p>
+      <p data-i18n-block="b82746716ec22fa"><strong>Chief Complaint:</strong> Left ear pain for three days.</p>
+      <p data-i18n-block="bae2a5f388000ca">
         <strong>HPI (excerpt):</strong> Patient reports constant, dull left otalgia for 3 days with gradual onset and mild–moderate severity.
         Pain worsens with chewing and has minimal relief with OTC acetaminophen. Denies fever, otorrhea, hearing loss, recent swimming,
         or recent air travel. No significant trauma. Prior similar episode about 1 year ago that resolved with eardrops.
       </p>
-      <p style="margin-bottom:0;">
+      <p style="margin-bottom:0;" data-i18n-block="bc2163d19f3f294">
         <strong>Targeted ROS cross-check:</strong> Neuro: −headache, −vertigo. Resp: −cough, −SOB. (Asked briefly because symptoms can overlap across systems.)
       </p>
     </div>

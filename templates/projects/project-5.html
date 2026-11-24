@@ -22,6 +22,8 @@
     .list-tight li { margin-bottom:.35rem; }
     .metric { display:inline-block; padding:.3rem .6rem; border-radius:.4rem; background:rgba(125,255,200,.08); border:1px solid rgba(125,255,200,.3); margin:.15rem .25rem .15rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 
 <body>
@@ -55,153 +57,153 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Interview Bot — Multimodal Conversational AI System</h1>
+      <h1 data-i18n-block="bc020906acb0ba4">Interview Bot — Multimodal Conversational AI System</h1>
       <!-- Optional: link to demo or repo -->
       <!-- <a class="btn" href="YOUR_DEMO_LINK" target="_blank" rel="noopener">View Demo ↗</a> -->
     </div>
 
-    <p class="tags">Multimodal AI · LLM Agents · Whisper STT · Kokoro TTS · LiveKit · AWS Bedrock · Vision Models · Python · FFMPEG</p>
+    <p class="tags" data-i18n-block="b612e034fac085f">Multimodal AI · LLM Agents · Whisper STT · Kokoro TTS · LiveKit · AWS Bedrock · Vision Models · Python · FFMPEG</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b0b27c3838d6cfd">
       <span class="metric">Industry Project</span>
       <span class="metric">CureMD</span>
       <span class="metric">AI Engineer</span>
     </p>
 
-    <p>
+    <p data-i18n-block="bd669b89128fbf8">
       The <strong>Interview Bot</strong> is a fully autonomous <strong>multimodal AI agent</strong> that conducts professional interviews via
       <em>audio, video, and text</em>. It leverages <strong>LLM reasoning</strong>, <strong>speech synthesis</strong>, and <strong>computer vision</strong>
       to create a seamless interviewer experience — complete with real-time interaction, transcription, and behavioral analysis.
       The system was designed to be modular, scalable, and adaptable for corporate HR, medical, or educational assessments.
     </p>
 
-    <h2>1) Problem Statement</h2>
-    <p class="callout">
+    <h2 data-i18n-block="b4725924581bb99">1) Problem Statement</h2>
+    <p class="callout" data-i18n-block="baba191f834828a">
       Traditional digital interviews rely only on form-based questionnaires or scripted video prompts. The goal here was to
       create an <strong>interactive, human-like interviewer</strong> capable of understanding audio and visual cues,
       conducting dynamic conversations, and analyzing both verbal and non-verbal signals for objective assessment.
     </p>
 
-    <h2>2) System Goals</h2>
+    <h2 data-i18n-block="b82086620d7f139">2) System Goals</h2>
     <ul class="list-tight">
-      <li>Build a <strong>multimodal conversational system</strong> capable of audio, text, and video interaction.</li>
-      <li>Enable <strong>real-time interviews</strong> using LiveKit for streaming and low-latency voice feedback.</li>
-      <li>Develop an <strong>automated post-processing agent</strong> that evaluates responses, emotions, and behaviors.</li>
-      <li>Ensure modular design — interchangeable <em>LLMs, STT, TTS</em>, and <em>vision modules</em>.</li>
+      <li data-i18n-block="b1590031ba66d78">Build a <strong>multimodal conversational system</strong> capable of audio, text, and video interaction.</li>
+      <li data-i18n-block="bc7d7770cf1a170">Enable <strong>real-time interviews</strong> using LiveKit for streaming and low-latency voice feedback.</li>
+      <li data-i18n-block="bc1eac907d20262">Develop an <strong>automated post-processing agent</strong> that evaluates responses, emotions, and behaviors.</li>
+      <li data-i18n-block="b204458a9ea80ff">Ensure modular design — interchangeable <em>LLMs, STT, TTS</em>, and <em>vision modules</em>.</li>
     </ul>
 
-    <h2>3) Tech Stack</h2>
+    <h2 data-i18n-block="bef4b4182bb30c7">3) Tech Stack</h2>
     <ul class="list-tight">
-      <li><strong>Core:</strong> Python, JavaScript, CSS, HTML</li>
-      <li><strong>LLMs:</strong> LLaMA via AWS Bedrock, Qwen Omni 2.5 &amp; Qwen 3:32B (for multimodal reasoning)</li>
-      <li><strong>Speech:</strong> Whisper API (STT), Kokoro TTS API (low-latency voice synthesis)</li>
-      <li><strong>Realtime:</strong> LiveKit (WebRTC) for streaming audio/video</li>
-      <li><strong>Vision:</strong> YOLOv8s, ViT, Emonet, MediaPipe Face Mesh (for gaze and emotion)</li>
-      <li><strong>Utilities:</strong> FFMPEG for video/audio extraction, MongoDB for logs, AWS Plugins for orchestration</li>
+      <li data-i18n-block="ba9fd997e5ca972"><strong>Core:</strong> Python, JavaScript, CSS, HTML</li>
+      <li data-i18n-block="b0dfeb4342f598a"><strong>LLMs:</strong> LLaMA via AWS Bedrock, Qwen Omni 2.5 &amp; Qwen 3:32B (for multimodal reasoning)</li>
+      <li data-i18n-block="b50b5b95ff16b56"><strong>Speech:</strong> Whisper API (STT), Kokoro TTS API (low-latency voice synthesis)</li>
+      <li data-i18n-block="bfe5772a2324d94"><strong>Realtime:</strong> LiveKit (WebRTC) for streaming audio/video</li>
+      <li data-i18n-block="b7ba33a1031bef0"><strong>Vision:</strong> YOLOv8s, ViT, Emonet, MediaPipe Face Mesh (for gaze and emotion)</li>
+      <li data-i18n-block="b10117f15850f4e"><strong>Utilities:</strong> FFMPEG for video/audio extraction, MongoDB for logs, AWS Plugins for orchestration</li>
     </ul>
 
-    <h2>4) System Architecture</h2>
+    <h2 data-i18n-block="b6d0a72a7c70742">4) System Architecture</h2>
     <figure>
       <img src="../../assets/cholesterol/interview-arc.jpg" alt="Interview Bot system architecture"/>
-      <figcaption>
+      <figcaption data-i18n-block="bd5f8a17671ce77">
         End-to-end architecture integrating LiveKit (WebRTC) with STT (Whisper), LLM (LLaMA/Qwen), and TTS (Kokoro).
         The output stream is synchronized for real-time response and recorded locally for post-processing analytics.
       </figcaption>
     </figure>
 
-    <h2>5) Architectural Approach</h2>
-    <p>
+    <h2 data-i18n-block="bd6c8fafe7759e6">5) Architectural Approach</h2>
+    <p data-i18n-block="b9eea998ae6c1ac">
       We explored two main paradigms:
     </p>
     <ul class="list-tight">
-      <li><strong>Cascaded Pipeline:</strong> STT → LLM → TTS, sequential processing for modular control and debugging.</li>
-      <li><strong>End-to-End (Omni Models):</strong> Direct audio-text reasoning for lower latency but less interpretability.</li>
+      <li data-i18n-block="b38e10532f6b279"><strong>Cascaded Pipeline:</strong> STT → LLM → TTS, sequential processing for modular control and debugging.</li>
+      <li data-i18n-block="b9482a18dbea567"><strong>End-to-End (Omni Models):</strong> Direct audio-text reasoning for lower latency but less interpretability.</li>
     </ul>
-    <p>
+    <p data-i18n-block="bced8a1016f22eb">
       The final design used a <strong>hybrid cascaded pipeline</strong> to balance transparency, latency, and model flexibility.
     </p>
 
-    <h2>6) LiveKit Integration</h2>
-    <p>
+    <h2 data-i18n-block="bc34b0e455372ab">6) LiveKit Integration</h2>
+    <p data-i18n-block="bde5291504efba1">
       <strong>LiveKit</strong> was used to manage all voice and video sessions.
       We replaced Deepgram/ElevenLabs-style plugins with <em>custom STT and TTS endpoints</em> that mirror their APIs for compatibility.
       This allowed full control over transcription, response timing, and latency optimization.
       The bot joins a LiveKit meeting as a participant — listening, transcribing, and speaking dynamically using Kokoro TTS.
     </p>
 
-    <h2>7) Interview Flow</h2>
+    <h2 data-i18n-block="be6351180d22de4">7) Interview Flow</h2>
     <ul class="list-tight">
-      <li><strong>1️⃣ Greeting:</strong> Bot starts with a friendly introduction and explains the interview structure.</li>
-      <li><strong>2️⃣ Dynamic Questioning:</strong> The LLM adjusts follow-ups based on candidate’s responses and tone.</li>
-      <li><strong>3️⃣ Non-Verbal Observation:</strong> Vision modules monitor face, gaze, and expressions in parallel.</li>
-      <li><strong>4️⃣ Summarization:</strong> At the end, responses and visuals are sent for analytics and scoring.</li>
+      <li data-i18n-block="b102821c1361ec3"><strong>1️⃣ Greeting:</strong> Bot starts with a friendly introduction and explains the interview structure.</li>
+      <li data-i18n-block="b3f28be306867d9"><strong>2️⃣ Dynamic Questioning:</strong> The LLM adjusts follow-ups based on candidate’s responses and tone.</li>
+      <li data-i18n-block="b29a83427a3b4aa"><strong>3️⃣ Non-Verbal Observation:</strong> Vision modules monitor face, gaze, and expressions in parallel.</li>
+      <li data-i18n-block="b391416e49f6cf5"><strong>4️⃣ Summarization:</strong> At the end, responses and visuals are sent for analytics and scoring.</li>
     </ul>
 
-    <h2>8) Key Design Components</h2>
+    <h2 data-i18n-block="be157ae4e8656d7">8) Key Design Components</h2>
     <div class="two-col">
       <div>
-        <h3>STT Module</h3>
+        <h3 data-i18n-block="b7ec3b2cebeb9e4">STT Module</h3>
         <ul class="list-tight">
-          <li>Uses a Whisper-compatible endpoint for real-time transcription.</li>
-          <li>Handles punctuation restoration and speaker diarization.</li>
-          <li>Optimized to maintain <strong>&lt;1s delay</strong> for live interaction.</li>
+          <li data-i18n-block="bc48964e25af675">Uses a Whisper-compatible endpoint for real-time transcription.</li>
+          <li data-i18n-block="bc654786dfba5fa">Handles punctuation restoration and speaker diarization.</li>
+          <li data-i18n-block="b1cb2e41a973c8a">Optimized to maintain <strong>&lt;1s delay</strong> for live interaction.</li>
         </ul>
 
-        <h3>LLM Dialogue Engine</h3>
+        <h3 data-i18n-block="beb234c116916ae">LLM Dialogue Engine</h3>
         <ul class="list-tight">
-          <li>Backed by LLaMA/Qwen multimodal models.</li>
-          <li>Understands context, HR guidelines, and follow-up structure.</li>
-          <li>Prompts engineered for <strong>politeness, professionalism, and empathy</strong>.</li>
+          <li data-i18n-block="bd83a823ce70110">Backed by LLaMA/Qwen multimodal models.</li>
+          <li data-i18n-block="b54f5fb38700e59">Understands context, HR guidelines, and follow-up structure.</li>
+          <li data-i18n-block="b2b7b248d06a278">Prompts engineered for <strong>politeness, professionalism, and empathy</strong>.</li>
         </ul>
       </div>
       <div>
-        <h3>TTS Module</h3>
+        <h3 data-i18n-block="bdf27a34ee425db">TTS Module</h3>
         <ul class="list-tight">
-          <li>Powered by Kokoro API, outperforming other TTS systems (ElevenLabs, Nari, ChatterBox) in latency and pronunciation.</li>
-          <li>Supports multiple voice profiles and emotion intensity levels.</li>
+          <li data-i18n-block="bf6bca9a71546dc">Powered by Kokoro API, outperforming other TTS systems (ElevenLabs, Nari, ChatterBox) in latency and pronunciation.</li>
+          <li data-i18n-block="b46ff086d91a308">Supports multiple voice profiles and emotion intensity levels.</li>
         </ul>
 
-        <h3>Frontend &amp; Logging</h3>
+        <h3 data-i18n-block="bc78e190aabe61f">Frontend &amp; Logging</h3>
         <ul class="list-tight">
-          <li>Built using LiveKit Meet frontend templates.</li>
-          <li>Stores interview recordings locally using a custom Egress handler (bypassing AWS-only storage).</li>
-          <li>Logs all LLM messages and confidence metrics for audit trails.</li>
+          <li data-i18n-block="b94dd8fb12bbe29">Built using LiveKit Meet frontend templates.</li>
+          <li data-i18n-block="b254d7fa00720eb">Stores interview recordings locally using a custom Egress handler (bypassing AWS-only storage).</li>
+          <li data-i18n-block="bdecfac86eaef42">Logs all LLM messages and confidence metrics for audit trails.</li>
         </ul>
       </div>
     </div>
 
-    <h2>9) Post-Processing Architecture</h2>
+    <h2 data-i18n-block="b074adfbbcd0469">9) Post-Processing Architecture</h2>
     <figure>
       <img src="../../assets/cholesterol/interview-post-arc.jpg" alt="Post-Processing architecture of Interview Bot"/>
-      <figcaption>
+      <figcaption data-i18n-block="b6c7fde129b7553">
         Post-processing workflow: Recorded session → video frames &amp; audio extraction → analysis modules (face verification, object detection,
         gaze tracking, emotion/confidence detection, transcription &amp; QA extraction) → integrated scoring pipeline for HR evaluation.
       </figcaption>
     </figure>
 
-    <h2>10) Post-Processing Modules</h2>
+    <h2 data-i18n-block="b42202d2c047266">10) Post-Processing Modules</h2>
     <ul class="list-tight">
-      <li><strong>Face Verification:</strong> Face encodings with cosine similarity for identity validation.</li>
-      <li><strong>Object Detection:</strong> YOLOv8s filters “person” class and tracks movement consistency.</li>
-      <li><strong>Gaze Detection:</strong> MediaPipe landmarks calculate pupil ratios → classify gaze (center/left/right/up/down).</li>
-      <li><strong>Emotion &amp; Confidence:</strong> ViT + Emonet → detect emotions and valence-arousal → map to confidence levels.</li>
-      <li><strong>Transcript Generation:</strong> Whisper large-v3 → cleaned .txt and .srt files with timestamps.</li>
-      <li><strong>Q/A Extraction:</strong> Extracts question–answer pairs and aligns timestamps.</li>
-      <li><strong>Red Flag Detector:</strong> Scans transcript for HR-specified alert phrases and ethical violations.</li>
-      <li><strong>Summary Generator:</strong> Combines non-verbal and verbal metrics into an overall performance report.</li>
+      <li data-i18n-block="be9fe6d6c71d7f1"><strong>Face Verification:</strong> Face encodings with cosine similarity for identity validation.</li>
+      <li data-i18n-block="bafded1f381c85e"><strong>Object Detection:</strong> YOLOv8s filters “person” class and tracks movement consistency.</li>
+      <li data-i18n-block="bbb0ca7b8ff0819"><strong>Gaze Detection:</strong> MediaPipe landmarks calculate pupil ratios → classify gaze (center/left/right/up/down).</li>
+      <li data-i18n-block="bd8ca504c74fcac"><strong>Emotion &amp; Confidence:</strong> ViT + Emonet → detect emotions and valence-arousal → map to confidence levels.</li>
+      <li data-i18n-block="bc754e682b893ce"><strong>Transcript Generation:</strong> Whisper large-v3 → cleaned .txt and .srt files with timestamps.</li>
+      <li data-i18n-block="baf10bb791a8e7d"><strong>Q/A Extraction:</strong> Extracts question–answer pairs and aligns timestamps.</li>
+      <li data-i18n-block="b5bbd37d0f5ca6e"><strong>Red Flag Detector:</strong> Scans transcript for HR-specified alert phrases and ethical violations.</li>
+      <li data-i18n-block="bb8ce1b3011b2f9"><strong>Summary Generator:</strong> Combines non-verbal and verbal metrics into an overall performance report.</li>
     </ul>
 
-    <h2>11) Results &amp; Evaluation</h2>
+    <h2 data-i18n-block="bf9f9331ec3fc31">11) Results &amp; Evaluation</h2>
     <ul class="list-tight">
-      <li><strong>96% accuracy</strong> in detecting intent and producing relevant responses.</li>
-      <li>Average latency reduced by <strong>40%</strong> vs plugin-based frameworks.</li>
-      <li>Video analytics achieved robust emotion tracking with consistent gaze mapping.</li>
-      <li>Comprehensive evaluation reports auto-generated for HR review.</li>
+      <li data-i18n-block="b774759019e74b3"><strong>96% accuracy</strong> in detecting intent and producing relevant responses.</li>
+      <li data-i18n-block="bfc145b7d9698ec">Average latency reduced by <strong>40%</strong> vs plugin-based frameworks.</li>
+      <li data-i18n-block="bc3cd16555063c5">Video analytics achieved robust emotion tracking with consistent gaze mapping.</li>
+      <li data-i18n-block="bed6fcdf5ff76cf">Comprehensive evaluation reports auto-generated for HR review.</li>
     </ul>
 
-    <h2>Teammate</h2>
+    <h2 data-i18n-block="b39811b9aa01311">Teammate</h2>
     <ul class="list-tight">
-      <li>
+      <li data-i18n-block="b95dcf411523ac2">
         <a href="https://www.linkedin.com/in/msherazz/" target="_blank" rel="noopener"
            style="color:#ff8c00; font-weight:600;">
           Muhammad Sheraz

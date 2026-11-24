@@ -21,6 +21,8 @@
     .metric { display:inline-block; padding:.3rem .55rem; border-radius:.35rem; background:rgba(255,213,79,.08); border:1px solid rgba(255,213,79,.35); margin:.15rem .25rem .15rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); padding:.05rem .4rem; border-radius:.35rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -40,12 +42,12 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Smartwatch ESP32</h1>
+      <h1 data-i18n-block="ba1e05da63017a3">Smartwatch ESP32</h1>
      
     </div>
-    <p class="tags">FreeRTOS · ESP32-WROOM-32 · C++ (ESP-IDF) · MPU-6050 · MAX30102 · SSD1306 OLED · LiPo/TP4056</p>
+    <p class="tags" data-i18n-block="b4f1d8940b222bb">FreeRTOS · ESP32-WROOM-32 · C++ (ESP-IDF) · MPU-6050 · MAX30102 · SSD1306 OLED · LiPo/TP4056</p>
 
-    <p>
+    <p data-i18n-block="beccaa409ea4cd9">
       I designed a fully functional <strong>smartwatch</strong> around the <strong>ESP32</strong>, showcasing RTOS-based multitasking,
       low-power design, and practical wearable features: <strong>step counting</strong>, <strong>heart-rate monitoring</strong>,
       <strong>notifications</strong>, a responsive <strong>OLED UI</strong>, and a 48-hour battery target. The firmware runs on
@@ -62,112 +64,112 @@
       <span class="metric">BLE notifications</span>
     </div>
 
-    <h2>Project Overview</h2>
-    <p>
+    <h2 data-i18n-block="b22f9526cf80534">Project Overview</h2>
+    <p data-i18n-block="b013deacc4cf28e">
       Hardware centers on <strong>ESP32-WROOM-32</strong>, with <strong>MPU-6050</strong> for motion/steps, <strong>MAX30102</strong> for heart-rate/SpO₂,
       a <strong>0.96″ SSD1306 OLED</strong> UI, a momentary button, and a <strong>150 mAh LiPo</strong> managed by <strong>TP4056</strong>.
       ESP-IDF + C++ were used for tight memory control and reliable drivers. Power-aware features leverage deep-sleep, the ULP co-processor,
       and dynamic frequency scaling.
     </p>
 
-    <h2>System Architecture</h2>
-    <p>
+    <h2 data-i18n-block="b94596d1fca6ae5">System Architecture</h2>
+    <p data-i18n-block="b02355e24122985">
       All peripherals share the I²C bus; ESP32 orchestrates sampling, processing and UI rendering:
     </p>
     <ul class="list-tight">
-      <li><strong>I²C:</strong> MPU-6050 (steps), MAX30102 (PPG), SSD1306 OLED.</li>
-      <li><strong>Input:</strong> single push button (debounced in software) for mode switching.</li>
-      <li><strong>Power:</strong> LiPo → TP4056 charge/protect → 3.3 V regulator → ESP32 &amp; sensors.</li>
-      <li><strong>Connectivity:</strong> Wi-Fi (NTP once/day), BLE notifications (optional).</li>
+      <li data-i18n-block="b8a4f90446eaab7"><strong>I²C:</strong> MPU-6050 (steps), MAX30102 (PPG), SSD1306 OLED.</li>
+      <li data-i18n-block="b7b9a7db1527259"><strong>Input:</strong> single push button (debounced in software) for mode switching.</li>
+      <li data-i18n-block="b8afa7f7fbd55f2"><strong>Power:</strong> LiPo → TP4056 charge/protect → 3.3 V regulator → ESP32 &amp; sensors.</li>
+      <li data-i18n-block="bbe363cb8f35d2b"><strong>Connectivity:</strong> Wi-Fi (NTP once/day), BLE notifications (optional).</li>
     </ul>
 
-    <h2>Schematics</h2>
+    <h2 data-i18n-block="bc9414319b44a81">Schematics</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/schematic.png" alt="Smartwatch Main Schematic"/>
-        <figcaption>Main connections: ESP32, I²C sensors (MPU-6050/MAX30102) and SSD1306 OLED, button, and passives.</figcaption>
+        <figcaption data-i18n-block="b34df40f18da59e">Main connections: ESP32, I²C sensors (MPU-6050/MAX30102) and SSD1306 OLED, button, and passives.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/schematic2.png" alt="Smartwatch Power Management Schematic"/>
-        <figcaption>Power path: LiPo + TP4056 charging, switch, Schottky protection, 3.3 V regulator and bulk caps.</figcaption>
+        <figcaption data-i18n-block="be139cd7832fd51">Power path: LiPo + TP4056 charging, switch, Schottky protection, 3.3 V regulator and bulk caps.</figcaption>
       </figure>
     </div>
 
-    <h2>FreeRTOS Integration</h2>
-    <p>
+    <h2 data-i18n-block="b0bbad0534930a0">FreeRTOS Integration</h2>
+    <p data-i18n-block="b952a793c4ac390">
       The app is partitioned into real-time tasks, pinned across ESP32’s two cores and coordinated via queues/semaphores:
     </p>
     <ul class="list-tight">
-      <li><strong>Sensor Task</strong> (100 ms): reads MPU-6050 &amp; MAX30102; signals new data.</li>
-      <li><strong>Step Task</strong>: filters accel and detects peaks for steps.</li>
-      <li><strong>Heart-Rate Task</strong>: runs PPG pipeline and BPM estimation.</li>
-      <li><strong>Display Task</strong> (500 ms): renders OLED from a message queue.</li>
-      <li><strong>Button Task</strong>: debounced mode cycling (steps → BPM → time).</li>
+      <li data-i18n-block="b16e608d3a53e00"><strong>Sensor Task</strong> (100 ms): reads MPU-6050 &amp; MAX30102; signals new data.</li>
+      <li data-i18n-block="b9176fddac94b7e"><strong>Step Task</strong>: filters accel and detects peaks for steps.</li>
+      <li data-i18n-block="b891e32864e37cd"><strong>Heart-Rate Task</strong>: runs PPG pipeline and BPM estimation.</li>
+      <li data-i18n-block="b2056b96d7c6047"><strong>Display Task</strong> (500 ms): renders OLED from a message queue.</li>
+      <li data-i18n-block="b94dec46d559550"><strong>Button Task</strong>: debounced mode cycling (steps → BPM → time).</li>
     </ul>
     <figure>
       <img src="../../assets/freertos.png" alt="FreeRTOS tasking overview"/>
-      <figcaption>Partitioning sensors, processing and UI into separate FreeRTOS tasks keeps the UI responsive.</figcaption>
+      <figcaption data-i18n-block="b0a917730d987dd">Partitioning sensors, processing and UI into separate FreeRTOS tasks keeps the UI responsive.</figcaption>
     </figure>
 
-    <h2>Step Counter</h2>
-    <p>
+    <h2 data-i18n-block="b2439a4dda3c22f">Step Counter</h2>
+    <p data-i18n-block="b09bfabba4d3fe1">
       A lightweight pedometer algorithm runs at 50 Hz:
     </p>
     <ul class="list-tight">
       <li>Compute magnitude: <code>mag = √(ax² + ay² + az²)</code>.</li>
-      <li>High-pass filter to remove gravity and drift.</li>
-      <li>Peak detection with a calibrated threshold (~1.5 g) + 300 ms refractory window.</li>
-      <li>Step count stored in RTC memory to survive deep sleep.</li>
+      <li data-i18n-block="b1825d9a37d1968">High-pass filter to remove gravity and drift.</li>
+      <li data-i18n-block="bcbfeec851d8d5e">Peak detection with a calibrated threshold (~1.5 g) + 300 ms refractory window.</li>
+      <li data-i18n-block="b774a95e4773f3a">Step count stored in RTC memory to survive deep sleep.</li>
     </ul>
-    <p>After calibration on a 100-step walk, accuracy reached ~95–96%.</p>
+    <p data-i18n-block="bfba504b5b31831">After calibration on a 100-step walk, accuracy reached ~95–96%.</p>
 
-    <h2>Heart-Rate Calculator (PPG)</h2>
+    <h2 data-i18n-block="b6f48509f0f30e4">Heart-Rate Calculator (PPG)</h2>
     <ul class="list-tight">
-      <li>Sample MAX30102 IR channel at 100 Hz; 5-second windows.</li>
-      <li>Band-pass 0.5–4 Hz to isolate HR; motion warning if accel variance exceeds a threshold.</li>
+      <li data-i18n-block="b54877be7a5218b">Sample MAX30102 IR channel at 100 Hz; 5-second windows.</li>
+      <li data-i18n-block="bc191adef8dffb0">Band-pass 0.5–4 Hz to isolate HR; motion warning if accel variance exceeds a threshold.</li>
       <li>Peak-to-peak intervals → <code>BPM = 60 / Δt</code>, median-smoothed.</li>
     </ul>
 
-    <h2>Display &amp; UX</h2>
+    <h2 data-i18n-block="b1faa90efb6dcc1">Display &amp; UX</h2>
     <ul class="list-tight">
-      <li><strong>Step Mode:</strong> total steps + progress bar to 10k goal.</li>
-      <li><strong>Heart-Rate Mode:</strong> live BPM, “move less” warning if motion noise detected.</li>
-      <li><strong>Time Mode:</strong> NTP-synced clock (Wi-Fi briefly enabled once/day).</li>
+      <li data-i18n-block="b518156ce10d2d1"><strong>Step Mode:</strong> total steps + progress bar to 10k goal.</li>
+      <li data-i18n-block="bf96a8d5765d001"><strong>Heart-Rate Mode:</strong> live BPM, “move less” warning if motion noise detected.</li>
+      <li data-i18n-block="b171b22c0fc5374"><strong>Time Mode:</strong> NTP-synced clock (Wi-Fi briefly enabled once/day).</li>
     </ul>
 
-    <h2>Power Management</h2>
+    <h2 data-i18n-block="b990857ee07d0fc">Power Management</h2>
     <ul class="list-tight">
-      <li>Deep sleep (~10 µA) with ULP wake checks; OLED powers down on inactivity.</li>
-      <li>DFS: 80 MHz normal; boost to 240 MHz only for Wi-Fi.</li>
-      <li>BLE/Wi-Fi disabled by default; enabled on demand (time sync/notifications).</li>
+      <li data-i18n-block="b5e564d54709869">Deep sleep (~10 µA) with ULP wake checks; OLED powers down on inactivity.</li>
+      <li data-i18n-block="bf55df375644b07">DFS: 80 MHz normal; boost to 240 MHz only for Wi-Fi.</li>
+      <li data-i18n-block="b5c6f9e764b9c86">BLE/Wi-Fi disabled by default; enabled on demand (time sync/notifications).</li>
     </ul>
-    <p>Measured life ~48 hours on a 150 mAh LiPo under typical use.</p>
+    <p data-i18n-block="b051670ea72b922">Measured life ~48 hours on a 150 mAh LiPo under typical use.</p>
 
-    <h2>Extra Features</h2>
+    <h2 data-i18n-block="ba8558e06e3dc0b">Extra Features</h2>
     <ul class="list-tight">
-      <li><strong>NTP time sync</strong> daily.</li>
-      <li><strong>BLE notifications</strong> for calls/messages (basic).</li>
-      <li><strong>Sedentary alert</strong> with vibration motor after 1 hour inactivity.</li>
-      <li><strong>Data logging</strong> (steps &amp; average BPM) to flash; “History” view in UI.</li>
-    </ul>
-
-    <h2>Testing &amp; Validation</h2>
-    <ul class="list-tight">
-      <li>Step accuracy ~96% on a 1,000-step test after calibration.</li>
-      <li>Heart-rate within ±5 BPM versus a consumer band (low-motion conditions).</li>
-      <li>48-hour battery run with daily NTP and typical screen use.</li>
-      <li>72-hour FreeRTOS soak test: no deadlocks or leaks observed.</li>
+      <li data-i18n-block="b9f6d6d2269cc38"><strong>NTP time sync</strong> daily.</li>
+      <li data-i18n-block="b76da4415f85936"><strong>BLE notifications</strong> for calls/messages (basic).</li>
+      <li data-i18n-block="b97f91950594cc2"><strong>Sedentary alert</strong> with vibration motor after 1 hour inactivity.</li>
+      <li data-i18n-block="beb07c8e1a8665e"><strong>Data logging</strong> (steps &amp; average BPM) to flash; “History” view in UI.</li>
     </ul>
 
-    <h2>Tech Stack</h2>
+    <h2 data-i18n-block="b1bfade8efb9e65">Testing &amp; Validation</h2>
     <ul class="list-tight">
-      <li>ESP-IDF (C++) on ESP32-WROOM-32</li>
-      <li>FreeRTOS tasks, queues, semaphores</li>
-      <li>Drivers for MPU-6050, MAX30102, SSD1306</li>
-      <li>NTP client, basic BLE GATT for notifications</li>
+      <li data-i18n-block="bfffcd85c60bdfb">Step accuracy ~96% on a 1,000-step test after calibration.</li>
+      <li data-i18n-block="bde2b62b78c790c">Heart-rate within ±5 BPM versus a consumer band (low-motion conditions).</li>
+      <li data-i18n-block="b5982c00affe2a3">48-hour battery run with daily NTP and typical screen use.</li>
+      <li data-i18n-block="bf38ed21134dd05">72-hour FreeRTOS soak test: no deadlocks or leaks observed.</li>
     </ul>
 
-    <p>
+    <h2 data-i18n-block="b83aa0d2f062c90">Tech Stack</h2>
+    <ul class="list-tight">
+      <li data-i18n-block="b62c740108c4777">ESP-IDF (C++) on ESP32-WROOM-32</li>
+      <li data-i18n-block="bc7cbab107a4980">FreeRTOS tasks, queues, semaphores</li>
+      <li data-i18n-block="bf4856e16cc3b28">Drivers for MPU-6050, MAX30102, SSD1306</li>
+      <li data-i18n-block="be2c62111618ac7">NTP client, basic BLE GATT for notifications</li>
+    </ul>
+
+    <p data-i18n-block="be0c5d48c4d6a65">
       This build demonstrates full-stack embedded design—from drivers and RTOS scheduling to power management and UX—packaged
       in a practical wearable that I used daily during evaluation.
     </p>

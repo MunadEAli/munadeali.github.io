@@ -24,6 +24,8 @@
     .table-wrap { overflow-x:auto; }
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -54,20 +56,20 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Scalable Serial Hardware Multiplier</h1>
+      <h1 data-i18n-block="bf21b101fd90166">Scalable Serial Hardware Multiplier</h1>
       <a class="btn" href="https://github.com/MunadEAli/SerialHardwareMultiplier" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code &amp; Report
       </a>
     </div>
-    <p class="tags">Verilog HDL · FPGA · Algorithmic State Machine (ASM) · Shift-and-Add Multiplication · Character LCD Driver · Xilinx ISim</p>
+    <p class="tags" data-i18n-block="bfb4c8c156d6993">Verilog HDL · FPGA · Algorithmic State Machine (ASM) · Shift-and-Add Multiplication · Character LCD Driver · Xilinx ISim</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b754f16ee66d690">
       <span class="metric">FPGA-Based Design · Open-Ended Lab</span>
       <span class="metric">PIEAS · BSEE</span>
       <span class="metric">Spring 2023</span>
     </p>
 
-    <p>
+    <p data-i18n-block="bc4fbc1505994ac">
       A <strong>serial multiplier with variable operand length</strong>, designed in <strong>Verilog</strong> using an
       <strong>Algorithmic State Machine</strong>. A parallel array multiplier is fixed to one width, but this design receives
       its operands one bit at a time and reads the multiplier length from the first byte of the input stream. One circuit
@@ -79,10 +81,10 @@
     <div class="two-col">
       <figure class="white">
         <img src="../../assets/serial-multiplier/block-diagram.png" alt="Serial multiplier block diagram: multiplicand, multiplier, ALU, product and control"/>
-        <figcaption>Shift-and-add datapath: the multiplicand B shifts left, the multiplier Q shifts right, and the control unit adds partial products into A.</figcaption>
+        <figcaption data-i18n-block="b14d1314608ba03">Shift-and-add datapath: the multiplicand B shifts left, the multiplier Q shifts right, and the control unit adds partial products into A.</figcaption>
       </figure>
       <div>
-        <h3>Serial input frame</h3>
+        <h3 data-i18n-block="ba53313fa2a9766">Serial input frame</h3>
         <div class="eq">[ multiplicand bits ][ multiplier bits ][ length (8 bits) ]
                       ← LSB first ←
 length  → sets how many bits are read as the multiplier
@@ -96,23 +98,23 @@ result  → 33-bit product</div>
     </div>
 
     <!-- ------------------ ARCHITECTURE ------------------ -->
-    <h2>1) Design &amp; Modules</h2>
+    <h2 data-i18n-block="b62c572670c92ff">1) Design &amp; Modules</h2>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Module</th><th>Role</th></tr></thead>
+        <thead><tr><th data-i18n-block="bb8ff02892916ff">Module</th><th data-i18n-block="bc3f104d1365744">Role</th></tr></thead>
         <tbody>
-          <tr><td><code>mult_sm</code></td><td>Multiplier ASM with one-hot states <strong>IDLE → LENGTH → MULT1 → MULT2</strong>. A shift counter drives three control lines that say whether the incoming bit belongs to the length, the multiplier or the multiplicand.</td></tr>
-          <tr><td><code>mult</code></td><td>Serial datapath. It builds the 8-bit length and the multiplier, using a variable right-shift to align the multiplier to its actual width, then accumulates shifted partial products into a 33-bit product register.</td></tr>
-          <tr><td><code>io_module</code></td><td>Parallel-to-serial converter. Each press of the control signal latches a byte into a 32-bit shift register. After 4 bytes, a small state machine (IDLE → READY → SHIFT) streams the frame bit by bit into the multiplier.</td></tr>
-          <tr><td><code>IO_w_LCD</code></td><td>Top-level I/O handler (IDLE → STORE → LCD). It shows the low byte of the result on the board's LEDs, converts each 4-bit nibble to an ASCII hex character in a small distributed RAM, and passes it to the LCD.</td></tr>
-          <tr><td><code>lcd_driver</code></td><td>HD44780-style 4-bit LCD controller. It runs a slow initialisation sequence (function set, display on, clear, entry mode), then keeps refreshing both 16-character rows from memory.</td></tr>
-          <tr><td>Testbenches</td><td>Separate benches for the multiplier, the I/O handler and the full design with the LCD.</td></tr>
+          <tr><td><code>mult_sm</code></td><td data-i18n-block="bec25571fee03c3">Multiplier ASM with one-hot states <strong>IDLE → LENGTH → MULT1 → MULT2</strong>. A shift counter drives three control lines that say whether the incoming bit belongs to the length, the multiplier or the multiplicand.</td></tr>
+          <tr><td><code>mult</code></td><td data-i18n-block="b5f76156ebf5e1c">Serial datapath. It builds the 8-bit length and the multiplier, using a variable right-shift to align the multiplier to its actual width, then accumulates shifted partial products into a 33-bit product register.</td></tr>
+          <tr><td><code>io_module</code></td><td data-i18n-block="b5ee9ad0bbfa631">Parallel-to-serial converter. Each press of the control signal latches a byte into a 32-bit shift register. After 4 bytes, a small state machine (IDLE → READY → SHIFT) streams the frame bit by bit into the multiplier.</td></tr>
+          <tr><td><code>IO_w_LCD</code></td><td data-i18n-block="bf3bbbd95f4f495">Top-level I/O handler (IDLE → STORE → LCD). It shows the low byte of the result on the board's LEDs, converts each 4-bit nibble to an ASCII hex character in a small distributed RAM, and passes it to the LCD.</td></tr>
+          <tr><td><code>lcd_driver</code></td><td data-i18n-block="b36144d7d1c0943">HD44780-style 4-bit LCD controller. It runs a slow initialisation sequence (function set, display on, clear, entry mode), then keeps refreshing both 16-character rows from memory.</td></tr>
+          <tr><td data-i18n-block="ba3b33749ca1ce0">Testbenches</td><td data-i18n-block="b2aecdfce7f5fdd">Separate benches for the multiplier, the I/O handler and the full design with the LCD.</td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- ------------------ RESULTS ------------------ -->
-    <h2>2) Simulation Results</h2>
+    <h2 data-i18n-block="bff5084f14ec4a0">2) Simulation Results</h2>
     <p>
       The multiplier was first tested on its own with the serial input
       <code>10101010_1000101011_00001010</code>. The low byte (<code>00001010</code> = 10) sets a 10-bit multiplier, and
@@ -131,12 +133,12 @@ result  → 33-bit product</div>
       <figcaption>LCD driver: the RAM holds the ASCII hex digits (<code>30 30 30 31 37 30 38 45</code> = "0001708E"), which are sent to the display as 4-bit nibbles.</figcaption>
     </figure>
 
-    <h2>What I Learned</h2>
+    <h2 data-i18n-block="bd92fc9a9e2b7bc">What I Learned</h2>
     <ul class="list-tight">
-      <li>Splitting a sequential algorithm into an <strong>ASM controller plus a datapath</strong>, with a shift counter as the single source of timing.</li>
-      <li>Handling widths that vary at run time with variable shifts in hardware.</li>
-      <li>Moving data between different clock rates: fast serial streaming versus a slow LCD timing chain.</li>
-      <li>Driving real peripherals (LEDs and a character LCD) and checking each block separately with its own testbench before connecting them.</li>
+      <li data-i18n-block="b05f2c40671f2cc">Splitting a sequential algorithm into an <strong>ASM controller plus a datapath</strong>, with a shift counter as the single source of timing.</li>
+      <li data-i18n-block="bdc5d9c40e0d68c">Handling widths that vary at run time with variable shifts in hardware.</li>
+      <li data-i18n-block="b3db8c244e556af">Moving data between different clock rates: fast serial streaming versus a slow LCD timing chain.</li>
+      <li data-i18n-block="b10a50207aa717a">Driving real peripherals (LEDs and a character LCD) and checking each block separately with its own testbench before connecting them.</li>
     </ul>
   </article>
 

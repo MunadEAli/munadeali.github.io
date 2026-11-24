@@ -19,6 +19,8 @@
     .project-page strong.hl { color: var(--clr-accent); }
     .project-page h2 { margin-top: 1.6rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 
 <body>
@@ -52,10 +54,10 @@
 
   <main class="container">
     <section class="project-page">
-      <h1>Research Intern (Robotics)</h1>
+      <h1 data-i18n-block="b4408cc8b841a19">Research Intern (Robotics)</h1>
       <div class="tags">FEMTO-ST Institute · AS2M Department · Besançon, France</div>
-      <p><strong>Duration:</strong> Apr 2026 – Aug 2026</p>
-      <p style="display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:.75rem 0 .5rem;">
+      <p data-i18n-block="be24520b54eaa80"><strong>Duration:</strong> Apr 2026 – Aug 2026</p>
+      <p style="display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:.75rem 0 .5rem;" data-i18n-block="bf99f07a2406c5d">
         <strong>Credential:</strong>
         <a href="https://drive.google.com/file/d/1yQIEWhJKMseMJf-7Fj8nLnuxSRig2Zgw/preview"
           target="_blank"
@@ -64,15 +66,15 @@
           View Credential <i class="fas fa-arrow-up-right-from-square"></i>
         </a>
       </p>
-      <p style="font-size:.9rem; opacity:.8; margin:0 0 1.25rem;">
+      <p style="font-size:.9rem; opacity:.8; margin:0 0 1.25rem;" data-i18n-block="b710da517d7b26a">
         <em><strong>Note on dates:</strong> The dates on the attestation do not match the period I actually worked.
         At the start of the internship I was still funded by my scholarship and could not hold two contracts at once,
         so the internship contract only began after the scholarship period ended. I worked on the project from April 2026.</em>
       </p>
-      <p><strong>Project:</strong> Real-Time Magnetic Localization of a Capsule for Minimally Invasive Surgery (ColoscoBot) ·
+      <p data-i18n-block="b9a07f991faaa80"><strong>Project:</strong> Real-Time Magnetic Localization of a Capsule for Minimally Invasive Surgery (ColoscoBot) ·
         <a href="../projects/project-capsule-localization.html" style="color: var(--clr-accent); font-weight:600;">See the project →</a></p>
 
-      <p>
+      <p data-i18n-block="b1732dcea2b06ba">
         <strong>Summary:</strong> ColoscoBot is a magnetically actuated capsule robot for minimally invasive colonoscopy,
         developed by FEMTO-ST with the Carnot Institute of Burgundy. The capsule is steered by an external actuator made of
         four permanent magnets. Closed-loop control needs the capsule's position and orientation in real time, but every
@@ -80,62 +82,62 @@
         system that still works inside that actuation field.
       </p>
 
-      <h2>What I Did</h2>
+      <h2 data-i18n-block="b70d3973b1ef52b">What I Did</h2>
       <ul>
-        <li>
+        <li data-i18n-block="bd6e4b8716f9e32">
           Developed a modular <strong class="hl">Python simulator</strong> for
           <strong class="hl">6-DoF magnetic localization</strong>. It includes forward and inverse models, the 8&nbsp;mm capsule
           magnet modelled as a <strong class="hl">magnetic dipole</strong>, the four actuator magnets modelled as
           <strong class="hl">finite analytical cuboids</strong>, and configurable triaxial sensor arrays.
         </li>
-        <li>
+        <li data-i18n-block="b65ddd2973726fa">
           Built a realistic <strong class="hl">sensor model</strong> covering noise, bias, gain error, cross-axis coupling,
           axis misalignment, per-axis saturation and quantization. It also gives per-sensor SNR, saturation and
           actuator-to-capsule field-ratio diagnostics, with an interactive <strong class="hl">Streamlit</strong> interface
           and CSV export.
         </li>
-        <li>
+        <li data-i18n-block="bea006a4a084480">
           Implemented <strong class="hl">actuator-field subtraction</strong> and a
           <strong class="hl">multi-start Levenberg–Marquardt</strong> inverse solver to estimate capsule position and
           magnetic-axis direction, with Jacobian-based uncertainty and observability checks.
         </li>
-        <li>
+        <li data-i18n-block="b48849f1e5fa6e0">
           Compared a wide-range <strong class="hl">Hall sensor (MLX90393)</strong> with a low-noise
           <strong class="hl">TMR sensor (BMM350)</strong> to quantify the trade-off between dynamic range and sensitivity
           in sensor selection.
         </li>
-        <li>
+        <li data-i18n-block="b81d58d29836b2b">
           Studied <strong class="hl">passive field compensation</strong> using Magpylib: an optimized permanent magnet that
           cancels the actuator field at a sensor before it saturates. I also analysed why this does not extend directly to
           a full array.
         </li>
-        <li>
+        <li data-i18n-block="b74158cf0c68b3a">
           Specified the experimental platform (<strong class="hl">STM32H753</strong>, MLX90393 and BMM350 breakouts,
           I²C multiplexer), then <strong class="hl">validated the simulator against the hardware implementation</strong>
           and assessed whether it is suitable for real-time operation.
         </li>
-        <li>
+        <li data-i18n-block="bf7026a3ed49dfa">
           Prepared a <strong class="hl">review article</strong> on real-time magnetic localization in medical robotics for
           submission. It draws on a structured database of around 80 papers, eight research questions, and a latency
           framework that covers the full pipeline (acquisition + communication + computation).
         </li>
       </ul>
 
-      <h2>Highlights</h2>
+      <h2 data-i18n-block="b1f9c9c4e9b69dc">Highlights</h2>
       <ul>
-        <li>
+        <li data-i18n-block="b34b4cfe9b8ed63">
           At a capsule-to-array distance of 36&nbsp;mm, the simulator gave a position error of
           <strong class="hl">≈&nbsp;0.21&nbsp;mm</strong> with the MLX90393 model. This closely matches the
           <strong class="hl">≈&nbsp;0.22&nbsp;mm</strong> reported experimentally by Zhang et al. for a comparable setup.
         </li>
-        <li>
+        <li data-i18n-block="b0e5fdac975a818">
           Showed that once its ±2&nbsp;mT range is respected, the low-noise TMR sensor gives
           <strong class="hl">sub-0.3&nbsp;mm</strong> simulated position errors from 50 to 80&nbsp;mm. Closer to the
           actuator, the Hall sensor remains the only option that does not saturate.
         </li>
       </ul>
 
-      <p>
+      <p data-i18n-block="bdd6b17a00eaf2e">
         <strong>Tools &amp; Tech:</strong> Python, NumPy/SciPy, Streamlit, Magpylib, STM32, I²C,
         Hall / TMR magnetometers, nonlinear least squares, magnetic field modelling.
       </p>

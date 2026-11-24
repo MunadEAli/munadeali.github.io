@@ -26,6 +26,8 @@
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
     .project-page a.inline { color: var(--clr-accent); font-weight:600; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -56,18 +58,18 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Real-Time Magnetic Localization of a Capsule Robot for Minimally Invasive Surgery</h1>
+      <h1 data-i18n-block="b2d4a3b09382fc9">Real-Time Magnetic Localization of a Capsule Robot for Minimally Invasive Surgery</h1>
     </div>
-    <p class="tags">Magnetic Localization · Inverse Problems · Levenberg–Marquardt · Magnetic Field Modelling · Hall &amp; TMR Sensors · Python · Streamlit · Magpylib · STM32</p>
+    <p class="tags" data-i18n-block="bdb41b3574220c5">Magnetic Localization · Inverse Problems · Levenberg–Marquardt · Magnetic Field Modelling · Hall &amp; TMR Sensors · Python · Streamlit · Magpylib · STM32</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="bd86ca1b1bd4701">
       <span class="metric">Research Internship</span>
       <span class="metric">Institut FEMTO-ST · AS2M</span>
       <span class="metric">ColoscoBot project</span>
       <span class="metric">2026</span>
     </p>
 
-    <p>
+    <p data-i18n-block="b26d713c565f70d">
       <strong>ColoscoBot</strong> is a magnetically actuated capsule robot for minimally invasive colonoscopy, developed by
       FEMTO-ST with the Carnot Institute of Burgundy. An external tool of <strong>four permanent magnets</strong> steers an
       8&nbsp;mm magnetic capsule through the colon. Closing the control loop requires the capsule's <strong>position and
@@ -78,20 +80,20 @@
 
     <figure class="white">
       <img src="../../assets/capsule-localization/system-overview.png" alt="Schematic: four-magnet actuator, 8 mm magnetic capsule and a 5x5 external sensor array"/>
-      <figcaption>The localization problem: a 5×5 external sensor array measures the capsule field <em>B<sub>c</sub></em> superimposed on the much stronger actuator field <em>B<sub>a</sub></em>.</figcaption>
+      <figcaption data-i18n-block="b76b1a673a48e6a">The localization problem: a 5×5 external sensor array measures the capsule field <em>B<sub>c</sub></em> superimposed on the much stronger actuator field <em>B<sub>a</sub></em>.</figcaption>
     </figure>
 
-    <p class="callout">
+    <p class="callout" data-i18n-block="b4618f85f3c0257">
       <strong>The challenge:</strong> a localization system must (1) keep enough dynamic range not to saturate under the
       actuator field, (2) still resolve the weak capsule signature after the actuator field is subtracted, and (3) do it with
       low enough latency for closed-loop control.
     </p>
 
     <!-- ------------------ TECHNOLOGY ------------------ -->
-    <h2>1) Technology Assessment</h2>
+    <h2 data-i18n-block="b68bde66b864c3d">1) Technology Assessment</h2>
     <div class="two-col">
       <div>
-        <p>
+        <p data-i18n-block="b618f604c493e7e">
           I first assessed non-magnetic options as the primary pose sensor. An IMU drifts, electromagnetic trackers are swamped
           by the permanent-magnet background, ultrasound struggles with gas in the colon, UWB/RF is too coarse, and visual SLAM
           fails on deformable, low-texture tissue. The conclusion: <strong>magnetic sensing as the primary metric source</strong>,
@@ -99,7 +101,7 @@
         </p>
       </div>
       <div>
-        <p>
+        <p data-i18n-block="baff46ae3cc5081">
           Across magnetic sensor technologies (Hall, AMR, GMR, TMR, fluxgate, inductive and resonant markers), the key trade-off
           is <strong>dynamic range vs. noise</strong>. Two sensors were selected for comparison: the wide-range
           <strong>MLX90393 Hall</strong> sensor (about ±50&nbsp;mT, widely used in capsule research) and the low-noise
@@ -109,8 +111,8 @@
     </div>
 
     <!-- ------------------ SIMULATOR ------------------ -->
-    <h2>2) Physics-Based Simulator</h2>
-    <p>
+    <h2 data-i18n-block="b5dad7d9c9ad598">2) Physics-Based Simulator</h2>
+    <p data-i18n-block="b311986e901cdc3">
       I built a modular <strong>Python forward and inverse simulator</strong> with an interactive <strong>Streamlit</strong>
       interface. It covers the capsule, the four-magnet actuator, configurable planar sensor arrays and realistic sensor
       errors. For every sensor it reports the capsule and actuator fields, SNR, actuator-to-capsule ratio, saturation and the
@@ -118,77 +120,77 @@
     </p>
     <figure>
       <img src="../../assets/capsule-localization/simulation-interface-actuator-capsule.png" alt="Streamlit simulator showing the capsule, four-magnet actuator, sensor grid and field vectors"/>
-      <figcaption>The interactive simulator: geometry and sensor parameters in the sidebar, diagnostic cards for the whole array, and a 3D scene of the actuator magnets, capsule axis and measured field vectors.</figcaption>
+      <figcaption data-i18n-block="b08527065e4330f">The interactive simulator: geometry and sensor parameters in the sidebar, diagnostic cards for the whole array, and a 3D scene of the actuator magnets, capsule axis and measured field vectors.</figcaption>
     </figure>
     <div class="two-col">
       <div>
-        <h3>Magnetic models</h3>
+        <h3 data-i18n-block="bcf50aa48ed6316">Magnetic models</h3>
         <ul class="list-tight">
-          <li><strong>Capsule:</strong> an 8&nbsp;mm sphere with B<sub>r</sub> = 1.3&nbsp;T, modelled as a magnetic dipole with moment m ≈ 0.277&nbsp;A·m².</li>
-          <li><strong>Actuator:</strong> four magnets (two 40×40×20&nbsp;mm and two 20×20×20&nbsp;mm, 1.36&nbsp;T) modelled with <strong>closed-form finite-cuboid</strong> fields, because they are too large and too close for a dipole approximation.</li>
+          <li data-i18n-block="be9fbdc2e015f21"><strong>Capsule:</strong> an 8&nbsp;mm sphere with B<sub>r</sub> = 1.3&nbsp;T, modelled as a magnetic dipole with moment m ≈ 0.277&nbsp;A·m².</li>
+          <li data-i18n-block="b1a22b2d9bfa2bb"><strong>Actuator:</strong> four magnets (two 40×40×20&nbsp;mm and two 20×20×20&nbsp;mm, 1.36&nbsp;T) modelled with <strong>closed-form finite-cuboid</strong> fields, because they are too large and too close for a dipole approximation.</li>
         </ul>
         <div class="eq">B_c = μ0/4π · [ 3R(mᵀR)/R⁵ − m/R³ ]
 m   = B_r·V/μ0  ≈ 0.277 A·m²</div>
       </div>
       <figure class="white">
         <img src="../../assets/capsule-localization/actuator-geometry-3d.png" alt="3D geometry of the four-cuboid actuator, capsule and 5x5 sensor array"/>
-        <figcaption>Simulated geometry: four actuator magnets (M1–M4), the capsule and the 5×5 array, with the capsule 60&nbsp;mm and the actuator 115&nbsp;mm from the array.</figcaption>
+        <figcaption data-i18n-block="bdd1d3bb397f40a">Simulated geometry: four actuator magnets (M1–M4), the capsule and the 5×5 array, with the capsule 60&nbsp;mm and the actuator 115&nbsp;mm from the array.</figcaption>
       </figure>
     </div>
-    <h3>Realistic sensor model</h3>
+    <h3 data-i18n-block="b39f6b8baad4206">Realistic sensor model</h3>
     <figure class="white">
       <img src="../../assets/capsule-localization/sensor-model-pipeline.png" alt="Sensor non-ideality pipeline: misalignment, cross-axis coupling, gain, bias and noise, clipping, quantization, filtering"/>
-      <figcaption>Sensor error chain: axis misalignment → cross-axis coupling → gain → bias and noise → per-axis clipping → quantization → optional filtering. Saturation is evaluated on the total field <em>before</em> any software subtraction.</figcaption>
+      <figcaption data-i18n-block="b6b9e4d86f90b35">Sensor error chain: axis misalignment → cross-axis coupling → gain → bias and noise → per-axis clipping → quantization → optional filtering. Saturation is evaluated on the total field <em>before</em> any software subtraction.</figcaption>
     </figure>
 
     <!-- ------------------ INVERSE ------------------ -->
-    <h2>3) Inverse Localization</h2>
+    <h2 data-i18n-block="bdcb6b8a960d8c6">3) Inverse Localization</h2>
     <figure class="white">
       <img src="../../assets/capsule-localization/inverse-workflow.png" alt="Inverse localization workflow: actuator subtraction, coarse search, seed selection, LM refinement, diagnostics"/>
-      <figcaption>Pipeline: subtract the modelled actuator field → random coarse search over positions and axes → keep the best seeds → Levenberg–Marquardt refinement → choose the lowest-cost solution and report its uncertainty.</figcaption>
+      <figcaption data-i18n-block="b72cb129dbc8656">Pipeline: subtract the modelled actuator field → random coarse search over positions and axes → keep the best seeds → Levenberg–Marquardt refinement → choose the lowest-cost solution and report its uncertainty.</figcaption>
     </figure>
     <div class="two-col">
       <ul class="list-tight">
-        <li><strong>Multi-start Levenberg–Marquardt</strong> nonlinear least squares over position and magnetic-axis direction, seeded from a coarse random search to avoid local minima.</li>
-        <li><strong>Jacobian-based uncertainty</strong> (Gauss–Newton covariance) and a condition-number check of observability.</li>
-        <li>Force and torque diagnostics on the capsule from the actuator field gradient.</li>
+        <li data-i18n-block="b4a04005c498dad"><strong>Multi-start Levenberg–Marquardt</strong> nonlinear least squares over position and magnetic-axis direction, seeded from a coarse random search to avoid local minima.</li>
+        <li data-i18n-block="b125b7d42490944"><strong>Jacobian-based uncertainty</strong> (Gauss–Newton covariance) and a condition-number check of observability.</li>
+        <li data-i18n-block="b48e4250d154300">Force and torque diagnostics on the capsule from the actuator field gradient.</li>
       </ul>
       <ul class="list-tight">
-        <li><strong>5 independent DoF:</strong> 3D position plus the 2-DoF magnetic-axis direction. A single dipole's field doesn't change when it rotates about its own axis, so full <strong>6-DoF pose needs a symmetry-breaking source such as an onboard IMU</strong>.</li>
-        <li><strong>Key insight:</strong> software subtraction can't recover analogue saturation, and a 1% gain error on a 5&nbsp;mT actuator field leaves a 50&nbsp;µT residual, which can be larger than the capsule signal itself.</li>
+        <li data-i18n-block="bed5c821cfa73f5"><strong>5 independent DoF:</strong> 3D position plus the 2-DoF magnetic-axis direction. A single dipole's field doesn't change when it rotates about its own axis, so full <strong>6-DoF pose needs a symmetry-breaking source such as an onboard IMU</strong>.</li>
+        <li data-i18n-block="bcdf44f6f38224b"><strong>Key insight:</strong> software subtraction can't recover analogue saturation, and a 1% gain error on a 5&nbsp;mT actuator field leaves a 50&nbsp;µT residual, which can be larger than the capsule signal itself.</li>
       </ul>
     </div>
 
     <!-- ------------------ RESULTS ------------------ -->
-    <h2>4) Simulation Results</h2>
+    <h2 data-i18n-block="bc52c3edf0175e0">4) Simulation Results</h2>
     <div class="two-col">
       <figure class="white">
         <img src="../../assets/capsule-localization/capsule-heatmap.png" alt="Capsule field magnitude over the 5x5 array"/>
-        <figcaption>Capsule-field magnitude over the array (µT).</figcaption>
+        <figcaption data-i18n-block="ba91358f6a9ba51">Capsule-field magnitude over the array (µT).</figcaption>
       </figure>
       <figure class="white">
         <img src="../../assets/capsule-localization/actuator-heatmap.png" alt="Actuator field magnitude over the 5x5 array"/>
-        <figcaption>Actuator-field magnitude for the same configuration: roughly 6× to 130× larger than the capsule field, depending on the sensor.</figcaption>
+        <figcaption data-i18n-block="be1cc0abe58792e">Actuator-field magnitude for the same configuration: roughly 6× to 130× larger than the capsule field, depending on the sensor.</figcaption>
       </figure>
     </div>
 
     <div class="two-col">
       <div>
-        <h3>Hall vs. TMR: the dynamic-range / sensitivity frontier</h3>
+        <h3 data-i18n-block="b72d47c5e02a84b">Hall vs. TMR: the dynamic-range / sensitivity frontier</h3>
         <div class="table-wrap">
           <table class="spec">
-            <thead><tr><th>Capsule / actuator distance</th><th>MLX90393 position · axis error</th><th>BMM350 position · axis error</th></tr></thead>
+            <thead><tr><th data-i18n-block="b965c1d02fa3646">Capsule / actuator distance</th><th data-i18n-block="b683093d170edaa">MLX90393 position · axis error</th><th data-i18n-block="b5ec235bdc80805">BMM350 position · axis error</th></tr></thead>
             <tbody>
-              <tr><td>36 / 91&nbsp;mm</td><td>0.19&nbsp;mm · 0.58°</td><td>saturated</td></tr>
-              <tr><td>40 / 95&nbsp;mm</td><td>0.27&nbsp;mm · 0.63°</td><td>saturated</td></tr>
-              <tr><td>50 / 105&nbsp;mm</td><td>0.62&nbsp;mm · 0.91°</td><td><strong>0.04&nbsp;mm · 0.06°</strong></td></tr>
-              <tr><td>60 / 115&nbsp;mm</td><td>1.35&nbsp;mm · 1.69°</td><td><strong>0.08&nbsp;mm · 0.12°</strong></td></tr>
-              <tr><td>70 / 125&nbsp;mm</td><td>2.55&nbsp;mm · 3.02°</td><td><strong>0.16&nbsp;mm · 0.22°</strong></td></tr>
-              <tr><td>80 / 135&nbsp;mm</td><td>4.60&nbsp;mm · 5.48°</td><td><strong>0.29&nbsp;mm · 0.35°</strong></td></tr>
+              <tr><td data-i18n-block="bd4653cda63a5fa">36 / 91&nbsp;mm</td><td data-i18n-block="b767f654a5a518f">0.19&nbsp;mm · 0.58°</td><td data-i18n-block="b08598c70b60895">saturated</td></tr>
+              <tr><td data-i18n-block="b3564d0cff0efa6">40 / 95&nbsp;mm</td><td data-i18n-block="b550e1fe9564440">0.27&nbsp;mm · 0.63°</td><td data-i18n-block="b08598c70b60895">saturated</td></tr>
+              <tr><td data-i18n-block="be8230c135c4f5d">50 / 105&nbsp;mm</td><td data-i18n-block="b65ac3f0700389c">0.62&nbsp;mm · 0.91°</td><td data-i18n-block="b4589ac52fc07df"><strong>0.04&nbsp;mm · 0.06°</strong></td></tr>
+              <tr><td data-i18n-block="baac49ef1eb8289">60 / 115&nbsp;mm</td><td data-i18n-block="b706c28e5007439">1.35&nbsp;mm · 1.69°</td><td data-i18n-block="bf0e31d7b51eb2f"><strong>0.08&nbsp;mm · 0.12°</strong></td></tr>
+              <tr><td data-i18n-block="bf36702ee58e454">70 / 125&nbsp;mm</td><td data-i18n-block="b7ad075085a22ff">2.55&nbsp;mm · 3.02°</td><td data-i18n-block="b776d4c357529d1"><strong>0.16&nbsp;mm · 0.22°</strong></td></tr>
+              <tr><td data-i18n-block="b6d19704eedbaa7">80 / 135&nbsp;mm</td><td data-i18n-block="b50b2f198e75887">4.60&nbsp;mm · 5.48°</td><td data-i18n-block="ba93c6fdd240f20"><strong>0.29&nbsp;mm · 0.35°</strong></td></tr>
             </tbody>
           </table>
         </div>
-        <p>
+        <p data-i18n-block="b8f7f917bb7bc94">
           The Hall sensor never saturates but loses accuracy with distance, because its minimum capsule SNR is only about
           6–8&nbsp;dB. The TMR sensor is unusable close to the actuator but, beyond its saturation boundary, keeps
           a capsule SNR of about 34–36&nbsp;dB and gives <strong>sub-0.3&nbsp;mm errors</strong>. The best design is therefore a
@@ -198,32 +200,32 @@ m   = B_r·V/μ0  ≈ 0.277 A·m²</div>
       <div>
         <figure class="white">
           <img src="../../assets/capsule-localization/position-error.png" alt="Mean position error versus capsule-to-array distance for MLX90393 and BMM350"/>
-          <figcaption>Mean position error vs. capsule-to-array distance.</figcaption>
+          <figcaption data-i18n-block="b45a0e1a0f58cf8">Mean position error vs. capsule-to-array distance.</figcaption>
         </figure>
         <figure class="white">
           <img src="../../assets/capsule-localization/snr-comparison.png" alt="Capsule SNR range across the array for both sensors"/>
-          <figcaption>Capsule SNR range across the 5×5 array. The shaded band marks where the BMM350 saturates.</figcaption>
+          <figcaption data-i18n-block="b95f3ac68e51b71">Capsule SNR range across the 5×5 array. The shaded band marks where the BMM350 saturates.</figcaption>
         </figure>
       </div>
     </div>
 
-    <h3>Benchmark against published experiments</h3>
+    <h3 data-i18n-block="b11fbcf1b9abbe6">Benchmark against published experiments</h3>
     <figure>
       <img src="../../assets/capsule-localization/zhang-reproducibility-36mm.png" alt="Simulator result at 36 mm: 0.21 mm position error, 0.62 degree axis error"/>
-      <figcaption>Reproducing Zhang et al.'s 5×5 MLX90393 setup (IEEE Sensors Journal, 2022) at a 36&nbsp;mm capsule distance: the simulator gives <strong>0.21&nbsp;mm</strong> position error and 0.62° axis error, closely matching the ≈&nbsp;0.22&nbsp;mm they measured experimentally.</figcaption>
+      <figcaption data-i18n-block="b1cb736257f6f33">Reproducing Zhang et al.'s 5×5 MLX90393 setup (IEEE Sensors Journal, 2022) at a 36&nbsp;mm capsule distance: the simulator gives <strong>0.21&nbsp;mm</strong> position error and 0.62° axis error, closely matching the ≈&nbsp;0.22&nbsp;mm they measured experimentally.</figcaption>
     </figure>
 
     <!-- ------------------ COMPENSATION ------------------ -->
-    <h2>5) Passive Field Compensation Study</h2>
+    <h2 data-i18n-block="b7c0b705c551cf9">5) Passive Field Compensation Study</h2>
     <div class="two-col">
       <div>
-        <p>
+        <p data-i18n-block="bdaa7aa5ab4215c">
           Since software subtraction can't undo saturation, I built a second simulator (Streamlit + <strong>Magpylib</strong>)
           to test whether an extra permanent magnet could <strong>physically cancel the actuator field at a sensor</strong> before
           it reaches the sensor's analogue front end. The compensation magnet's placement is optimised with differential evolution, refined with
           Nelder–Mead or Powell, and checked against placement tolerances.
         </p>
-        <p>
+        <p data-i18n-block="bacbd3840aa4138">
           <strong>Finding:</strong> cancellation works well at a single sensor and could allow lower-range, lower-noise sensors to
           be used. But it is fundamentally local. One magnet can't cancel a spatially varying field over a whole array, so
           scaling up becomes a constrained multi-magnet optimisation.
@@ -231,29 +233,29 @@ m   = B_r·V/μ0  ≈ 0.277 A·m²</div>
       </div>
       <figure class="white">
         <img src="../../assets/capsule-localization/passive-compensation-concept.png" alt="Passive compensation concept: single-sensor cancellation vs. array-wide limitation"/>
-        <figcaption>Exact cancellation at one sensor (left) vs. a non-uniform residual across an array (right).</figcaption>
+        <figcaption data-i18n-block="b386b28d4f24254">Exact cancellation at one sensor (left) vs. a non-uniform residual across an array (right).</figcaption>
       </figure>
     </div>
     <figure>
       <img src="../../assets/capsule-localization/passive-compensation-interface.png" alt="Passive compensation simulator interface with actuator magnet, compensation magnet and Hall sensor"/>
-      <figcaption>The compensation simulator: actuator magnet, optimised compensation magnet, Hall sensor, and the field vectors at the sensor.</figcaption>
+      <figcaption data-i18n-block="bdc8b5484349877">The compensation simulator: actuator magnet, optimised compensation magnet, Hall sensor, and the field vectors at the sensor.</figcaption>
     </figure>
 
     <!-- ------------------ HARDWARE ------------------ -->
-    <h2>6) Experimental Platform</h2>
+    <h2 data-i18n-block="b053b8c3d55136f">6) Experimental Platform</h2>
     <figure class="white">
       <img src="../../assets/capsule-localization/hardware-architecture.png" alt="Bench hardware: MLX90393 and BMM350 breakouts, TCA9548A I2C mux, NUCLEO-H753ZI, host computer"/>
-      <figcaption>Bench architecture: MLX90393 and BMM350 breakout boards → TCA9548A I²C multiplexer → STM32 NUCLEO-H753ZI (Cortex-M7) for acquisition → host computer for logging and localization.</figcaption>
+      <figcaption data-i18n-block="b38a9b3e04fac07">Bench architecture: MLX90393 and BMM350 breakout boards → TCA9548A I²C multiplexer → STM32 NUCLEO-H753ZI (Cortex-M7) for acquisition → host computer for logging and localization.</figcaption>
     </figure>
-    <p>
+    <p data-i18n-block="ba3af6941cec14c">
       The experimental plan follows five stages: characterise each sensor (offset, noise, update rate, cross-axis response,
       clipping); synchronise and calibrate the array; validate the actuator field model against measurements; localise the
       capsule alone, then under actuation and motion; and finally fuse with an IMU towards full 6-DoF pose.
     </p>
 
     <!-- ------------------ STACK ------------------ -->
-    <h2>Tech Stack</h2>
-    <p>
+    <h2 data-i18n-block="b83aa0d2f062c90">Tech Stack</h2>
+    <p data-i18n-block="b7324de28ebbc39">
       Python · NumPy / SciPy (Levenberg–Marquardt, differential evolution) · Streamlit · Magpylib · Matplotlib / Plotly ·
       analytical magnetostatics (dipole and finite-cuboid models) · STM32H753 · I²C · MLX90393 and BMM350 magnetometers.
     </p>

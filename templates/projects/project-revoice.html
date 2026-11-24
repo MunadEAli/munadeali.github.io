@@ -24,6 +24,8 @@
     .table-wrap { overflow-x:auto; }
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -54,56 +56,56 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>ReVoice: Qwen-Powered Adaptive Memory Agent</h1>
+      <h1 data-i18n-block="ba7d49683f2ff83">ReVoice: Qwen-Powered Adaptive Memory Agent</h1>
       <a class="btn" href="https://github.com/MunadEAli/ReVoice_Agent" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code
       </a>
     </div>
-    <p class="tags">Qwen Cloud (qwen-max · qwen-vl-max · qwen-turbo) · Tool Calling · MCP Server · FastAPI · React + TypeScript · SQLite · Alibaba Cloud Function Compute</p>
+    <p class="tags" data-i18n-block="b0faee8ff93fd66">Qwen Cloud (qwen-max · qwen-vl-max · qwen-turbo) · Tool Calling · MCP Server · FastAPI · React + TypeScript · SQLite · Alibaba Cloud Function Compute</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b2d2f819023b0f5">
       <span class="metric">Global AI Hackathon with Qwen Cloud</span>
       <span class="metric">Track 1: MemoryAgent</span>
       <span class="metric">Team of 2 · with Laiba</span>
       <span class="metric">Jul 2026</span>
     </p>
 
-    <p>
+    <p data-i18n-block="bbbef16f83fa8fb">
       <strong>ReVoice</strong> helps people with word-finding difficulty, as in aphasia or dementia, who know what they mean
       but can't retrieve the exact word. Instead of only storing facts, it stores the <strong>recovery path</strong>: which
       cues helped this person recover this word before, which failed, and how much help they needed. Over many sessions it
       hides the answer to protect practice, generates safe personalised hints with Qwen, learns which cue styles work, and
       gradually <strong>offers less help as recall improves</strong>.
     </p>
-    <p class="callout"><strong>ReVoice doesn't just remember what someone said. It remembers what helped them say it.</strong></p>
+    <p class="callout" data-i18n-block="baedaeb58f093e3"><strong>ReVoice doesn't just remember what someone said. It remembers what helped them say it.</strong></p>
 
     <figure>
       <img src="../../assets/revoice/session.jpg" alt="ReVoice session: Margaret types granddaughter, sees a hidden possible person match, and the Memory Inspector shows the Qwen trace and candidate scoring"/>
-      <figcaption>A live session (deployed, live Qwen mode): "granddaughter" gives a hidden <em>Possible person match</em> with hint and reveal options, while the Memory Inspector shows the memories sent to qwen-max, its candidates and the score breakdown.</figcaption>
+      <figcaption data-i18n-block="bdaf786ea53d76d">A live session (deployed, live Qwen mode): "granddaughter" gives a hidden <em>Possible person match</em> with hint and reveal options, while the Memory Inspector shows the memories sent to qwen-max, its candidates and the score breakdown.</figcaption>
     </figure>
 
     <!-- ------------------ FLOW ------------------ -->
-    <h2>1) Core Flow</h2>
+    <h2 data-i18n-block="bcc2360afb2df1d">1) Core Flow</h2>
     <ol class="list-tight">
-      <li>Margaret types a stand-in word: <em>"granddaughter"</em>.</li>
-      <li>ReVoice ranks her memories and packs only the most relevant ones into Qwen's context.</li>
-      <li>Qwen proposes candidate meanings. The UI hides the exact answers (e.g. "Possible person match") so hints don't spoil recall.</li>
-      <li>Qwen builds an adaptive cue plan from relationship context, session context and her learned cue preferences.</li>
-      <li>Deterministic safety code removes the target word from every hint before the final reveal.</li>
-      <li>The outcome of each cue updates memory: the <strong>assistance level for that concept</strong> and her <strong>cue-style preferences</strong> for that category, so even newly added people inherit what worked before.</li>
+      <li data-i18n-block="b708bd40b1a98ac">Margaret types a stand-in word: <em>"granddaughter"</em>.</li>
+      <li data-i18n-block="b5ca450316ec84a">ReVoice ranks her memories and packs only the most relevant ones into Qwen's context.</li>
+      <li data-i18n-block="bc73d6fdaf8e358">Qwen proposes candidate meanings. The UI hides the exact answers (e.g. "Possible person match") so hints don't spoil recall.</li>
+      <li data-i18n-block="becb63e108e7587">Qwen builds an adaptive cue plan from relationship context, session context and her learned cue preferences.</li>
+      <li data-i18n-block="b8edfda623f3072">Deterministic safety code removes the target word from every hint before the final reveal.</li>
+      <li data-i18n-block="b58ffdb99b87cfc">The outcome of each cue updates memory: the <strong>assistance level for that concept</strong> and her <strong>cue-style preferences</strong> for that category, so even newly added people inherit what worked before.</li>
     </ol>
 
     <!-- ------------------ QWEN ------------------ -->
-    <h2>2) Qwen Cloud, Tools &amp; MCP</h2>
+    <h2 data-i18n-block="b64e3bcb1591cf6">2) Qwen Cloud, Tools &amp; MCP</h2>
     <div class="two-col">
       <div>
         <ul class="list-tight">
-          <li><strong>qwen-max</strong> handles candidate reasoning and non-clinical progress summaries. <strong>qwen-vl-max</strong> handles reasoning grounded in an uploaded photo. <strong>qwen-turbo</strong> generates the cue banks quickly and cheaply.</li>
+          <li data-i18n-block="b868c44d71654ad"><strong>qwen-max</strong> handles candidate reasoning and non-clinical progress summaries. <strong>qwen-vl-max</strong> handles reasoning grounded in an uploaded photo. <strong>qwen-turbo</strong> generates the cue banks quickly and cheaply.</li>
           <li><strong>Agentic tool calling:</strong> when unsure, qwen-max calls a custom <code>inspect_concept</code> skill to fetch relationship context (e.g. <em>grandchild_of Michael</em>) before committing to a candidate. It can do this for up to three rounds before returning its JSON answer.</li>
         </ul>
       </div>
       <div>
-        <p>A native <strong>MCP server</strong> (streamable HTTP, JSON-RPC 2.0) exposes the memory to any MCP client:</p>
+        <p data-i18n-block="b7b2e0fb620d3b1">A native <strong>MCP server</strong> (streamable HTTP, JSON-RPC 2.0) exposes the memory to any MCP client:</p>
         <ul class="list-tight">
           <li><code>search_memories</code>: search a user's active concepts</li>
           <li><code>get_concept_details</code>: a concept's detail, relationships and ability state</li>
@@ -114,74 +116,74 @@
     </div>
 
     <!-- ------------------ SCORING ------------------ -->
-    <h2>3) Memory Retrieval: Recovery-Path Similarity Score</h2>
+    <h2 data-i18n-block="b31143714f1071f">3) Memory Retrieval: Recovery-Path Similarity Score</h2>
     <div class="eq">score = 0.30·relevance + 0.20·salience + 0.20·recovery_similarity
       + 0.10·uncertainty + 0.10·recency_transfer − 0.02·cost_per_100_tokens</div>
     <ul class="list-tight">
-      <li><strong>Relevance gate:</strong> concepts with zero semantic relevance to the input get no boost from their history, so a well-practised document can never outrank the relevant person.</li>
-      <li><strong>Personal cues:</strong> stored relationships expand into the stand-in words people actually use ("granddaughter", "grand daughter", "grandchild") without hard-coding.</li>
-      <li><strong>Adaptive weighting:</strong> independent recall counts for more than a full reveal, and recent episodes count for more than older ones.</li>
-      <li><strong>Category vocabulary from real datasets:</strong> derived from Princeton WordNet hyponym chains, filtered by word frequency (wordfreq).</li>
+      <li data-i18n-block="bc857a276004dcc"><strong>Relevance gate:</strong> concepts with zero semantic relevance to the input get no boost from their history, so a well-practised document can never outrank the relevant person.</li>
+      <li data-i18n-block="bc59bb4bd6bd8a4"><strong>Personal cues:</strong> stored relationships expand into the stand-in words people actually use ("granddaughter", "grand daughter", "grandchild") without hard-coding.</li>
+      <li data-i18n-block="beb4723f9cc0d1d"><strong>Adaptive weighting:</strong> independent recall counts for more than a full reveal, and recent episodes count for more than older ones.</li>
+      <li data-i18n-block="bcda2c96ab4efc6"><strong>Category vocabulary from real datasets:</strong> derived from Princeton WordNet hyponym chains, filtered by word frequency (wordfreq).</li>
     </ul>
 
     <!-- ------------------ MEMORY BEHAVIOURS ------------------ -->
-    <h2>4) Memory-Agent Behaviours</h2>
+    <h2 data-i18n-block="b87886bcc743d91">4) Memory-Agent Behaviours</h2>
     <div class="table-wrap">
       <table class="spec">
         <tbody>
-          <tr><td>Persistent memory</td><td>Users, concepts, sessions, attempts, cue events, ability states, preferences, corrections and audits stored across sessions</td></tr>
-          <tr><td>Learns from experience</td><td>Successful and failed cues update the help level for each concept and the cue preferences for each user and category</td></tr>
-          <tr><td>Forgetting &amp; correction</td><td>Corrected concepts are superseded without deleting history. Uncertainty grows after gaps of more than 7 days</td></tr>
-          <tr><td>Consent gating</td><td>Caregiver-only memories (e.g. medication) never surface in a regular user session, enforced deterministically before ranking</td></tr>
-          <tr><td>Human checkpoint</td><td>Every candidate needs explicit confirmation before the ability state changes</td></tr>
-          <tr><td>Transparency</td><td>A live Memory Inspector shows the Qwen trace, score breakdown, cue ladder, preferences and latency</td></tr>
+          <tr><td data-i18n-block="b0ed6ed949f9638">Persistent memory</td><td data-i18n-block="b469100e3cc2155">Users, concepts, sessions, attempts, cue events, ability states, preferences, corrections and audits stored across sessions</td></tr>
+          <tr><td data-i18n-block="b36717d65abf760">Learns from experience</td><td data-i18n-block="b8224c014f5ee71">Successful and failed cues update the help level for each concept and the cue preferences for each user and category</td></tr>
+          <tr><td data-i18n-block="bd05d2c186f1a45">Forgetting &amp; correction</td><td data-i18n-block="ba8183aa43da59b">Corrected concepts are superseded without deleting history. Uncertainty grows after gaps of more than 7 days</td></tr>
+          <tr><td data-i18n-block="b89f6b66c7cc205">Consent gating</td><td data-i18n-block="bceb80fef14954d">Caregiver-only memories (e.g. medication) never surface in a regular user session, enforced deterministically before ranking</td></tr>
+          <tr><td data-i18n-block="b0fd054dbbc28e5">Human checkpoint</td><td data-i18n-block="b0edb91678f4f4a">Every candidate needs explicit confirmation before the ability state changes</td></tr>
+          <tr><td data-i18n-block="b7cb338a916152e">Transparency</td><td data-i18n-block="b0359a6d7772ed2">A live Memory Inspector shows the Qwen trace, score breakdown, cue ladder, preferences and latency</td></tr>
         </tbody>
       </table>
     </div>
     <div class="two-col">
       <figure>
         <img src="../../assets/revoice/reveal.jpg" alt="Confirmed recall of Lily, recorded to update the memory path"/>
-        <figcaption>Once the user confirms the word ("Lily"), the retrieval is recorded and the memory path updates.</figcaption>
+        <figcaption data-i18n-block="b966acf5810e358">Once the user confirms the word ("Lily"), the retrieval is recorded and the memory path updates.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/revoice/progress.jpg" alt="Progress review with Qwen summary, learned cue styles and per-concept assistance levels"/>
-        <figcaption>Progress Review: a non-clinical summary from Qwen, learned cue-style scores, and the help level and uncertainty for each concept.</figcaption>
+        <figcaption data-i18n-block="b59b64182350083">Progress Review: a non-clinical summary from Qwen, learned cue-style scores, and the help level and uncertainty for each concept.</figcaption>
       </figure>
     </div>
-    <p style="font-size:.92rem; opacity:.85;">
+    <p style="font-size:.92rem; opacity:.85;" data-i18n-block="b2bb3dbe97f0de5">
       The cue ladder draws on word-retrieval strategies from aphasia and dementia care: semantic feature cues, sentence
       completion, phonological and orthographic cues, visual and autobiographical cues, and waiting before revealing. ReVoice
       is an assistive tool, not a diagnostic or treatment tool.
     </p>
 
     <!-- ------------------ EVALUATION ------------------ -->
-    <h2>5) Evaluation</h2>
+    <h2 data-i18n-block="b58cd41447dbb2d">5) Evaluation</h2>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Suite</th><th>ReVoice</th><th>Memoryless baseline</th><th>Transcript-RAG baseline</th></tr></thead>
+        <thead><tr><th data-i18n-block="b6463c49f51ec28">Suite</th><th data-i18n-block="ba9c66425a6c862">ReVoice</th><th data-i18n-block="be88ebb83414b20">Memoryless baseline</th><th data-i18n-block="bca20c6463566b3">Transcript-RAG baseline</th></tr></thead>
         <tbody>
-          <tr><td>Core memory-agent properties (20 cases: persistence, personal cues, consent, correction, context budget, transfer)</td><td><strong>20/20</strong></td><td>3/20</td><td>1/20</td></tr>
-          <tr><td>Philadelphia Naming Test semantic error types (12 cases: circumlocutions, coordinate and kinship substitutions…)</td><td><strong>12/12</strong></td><td>4/12</td><td>–</td></tr>
+          <tr><td data-i18n-block="b603ccc55017387">Core memory-agent properties (20 cases: persistence, personal cues, consent, correction, context budget, transfer)</td><td><strong>20/20</strong></td><td>3/20</td><td>1/20</td></tr>
+          <tr><td data-i18n-block="b43ce4e402e22fa">Philadelphia Naming Test semantic error types (12 cases: circumlocutions, coordinate and kinship substitutions…)</td><td><strong>12/12</strong></td><td>4/12</td><td>–</td></tr>
         </tbody>
       </table>
     </div>
-    <p>The memoryless baseline's PNT passes are alphabetical accidents, not semantic matches. In addition, 24 backend unit tests pass and the frontend production build passes.</p>
+    <p data-i18n-block="b19ff1ee13db6c6">The memoryless baseline's PNT passes are alphabetical accidents, not semantic matches. In addition, 24 backend unit tests pass and the frontend production build passes.</p>
 
     <!-- ------------------ STACK ------------------ -->
-    <h2>6) Tech Stack &amp; Deployment</h2>
-    <p>
+    <h2 data-i18n-block="b3615ea1a4b95c5">6) Tech Stack &amp; Deployment</h2>
+    <p data-i18n-block="b8c8fde67049163">
       React + Vite + TypeScript frontend · FastAPI backend · SQLite / SQLAlchemy memory store · Qwen Cloud through DashScope's
       OpenAI-compatible API · MCP server · deployed on <strong>Alibaba Cloud Function Compute</strong> as a custom container,
       with Container Registry and optional OSS for media.
     </p>
 
     <!-- ------------------ DEMO ------------------ -->
-    <h2>Demo Video</h2>
+    <h2 data-i18n-block="bfce62284b358c3">Demo Video</h2>
     <figure>
       <video controls playsinline preload="metadata" poster="../../assets/revoice/session.jpg">
         <source src="../../assets/revoice/demo.mp4" type="video/mp4">
       </video>
-      <figcaption>Three-minute demo on the Alibaba Cloud deployment: choosing a person, hidden candidates, Qwen cue plans, the Memory Inspector, and progress review.</figcaption>
+      <figcaption data-i18n-block="b98c29453a9d33d">Three-minute demo on the Alibaba Cloud deployment: choosing a person, hidden candidates, Qwen cue plans, the Memory Inspector, and progress review.</figcaption>
     </figure>
   </article>
 

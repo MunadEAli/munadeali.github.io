@@ -22,6 +22,8 @@
     th, td { border:1px solid rgba(255,255,255,.15); padding:.55rem .6rem; text-align:left; }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -41,11 +43,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Class-AB Audio Amplifier (4 Ω, 10 W)</h1>
+      <h1 data-i18n-block="bf5334131ab9d2c">Class-AB Audio Amplifier (4 Ω, 10 W)</h1>
     </div>
-    <p class="tags">±100 mV Input · Two CE Preamps · Class-AB Push-Pull Output · TIP31C/TIP32C · LTspice</p>
+    <p class="tags" data-i18n-block="b4e558f9dac4735">±100 mV Input · Two CE Preamps · Class-AB Push-Pull Output · TIP31C/TIP32C · LTspice</p>
 
-    <p>
+    <p data-i18n-block="ba491777a9cbd05">
       Designed a three-stage audio amplifier to drive a <strong>4 Ω, 10 W speaker</strong> from a small <strong>±100 mV</strong> input.
       The architecture uses <strong>two common-emitter preamplifier stages</strong> for voltage gain and a <strong>Class-AB output stage</strong>
       for current drive and efficiency.
@@ -61,81 +63,81 @@
       <span class="metric">LTspice simulation</span>
     </div>
 
-    <h2>Project Overview</h2>
-    <p>
+    <h2 data-i18n-block="b22f9526cf80534">Project Overview</h2>
+    <p data-i18n-block="b067fbbbdc25fd0">
       Target was to reach ~10 V output swing and several amps of peak current into 4 Ω. The design splits into
       a low-noise front end (voltage amplification) and a robust push-pull output (current amplification) with thermal-friendly biasing.
     </p>
 
-    <h2>Block Diagram</h2>
+    <h2 data-i18n-block="b3bf5a9d2a546e3">Block Diagram</h2>
     <figure>
       <img src="../../assets/cholesterol/amplifier/block-dia.jpg" alt="Block diagram of the three-stage audio amplifier"/>
-      <figcaption>Signal flow: input → CE preamp 1 → CE preamp 2 → Class-AB output → 4 Ω speaker.</figcaption>
+      <figcaption data-i18n-block="bb1fcc7f4ada0e9">Signal flow: input → CE preamp 1 → CE preamp 2 → Class-AB output → 4 Ω speaker.</figcaption>
     </figure>
 
-    <h2>Stage 1 — CE Preamplifier</h2>
+    <h2 data-i18n-block="b1aa7cb37965de3">Stage 1 — CE Preamplifier</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/amplifier/pre-amp1.jpg" alt="Common-emitter preamplifier stage 1 schematic"/>
-        <figcaption>Input to the first stage.</figcaption>
+        <figcaption data-i18n-block="b81978ef11f358a">Input to the first stage.</figcaption>
       </figure>
       <ul class="list-tight">
-        <li><strong>Input:</strong> ±100 mV</li>
-        <li><strong>Measured gain:</strong> ≈22</li>
-        <li><strong>Output:</strong> ≈2.2 V</li>
-        <li><strong>Notes:</strong> Designed for higher gain initially, then tuned for stability and headroom.</li>
+        <li data-i18n-block="b6ac38891a8f40e"><strong>Input:</strong> ±100 mV</li>
+        <li data-i18n-block="b3cc940acef36b1"><strong>Measured gain:</strong> ≈22</li>
+        <li data-i18n-block="beb0309d69974ec"><strong>Output:</strong> ≈2.2 V</li>
+        <li data-i18n-block="b97455ce22372ac"><strong>Notes:</strong> Designed for higher gain initially, then tuned for stability and headroom.</li>
       </ul>
     </div>
 
-    <h2>Stage 2 — CE Preamplifier</h2>
+    <h2 data-i18n-block="b2775ae009ba120">Stage 2 — CE Preamplifier</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/amplifier/pre-amp2.jpg" alt="Common-emitter preamplifier stage 2 schematic"/>
-        <figcaption>Output of Stage 1 and input of Stage 2.</figcaption>
+        <figcaption data-i18n-block="b7dc67d2be8637c">Output of Stage 1 and input of Stage 2.</figcaption>
       </figure>
       <ul class="list-tight">
-        <li><strong>Input:</strong> ≈2.2 V</li>
-        <li><strong>Gain:</strong> ≈4.2</li>
-        <li><strong>Output:</strong> ≈9.4 V</li>
-        <li><strong>Total front-end gain:</strong> ≈92×</li>
+        <li data-i18n-block="bd03e6b1fd8cde6"><strong>Input:</strong> ≈2.2 V</li>
+        <li data-i18n-block="bac3904bdd030e1"><strong>Gain:</strong> ≈4.2</li>
+        <li data-i18n-block="bcc6dfdd7fa4595"><strong>Output:</strong> ≈9.4 V</li>
+        <li data-i18n-block="bc9f22ede39e852"><strong>Total front-end gain:</strong> ≈92×</li>
       </ul>
     </div>
 
     <!-- New diagram: output of Stage 2 and input of output stage -->
     <figure>
       <img src="../../assets/cholesterol/amplifier/input-to-output-stage.jpg" alt="Output of Stage 2 and input of the output stage"/>
-      <figcaption>Output of Stage 2 and input of the output stage.</figcaption>
+      <figcaption data-i18n-block="b73d9e864054af2">Output of Stage 2 and input of the output stage.</figcaption>
     </figure>
 
-    <h2>Output Stage — Class-AB Push-Pull</h2>
+    <h2 data-i18n-block="b23c97f6737fad1">Output Stage — Class-AB Push-Pull</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/amplifier/output-stage.jpg" alt="Class-AB push-pull output stage schematic"/>
-        <figcaption>Complementary emitter follower with Darlington pair for increased input resistance.</figcaption>
+        <figcaption data-i18n-block="ba7317ab7584d41">Complementary emitter follower with Darlington pair for increased input resistance.</figcaption>
       </figure>
       <ul class="list-tight">
-        <li><strong>Topology:</strong> Complementary Class-AB with bias network.</li>
-        <li><strong>Devices:</strong> 3× TIP31C (NPN) + 1× TIP32C (PNP).</li>
-        <li><strong>Supply:</strong> Raised from ~11 V to ~13 V to improve drive and symmetry.</li>
-        <li><strong>Current gain:</strong> ~15 mA → ~2.5 A peak capability.</li>
+        <li data-i18n-block="bec5c8228ee3551"><strong>Topology:</strong> Complementary Class-AB with bias network.</li>
+        <li data-i18n-block="ba90d300c728370"><strong>Devices:</strong> 3× TIP31C (NPN) + 1× TIP32C (PNP).</li>
+        <li data-i18n-block="bcbeb44b3c0ad65"><strong>Supply:</strong> Raised from ~11 V to ~13 V to improve drive and symmetry.</li>
+        <li data-i18n-block="b7349a5482f7281"><strong>Current gain:</strong> ~15 mA → ~2.5 A peak capability.</li>
       </ul>
     </div>
 
-    <h2>Full Schematic</h2>
+    <h2 data-i18n-block="bff82b4e31c001b">Full Schematic</h2>
     <figure>
       <img src="../../assets/cholesterol/amplifier/full-schematic.jpg" alt="Complete amplifier schematic combining all three stages"/>
-      <figcaption>Complete three-stage amplifier schematic.</figcaption>
+      <figcaption data-i18n-block="b804886c20526c7">Complete three-stage amplifier schematic.</figcaption>
     </figure>
 
-    <h2>Simulation &amp; Results</h2>
+    <h2 data-i18n-block="bfad752569d73cd">Simulation &amp; Results</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/amplifier/wave-stage1.jpg" alt="Waveform: input to first stage"/>
-        <figcaption>Input to the first stage.</figcaption>
+        <figcaption data-i18n-block="b81978ef11f358a">Input to the first stage.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/amplifier/wave-stage2.jpg" alt="Waveform: output of stage 1 and input of stage 2"/>
-        <figcaption>Output of Stage 1 and input of Stage 2.</figcaption>
+        <figcaption data-i18n-block="b7dc67d2be8637c">Output of Stage 1 and input of Stage 2.</figcaption>
       </figure>
     </div>
 
@@ -144,59 +146,59 @@
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/amplifier/input-to-output-stage.jpg" alt="Waveform: output of stage 2 and input of output stage"/>
-        <figcaption>Output of Stage 2 and input of the output stage.</figcaption>
+        <figcaption data-i18n-block="b73d9e864054af2">Output of Stage 2 and input of the output stage.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/amplifier/load-current.jpg" alt="Load current plot"/>
-        <figcaption>Load current demonstrating required drive capability.</figcaption>
+        <figcaption data-i18n-block="beeed86f880a889">Load current demonstrating required drive capability.</figcaption>
       </figure>
     </div>
 
     <figure>
       <img src="../../assets/cholesterol/amplifier/final-out.jpg" alt="Final amplifier output waveform"/>
-      <figcaption>Final output into 4 Ω.</figcaption>
+      <figcaption data-i18n-block="bf407ff87f0625a">Final output into 4 Ω.</figcaption>
     </figure>
 
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/amplifier/power-diss.jpg" alt="Power dissipation in load"/>
-        <figcaption>Power delivered to the speaker.</figcaption>
+        <figcaption data-i18n-block="bc529a689f72557">Power delivered to the speaker.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/amplifier/combined.jpg" alt="Combined input and output waveforms"/>
-        <figcaption>Combined input/output view.</figcaption>
+        <figcaption data-i18n-block="b734a2c83b248ff">Combined input/output view.</figcaption>
       </figure>
     </div>
 
-    <h2>Design Notes</h2>
+    <h2 data-i18n-block="b5966dbc5c4d197">Design Notes</h2>
     <ul class="list-tight">
-      <li><strong>Biasing &amp; Thermal:</strong> Class-AB bias set to minimize crossover distortion while limiting idle dissipation.</li>
-      <li><strong>Headroom:</strong> Front-end gain chosen to avoid clipping under typical supply and load variations.</li>
-      <li><strong>Device Matching:</strong> Discrete complementary pairs can introduce mismatch that impacts efficiency.</li>
+      <li data-i18n-block="bb7399da9ce2e82"><strong>Biasing &amp; Thermal:</strong> Class-AB bias set to minimize crossover distortion while limiting idle dissipation.</li>
+      <li data-i18n-block="b563249556dfe87"><strong>Headroom:</strong> Front-end gain chosen to avoid clipping under typical supply and load variations.</li>
+      <li data-i18n-block="b073c7e26e4ad35"><strong>Device Matching:</strong> Discrete complementary pairs can introduce mismatch that impacts efficiency.</li>
     </ul>
 
-    <h2>Performance Summary</h2>
+    <h2 data-i18n-block="b642ed2d926bc55">Performance Summary</h2>
     <table>
-      <thead><tr><th>Metric</th><th>Result</th></tr></thead>
+      <thead><tr><th data-i18n-block="bb2bb7604c825f9">Metric</th><th data-i18n-block="b5faa59d4bc3756">Result</th></tr></thead>
       <tbody>
-        <tr><td>Input Sensitivity</td><td>±100 mV</td></tr>
-        <tr><td>Voltage Gain (front-end)</td><td>≈92× (22× · 4.2×)</td></tr>
-        <tr><td>Output Voltage</td><td>≈9–10 V (into load)</td></tr>
-        <tr><td>Load</td><td>4 Ω speaker</td></tr>
-        <tr><td>Peak Load Current</td><td>≈2.5 A</td></tr>
-        <tr><td>Measured Efficiency</td><td>≈61% (design)</td></tr>
+        <tr><td data-i18n-block="b43396e6e4295ca">Input Sensitivity</td><td data-i18n-block="b7776bd9f0d0919">±100 mV</td></tr>
+        <tr><td data-i18n-block="bc78816d10ee583">Voltage Gain (front-end)</td><td>≈92× (22× · 4.2×)</td></tr>
+        <tr><td data-i18n-block="b300356d4bee91b">Output Voltage</td><td data-i18n-block="b5bb31a583cface">≈9–10 V (into load)</td></tr>
+        <tr><td data-i18n-block="bddcb77ff769ea5">Load</td><td data-i18n-block="bf45045a51c5dba">4 Ω speaker</td></tr>
+        <tr><td data-i18n-block="bdcde2665c572e9">Peak Load Current</td><td>≈2.5 A</td></tr>
+        <tr><td data-i18n-block="b4488e577fa0fa8">Measured Efficiency</td><td data-i18n-block="bc55d0ff6a9a7ad">≈61% (design)</td></tr>
       </tbody>
     </table>
 
-    <h2>Components</h2>
+    <h2 data-i18n-block="b9289473eeedaee">Components</h2>
     <ul class="list-tight">
-      <li>Power transistors: TIP31C (×3), TIP32C (×1)</li>
-      <li>Small-signal transistors: ideal BJTs (simulation)</li>
-      <li>Passive networks for biasing, AC coupling, and stabilization</li>
+      <li data-i18n-block="b06af7bb079ba02">Power transistors: TIP31C (×3), TIP32C (×1)</li>
+      <li data-i18n-block="b75db56b0b0cd4b">Small-signal transistors: ideal BJTs (simulation)</li>
+      <li data-i18n-block="b5ce423219c444a">Passive networks for biasing, AC coupling, and stabilization</li>
     </ul>
 
-    <h2>Conclusion</h2>
-    <p>
+    <h2 data-i18n-block="be39262defe80a8">Conclusion</h2>
+    <p data-i18n-block="b69f99ffb4e9aed">
       The three-stage topology achieves the required voltage gain and current drive for a 4 Ω, 10 W speaker from a ±100 mV input.
       Using a Class-AB push-pull output with Darlington assistance provides strong current delivery with manageable distortion and heat.
     </p>

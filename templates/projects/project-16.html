@@ -23,6 +23,8 @@
     pre { background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); padding:1rem; border-radius:.6rem; overflow:auto; }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -42,11 +44,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Ultrasonic Range Finder (FPGA · Spartan-3E)</h1>
+      <h1 data-i18n-block="b8dfe6a1608aea2">Ultrasonic Range Finder (FPGA · Spartan-3E)</h1>
     </div>
-    <p class="tags">Spartan-3E Starter Kit · Verilog HDL · HC-SR04 · LCD Display · State Machine · PWM Servo · ModelSim</p>
+    <p class="tags" data-i18n-block="b4ec6fe687b6ac6">Spartan-3E Starter Kit · Verilog HDL · HC-SR04 · LCD Display · State Machine · PWM Servo · ModelSim</p>
 
-    <p>
+    <p data-i18n-block="b76b035ba3d7db7">
       I built a <strong>range finder</strong> on a <strong>Spartan-3 FPGA</strong> that measures distance with an <strong>HC-SR04 ultrasonic sensor</strong>
       and displays the result on an <strong>LCD</strong>. The design uses a <strong>state machine</strong> with counters to measure echo time,
       converts time-of-flight to distance, and includes a <strong>servo PWM</strong> add-on for scanning.
@@ -62,90 +64,90 @@
       <span class="metric">ModelSim sims</span>
     </div>
 
-    <h2>Project Overview</h2>
-    <p>
+    <h2 data-i18n-block="b22f9526cf80534">Project Overview</h2>
+    <p data-i18n-block="bb741040602ad6e">
       The top module triggers the ultrasonic sensor, times the echo pulse with cycle-accurate counters, converts elapsed
       time to distance, and updates an LCD. A separate PWM block drives a servo so the sensor can sweep an area for
       basic scanning and object detection.
     </p>
 
-    <h2>Hardware</h2>
+    <h2 data-i18n-block="bb76ab65957a69f">Hardware</h2>
     <ul class="list-tight">
-      <li><strong>FPGA:</strong> Xilinx Spartan-3E starter kit</li>
-      <li><strong>Sensor:</strong> HC-SR04 ultrasonic (Trig/Echo)</li>
-      <li><strong>Actuator:</strong> hobby servo (PWM control)</li>
-      <li><strong>Display:</strong> character LCD</li>
-      <li><strong>Tools:</strong> Xilinx ISE, ModelSim</li>
+      <li data-i18n-block="b518a984db3e215"><strong>FPGA:</strong> Xilinx Spartan-3E starter kit</li>
+      <li data-i18n-block="bb4324a7ac15e93"><strong>Sensor:</strong> HC-SR04 ultrasonic (Trig/Echo)</li>
+      <li data-i18n-block="b1d56798165735e"><strong>Actuator:</strong> hobby servo (PWM control)</li>
+      <li data-i18n-block="b5d3f4391b5220d"><strong>Display:</strong> character LCD</li>
+      <li data-i18n-block="ba33933dfd134e0"><strong>Tools:</strong> Xilinx ISE, ModelSim</li>
     </ul>
 
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/fpga/ultra.jpg" alt="HC-SR04 ultrasonic sensor"/>
-        <figcaption>Ultrasonic sensor used for time-of-flight measurement.</figcaption>
+        <figcaption data-i18n-block="ba28f428aa922b8">Ultrasonic sensor used for time-of-flight measurement.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/fpga/servo-mounted.jpg" alt="Ultrasonic sensor mounted on a servo"/>
-        <figcaption>Sensor mounted on a servo for scanning.</figcaption>
+        <figcaption data-i18n-block="b900ca8a2ed52c3">Sensor mounted on a servo for scanning.</figcaption>
       </figure>
     </div>
 
-    <h2>System Architecture</h2>
+    <h2 data-i18n-block="b94596d1fca6ae5">System Architecture</h2>
     <ul class="list-tight">
-      <li><strong>Idle:</strong> wait for measurement interval.</li>
+      <li data-i18n-block="bc0da2f9eb11bdc"><strong>Idle:</strong> wait for measurement interval.</li>
       <li><strong>Trigger:</strong> assert 10&nbsp;µs pulse on <code>Trig</code>.</li>
       <li><strong>Wait Echo:</strong> wait for <code>Echo</code> to go high.</li>
       <li><strong>Measure:</strong> count clock cycles while <code>Echo</code> is high.</li>
-      <li><strong>Compute:</strong> convert cycles → time → distance.</li>
-      <li><strong>Display:</strong> send digits/formatting to the LCD.</li>
+      <li data-i18n-block="b00b6bc75609122"><strong>Compute:</strong> convert cycles → time → distance.</li>
+      <li data-i18n-block="b86757964b28814"><strong>Display:</strong> send digits/formatting to the LCD.</li>
     </ul>
 
-    <h2>Distance Calculation</h2>
-    <p>
+    <h2 data-i18n-block="bbe876a0c3ca26b">Distance Calculation</h2>
+    <p data-i18n-block="bd5d003b34312d4">
       Using time-of-flight (τ) and speed of sound (≈340&nbsp;m/s):
     </p>
     <pre><code>d = (τ · 340) / 2</code></pre>
 
-    <h2>Verilog Modules</h2>
+    <h2 data-i18n-block="b49d6329b0c58ca">Verilog Modules</h2>
     <ul class="list-tight">
-      <li><strong>ultrasonic_sensor:</strong> FSM for trigger/echo timing and distance register.</li>
-      <li><strong>lcd_driver:</strong> updates the character LCD with the measured value.</li>
-      <li><strong>servo_pwm:</strong> generates pulse widths for position control.</li>
-      <li><strong>top:</strong> integrates sensor, LCD, and servo blocks.</li>
+      <li data-i18n-block="b282a15679fdbe4"><strong>ultrasonic_sensor:</strong> FSM for trigger/echo timing and distance register.</li>
+      <li data-i18n-block="b322d919d84c864"><strong>lcd_driver:</strong> updates the character LCD with the measured value.</li>
+      <li data-i18n-block="b9f441d3e31adaa"><strong>servo_pwm:</strong> generates pulse widths for position control.</li>
+      <li data-i18n-block="bbb684a10148f99"><strong>top:</strong> integrates sensor, LCD, and servo blocks.</li>
     </ul>
 
-    <h2>Servo Add-On (PWM)</h2>
-    <p>
+    <h2 data-i18n-block="b842932fd3641df">Servo Add-On (PWM)</h2>
+    <p data-i18n-block="b56c3e378bb05e1">
       A lightweight PWM controller varies pulse width to set servo angle. Threshold values can be updated to sweep or
       lock at a set point, enabling simple area scans.
     </p>
 
-    <h2>Simulation Results</h2>
+    <h2 data-i18n-block="b6a7c3eee670b86">Simulation Results</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/fpga/modelsim-scho.jpg" alt="ModelSim waveform showing trigger and echo timing"/>
-        <figcaption>Trigger/Echo timing and distance counter in ModelSim.</figcaption>
+        <figcaption data-i18n-block="b79b0329116437c">Trigger/Echo timing and distance counter in ModelSim.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/fpga/pwm.jpg" alt="ModelSim waveform of servo PWM"/>
-        <figcaption>PWM waveform used for servo positioning.</figcaption>
+        <figcaption data-i18n-block="b9f939f1ebfa9bd">PWM waveform used for servo positioning.</figcaption>
       </figure>
     </div>
 
-    <h2>Applications</h2>
+    <h2 data-i18n-block="b76c74bd071dd73">Applications</h2>
     <ul class="list-tight">
-      <li>Mobile robots: obstacle detection and avoidance</li>
-      <li>Fixed installations: distance monitoring and presence sensing</li>
-      <li>Scanning rigs: simple 2D sweeps with the servo mount</li>
+      <li data-i18n-block="ba688cd29dd40a1">Mobile robots: obstacle detection and avoidance</li>
+      <li data-i18n-block="b6cfccea67c1f90">Fixed installations: distance monitoring and presence sensing</li>
+      <li data-i18n-block="b510e60697317d3">Scanning rigs: simple 2D sweeps with the servo mount</li>
     </ul>
 
-    <h2>Tech Stack</h2>
+    <h2 data-i18n-block="b83aa0d2f062c90">Tech Stack</h2>
     <ul class="list-tight">
-      <li>Verilog HDL · Xilinx ISE · ModelSim</li>
-      <li>Spartan-3E Starter Kit · HC-SR04 · Character LCD</li>
+      <li data-i18n-block="b28ce9fae65f185">Verilog HDL · Xilinx ISE · ModelSim</li>
+      <li data-i18n-block="b890cf727184022">Spartan-3E Starter Kit · HC-SR04 · Character LCD</li>
     </ul>
 
-    <h2>Outcome</h2>
-    <p>
+    <h2 data-i18n-block="bd3f0610632bbef">Outcome</h2>
+    <p data-i18n-block="b5c051687949b1d">
       The design performs continuous distance measurement with stable LCD updates and verified timing in simulation.
       Adding the servo PWM extends it into a basic scanning rangefinder suitable for labs and robotics demos.
     </p>

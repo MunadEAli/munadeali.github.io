@@ -22,6 +22,8 @@
     .specs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem; margin:.6rem 0 1rem; }
     .specs div { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); padding:.5rem .7rem; border-radius:.45rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -43,13 +45,13 @@
   <!-- CONTENT -->
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Four-Legged Crab Robot — SolidWorks CAD & CoppeliaSim/V-REP Simulation</h1>
+      <h1 data-i18n-block="bbd04f5c1a82d6e">Four-Legged Crab Robot — SolidWorks CAD & CoppeliaSim/V-REP Simulation</h1>
       <!-- Optional: demo/video -->
       <!-- <a class="btn" href="LINK_TO_DEMO" target="_blank">Watch Demo ↗</a> -->
     </div>
-    <p class="tags">Quadruped · Sideways Crab Gait · SolidWorks · CoppeliaSim/V-REP · Inverse Kinematics · 3D Printing</p>
+    <p class="tags" data-i18n-block="b54199876e712c4">Quadruped · Sideways Crab Gait · SolidWorks · CoppeliaSim/V-REP · Inverse Kinematics · 3D Printing</p>
 
-    <p>
+    <p data-i18n-block="b7e356ba2b3aa4c">
       This project is a biomimetic <strong>four-legged crab robot</strong> designed in <strong>SolidWorks</strong> and fully simulated in
       <strong>CoppeliaSim (V-REP)</strong>. The robot emphasizes a stable <em>sideways gait</em> (crab-style translation) with
       compliant, lightweight legs. The workflow covered CAD, mass/inertia estimation, kinematic modeling, controller tuning,
@@ -58,10 +60,10 @@
 
     <figure>
       <img src="../../assets/cholesterol/crab/center.jpg" alt="Front render of crab robot (SolidWorks)"/>
-      <figcaption>Front perspective render from SolidWorks showing the compact body and four articulated legs.</figcaption>
+      <figcaption data-i18n-block="b7350f9bf82bfe9">Front perspective render from SolidWorks showing the compact body and four articulated legs.</figcaption>
     </figure>
 
-    <h2>1) Goals & Design Constraints</h2>
+    <h2 data-i18n-block="b0e6f96d232229e">1) Goals & Design Constraints</h2>
     <div class="callout>
       <p><strong>Goal:</strong> achieve <em>lateral/sideways</em> locomotion with good stability, low weight, and printable legs, while keeping the control stack simple for real-time execution.</p>
     </div>
@@ -74,28 +76,28 @@
       <div><strong>Terrain:</strong> flat → mild slope/steps</div>
     </div>
 
-    <h2>2) Mechanical Design (SolidWorks)</h2>
+    <h2 data-i18n-block="b7be4e3e374b03b">2) Mechanical Design (SolidWorks)</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/crab/complete.jpg" alt="Complete crab robot CAD"/>
-        <figcaption>Top view of the complete assembly: central body + four 3-DOF legs. Brackets expose two mounting faces for easy servo integration.</figcaption>
+        <figcaption data-i18n-block="b6b9b312e06dc4e">Top view of the complete assembly: central body + four 3-DOF legs. Brackets expose two mounting faces for easy servo integration.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/crab/leg-des.png" alt="Leg link and foot CAD"/>
-        <figcaption>Leg design: lightweight, hollowed sections reduce mass/inertia while preserving stiffness near joints and the foot tip.</figcaption>
+        <figcaption data-i18n-block="b50958c65d39802">Leg design: lightweight, hollowed sections reduce mass/inertia while preserving stiffness near joints and the foot tip.</figcaption>
       </figure>
     </div>
 
-    <h3>Key CAD Notes</h3>
+    <h3 data-i18n-block="b2d42f97461555a">Key CAD Notes</h3>
     <ul class="list-tight">
-      <li><strong>Mass properties:</strong> extracted from SolidWorks (per-link). Exported to CoppeliaSim to match dynamics.</li>
-      <li><strong>Joint limits:</strong> designed to avoid self-collision at extreme poses; yaw at shoulder adds natural lateral reach.</li>
-      <li><strong>Cable routing:</strong> internal grooves for actuator wires; foot slot for replaceable pads/claws.</li>
-      <li><strong>Manufacturability:</strong> all parts printable on a 220×220 mm bed; minimal supports on hip parts.</li>
+      <li data-i18n-block="b1367b6c708f3ae"><strong>Mass properties:</strong> extracted from SolidWorks (per-link). Exported to CoppeliaSim to match dynamics.</li>
+      <li data-i18n-block="be684c328e4eed0"><strong>Joint limits:</strong> designed to avoid self-collision at extreme poses; yaw at shoulder adds natural lateral reach.</li>
+      <li data-i18n-block="b732bf73249414d"><strong>Cable routing:</strong> internal grooves for actuator wires; foot slot for replaceable pads/claws.</li>
+      <li data-i18n-block="bc39b12245cd300"><strong>Manufacturability:</strong> all parts printable on a 220×220 mm bed; minimal supports on hip parts.</li>
     </ul>
 
-    <h2>3) Kinematics & Actuation</h2>
-    <p>
+    <h2 data-i18n-block="b0b0656d3b11ec6">3) Kinematics & Actuation</h2>
+    <p data-i18n-block="b982f3ac09b8536">
       Each leg uses a <strong>3-link planar chain</strong> with an extra <em>hip-yaw</em> DOF for sideways reach.
       We implemented both <span class="metric">analytical IK</span> (for fast stepping) and <span class="metric">numerical damped-least-squares</span>
       (for obstacle tests). A simple <span class="metric">PD controller</span> regulates joint angles; gravity compensation
@@ -103,60 +105,60 @@
     </p>
     <pre class="kbd">p_cmd → IK(q*) → PD: τ = Kp(q*−q) + Kd(−q̇)</pre>
 
-    <h2>4) Simulation (CoppeliaSim / V-REP)</h2>
-    <p>
+    <h2 data-i18n-block="be9d408ef75115f">4) Simulation (CoppeliaSim / V-REP)</h2>
+    <p data-i18n-block="bf3f405191ae41c">
       The SolidWorks assembly was exported (STL/OBJ + URDF-like joint tree) and re-parameterized in CoppeliaSim:
     </p>
     <ul class="list-tight">
-      <li><strong>Mass/inertia</strong> per link from CAD; friction, restitution, and foot contact patches tuned for realistic stance.</li>
-      <li><strong>Controllers:</strong> Lua or remote Python script; 50–100 Hz loop with synchronous stepping.</li>
-      <li><strong>Scenes:</strong> flat plane, low-friction patch, 2–3 cm step, and ±5° ramp for stability tests.</li>
-      <li><strong>Foot contact:</strong> ray/force threshold triggers stance ↔ swing transitions.</li>
+      <li data-i18n-block="b74399bcde62e29"><strong>Mass/inertia</strong> per link from CAD; friction, restitution, and foot contact patches tuned for realistic stance.</li>
+      <li data-i18n-block="bbbafe0edd47315"><strong>Controllers:</strong> Lua or remote Python script; 50–100 Hz loop with synchronous stepping.</li>
+      <li data-i18n-block="b0defe0efbc7a1d"><strong>Scenes:</strong> flat plane, low-friction patch, 2–3 cm step, and ±5° ramp for stability tests.</li>
+      <li data-i18n-block="b9289c781404358"><strong>Foot contact:</strong> ray/force threshold triggers stance ↔ swing transitions.</li>
     </ul>
 
     <figure>
       <img src="../../assets/cholesterol/crab/simulation.jpg" alt="CoppeliaSim/V-REP simulation screenshot"/>
-      <figcaption>Robot imported and driven in V-REP/CoppeliaSim for locomotion tests (import, physics, and Lua control). <!-- Source: simulation figure in the uploaded report, see page 12. --> </figcaption>
+      <figcaption data-i18n-block="b0b10f607ae55ab">Robot imported and driven in V-REP/CoppeliaSim for locomotion tests (import, physics, and Lua control). <!-- Source: simulation figure in the uploaded report, see page 12. --> </figcaption>
     </figure>
 
-    <h2>5) Gait Planner (Lateral “Crab” Motion)</h2>
-    <p>
+    <h2 data-i18n-block="b7921244905c585">5) Gait Planner (Lateral “Crab” Motion)</h2>
+    <p data-i18n-block="b9b730bc2e11796">
       The robot moves primarily <em>sideways</em>. We implemented two patterns:
     </p>
     <ul class="list-tight">
-      <li><strong>Static lateral crawl:</strong> one leg swings while the other three keep the support polygon wide. CoM projection is kept inside polygon → very stable.</li>
-      <li><strong>Lateral trot:</strong> diagonal pair swing together for higher speed; requires tighter PD gains and short stance re-centering.</li>
+      <li data-i18n-block="b6b18de18cbe70f"><strong>Static lateral crawl:</strong> one leg swings while the other three keep the support polygon wide. CoM projection is kept inside polygon → very stable.</li>
+      <li data-i18n-block="b9bba0c2ee528a1"><strong>Lateral trot:</strong> diagonal pair swing together for higher speed; requires tighter PD gains and short stance re-centering.</li>
     </ul>
     <pre class="kbd">phase = { LF:0, RF:π, LB:π, RB:0 }   // crawl
 x_foot(t) = x0 + A * sawtooth(phase + ωt)
 z_foot(t) = z_clear during swing</pre>
 
-    <h2>6) Prototyping</h2>
+    <h2 data-i18n-block="bd4ae89104b5640">6) Prototyping</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/crab/leg-3d.png" alt="3D-printed legs prototype"/>
-        <figcaption>3D-printed leg prototypes (early & refined). Slot cutouts reduce mass; fork head interfaces with the knee bracket.</figcaption>
+        <figcaption data-i18n-block="bb4167025520853">3D-printed leg prototypes (early & refined). Slot cutouts reduce mass; fork head interfaces with the knee bracket.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/crab/leg-des.png" alt="Leg CAD close-up"/>
-        <figcaption>Close-up of the leg CAD showing fork head, hinge bore, and tapered beam for stiffness where loads are highest.</figcaption>
+        <figcaption data-i18n-block="bfdd96dc2ea8d77">Close-up of the leg CAD showing fork head, hinge bore, and tapered beam for stiffness where loads are highest.</figcaption>
       </figure>
     </div>
 
-    <h2>7) Results & Metrics (Simulation)</h2>
+    <h2 data-i18n-block="baeba860566be22">7) Results & Metrics (Simulation)</h2>
     <ul class="list-tight">
-      <li><strong>Sideways speed:</strong> ~0.12–0.18 m/s (trot), ~0.06–0.09 m/s (crawl), depending on step length and stance timing.</li>
-      <li><strong>Stability margin:</strong> minimum CoM–support-polygon distance &gt; 1.5 cm in crawl; near-zero at peak trot swing (acceptable with PD damping).</li>
-      <li><strong>Energy:</strong> lower knee torque when swing trajectory includes a slight lift-hold to clear terrain and reduce impact.</li>
-      <li><strong>Terrain:</strong> clears 20–25 mm obstacles with 35–40 mm foot clearance; traverses ±5° ramps in crawl mode.</li>
+      <li data-i18n-block="b276d2ce47bae6d"><strong>Sideways speed:</strong> ~0.12–0.18 m/s (trot), ~0.06–0.09 m/s (crawl), depending on step length and stance timing.</li>
+      <li data-i18n-block="bb0a74e0f4ef225"><strong>Stability margin:</strong> minimum CoM–support-polygon distance &gt; 1.5 cm in crawl; near-zero at peak trot swing (acceptable with PD damping).</li>
+      <li data-i18n-block="badadef2ff73651"><strong>Energy:</strong> lower knee torque when swing trajectory includes a slight lift-hold to clear terrain and reduce impact.</li>
+      <li data-i18n-block="bdc6891077eafc9"><strong>Terrain:</strong> clears 20–25 mm obstacles with 35–40 mm foot clearance; traverses ±5° ramps in crawl mode.</li>
     </ul>
 
-    <h2>8) Challenges & Fixes</h2>
+    <h2 data-i18n-block="bc766712fe9ae1a">8) Challenges & Fixes</h2>
     <ul class="list-tight">
-      <li><strong>Self-collision at max stride</strong> → added hip-yaw limit and reduced knee hyper-extension.</li>
-      <li><strong>Foot slip on low-μ surfaces</strong> → increased normal force during stance and used vertical preload in PD.</li>
-      <li><strong>Printed leg flex</strong> → changed infill from 15% to 35% near hinge; added fillets at stress concentrators.</li>
-      <li><strong>Controller chatter</strong> → introduced velocity damping (Kd↑) and small deadband around set-point.</li>
+      <li data-i18n-block="bc95660fff5011a"><strong>Self-collision at max stride</strong> → added hip-yaw limit and reduced knee hyper-extension.</li>
+      <li data-i18n-block="bc72da29de3d87d"><strong>Foot slip on low-μ surfaces</strong> → increased normal force during stance and used vertical preload in PD.</li>
+      <li data-i18n-block="b5312ae56781644"><strong>Printed leg flex</strong> → changed infill from 15% to 35% near hinge; added fillets at stress concentrators.</li>
+      <li data-i18n-block="be162cddcb7bc68"><strong>Controller chatter</strong> → introduced velocity damping (Kd↑) and small deadband around set-point.</li>
     </ul>
 
 

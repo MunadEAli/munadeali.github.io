@@ -26,6 +26,8 @@
     th, td { border:1px solid rgba(255,255,255,.15); padding:.55rem .6rem; text-align:left; }
     .tags { opacity:.85; margin-top:.25rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -45,11 +47,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>RFID Based Security System</h1>
+      <h1 data-i18n-block="be68bb788ca4e4e">RFID Based Security System</h1>
     </div>
-    <p class="tags">Arduino UNO · MFRC522 (13.56 MHz) · 16×2 LCD (I²C) · Servo Lock · LEDs + Buzzer · Breadboard Prototype</p>
+    <p class="tags" data-i18n-block="b7a52a015739cfc">Arduino UNO · MFRC522 (13.56 MHz) · 16×2 LCD (I²C) · Servo Lock · LEDs + Buzzer · Breadboard Prototype</p>
 
-    <p>
+    <p data-i18n-block="bdb846c7d3ccec2">
       A keyless entry prototype that authenticates users with an <strong>RFID card/tag</strong> and actuates a
       <strong>servo-driven door lock</strong>. The system displays status on a <strong>16×2 LCD (I²C)</strong>, uses clear visual/audio
       feedback (LEDs &amp; buzzer), and demonstrates a practical access-control workflow for homes, labs, or offices.
@@ -65,55 +67,55 @@
       <span class="metric">LED/Buzzer alerts</span>
     </div>
 
-    <h2>Team &amp; Context</h2>
-    <p>
+    <h2 data-i18n-block="b6a1c865cff7a9d">Team &amp; Context</h2>
+    <p data-i18n-block="b5152bc88138ab1">
       <strong>Course:</strong> Communication Systems (CEP) — Fall 2022 • <strong>Instructor:</strong> Dr. Waqas Ahmed •
       <strong>Lab Engineer:</strong> Ma’am Anzalna Nurejo • <strong>Group 01</strong>. Team members:
       <strong>Muhammad Sheraz</strong> (Electronics), <strong>Muhammad Huzaifa Zahid</strong> (Electronics),
       <strong>Muhammad Talha</strong> (Power). :contentReference[oaicite:2]{index=2}
     </p>
 
-    <h2>Objective</h2>
-    <p>
+    <h2 data-i18n-block="b50c8920b8dc250">Objective</h2>
+    <p data-i18n-block="b2207ed5f1b49e5">
       Design and study a <strong>door-lock mechanism</strong> using <strong>RFID read/write</strong> with a microcontroller that
       decides access and operates the lock motor. :contentReference[oaicite:3]{index=3}
     </p>
 
-    <h2>System Overview</h2>
+    <h2 data-i18n-block="b6ebc4b565077e1">System Overview</h2>
     <ul class="list-tight">
-      <li><strong>Reader:</strong> MFRC522 (ISO/IEC 14443 A/MIFARE/NTAG compatible) with ~0–30 mm read range. :contentReference[oaicite:4]{index=4}</li>
-      <li><strong>Controller:</strong> Arduino UNO (ATmega328P), SPI to MFRC522; I²C to LCD. :contentReference[oaicite:5]{index=5}</li>
-      <li><strong>UI/Feedback:</strong> 16×2 I²C LCD; Green/Red/Blue LEDs; 5 V piezo buzzer. :contentReference[oaicite:6]{index=6}</li>
-      <li><strong>Actuator:</strong> Servo motor that rotates the latch (demo door lock). :contentReference[oaicite:7]{index=7}</li>
+      <li data-i18n-block="bf781cae42bc382"><strong>Reader:</strong> MFRC522 (ISO/IEC 14443 A/MIFARE/NTAG compatible) with ~0–30 mm read range. :contentReference[oaicite:4]{index=4}</li>
+      <li data-i18n-block="b437faaa2ea7eda"><strong>Controller:</strong> Arduino UNO (ATmega328P), SPI to MFRC522; I²C to LCD. :contentReference[oaicite:5]{index=5}</li>
+      <li data-i18n-block="b2ae1c03998481c"><strong>UI/Feedback:</strong> 16×2 I²C LCD; Green/Red/Blue LEDs; 5 V piezo buzzer. :contentReference[oaicite:6]{index=6}</li>
+      <li data-i18n-block="b24dc49796d6a0a"><strong>Actuator:</strong> Servo motor that rotates the latch (demo door lock). :contentReference[oaicite:7]{index=7}</li>
     </ul>
 
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/RFID/frid-module.jpg" alt="MFRC522 RFID module"/>
-        <figcaption>MFRC522 RFID reader/writer and tags. :contentReference[oaicite:8]{index=8}</figcaption>
+        <figcaption data-i18n-block="b70c47a61969411">MFRC522 RFID reader/writer and tags. :contentReference[oaicite:8]{index=8}</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/RFID/arduino.jpg" alt="Arduino UNO board"/>
-        <figcaption>Arduino UNO microcontroller board. :contentReference[oaicite:9]{index=9}</figcaption>
+        <figcaption data-i18n-block="b87d88324b9456b">Arduino UNO microcontroller board. :contentReference[oaicite:9]{index=9}</figcaption>
       </figure>
     </div>
 
-    <h2>Working Principle</h2>
+    <h2 data-i18n-block="be6be0860488543">Working Principle</h2>
     <ul class="list-tight">
-      <li>When a tag enters range, MFRC522 sends UID to Arduino via SPI.</li>
-      <li>Arduino compares the UID against an authorized master UID.</li>
-      <li>On match: LCD shows <em>Access Granted</em>, Green LED blinks, buzzer beeps, servo rotates to open lock.</li>
-      <li>On mismatch: LCD shows <em>Access Denied</em>, Red LED blinks, buzzer sounds, lock remains closed. :contentReference[oaicite:10]{index=10}</li>
+      <li data-i18n-block="b8788f4c0235a57">When a tag enters range, MFRC522 sends UID to Arduino via SPI.</li>
+      <li data-i18n-block="b6afbea6939f15e">Arduino compares the UID against an authorized master UID.</li>
+      <li data-i18n-block="b79594f03985149">On match: LCD shows <em>Access Granted</em>, Green LED blinks, buzzer beeps, servo rotates to open lock.</li>
+      <li data-i18n-block="becac39572eec31">On mismatch: LCD shows <em>Access Denied</em>, Red LED blinks, buzzer sounds, lock remains closed. :contentReference[oaicite:10]{index=10}</li>
     </ul>
 
-    <h2>Wiring Summary</h2>
+    <h2 data-i18n-block="bacafc1f0630261">Wiring Summary</h2>
     <ul class="list-tight">
-      <li><strong>MFRC522 ↔ UNO:</strong> SPI (SS=D10, RST=D9, SCK=D13, MOSI=D11, MISO=D12).</li>
-      <li><strong>LCD (I²C):</strong> VCC, GND, SDA → A4, SCL → A5 (UNO).</li>
-      <li><strong>Servo:</strong> Signal → D6; <strong>LEDs:</strong> D2/D3/D4; <strong>Buzzer:</strong> D5. :contentReference[oaicite:11]{index=11}</li>
+      <li data-i18n-block="bc210f2923de18b"><strong>MFRC522 ↔ UNO:</strong> SPI (SS=D10, RST=D9, SCK=D13, MOSI=D11, MISO=D12).</li>
+      <li data-i18n-block="b10fad54f73c9fb"><strong>LCD (I²C):</strong> VCC, GND, SDA → A4, SCL → A5 (UNO).</li>
+      <li data-i18n-block="b53a1b9f0dcea58"><strong>Servo:</strong> Signal → D6; <strong>LEDs:</strong> D2/D3/D4; <strong>Buzzer:</strong> D5. :contentReference[oaicite:11]{index=11}</li>
     </ul>
 
-    <h2>Arduino Code</h2>
+    <h2 data-i18n-block="bb9c7b51d30b00f">Arduino Code</h2>
     <pre><code>#include &lt;SPI.h&gt;
 #include &lt;MFRC522.h&gt;
 #include &lt;LiquidCrystal_I2C.h&gt;
@@ -220,38 +222,38 @@ boolean getUID() {
   return true;
 }
 </code></pre>
-    <p><em>Full sketch reproduced from the report’s “Arduino Code” section.</em> :contentReference[oaicite:12]{index=12}</p>
+    <p data-i18n-block="b0a36a0d741e5e7"><em>Full sketch reproduced from the report’s “Arduino Code” section.</em> :contentReference[oaicite:12]{index=12}</p>
 
-    <h2>Schematic &amp; Hardware</h2>
+    <h2 data-i18n-block="b3bfc4d2e640264">Schematic &amp; Hardware</h2>
     <div class="two-col">
       <figure>
         <img src="../../assets/cholesterol/RFID/rfid-schematic.jpg" alt="Schematic diagram of RFID access system"/>
-        <figcaption>Schematic showing MFRC522, UNO, LCD, LEDs/buzzer, and servo connections. :contentReference[oaicite:13]{index=13}</figcaption>
+        <figcaption data-i18n-block="ba86d053349604b">Schematic showing MFRC522, UNO, LCD, LEDs/buzzer, and servo connections. :contentReference[oaicite:13]{index=13}</figcaption>
       </figure>
       <figure>
         <img src="../../assets/cholesterol/RFID/rfid-hardware.jpg" alt="Breadboard hardware prototype with LCD and RFID tag"/>
-        <figcaption>Breadboard prototype with 16×2 LCD (I²C), MFRC522 reader, and servo lock. :contentReference[oaicite:14]{index=14}</figcaption>
+        <figcaption data-i18n-block="b0f5b33407f23c4">Breadboard prototype with 16×2 LCD (I²C), MFRC522 reader, and servo lock. :contentReference[oaicite:14]{index=14}</figcaption>
       </figure>
     </div>
 
 
 
-    <h2>Results &amp; Discussion</h2>
+    <h2 data-i18n-block="b7f5ac4c653e2ae">Results &amp; Discussion</h2>
     <ul class="list-tight">
-      <li>Valid card → servo unlocks; invalid card → buzzer/Red LED alert; relay output optional for EM locks.</li>
-      <li>Demonstrates reliable, low-cost, keyless entry—extendable to attendance or parking gates. :contentReference[oaicite:16]{index=16}</li>
+      <li data-i18n-block="ba092b999b71306">Valid card → servo unlocks; invalid card → buzzer/Red LED alert; relay output optional for EM locks.</li>
+      <li data-i18n-block="b045a11bd4376d2">Demonstrates reliable, low-cost, keyless entry—extendable to attendance or parking gates. :contentReference[oaicite:16]{index=16}</li>
     </ul>
 
-    <h2>Conclusion</h2>
-    <p>
+    <h2 data-i18n-block="be39262defe80a8">Conclusion</h2>
+    <p data-i18n-block="b92a3852e68efd0">
       The build solidified understanding of RFID (AIDC) and practical access control. The same design
       pattern adapts easily to attendance systems, parking control, and ticketing with minimal changes. :contentReference[oaicite:17]{index=17}
     </p>
 
-    <h2>References</h2>
+    <h2 data-i18n-block="b5d20d0fee3b916">References</h2>
     <ul class="list-tight">
-      <li>MFRC522 Datasheet and application notes (ISO/IEC 14443 A/MIFARE/NTAG).</li>
-      <li>Arduino UNO board reference &amp; libraries (SPI, Servo, LiquidCrystal_I2C). :contentReference[oaicite:18]{index=18}</li>
+      <li data-i18n-block="bcceb893bab16fb">MFRC522 Datasheet and application notes (ISO/IEC 14443 A/MIFARE/NTAG).</li>
+      <li data-i18n-block="b9181ce705ed304">Arduino UNO board reference &amp; libraries (SPI, Servo, LiquidCrystal_I2C). :contentReference[oaicite:18]{index=18}</li>
     </ul>
   </article>
 

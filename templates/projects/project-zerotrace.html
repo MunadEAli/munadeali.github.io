@@ -25,6 +25,8 @@
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
     code.status { font-size:.88rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -55,21 +57,21 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>ZeroTrace: Verified Project Offboarding Agent</h1>
+      <h1 data-i18n-block="b03a75a7c641fb9">ZeroTrace: Verified Project Offboarding Agent</h1>
       <a class="btn" href="https://github.com/laiba12345/ZeroTrace" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code
       </a>
     </div>
-    <p class="tags">AI Agent · Next.js · TypeScript · Prisma · GitHub / Slack / Google Drive APIs · Schema-Constrained LLM · Deterministic Policy Engine</p>
+    <p class="tags" data-i18n-block="bfb0368f8c997da">AI Agent · Next.js · TypeScript · Prisma · GitHub / Slack / Google Drive APIs · Schema-Constrained LLM · Deterministic Policy Engine</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b97998954d4ea10">
       <span class="metric">Hackathon · 6-hour build</span>
       <span class="metric">Team of 2 · with Laiba</span>
       <span class="metric">Sep 2026</span>
     </p>
 
-    <p class="callout"><strong>Zero remaining access. Zero destroyed history. Zero false success.</strong></p>
-    <p>
+    <p class="callout" data-i18n-block="b29711017cbd151"><strong>Zero remaining access. Zero destroyed history. Zero false success.</strong></p>
+    <p data-i18n-block="bfda567f813c952">
       When someone leaves a project, their access is scattered across many tools. Offboarding scripts usually report
       success because an API returned HTTP 200, but that proves nothing. <strong>ZeroTrace</strong> revokes a departing
       person's access to <strong>one named project</strong> across <strong>GitHub, Slack and Google Drive</strong>, and
@@ -79,7 +81,7 @@
     </p>
 
     <!-- ------------------ PIPELINE ------------------ -->
-    <h2>1) How It Works</h2>
+    <h2 data-i18n-block="b5d5f8fa765f69f">1) How It Works</h2>
     <div class="eq">Operator: "Alice is leaving, revoke her Phoenix access"   (agent asks for anything missing)
   → compile intent       (schema-constrained LLM, never guesses identity)
   → resolve identity     (exact provider IDs, never fuzzy)
@@ -91,57 +93,57 @@
 
     <div class="two-col">
       <ul class="list-tight">
-        <li><strong>Conversational intake:</strong> the agent holds a real back-and-forth with the operator (e.g. "what's her email?") instead of failing on incomplete input. The LLM is the only non-deterministic part, and it is limited to a fixed JSON schema.</li>
-        <li><strong>Scope Lock:</strong> a deterministic policy engine checks every change against the approved plan before it reaches any provider: right person, right resource, right plan hash, allow-listed operations only.</li>
+        <li data-i18n-block="be1a43983676f72"><strong>Conversational intake:</strong> the agent holds a real back-and-forth with the operator (e.g. "what's her email?") instead of failing on incomplete input. The LLM is the only non-deterministic part, and it is limited to a fixed JSON schema.</li>
+        <li data-i18n-block="bc2d3cdb5d82737"><strong>Scope Lock:</strong> a deterministic policy engine checks every change against the approved plan before it reaches any provider: right person, right resource, right plan hash, allow-listed operations only.</li>
       </ul>
       <ul class="list-tight">
-        <li><strong>Independent verification:</strong> "verified" always means the provider's live state was read back after the change, not just that the change was attempted.</li>
+        <li data-i18n-block="b660175b591b577"><strong>Independent verification:</strong> "verified" always means the provider's live state was read back after the change, not just that the change was attempted.</li>
         <li><strong>Success is earned:</strong> a priority-ordered status engine (<code class="status">SAFETY_VIOLATION &gt; BLOCKED &gt; INCOMPLETE &gt; UNVERIFIED &gt; COMPLETE</code>) only reports <code class="status">COMPLETE</code> when every obligation and safety invariant holds. If the LLM is unavailable, it fails closed.</li>
       </ul>
     </div>
 
     <!-- ------------------ SCREENS ------------------ -->
-    <h2>2) In the App</h2>
+    <h2 data-i18n-block="befb7505994aaac">2) In the App</h2>
     <figure>
       <img src="../../assets/zerotrace/access-matrix.jpg" alt="Access matrix showing GitHub, Slack and Google Drive access before revocation"/>
-      <figcaption>Preflight access matrix: the person's current access on each provider before approval.</figcaption>
+      <figcaption data-i18n-block="b31e685f1abf333">Preflight access matrix: the person's current access on each provider before approval.</figcaption>
     </figure>
     <div class="two-col">
       <figure>
         <img src="../../assets/zerotrace/complete-banner.jpg" alt="Offboarding complete banner: every obligation verified, every invariant holds"/>
-        <figcaption>A run only reaches "Offboarding complete" when every obligation is verified.</figcaption>
+        <figcaption data-i18n-block="bdfaee65804c243">A run only reaches "Offboarding complete" when every obligation is verified.</figcaption>
       </figure>
       <figure>
         <img src="../../assets/zerotrace/receipt.jpg" alt="Revocation receipt with timeline, final status and verified provider evidence"/>
-        <figcaption>The Revocation Receipt: timeline, final status and verified evidence for each provider.</figcaption>
+        <figcaption data-i18n-block="b9c3caf8eec0432">The Revocation Receipt: timeline, final status and verified evidence for each provider.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ RELIABILITY ------------------ -->
-    <h2>3) Reliability Evidence</h2>
-    <p>
+    <h2 data-i18n-block="b3821bd98140b29">3) Reliability Evidence</h2>
+    <p data-i18n-block="bcaf4316379d397">
       All scenarios were run against a <strong>live sandbox</strong> (a real GitHub organisation, Slack workspace and Google
       Drive account, with no mocked adapters) and then re-checked directly against each provider's own API.
     </p>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Scenario</th><th>What it proves</th><th>Result</th></tr></thead>
+        <thead><tr><th data-i18n-block="b569aae5b47e464">Scenario</th><th data-i18n-block="be9e870c4501651">What it proves</th><th data-i18n-block="b5faa59d4bc3756">Result</th></tr></thead>
         <tbody>
-          <tr><td>Complete revocation</td><td>Real revocation across all providers, plus independent read-back</td><td><code class="status">COMPLETE</code></td></tr>
-          <tr><td>Blast-radius containment</td><td>An unrelated project and another user are untouched</td><td><code class="status">COMPLETE</code>: before/after identical</td></tr>
-          <tr><td>Idempotency</td><td>Re-running a completed request sends no changes at all</td><td><code class="status">COMPLETE</code>: empty operation log</td></tr>
-          <tr><td>Ambiguity block</td><td>An ambiguous project name is blocked before any change</td><td><code class="status">BLOCKED</code>: candidates listed</td></tr>
+          <tr><td data-i18n-block="b66152f1969a887">Complete revocation</td><td data-i18n-block="be245b09b9e306e">Real revocation across all providers, plus independent read-back</td><td><code class="status">COMPLETE</code></td></tr>
+          <tr><td data-i18n-block="b9cf86c6ba697e3">Blast-radius containment</td><td data-i18n-block="b444048616f06d5">An unrelated project and another user are untouched</td><td><code class="status">COMPLETE</code>: before/after identical</td></tr>
+          <tr><td data-i18n-block="b1864ba6ee65673">Idempotency</td><td data-i18n-block="b2be7719df3d657">Re-running a completed request sends no changes at all</td><td><code class="status">COMPLETE</code>: empty operation log</td></tr>
+          <tr><td data-i18n-block="b4e88b50a273d11">Ambiguity block</td><td data-i18n-block="bfc6f892d66baa2">An ambiguous project name is blocked before any change</td><td><code class="status">BLOCKED</code>: candidates listed</td></tr>
         </tbody>
       </table>
     </div>
-    <p>
+    <p data-i18n-block="bd76b8183ef2169">
       Validation found and fixed real bugs: a fallback path that could authorise a run when the LLM was unavailable, a
       database constraint that broke legitimate retries, a GitHub search-API quirk, and a prompt that wrongly flagged ordinary
       requests as out of scope.
     </p>
 
     <!-- ------------------ STACK ------------------ -->
-    <h2>4) Tech Stack</h2>
+    <h2 data-i18n-block="bf7fab5f99fa50a">4) Tech Stack</h2>
     <p>
       Next.js (App Router) · TypeScript · React · Tailwind · Prisma (SQLite locally, Postgres when deployed) · Octokit ·
       <code>@slack/web-api</code> · <code>googleapis</code> · Anthropic / OpenAI LLM with Zod-validated, schema-constrained output · live
@@ -149,12 +151,12 @@
     </p>
 
     <!-- ------------------ DEMO ------------------ -->
-    <h2>Demo Video</h2>
+    <h2 data-i18n-block="bfce62284b358c3">Demo Video</h2>
     <figure>
       <video controls playsinline preload="metadata" poster="../../assets/zerotrace/access-matrix.jpg">
         <source src="../../assets/zerotrace/demo.mp4" type="video/mp4">
       </video>
-      <figcaption>Two-minute demo: the problem, a live offboarding run across GitHub, Slack and Drive, and the verified receipt.</figcaption>
+      <figcaption data-i18n-block="b153251215b8261">Two-minute demo: the problem, a live offboarding run across GitHub, Slack and Drive, and the verified receipt.</figcaption>
     </figure>
   </article>
 

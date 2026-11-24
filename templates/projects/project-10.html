@@ -22,6 +22,8 @@
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); padding:.05rem .4rem; border-radius:.35rem; }
     .tags { opacity:.85; margin-top:.25rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -41,11 +43,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Stepper Motor Control Library RPI-Pico</h1>
+      <h1 data-i18n-block="b4adbabc041e4db">Stepper Motor Control Library RPI-Pico</h1>
     </div>
-    <p class="tags">Raspberry Pi Pico (RP2040) · C++ · PIO · Step/Dir Drivers · AS5600 Encoder · DMA</p>
+    <p class="tags" data-i18n-block="b9f9e5011c6e28e">Raspberry Pi Pico (RP2040) · C++ · PIO · Step/Dir Drivers · AS5600 Encoder · DMA</p>
 
-    <p>
+    <p data-i18n-block="bdd9b5e4824c51f">
       I developed a <strong>Stepper Motor Control Library</strong> in <strong>C++</strong> for the Raspberry Pi Pico using its
       <strong>PIO (Programmable I/O)</strong> hardware to generate precise step pulses with minimal CPU load. It’s built for robotics,
       CNC, and automation where deterministic timing and scalability matter.
@@ -61,78 +63,78 @@
       <span class="metric">DMA updates</span>
     </div>
 
-    <h2>Project Overview</h2>
-    <p>
+    <h2 data-i18n-block="b22f9526cf80534">Project Overview</h2>
+    <p data-i18n-block="bc16ea715a598ed">
       The RP2040’s dual PIO blocks let the library offload pulse generation so the cores can focus on higher-level tasks.
       A simple OOP API configures motors, speeds, and motion profiles. For demonstration, I added a magnetic encoder for
       closed-loop positioning and accuracy under load.
     </p>
 
-    <h2>Why PIO for Steppers?</h2>
+    <h2 data-i18n-block="bf228a8c86a0838">Why PIO for Steppers?</h2>
     <ul class="list-tight">
-      <li><strong>Deterministic timing:</strong> hardware-timed pulses at system-clock precision.</li>
-      <li><strong>Low CPU overhead:</strong> once armed, state machines run autonomously.</li>
-      <li><strong>Scalable:</strong> independent state machines drive multiple motors concurrently.</li>
+      <li data-i18n-block="b2c78855981b59b"><strong>Deterministic timing:</strong> hardware-timed pulses at system-clock precision.</li>
+      <li data-i18n-block="bcb4a43958df963"><strong>Low CPU overhead:</strong> once armed, state machines run autonomously.</li>
+      <li data-i18n-block="b793e952d1d68c6"><strong>Scalable:</strong> independent state machines drive multiple motors concurrently.</li>
     </ul>
 
-    <h2>Library Design</h2>
+    <h2 data-i18n-block="b24cf329bd531b2">Library Design</h2>
     <ul class="list-tight">
-      <li><strong>StepperMotor</strong> class encapsulates config (steps/rev, pins) and state (position, speed).</li>
-      <li><strong>PIO program</strong> emits step pulses + direction; parameters fed via FIFO.</li>
-      <li><strong>Acceleration manager</strong> implements trapezoidal ramping for smooth motion.</li>
-      <li><strong>Driver interface</strong> targets step/dir modules (A4988, DRV8825, TB6600).</li>
+      <li data-i18n-block="ba548cf0372418d"><strong>StepperMotor</strong> class encapsulates config (steps/rev, pins) and state (position, speed).</li>
+      <li data-i18n-block="b0a3daeecd29177"><strong>PIO program</strong> emits step pulses + direction; parameters fed via FIFO.</li>
+      <li data-i18n-block="b3de8f2166ea1f7"><strong>Acceleration manager</strong> implements trapezoidal ramping for smooth motion.</li>
+      <li data-i18n-block="b3200854b023ee7"><strong>Driver interface</strong> targets step/dir modules (A4988, DRV8825, TB6600).</li>
     </ul>
 
     <div class="two-col">
       <figure>
         <img src="../../assets/stepper.jpeg" alt="Stepper motor with driver and encoder on breadboard"/>
-        <figcaption>Demo rig with stepper, step/dir driver, and magnetic encoder.</figcaption>
+        <figcaption data-i18n-block="b4fd43e30463dac">Demo rig with stepper, step/dir driver, and magnetic encoder.</figcaption>
       </figure>
       <ul class="list-tight">
-        <li><strong>Multi-motor:</strong> up to four motors with independent control.</li>
-        <li><strong>Microstepping:</strong> full, half, and up to 1/16 (driver dependent).</li>
-        <li><strong>Position tracking:</strong> internal step counter + encoder correction.</li>
-        <li><strong>Error handling:</strong> stall/overrun detection and safe stops.</li>
+        <li data-i18n-block="bce7b1fcbcc0736"><strong>Multi-motor:</strong> up to four motors with independent control.</li>
+        <li data-i18n-block="b76131d639819d7"><strong>Microstepping:</strong> full, half, and up to 1/16 (driver dependent).</li>
+        <li data-i18n-block="b6464dbdecbeaf2"><strong>Position tracking:</strong> internal step counter + encoder correction.</li>
+        <li data-i18n-block="b4949ca26746024"><strong>Error handling:</strong> stall/overrun detection and safe stops.</li>
       </ul>
     </div>
 
-    <h2>Control Loop (Closed-Loop Option)</h2>
+    <h2 data-i18n-block="b29d5f1781099db">Control Loop (Closed-Loop Option)</h2>
     <ul class="list-tight">
-      <li><strong>Encoder:</strong> AS5600 over I²C provides absolute angle feedback.</li>
-      <li><strong>Loop:</strong> error = desired − measured; adjusts step rate &amp; direction.</li>
-      <li><strong>PIO role:</strong> generates pulses; CPU handles feedback math and updates PIO/DMA.</li>
+      <li data-i18n-block="b7c5d5708b82b5a"><strong>Encoder:</strong> AS5600 over I²C provides absolute angle feedback.</li>
+      <li data-i18n-block="bba157140e17d63"><strong>Loop:</strong> error = desired − measured; adjusts step rate &amp; direction.</li>
+      <li data-i18n-block="b38032032c5538f"><strong>PIO role:</strong> generates pulses; CPU handles feedback math and updates PIO/DMA.</li>
     </ul>
 
-    <h2>Implementation Details</h2>
+    <h2 data-i18n-block="b00b783520a8a2f">Implementation Details</h2>
     <ul class="list-tight">
-      <li><strong>PIO program:</strong> ~12 instructions; high/low step pulse with programmable delay.</li>
-      <li><strong>Speed changes:</strong> delay values streamed to TX FIFO; DMA optional for smooth updates.</li>
-      <li><strong>Ramps:</strong> configurable accel/decel; prevents missed steps and resonance.</li>
-      <li><strong>Resource mgmt:</strong> dynamic state-machine assignment per motor.</li>
+      <li data-i18n-block="b9b0e0fc5ed1353"><strong>PIO program:</strong> ~12 instructions; high/low step pulse with programmable delay.</li>
+      <li data-i18n-block="b387ea93cff0835"><strong>Speed changes:</strong> delay values streamed to TX FIFO; DMA optional for smooth updates.</li>
+      <li data-i18n-block="b5603efcb53e381"><strong>Ramps:</strong> configurable accel/decel; prevents missed steps and resonance.</li>
+      <li data-i18n-block="bb714482dc0d57e"><strong>Resource mgmt:</strong> dynamic state-machine assignment per motor.</li>
     </ul>
 
-    <h2>Testing &amp; Validation</h2>
+    <h2 data-i18n-block="b1bfade8efb9e65">Testing &amp; Validation</h2>
     <ul class="list-tight">
-      <li>Long-run stress tests with continuous motion and ramping.</li>
-      <li>Four-motor concurrency with consistent timing and no jitter.</li>
-      <li>Encoder-assisted accuracy checks under variable loads.</li>
+      <li data-i18n-block="b02e94fb497e62d">Long-run stress tests with continuous motion and ramping.</li>
+      <li data-i18n-block="b60a87edce65b86">Four-motor concurrency with consistent timing and no jitter.</li>
+      <li data-i18n-block="bd81b92f6b5a4c9">Encoder-assisted accuracy checks under variable loads.</li>
     </ul>
 
-    <h2>Tech Summary</h2>
+    <h2 data-i18n-block="bc7735eccc2fad1">Tech Summary</h2>
     <div class="two-col">
       <ul class="list-tight">
-        <li><strong>Platform:</strong> Raspberry Pi Pico (RP2040)</li>
-        <li><strong>Language:</strong> C++ (Pico SDK + PIO)</li>
-        <li><strong>Peripherals:</strong> PIO, DMA, I²C</li>
+        <li data-i18n-block="b406633c54db659"><strong>Platform:</strong> Raspberry Pi Pico (RP2040)</li>
+        <li data-i18n-block="bae952376ab8d5f"><strong>Language:</strong> C++ (Pico SDK + PIO)</li>
+        <li data-i18n-block="b5de64193fcda4d"><strong>Peripherals:</strong> PIO, DMA, I²C</li>
       </ul>
       <ul class="list-tight">
-        <li><strong>Drivers:</strong> A4988 / DRV8825 / TB6600</li>
-        <li><strong>Encoder:</strong> AS5600 (optional)</li>
-        <li><strong>Footprint:</strong> &lt; 5 KB (core lib)</li>
+        <li data-i18n-block="bb9f7bf6214488e"><strong>Drivers:</strong> A4988 / DRV8825 / TB6600</li>
+        <li data-i18n-block="bdadfae073cdbd3"><strong>Encoder:</strong> AS5600 (optional)</li>
+        <li data-i18n-block="bcc32d98a42cf13"><strong>Footprint:</strong> &lt; 5 KB (core lib)</li>
       </ul>
     </div>
 
-    <p>
+    <p data-i18n-block="ba1408c8f8b04aa">
       The result is a high-performance, developer-friendly motion stack for the Pico. If you’d like to use the library or collaborate,
       <a href="../contact.html">get in touch</a>.
     </p>

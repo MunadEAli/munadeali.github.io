@@ -22,6 +22,8 @@
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
     .project-page a.inline { color: var(--clr-accent); font-weight:600; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -52,33 +54,33 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Nalmai: Real-Time Teaching Copilot</h1>
+      <h1 data-i18n-block="be36e22d88a6a6b">Nalmai: Real-Time Teaching Copilot</h1>
       <a class="btn" href="https://github.com/laiba12345/Nalmai" target="_blank" rel="noopener">
         <i class="fab fa-github"></i> Code
       </a>
     </div>
-    <p class="tags">FastAPI · WebRTC · Speech-to-Text with Diarization · GPT-5.6 Structured Outputs · Bayesian Knowledge Tracing · SQLite · Server-Sent Events · OpenAI Codex</p>
+    <p class="tags" data-i18n-block="bc3ff4738b3655a">FastAPI · WebRTC · Speech-to-Text with Diarization · GPT-5.6 Structured Outputs · Bayesian Knowledge Tracing · SQLite · Server-Sent Events · OpenAI Codex</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b00c807a334b0a3">
       <span class="metric">Hackathon</span>
       <span class="metric">Team of 2 · with Laiba</span>
       <span class="metric">Jul 2026</span>
     </p>
 
-    <p>
+    <p data-i18n-block="b5de42d675a4ea5">
       Teachers usually discover that students are confused only after the lesson has moved on. <strong>Nalmai</strong> is a
       real-time copilot for online lessons that closes that gap. It listens to the teacher and student separately,
       <strong>detects confusion and risky explanations</strong> as they happen, suggests a better teaching move, <strong>checks
       whether the teacher actually used it</strong>, runs a quick learning check, and tracks each student's mastery of
       each concept over time.
     </p>
-    <p class="callout">
+    <p class="callout" data-i18n-block="b0f71cb2276fa61">
       <strong>Not a chatbot, but a closed loop:</strong> detect confusion → recommend a teaching move → verify it was used →
       measure what happened next.
     </p>
 
     <!-- ------------------ PIPELINE ------------------ -->
-    <h2>1) How It Works</h2>
+    <h2 data-i18n-block="b5d5f8fa765f69f">1) How It Works</h2>
     <div class="eq">Teacher + student WebRTC audio (separate tracks, 10-second windows)
         → speech-to-text with diarization  →  speaker-specific transcript
         → student learning signals           teacher explanation risk
@@ -86,7 +88,7 @@
         → GPT-5.6 teaching suggestion  →  automatic 3-option baseline poll
         → later teacher speech  →  implementation verification
         → follow-up poll  →  Bayesian Knowledge Tracing mastery + SQLite memory</div>
-    <p>
+    <p data-i18n-block="b3114010faeaf04">
       The language model handles what needs language understanding: classifying student language, analysing explanation
       risk, drafting suggestions and polls, verifying implementation, and generating memory insights. Every call uses
       <strong>strict structured outputs</strong>, so no free-form model text is parsed. CCS, mastery tracking, thresholds,
@@ -94,37 +96,37 @@
     </p>
 
     <!-- ------------------ FEATURES ------------------ -->
-    <h2>2) Key Features</h2>
+    <h2 data-i18n-block="ba36daa4386c2a8">2) Key Features</h2>
     <div class="two-col">
       <ul class="list-tight">
-        <li><strong>Live two-person lesson:</strong> a browser video call with WebRTC signalling over a FastAPI WebSocket. Media stays peer-to-peer.</li>
-        <li><strong>Per-speaker transcription:</strong> teacher and student audio tracks are captured and transcribed separately, which avoids mixing up who said what.</li>
-        <li><strong>Confusion Confidence Score:</strong> a live, explainable score with time-decayed evidence and student breadth normalised against the class roster.</li>
-        <li><strong>Teacher explanation risk:</strong> flags factual and clarity risks, such as a rule stated without conceptual support, before students push back.</li>
+        <li data-i18n-block="b752cf29a4a18c6"><strong>Live two-person lesson:</strong> a browser video call with WebRTC signalling over a FastAPI WebSocket. Media stays peer-to-peer.</li>
+        <li data-i18n-block="b4c24192e0c5aca"><strong>Per-speaker transcription:</strong> teacher and student audio tracks are captured and transcribed separately, which avoids mixing up who said what.</li>
+        <li data-i18n-block="b4f7e4fad68dac8"><strong>Confusion Confidence Score:</strong> a live, explainable score with time-decayed evidence and student breadth normalised against the class roster.</li>
+        <li data-i18n-block="bbc64d7bc70b197"><strong>Teacher explanation risk:</strong> flags factual and clarity risks, such as a rule stated without conceptual support, before students push back.</li>
       </ul>
       <ul class="list-tight">
-        <li><strong>Suggestions and automatic polls:</strong> one strategy-specific re-explanation per confusion spike, plus generated baseline and transfer checks. The correct answer is never sent to the student's screen.</li>
-        <li><strong>Implementation verification:</strong> later teacher speech is checked for evidence that the suggestion was used, with a quote and a confidence. The teacher can override it.</li>
-        <li><strong>Per-student, per-concept mastery</strong> with Bayesian Knowledge Tracing. Language evidence only affects the student who produced it.</li>
-        <li><strong>Teacher Memory Agent:</strong> uses only the current concept's history, stored under pseudonymous IDs, to inform suggestions. The model never gets open access to the database.</li>
+        <li data-i18n-block="baf4a44d5a8cc3d"><strong>Suggestions and automatic polls:</strong> one strategy-specific re-explanation per confusion spike, plus generated baseline and transfer checks. The correct answer is never sent to the student's screen.</li>
+        <li data-i18n-block="ba20e04688ade70"><strong>Implementation verification:</strong> later teacher speech is checked for evidence that the suggestion was used, with a quote and a confidence. The teacher can override it.</li>
+        <li data-i18n-block="b795ad7127e42f8"><strong>Per-student, per-concept mastery</strong> with Bayesian Knowledge Tracing. Language evidence only affects the student who produced it.</li>
+        <li data-i18n-block="b844f428f96f6f9"><strong>Teacher Memory Agent:</strong> uses only the current concept's history, stored under pseudonymous IDs, to inform suggestions. The model never gets open access to the database.</li>
       </ul>
     </div>
 
     <!-- ------------------ EVALUATION ------------------ -->
-    <h2>3) Evaluation</h2>
+    <h2 data-i18n-block="bc9d6af082aecb6">3) Evaluation</h2>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Check</th><th>Result</th></tr></thead>
+        <thead><tr><th data-i18n-block="b4b5e84be0e45d1">Check</th><th data-i18n-block="b5faa59d4bc3756">Result</th></tr></thead>
         <tbody>
-          <tr><td>Automated test suite (unit, integration, API, persistence, UI contract, real-server smoke test)</td><td><strong>113 tests</strong></td></tr>
-          <tr><td>Real classroom language: TalkMoves public test splits (K-12 mathematics)</td><td>30,401 utterance pairs ingested, 0 schema errors</td></tr>
-          <tr><td>Sentiment proxy agreement vs. TalkMoves labels (15-utterance balanced check)</td><td>GPT-5.6 <strong>0.667</strong> vs. deterministic fallback 0.400</td></tr>
-          <tr><td>Early-warning confusion detection on annotated fixtures (no leakage from the poll)</td><td>precision <strong>0.750</strong>, recall <strong>0.577</strong></td></tr>
-          <tr><td>Confirmed CCS on the same fixtures</td><td>precision 0.875, recall 0.269</td></tr>
+          <tr><td data-i18n-block="bc6c6127670707a">Automated test suite (unit, integration, API, persistence, UI contract, real-server smoke test)</td><td data-i18n-block="bce8ad8e2d3d75d"><strong>113 tests</strong></td></tr>
+          <tr><td data-i18n-block="b1a2eb24ac94ff9">Real classroom language: TalkMoves public test splits (K-12 mathematics)</td><td data-i18n-block="b3397f7016a5de5">30,401 utterance pairs ingested, 0 schema errors</td></tr>
+          <tr><td data-i18n-block="bc19cada9512b03">Sentiment proxy agreement vs. TalkMoves labels (15-utterance balanced check)</td><td data-i18n-block="b1b51bc682e64d8">GPT-5.6 <strong>0.667</strong> vs. deterministic fallback 0.400</td></tr>
+          <tr><td data-i18n-block="b3a097100414f9f">Early-warning confusion detection on annotated fixtures (no leakage from the poll)</td><td data-i18n-block="b1781f8279c0b2b">precision <strong>0.750</strong>, recall <strong>0.577</strong></td></tr>
+          <tr><td data-i18n-block="b50203dfea0950e">Confirmed CCS on the same fixtures</td><td data-i18n-block="b631e7936aa121b">precision 0.875, recall 0.269</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:.92rem; opacity:.85;">
+    <p style="font-size:.92rem; opacity:.85;" data-i18n-block="b25990407bbabe1">
       These results come from a small set of authored scenarios and are reported with clear limits. TalkMoves validates
       ingestion of real classroom language, not CCS accuracy, and the matched "nudge vs. control" outcome replay shows the
       linkage works but is not evidence of a causal learning effect. A classroom pilot with educator-labelled data would be
@@ -132,8 +134,8 @@
     </p>
 
     <!-- ------------------ STACK ------------------ -->
-    <h2>4) Tech Stack</h2>
-    <p>
+    <h2 data-i18n-block="bf7fab5f99fa50a">4) Tech Stack</h2>
+    <p data-i18n-block="b3b97548154928e">
       Python · FastAPI · Uvicorn · WebRTC · WebSocket signalling · Server-Sent Events · OpenAI speech-to-text with diarization
       and GPT-5.6 Structured Outputs · SQLite · vanilla JS dashboard · pytest · Docker and Render deployment config. The team
       used OpenAI Codex as an engineering partner throughout the build.

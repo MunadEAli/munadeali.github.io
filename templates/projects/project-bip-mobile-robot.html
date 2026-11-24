@@ -24,6 +24,8 @@
     .table-wrap { overflow-x:auto; }
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -54,11 +56,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Autonomous Line-Following AGV with Dijkstra Path Planning &amp; Obstacle Rerouting</h1>
+      <h1 data-i18n-block="b6891ade33ca30f">Autonomous Line-Following AGV with Dijkstra Path Planning &amp; Obstacle Rerouting</h1>
     </div>
-    <p class="tags">ESP32 · MicroPython · PD Control · Encoders &amp; Odometry · Graph Search (Dijkstra) · L298N · IR Sensor Array · Electromagnet</p>
+    <p class="tags" data-i18n-block="bca697474c79984">ESP32 · MicroPython · PD Control · Encoders &amp; Odometry · Graph Search (Dijkstra) · L298N · IR Sensor Array · Electromagnet</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="b4e72bba68b6e82">
       <span class="metric">Erasmus+ BIP</span>
       <span class="metric">Team project</span>
       <span class="metric">Jan 2026 · Besançon</span>
@@ -66,60 +68,60 @@
 
     <div class="two-col wide-left">
       <div>
-        <p>
+        <p data-i18n-block="b1fd1e1a55f8575">
           The mobile-robot track of the <a href="../education/course-bip.html" style="color: var(--clr-accent); font-weight:600;">Erasmus+ BIP
           on Control, Perception and Embedded Programming for Robotics</a> simulates an <strong>automated guided vehicle (AGV)</strong>.
           A two-wheeled differential-drive robot follows black lines on a map, picks up a box with an <strong>electromagnet</strong>,
           and delivers it to a bay. It finds its own route with <strong>Dijkstra's algorithm</strong> and <strong>re-plans</strong>
           when it hits an obstacle.
         </p>
-        <p>
+        <p data-i18n-block="bfc88ba44adc773">
           Everything runs on an <strong>ESP32</strong> in MicroPython. The code is modular: low-level motor, sensor and odometry
           functions sit beneath high-level path planning and mission control.
         </p>
-        <h3>The Challenges</h3>
+        <h3 data-i18n-block="bd410eaf1c60150">The Challenges</h3>
         <ul class="list-tight">
-          <li><strong>1: Fixed route.</strong> Collect a box from a known bay and deliver it to a known bay.</li>
-          <li><strong>2: Dynamic start/end.</strong> Pickup and drop-off bays are only given at run time.</li>
-          <li><strong>3: Obstacle avoidance.</strong> Unknown bays, plus obstacles on the map that force the robot to find a new route.</li>
+          <li data-i18n-block="b55070d4e6f99a6"><strong>1: Fixed route.</strong> Collect a box from a known bay and deliver it to a known bay.</li>
+          <li data-i18n-block="ba4987ce4514684"><strong>2: Dynamic start/end.</strong> Pickup and drop-off bays are only given at run time.</li>
+          <li data-i18n-block="b4e00978fae18cd"><strong>3: Obstacle avoidance.</strong> Unknown bays, plus obstacles on the map that force the robot to find a new route.</li>
         </ul>
       </div>
       <figure>
         <img src="../../assets/bip/bip-mobile-robot.jpg" alt="Two-wheeled ESP32 mobile robot with L298N driver, IR line sensors, electromagnet and bumper switch"/>
-        <figcaption>The robot: ESP32 and L298N on top, Li-ion batteries in the middle, and the IR array, electromagnet and roller bumper at the front.</figcaption>
+        <figcaption data-i18n-block="bbb5176ccc65963">The robot: ESP32 and L298N on top, Li-ion batteries in the middle, and the IR array, electromagnet and roller bumper at the front.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ HARDWARE ------------------ -->
-    <h2>1) Hardware</h2>
+    <h2 data-i18n-block="b599562c53f40e8">1) Hardware</h2>
     <figure class="white">
       <img src="../../assets/bip/bip-mobile-block-diagram.jpg" alt="Block diagram: ESP32 with mission control, Dijkstra path planning, PID line following, motion control and safety system"/>
-      <figcaption>System block diagram: mission control, graph-based path planning, line following, motion control and the safety system, all running on the ESP32.</figcaption>
+      <figcaption data-i18n-block="bd02420406c2e60">System block diagram: mission control, graph-based path planning, line following, motion control and the safety system, all running on the ESP32.</figcaption>
     </figure>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Component</th><th>Part</th><th>Role</th></tr></thead>
+        <thead><tr><th data-i18n-block="bc92c529e0731c5">Component</th><th data-i18n-block="b88be9d62d71bab">Part</th><th data-i18n-block="bc3f104d1365744">Role</th></tr></thead>
         <tbody>
-          <tr><td>Controller</td><td>ESP32-WROOM-32</td><td>All control, planning and I/O</td></tr>
-          <tr><td>Drive</td><td>2× DC motors (7&nbsp;cm wheels), L298N dual H-bridge, 1&nbsp;kHz PWM</td><td>Speed and direction of each wheel</td></tr>
-          <tr><td>Odometry</td><td>2× magnetic wheel encoders (interrupt-counted)</td><td>Distance travelled and precise in-place turns</td></tr>
-          <tr><td>Line sensing</td><td>5-channel analog IR array</td><td>Line position error and intersection detection</td></tr>
-          <tr><td>Manipulation</td><td>5&nbsp;V electromagnet</td><td>Picks up and releases the box</td></tr>
-          <tr><td>Collision / UI</td><td>Roller microswitch (bumper)</td><td>Detects the box and obstacles; a triple click is an emergency stop</td></tr>
-          <tr><td>Power</td><td>2× Li-ion batteries</td><td>Enough current for the motors and the electromagnet</td></tr>
+          <tr><td data-i18n-block="ba36a5ffa6e0dcf">Controller</td><td data-i18n-block="be129d97c461eab">ESP32-WROOM-32</td><td data-i18n-block="b6b86bc569b5cbe">All control, planning and I/O</td></tr>
+          <tr><td data-i18n-block="ba02bb459379343">Drive</td><td data-i18n-block="bf7222ae9e88df7">2× DC motors (7&nbsp;cm wheels), L298N dual H-bridge, 1&nbsp;kHz PWM</td><td data-i18n-block="b231f4752379f21">Speed and direction of each wheel</td></tr>
+          <tr><td data-i18n-block="bcb9bdc9e11996c">Odometry</td><td data-i18n-block="bc9258409fedca7">2× magnetic wheel encoders (interrupt-counted)</td><td data-i18n-block="b5b4b34e7294b13">Distance travelled and precise in-place turns</td></tr>
+          <tr><td data-i18n-block="bbdac0adc018452">Line sensing</td><td data-i18n-block="bf7a7c1a9c8fe68">5-channel analog IR array</td><td data-i18n-block="b34ac765faa8739">Line position error and intersection detection</td></tr>
+          <tr><td data-i18n-block="b02c62a01302550">Manipulation</td><td data-i18n-block="bb698e5de0f8201">5&nbsp;V electromagnet</td><td data-i18n-block="b5d5a3d3f5216ad">Picks up and releases the box</td></tr>
+          <tr><td data-i18n-block="b4fe675f78cf577">Collision / UI</td><td data-i18n-block="bd21fb0aa20e971">Roller microswitch (bumper)</td><td data-i18n-block="b59b928be47e6b7">Detects the box and obstacles; a triple click is an emergency stop</td></tr>
+          <tr><td data-i18n-block="b7548ab52c3d1d5">Power</td><td data-i18n-block="bad822c2d2c2602">2× Li-ion batteries</td><td data-i18n-block="ba9b51709d0c12d">Enough current for the motors and the electromagnet</td></tr>
         </tbody>
       </table>
     </div>
-    <p>
+    <p data-i18n-block="b197e91d626e7e8">
       The IR sensors are read as <strong>analog</strong> values and given individual thresholds before being turned into binary.
       This compensates for sensors that naturally read too high or too low, which a fixed digital threshold could not handle.
     </p>
 
     <!-- ------------------ EVOLUTION ------------------ -->
-    <h2>2) How the Control Strategy Evolved</h2>
+    <h2 data-i18n-block="b28e089e26f8143">2) How the Control Strategy Evolved</h2>
     <div class="two-col">
       <div>
-        <h3>Version 1: scripted actions</h3>
+        <h3 data-i18n-block="becf6f121baa958">Version 1: scripted actions</h3>
         <p>
           The first approach for Challenge 1 was a hard-coded list of actions, one per intersection (e.g.
           <code>["FORWARD", "LEFT", "FORWARD"]</code>). It counted intersections with the line sensors, followed lines without
@@ -127,8 +129,8 @@
         </p>
       </div>
       <div>
-        <h3>Version 2: graph + odometry</h3>
-        <p>
+        <h3 data-i18n-block="b200eaaf8097d0e">Version 2: graph + odometry</h3>
+        <p data-i18n-block="b29f6d2401ce345">
           Random start and end bays made scripting impossible, so the code was <strong>rebuilt around a weighted topological
           graph</strong> combined with <strong>encoder odometry</strong>. This version handled all three challenges.
         </p>
@@ -136,58 +138,58 @@
     </div>
 
     <!-- ------------------ PLANNING ------------------ -->
-    <h2>3) Map as a Graph &amp; Dijkstra Planning</h2>
+    <h2 data-i18n-block="b91cec17cadffbc">3) Map as a Graph &amp; Dijkstra Planning</h2>
     <ul class="list-tight">
-      <li><strong>Nodes</strong> are decision points: the start, the pickup bays A1–A4, the delivery bays B1–B4, and the junctions where lines meet.</li>
+      <li data-i18n-block="bcc5baf12b66d17"><strong>Nodes</strong> are decision points: the start, the pickup bays A1–A4, the delivery bays B1–B4, and the junctions where lines meet.</li>
       <li><strong>Edges</strong> are the line segments between nodes, weighted by their physical length in cm, e.g. <code>'START': {'E_1': 20, 'M_0': 76}</code>.</li>
-      <li>Each node also has grid coordinates, so the robot knows the compass direction of every edge. Comparing that with its current heading gives the turn to make: straight, left, right or 180°.</li>
+      <li data-i18n-block="bc6dd298c4cbbd5">Each node also has grid coordinates, so the robot knows the compass direction of every edge. Comparing that with its current heading gives the turn to make: straight, left, right or 180°.</li>
       <li><strong>Dijkstra</strong> (with a <code>heapq</code> priority queue) returns the cheapest node sequence between any two nodes, e.g. A3 → … → B3.</li>
     </ul>
 
-    <h3>Obstacle handling and re-planning</h3>
-    <p>When the bumper is hit on the way to the pickup bay:</p>
+    <h3 data-i18n-block="b39d01c8b0949f7">Obstacle handling and re-planning</h3>
+    <p data-i18n-block="b0b9f670e46885e">When the bumper is hit on the way to the pickup bay:</p>
     <ol class="list-tight">
-      <li>The robot brakes, then <strong>reverses to the previous intersection</strong> using line following in reverse.</li>
-      <li>It moves forward 9&nbsp;cm to centre its axle on the node.</li>
-      <li>It <strong>blocks the edge in both directions</strong> by setting its cost to 99999, then runs Dijkstra again from that node.</li>
+      <li data-i18n-block="bb8cac40a0b9ddf">The robot brakes, then <strong>reverses to the previous intersection</strong> using line following in reverse.</li>
+      <li data-i18n-block="b5873d5ecc0b1a6">It moves forward 9&nbsp;cm to centre its axle on the node.</li>
+      <li data-i18n-block="b91fab3578d0d66">It <strong>blocks the edge in both directions</strong> by setting its cost to 99999, then runs Dijkstra again from that node.</li>
     </ol>
-    <p>Once the box is picked up, obstacle detection is turned off, because the bumper is in contact with the load.</p>
+    <p data-i18n-block="b66098393f3d691">Once the box is picked up, obstacle detection is turned off, because the bumper is in contact with the load.</p>
 
     <!-- ------------------ CONTROL ------------------ -->
-    <h2>4) Line Following, Turns &amp; Speed Zones</h2>
+    <h2 data-i18n-block="b4fd8341c323e97">4) Line Following, Turns &amp; Speed Zones</h2>
     <div class="two-col">
       <div>
-        <h3>PD line following</h3>
-        <p>The five sensors are weighted to give a position error, so the robot knows <em>how far</em> off-centre it is, not just which side:</p>
+        <h3 data-i18n-block="b6504da51e573ab">PD line following</h3>
+        <p data-i18n-block="b1c66667918207f">The five sensors are weighted to give a position error, so the robot knows <em>how far</em> off-centre it is, not just which side:</p>
         <div class="eq">error = Σ wᵢ·sᵢ / Σ sᵢ,   w = [−2000, −1000, 0, 1000, 2000]
 correction = Kp·error + Kd·(error − last_error)
 Kp = 0.25,  Kd = 7.0
 v_left = v + correction,  v_right = v − correction</div>
       </div>
       <div>
-        <h3>Encoder-based motion</h3>
+        <h3 data-i18n-block="b58aae6cd52d829">Encoder-based motion</h3>
         <ul class="list-tight">
-          <li><strong>Distance:</strong> the average of both wheels' encoder counts, using separately calibrated pulses per revolution for each wheel (867 and 824).</li>
-          <li><strong>Turns:</strong> 90° and 180° turns run in place until each wheel reaches its target encoder count, calculated from the wheel diameter and the 11&nbsp;cm track width.</li>
-          <li><strong>Low-speed correction:</strong> at slower speeds the robot slips less, so the turn targets are reduced by 20% to stop it over-rotating.</li>
-          <li><strong>Active braking:</strong> a short reverse pulse stops the robot precisely at nodes.</li>
+          <li data-i18n-block="b576936bf31a9c1"><strong>Distance:</strong> the average of both wheels' encoder counts, using separately calibrated pulses per revolution for each wheel (867 and 824).</li>
+          <li data-i18n-block="b692454729efb0a"><strong>Turns:</strong> 90° and 180° turns run in place until each wheel reaches its target encoder count, calculated from the wheel diameter and the 11&nbsp;cm track width.</li>
+          <li data-i18n-block="bdf21915a051411"><strong>Low-speed correction:</strong> at slower speeds the robot slips less, so the turn targets are reduced by 20% to stop it over-rotating.</li>
+          <li data-i18n-block="b2a9555c496f975"><strong>Active braking:</strong> a short reverse pulse stops the robot precisely at nodes.</li>
         </ul>
       </div>
     </div>
-    <p class="callout">
+    <p class="callout" data-i18n-block="b0ff2f7e26675d6">
       <strong>Smart speed zones:</strong> the robot drives at full speed along the long corridors and drops to <strong>70%</strong>
       only while moving between nodes <em>inside</em> the narrow loading bays (A and B zones), where precision matters most.
     </p>
 
     <!-- ------------------ MISSION ------------------ -->
-    <h2>5) Mission Flow &amp; Safety</h2>
-    <p>
+    <h2 data-i18n-block="b78d139215dc137">5) Mission Flow &amp; Safety</h2>
+    <p data-i18n-block="b467d7afefd3799">
       <span class="metric">Wait for click</span> → <span class="metric">Plan to pickup</span> → <span class="metric">Drive &amp; turn per edge</span> →
       <span class="metric">Bumper contact → magnet ON</span> → <span class="metric">Plan to drop-off</span> → <span class="metric">Magnet OFF &amp; reverse</span>
     </p>
     <ul class="list-tight">
-      <li>A safety check runs inside every motion loop: a <strong>triple click</strong> on the bumper raises an emergency stop that cuts the motors and the magnet.</li>
-      <li>Timestamped logs from each module (route, speed, recovery, sensor events) made it much faster to debug on the competition map.</li>
+      <li data-i18n-block="bebe7415c9b66c3">A safety check runs inside every motion loop: a <strong>triple click</strong> on the bumper raises an emergency stop that cuts the motors and the magnet.</li>
+      <li data-i18n-block="bb86491eec11527">Timestamped logs from each module (route, speed, recovery, sensor events) made it much faster to debug on the competition map.</li>
     </ul>
   </article>
 

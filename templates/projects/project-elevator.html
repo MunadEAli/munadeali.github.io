@@ -30,6 +30,8 @@
     .table-wrap { overflow-x:auto; }
     .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre; font-size:.92rem; }
   </style>
+  <script src="../../translations.js" defer></script>
+  <script src="../../language.js" defer></script>
 </head>
 <body>
   <div class="bg"></div>
@@ -60,11 +62,11 @@
 
   <article class="project-page container glass">
     <div class="title-row">
-      <h1>Passenger Elevator Concept Design for a 20-Storey Building</h1>
+      <h1 data-i18n-block="bd460afd7a33afe">Passenger Elevator Concept Design for a 20-Storey Building</h1>
     </div>
-    <p class="tags">MRL Traction Lift · Gearless PMSM · Yaskawa L1000A VFD · Siemens S7-1500F · ET200SP · TIA Portal · Factory I/O · EN 81 · Functional Safety</p>
+    <p class="tags" data-i18n-block="bcd500de34627f1">MRL Traction Lift · Gearless PMSM · Yaskawa L1000A VFD · Siemens S7-1500F · ET200SP · TIA Portal · Factory I/O · EN 81 · Functional Safety</p>
 
-    <p class="project-context">
+    <p class="project-context" data-i18n-block="bcb6920ee835e3a">
       <span class="metric">M1 ARMAC Project</span>
       <span class="metric">Université Marie et Louis Pasteur</span>
       <span class="metric">Team of 5 · Dec 2025</span>
@@ -72,69 +74,69 @@
 
     <div class="two-col wide-left">
       <div>
-        <p>
+        <p data-i18n-block="ba4b12c1209fe30">
           A concept-level engineering design of a <strong>machine-room-less (MRL) traction passenger elevator</strong> for a
           20-storey building. The design covers the full system: cabin, door and hoistway geometry, sizing of the
           <strong>traction machine and drive</strong>, a <strong>Siemens safety-PLC control architecture</strong> with distributed I/O,
           the sensor set, a <strong>layered safety concept aligned with EN 81</strong>, a cost model, and a
           <strong>PLC simulation</strong> of the elevator sequence in Factory I/O.
         </p>
-        <h3>Design basis</h3>
+        <h3 data-i18n-block="ba13c3b0cc3599d">Design basis</h3>
         <div class="table-wrap">
           <table class="spec">
             <tbody>
-              <tr><td>Stops / travel height</td><td>20 floors · 3.0&nbsp;m floor-to-floor · 57&nbsp;m travel</td></tr>
-              <tr><td>Rated load</td><td>480&nbsp;kg (6 passengers)</td></tr>
-              <tr><td>Nominal speed</td><td>1.0&nbsp;m/s ("about 1&nbsp;s per metre")</td></tr>
-              <tr><td>Ride comfort</td><td>acceleration 0.6&nbsp;m/s² · jerk 1.0&nbsp;m/s³ (S-curve) · levelling ±5&nbsp;mm</td></tr>
-              <tr><td>Technology</td><td>MRL traction · gearless PMSM · regenerative VVVF drive</td></tr>
-              <tr><td>Standards</td><td>EN 81-20 / -50 / -70 / -28 / -73 · EN 60204-1 · EN ISO 13849 / IEC 62061</td></tr>
+              <tr><td data-i18n-block="b76f25546116ab3">Stops / travel height</td><td data-i18n-block="bcf989b34401c70">20 floors · 3.0&nbsp;m floor-to-floor · 57&nbsp;m travel</td></tr>
+              <tr><td data-i18n-block="b940f6a68d1235f">Rated load</td><td data-i18n-block="b683c0a2e17e682">480&nbsp;kg (6 passengers)</td></tr>
+              <tr><td data-i18n-block="b8938eb904a55f0">Nominal speed</td><td data-i18n-block="bed6b0aac807b78">1.0&nbsp;m/s ("about 1&nbsp;s per metre")</td></tr>
+              <tr><td data-i18n-block="b7eda313727e931">Ride comfort</td><td data-i18n-block="bbea468a015b4f3">acceleration 0.6&nbsp;m/s² · jerk 1.0&nbsp;m/s³ (S-curve) · levelling ±5&nbsp;mm</td></tr>
+              <tr><td data-i18n-block="bd018b082e8a372">Technology</td><td data-i18n-block="bb6ad798d01f309">MRL traction · gearless PMSM · regenerative VVVF drive</td></tr>
+              <tr><td data-i18n-block="bb3883f88eaf74a">Standards</td><td data-i18n-block="b8423eb1a4c26b2">EN 81-20 / -50 / -70 / -28 / -73 · EN 60204-1 · EN ISO 13849 / IEC 62061</td></tr>
             </tbody>
           </table>
         </div>
       </div>
       <figure>
         <img src="../../assets/elevator/factory-io.jpg" alt="Factory I/O elevator scene used to test the PLC program"/>
-        <figcaption>The Factory I/O elevator scene used to test the PLC sequencing and sensor logic.</figcaption>
+        <figcaption data-i18n-block="bb9938e57b22b30">The Factory I/O elevator scene used to test the PLC sequencing and sensor logic.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ MECHANICAL ------------------ -->
-    <h2>1) Mechanical Layout</h2>
-    <p>
+    <h2 data-i18n-block="be4d980a452134f">1) Mechanical Layout</h2>
+    <p data-i18n-block="b0598ffb40c70e5">
       The dimensions were worked out top-down: first the cabin size and door opening needed for wheelchair access (EN 81-70),
       then space for the car frame, doors and running clearances, then the hoistway plan with the cabin and counterweight paths,
       and finally the pit depth and overhead height for the buffers, the traction machine and the safety spaces.
     </p>
     <div class="table-wrap">
       <table class="spec">
-        <thead><tr><th>Element</th><th>Value</th></tr></thead>
+        <thead><tr><th data-i18n-block="b49fa9fd831096c">Element</th><th data-i18n-block="b8dce170de238b1">Value</th></tr></thead>
         <tbody>
-          <tr><td>Cabin internal (W × D × H)</td><td>1.00 × 1.40 × 2.20&nbsp;m</td></tr>
-          <tr><td>Door clear opening (W × H)</td><td>0.80 × 2.10&nbsp;m, two-panel telescopic sliding doors</td></tr>
-          <tr><td>Hoistway internal (W × D)</td><td>1.60 × 1.65&nbsp;m</td></tr>
-          <tr><td>Pit depth / overhead</td><td>1.00&nbsp;m / 3.60&nbsp;m (machine, sheaves and clearances in the overhead)</td></tr>
+          <tr><td data-i18n-block="b7c10d957f2ce46">Cabin internal (W × D × H)</td><td>1.00 × 1.40 × 2.20&nbsp;m</td></tr>
+          <tr><td data-i18n-block="b066c8d407a58c8">Door clear opening (W × H)</td><td data-i18n-block="bcec20ee73a56ef">0.80 × 2.10&nbsp;m, two-panel telescopic sliding doors</td></tr>
+          <tr><td data-i18n-block="b9daf165f0bc8b4">Hoistway internal (W × D)</td><td>1.60 × 1.65&nbsp;m</td></tr>
+          <tr><td data-i18n-block="b3c27e10eb98d04">Pit depth / overhead</td><td data-i18n-block="b40f7c86223621b">1.00&nbsp;m / 3.60&nbsp;m (machine, sheaves and clearances in the overhead)</td></tr>
         </tbody>
       </table>
     </div>
     <div class="three-col">
       <figure class="white">
         <img src="../../assets/elevator/cabin-plan.png" alt="Cabin internal plan view with door clear opening"/>
-        <figcaption>Cabin plan view and door clear opening.</figcaption>
+        <figcaption data-i18n-block="b42abbedd53a944">Cabin plan view and door clear opening.</figcaption>
       </figure>
       <figure class="white">
         <img src="../../assets/elevator/hoistway-plan.png" alt="Hoistway plan showing cabin and counterweight paths with guide rails"/>
-        <figcaption>Hoistway plan: car rails on one side, counterweight rails on the other.</figcaption>
+        <figcaption data-i18n-block="b73e66118dfc7ef">Hoistway plan: car rails on one side, counterweight rails on the other.</figcaption>
       </figure>
       <figure class="white">
         <img src="../../assets/elevator/hoistway-layout.png" alt="Hoistway reference layout with cabin, counterweight and dimensions"/>
-        <figcaption>Reference hoistway layout used to illustrate the concept.</figcaption>
+        <figcaption data-i18n-block="b6361d8774cf206">Reference hoistway layout used to illustrate the concept.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ TRACTION ------------------ -->
-    <h2>2) Traction Sizing</h2>
-    <p>
+    <h2 data-i18n-block="b1affb20e5bc510">2) Traction Sizing</h2>
+    <p data-i18n-block="b265aa133e5c791">
       The traction machine is sized from the worst-case <strong>unbalanced mass</strong> plus the force needed to accelerate,
       with a margin for losses and uncertainty. The counterweight balances the empty car plus half the rated load.
     </p>
@@ -146,59 +148,59 @@ F_acc ≈ 1180 × 0.6 ≈ 708 N  F_peak ≈ 3062 N   P_peak ≈ 3.06 kW
 
 Sheave R = 0.24 m:  T_ss ≈ 565 N·m,  T_peak ≈ 735 N·m,  n ≈ 39.8 rpm
 P_motor ≈ 2.5 × P_ss ≈ 5.9 kW   →   7.5 kW gearless PMSM class</div>
-    <p>
+    <p data-i18n-block="beddaa07e99e29f">
       High torque at low speed is exactly where a <strong>gearless PMSM</strong> performs best. The selected machine has a
       spring-applied, electrically released brake and an <strong>absolute encoder</strong>, with 1:1 roping.
     </p>
 
     <!-- ------------------ DRIVE ------------------ -->
-    <h2>3) Drive Integration &amp; Ride Quality</h2>
+    <h2 data-i18n-block="b3cd34b0a499b7b">3) Drive Integration &amp; Ride Quality</h2>
     <div class="two-col">
       <div>
         <ul class="list-tight">
-          <li><strong>Yaskawa L1000A</strong> in closed-loop vector control for PM motors (A1-02 = 7) with absolute encoder feedback, giving full torque at 0&nbsp;Hz for smooth levelling.</li>
-          <li><strong>Stationary auto-tuning</strong> (T2-01 mode 4) identifies the motor parameters and stores the encoder-to-rotor offset (E5-11).</li>
-          <li>Speed reference and run command come over <strong>PROFINET</strong> (b1-01 = b1-02 = 3). Torque removal is hard-wired through <strong>Safe Torque Off</strong>.</li>
-          <li><strong>Torque-proving brake handshake:</strong> the drive builds holding torque at 0&nbsp;Hz and signals "torque ready" (H2-01 = 37). Only then does the PLC release the brake, which prevents rollback and jerk at start.</li>
-          <li><strong>Encoder signal integrity:</strong> 360° shield clamp at the drive end only, with at least 0.2&nbsp;m separation from motor power cables.</li>
+          <li data-i18n-block="b03a5d49ce74d3c"><strong>Yaskawa L1000A</strong> in closed-loop vector control for PM motors (A1-02 = 7) with absolute encoder feedback, giving full torque at 0&nbsp;Hz for smooth levelling.</li>
+          <li data-i18n-block="b3f6e29c7b3c781"><strong>Stationary auto-tuning</strong> (T2-01 mode 4) identifies the motor parameters and stores the encoder-to-rotor offset (E5-11).</li>
+          <li data-i18n-block="b49b09edecf05eb">Speed reference and run command come over <strong>PROFINET</strong> (b1-01 = b1-02 = 3). Torque removal is hard-wired through <strong>Safe Torque Off</strong>.</li>
+          <li data-i18n-block="b813dd1d09eb594"><strong>Torque-proving brake handshake:</strong> the drive builds holding torque at 0&nbsp;Hz and signals "torque ready" (H2-01 = 37). Only then does the PLC release the brake, which prevents rollback and jerk at start.</li>
+          <li data-i18n-block="b6d74b76993efbc"><strong>Encoder signal integrity:</strong> 360° shield clamp at the drive end only, with at least 0.2&nbsp;m separation from motor power cables.</li>
         </ul>
       </div>
       <figure class="white">
         <img src="../../assets/elevator/s-curve.png" alt="Jerk-limited S-curve velocity and acceleration profile"/>
-        <figcaption>Jerk-limited S-curve profile, set with the drive's C2-01…C2-04 parameters for passenger comfort.</figcaption>
+        <figcaption data-i18n-block="b25a9bea9536136">Jerk-limited S-curve profile, set with the drive's C2-01…C2-04 parameters for passenger comfort.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ CONTROL ------------------ -->
-    <h2>4) Control Architecture &amp; Sensors</h2>
-    <p>The control system is split into three coordinated layers:</p>
+    <h2 data-i18n-block="b27c7b84a81a3dd">4) Control Architecture &amp; Sensors</h2>
+    <p data-i18n-block="b56f4d8cf512bf7">The control system is split into three coordinated layers:</p>
     <ul class="list-tight">
-      <li><strong>Functional control:</strong> a Siemens <strong>S7-1500F</strong> runs call handling, dispatching, door logic and operating modes, with <strong>ET200SP</strong> distributed I/O for the large number of field signals.</li>
-      <li><strong>Motion control:</strong> the traction drive runs the inner current, torque and speed loops, the S-curve ramps and regeneration.</li>
-      <li><strong>Safety:</strong> the S7-1500F safety program with <strong>ET200SP F</strong> modules handles the emergency stops, door interlocks, final limits and the STO outputs, independently of the standard logic.</li>
+      <li data-i18n-block="b336bb118a34f10"><strong>Functional control:</strong> a Siemens <strong>S7-1500F</strong> runs call handling, dispatching, door logic and operating modes, with <strong>ET200SP</strong> distributed I/O for the large number of field signals.</li>
+      <li data-i18n-block="b621e440438600b"><strong>Motion control:</strong> the traction drive runs the inner current, torque and speed loops, the S-curve ramps and regeneration.</li>
+      <li data-i18n-block="b34041153d53d53"><strong>Safety:</strong> the S7-1500F safety program with <strong>ET200SP F</strong> modules handles the emergency stops, door interlocks, final limits and the STO outputs, independently of the standard logic.</li>
     </ul>
     <div class="two-col">
       <div>
-        <h3>Sensor set</h3>
+        <h3 data-i18n-block="b7fb54811339493">Sensor set</h3>
         <ul class="list-tight">
-          <li>Motor-shaft absolute encoder, plus an <strong>absolute code-rail</strong> position system in the hoistway that is immune to rope slip and levels to better than 1&nbsp;mm.</li>
-          <li>Door-zone / vane sensors at every landing as a redundant position reference.</li>
-          <li>A multi-beam <strong>light curtain</strong> on the car door to detect obstructions and reopen the doors.</li>
-          <li>Electromechanical door locks in the safety chain, plus <strong>RFID-coded safety sensors</strong> (Pilz PSENcode) for contactless closed-and-locked confirmation.</li>
-          <li><strong>Load cells in the car frame's load path</strong>: departure is blocked under overload. This is more stable than sensing load in the cabin floor.</li>
-          <li>Brake applied/released feedback, and drive ready/fault status.</li>
+          <li data-i18n-block="b6b927b523dc297">Motor-shaft absolute encoder, plus an <strong>absolute code-rail</strong> position system in the hoistway that is immune to rope slip and levels to better than 1&nbsp;mm.</li>
+          <li data-i18n-block="bf3a3f27331e8af">Door-zone / vane sensors at every landing as a redundant position reference.</li>
+          <li data-i18n-block="b316ddbc6aad1b5">A multi-beam <strong>light curtain</strong> on the car door to detect obstructions and reopen the doors.</li>
+          <li data-i18n-block="bbd32a00c1851c7">Electromechanical door locks in the safety chain, plus <strong>RFID-coded safety sensors</strong> (Pilz PSENcode) for contactless closed-and-locked confirmation.</li>
+          <li data-i18n-block="b3f8fc9f4a9bd75"><strong>Load cells in the car frame's load path</strong>: departure is blocked under overload. This is more stable than sensing load in the cabin floor.</li>
+          <li data-i18n-block="b4c973593667950">Brake applied/released feedback, and drive ready/fault status.</li>
         </ul>
       </div>
       <div>
-        <h3>I/O sizing (20 floors)</h3>
+        <h3 data-i18n-block="bfcc2dae1b46545">I/O sizing (20 floors)</h3>
         <div class="table-wrap">
           <table class="spec">
             <tbody>
-              <tr><td>Digital inputs</td><td>76 (incl. 40 door-zone sensors, 21 door-lock confirmations)</td></tr>
-              <tr><td>Digital outputs</td><td>11 (doors, brake, dual-channel STO, indicators)</td></tr>
-              <tr><td>Analog input</td><td>1 × 4–20&nbsp;mA (car load)</td></tr>
-              <tr><td>PROFINET devices</td><td>ET200SP F CPU, L1000A drive, 2 × 9" HMI Comfort Panels</td></tr>
-              <tr><td>Modules</td><td>3 × 16 DI, 1 × 16 DO, 1 × 4 AI, 2 × 16 F-DI, 1 × 4 F-DO</td></tr>
+              <tr><td data-i18n-block="b65ee95158597ea">Digital inputs</td><td data-i18n-block="b6f4cc5275ad976">76 (incl. 40 door-zone sensors, 21 door-lock confirmations)</td></tr>
+              <tr><td data-i18n-block="b326ef0179b02a8">Digital outputs</td><td data-i18n-block="bb4bbac99961a5e">11 (doors, brake, dual-channel STO, indicators)</td></tr>
+              <tr><td data-i18n-block="bb93b7478bd83cc">Analog input</td><td data-i18n-block="b7ea05e3907070b">1 × 4–20&nbsp;mA (car load)</td></tr>
+              <tr><td data-i18n-block="bee8a844a426828">PROFINET devices</td><td data-i18n-block="b48aef228330129">ET200SP F CPU, L1000A drive, 2 × 9" HMI Comfort Panels</td></tr>
+              <tr><td data-i18n-block="b04e9462c0ff02b">Modules</td><td data-i18n-block="b4c7071c6a7ab4b">3 × 16 DI, 1 × 16 DO, 1 × 4 AI, 2 × 16 F-DI, 1 × 4 F-DO</td></tr>
             </tbody>
           </table>
         </div>
@@ -206,33 +208,33 @@ P_motor ≈ 2.5 × P_ss ≈ 5.9 kW   →   7.5 kW gearless PMSM class</div>
     </div>
 
     <!-- ------------------ SAFETY ------------------ -->
-    <h2>5) Safety Architecture</h2>
-    <p>The design follows the EU Lifts Directive and EN 81: several independent layers, so that no single failure can lead to a hazard.</p>
+    <h2 data-i18n-block="ba99b5af05a898b">5) Safety Architecture</h2>
+    <p data-i18n-block="b73e04357a8266c">The design follows the EU Lifts Directive and EN 81: several independent layers, so that no single failure can lead to a hazard.</p>
     <div class="two-col">
       <ul class="list-tight">
-        <li><strong>Mechanical:</strong> overspeed governor, progressive safety gear and buffers, all working without electronics or software.</li>
-        <li><strong>Electrical safety chain:</strong> a series circuit of E-stops, door locks, pit and inspection switches, final limits and the governor contact. Opening any of them triggers STO, applies the brake and puts the system in a safe fault state.</li>
-        <li><strong>Drive safety:</strong> dual-channel <strong>STO</strong> on the L1000A.</li>
-        <li><strong>Supervision:</strong> the PLC monitors, logs and informs passengers, but never replaces a primary safety function.</li>
-        <li><strong>Power:</strong> separate traction, brake, control and safety supplies. A UPS powers only the safety and control electronics and the EN 81-28 alarm and intercom.</li>
+        <li data-i18n-block="bc341097a1e34d5"><strong>Mechanical:</strong> overspeed governor, progressive safety gear and buffers, all working without electronics or software.</li>
+        <li data-i18n-block="bbb10a84a4df61d"><strong>Electrical safety chain:</strong> a series circuit of E-stops, door locks, pit and inspection switches, final limits and the governor contact. Opening any of them triggers STO, applies the brake and puts the system in a safe fault state.</li>
+        <li data-i18n-block="b0f6fc37daeb03f"><strong>Drive safety:</strong> dual-channel <strong>STO</strong> on the L1000A.</li>
+        <li data-i18n-block="bdd3c963b096bb1"><strong>Supervision:</strong> the PLC monitors, logs and informs passengers, but never replaces a primary safety function.</li>
+        <li data-i18n-block="b3c5ce0a4c534cd"><strong>Power:</strong> separate traction, brake, control and safety supplies. A UPS powers only the safety and control electronics and the EN 81-28 alarm and intercom.</li>
       </ul>
       <div class="table-wrap">
         <table class="spec">
-          <thead><tr><th>Safety function</th><th>Target</th></tr></thead>
+          <thead><tr><th data-i18n-block="b8dc3bb75c97c91">Safety function</th><th data-i18n-block="b61ad50a9b9189c">Target</th></tr></thead>
           <tbody>
-            <tr><td>No motion with doors unlocked</td><td>PL e / SIL 3</td></tr>
-            <tr><td>Emergency stop (car + pit)</td><td>PL d–e</td></tr>
-            <tr><td>Safe removal of motor torque (STO)</td><td>SIL 2–3</td></tr>
-            <tr><td>Uncontrolled movement prevention</td><td>PL d–e</td></tr>
-            <tr><td>Overspeed protection</td><td>Mechanical (EN 81)</td></tr>
+            <tr><td data-i18n-block="b4a6a9468e02df0">No motion with doors unlocked</td><td data-i18n-block="b68b51bac337170">PL e / SIL 3</td></tr>
+            <tr><td data-i18n-block="b7fb3dcd2de5301">Emergency stop (car + pit)</td><td data-i18n-block="b7cb2f5dcb6ce7b">PL d–e</td></tr>
+            <tr><td data-i18n-block="be13022170e1e0a">Safe removal of motor torque (STO)</td><td data-i18n-block="b9398c7d4be53b8">SIL 2–3</td></tr>
+            <tr><td data-i18n-block="b931042753f230b">Uncontrolled movement prevention</td><td data-i18n-block="b7cb2f5dcb6ce7b">PL d–e</td></tr>
+            <tr><td data-i18n-block="bda14f6e84076ec">Overspeed protection</td><td data-i18n-block="bfa1377bef7a12f">Mechanical (EN 81)</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
     <!-- ------------------ SIMULATION ------------------ -->
-    <h2>6) PLC Simulation</h2>
-    <p>
+    <h2 data-i18n-block="b5d1d0e07a969f8">6) PLC Simulation</h2>
+    <p data-i18n-block="b3a15355b437f7c">
       The elevator sequence was first drawn as a GRAFCET-style diagram, then implemented in <strong>TIA Portal</strong> and run
       on <strong>PLCSIM</strong> against a 3-floor <strong>Factory I/O</strong> scene, with a simple HMI for commands and status.
       All Factory I/O signals are mapped in one function into structured data blocks, so the logic uses symbolic,
@@ -240,45 +242,45 @@ P_motor ≈ 2.5 × P_ss ≈ 5.9 kW   →   7.5 kW gearless PMSM class</div>
     </p>
     <div class="two-col">
       <div>
-        <h3>State machine (SCL)</h3>
-        <p>
+        <h3 data-i18n-block="bb6ee248d1f88d4">State machine (SCL)</h3>
+        <p data-i18n-block="b752fe431babcd1">
           <span class="metric">0 Idle</span> → <span class="metric">20 Move</span> → <span class="metric">30 Open door</span> →
           <span class="metric">40 Door hold</span> → <span class="metric">50 Close door</span> → <span class="metric">0 Idle</span>
           &nbsp;·&nbsp; any stop or safety loss → <span class="metric">99 Fault</span>
         </p>
         <ul class="list-tight">
-          <li>The car departs only when the door-closed sensor and the safety signal are true.</li>
-          <li>Latches set the slow speed both when leaving a floor and when approaching the target.</li>
-          <li>If the light curtain is interrupted, the door-hold timer resets or a closing door reopens.</li>
-          <li>Every scan starts with all outputs reset to a safe default.</li>
+          <li data-i18n-block="b64acd1ed4f1a43">The car departs only when the door-closed sensor and the safety signal are true.</li>
+          <li data-i18n-block="ba1212cd2f75d9e">Latches set the slow speed both when leaving a floor and when approaching the target.</li>
+          <li data-i18n-block="b70b4fd2b4b2e19">If the light curtain is interrupted, the door-hold timer resets or a closing door reopens.</li>
+          <li data-i18n-block="bcafe59d85d1a83">Every scan starts with all outputs reset to a safe default.</li>
         </ul>
-        <p style="font-size:.9rem; opacity:.8;">
+        <p style="font-size:.9rem; opacity:.8;" data-i18n-block="b823f05037e028e">
           The simulation checks the program structure and sequencing only. It runs on TIA Portal V15 with a standard PLC, so safety
           is represented by interlocks, and traction dynamics are not modelled.
         </p>
       </div>
       <figure>
         <img src="../../assets/elevator/hmi.jpg" alt="Siemens HMI screen used to command and monitor the simulated elevator"/>
-        <figcaption>HMI used in the simulation: floor calls, current and target floor, start/stop/reset and E-stop.</figcaption>
+        <figcaption data-i18n-block="b229ce14f934c77">HMI used in the simulation: floor calls, current and target floor, start/stop/reset and E-stop.</figcaption>
       </figure>
     </div>
 
     <!-- ------------------ COST ------------------ -->
-    <h2>7) Cost Estimate</h2>
+    <h2 data-i18n-block="b5dd87814c21d53">7) Cost Estimate</h2>
     <div class="two-col">
       <div class="table-wrap">
         <table class="spec">
-          <thead><tr><th>Subsystem</th><th>Estimate (EUR)</th></tr></thead>
+          <thead><tr><th data-i18n-block="bb1a08168a01e67">Subsystem</th><th data-i18n-block="b3c76a2a37a7c0a">Estimate (EUR)</th></tr></thead>
           <tbody>
-            <tr><td>Mechanical</td><td>30,500 – 40,500</td></tr>
-            <tr><td>Traction drive &amp; electrical</td><td>16,500 – 22,500</td></tr>
-            <tr><td>Control &amp; safety</td><td>10,000 – 15,000</td></tr>
-            <tr><td>Cabling &amp; wiring</td><td>5,300 – 8,200</td></tr>
-            <tr><td><strong>Total (excl. installation)</strong></td><td><strong>62,000 – 86,000</strong></td></tr>
+            <tr><td data-i18n-block="b0f2dcda5fbefee">Mechanical</td><td>30,500 – 40,500</td></tr>
+            <tr><td data-i18n-block="b6f51e00c1f9642">Traction drive &amp; electrical</td><td>16,500 – 22,500</td></tr>
+            <tr><td data-i18n-block="b53670c97c2e6b5">Control &amp; safety</td><td>10,000 – 15,000</td></tr>
+            <tr><td data-i18n-block="b5f2579a089a440">Cabling &amp; wiring</td><td>5,300 – 8,200</td></tr>
+            <tr><td data-i18n-block="be3a393d947f981"><strong>Total (excl. installation)</strong></td><td><strong>62,000 – 86,000</strong></td></tr>
           </tbody>
         </table>
       </div>
-      <p>
+      <p data-i18n-block="b20594193ffb57e">
         The mechanical subsystem and the traction machine are the largest costs. A gearless PMSM with a regenerative drive costs
         more up front, but uses less energy and wears less over its life. The MRL layout removes the cost of building a
         dedicated machine room.

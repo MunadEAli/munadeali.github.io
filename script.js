@@ -18,9 +18,10 @@ function initTilt(root = document) {
   if (!grid) return;
 
   const title = document.getElementById('ai-projects');
-  const aiMarkup = grid.innerHTML;
+  const featuredMarkup = grid.innerHTML;
   const categories = {
-    '#ai-projects': { title: 'AI Projects', markup: aiMarkup },
+    '#featured-projects': { title: 'Featured Projects', markup: featuredMarkup },
+    '#ai-projects': { title: 'AI Projects', markup: document.getElementById('aiCards').innerHTML },
     '#rmc-projects': {
       title: 'Robotics Projects',
       markup: document.getElementById('roboticsCards').innerHTML,
@@ -35,18 +36,21 @@ function initTilt(root = document) {
 
   function renderCategory() {
     const hash = location.hash.toLowerCase();
-    const category = categories[hash] || { title: 'Featured Projects', markup: aiMarkup };
+    const selectedHash = Object.hasOwn(categories, hash) ? hash : '#featured-projects';
+    const category = categories[selectedHash];
     grid.querySelectorAll('.tilt').forEach(card => card.vanillaTilt?.destroy());
     grid.innerHTML = category.markup;
+    grid.dataset.category = selectedHash.slice(1);
     title.textContent = category.title;
     links.forEach(link => {
-      const selected = link.getAttribute('href') === hash;
+      const selected = link.getAttribute('href') === selectedHash;
       link.classList.toggle('active', selected);
       if (selected) link.setAttribute('aria-current', 'true');
       else link.removeAttribute('aria-current');
     });
     const home = document.querySelector('.nav__links a[href="index.html"]');
-    if (home) home.classList.toggle('active', !Object.hasOwn(categories, hash));
+    if (home) home.classList.toggle('active', selectedHash === '#featured-projects');
+    window.portfolioI18n?.translate(document);
     initTilt(grid);
   }
 
